@@ -76,8 +76,6 @@
 }
 
 .u-section-2 .u-text-2 {
-  font-size: 1.5rem;
-  line-height: 1.6;
   margin: 20px auto 0;
 }
 
@@ -102,10 +100,6 @@
 
   .u-section-2 .u-layout-cell-1 {
     min-height: 721px;
-  }
-
-  .u-section-2 .u-text-2 {
-    font-size: 4.5rem;
   }
 }
 
@@ -145,9 +139,5 @@
 
   .u-section-2 .u-layout-wrap-1 {
     width: 340px;
-  }
-
-  .u-section-2 .u-text-2 {
-    font-size: 3.75rem;
   }
 }
