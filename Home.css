@@ -8,8 +8,8 @@
 }
 
 .u-section-1 .u-image-1 {
-  width: 362px;
-  height: 101px;
+  width: 364px;
+  height: 118px;
   margin: 80px auto 60px;
 }
 
@@ -45,8 +45,10 @@
   }
 
   .u-section-1 .u-image-1 {
-    width: 175px;
-    height: 40px;
+    width: 194px;
+    height: 64px;
+    margin-top: 64px;
+    margin-left: auto;
   }
 } .u-section-2 {
   background-image: none;
