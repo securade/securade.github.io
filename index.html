@@ -34,9 +34,18 @@
     <link rel="stylesheet" href="assets/css/main.css"/>
 	<!-- Add icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<script id="mcjs">
-	!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}
-	(document,"script","https://chimpstatic.com/mcjs-connected/js/users/c1838467fb5c2b0a86380a903/9bce73c0b98ece59d41dfe5e5.js");
+	function showPopup() { 
+		!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}
+		(document,"script","https://chimpstatic.com/mcjs-connected/js/users/c1838467fb5c2b0a86380a903/9bce73c0b98ece59d41dfe5e5.js");
+	
+		//unsetting the cookie
+		document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";                  
+		document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	}
+		
+	//document.getElementById("show-popup").onclick = function() { showPopup(); }
 	</script>
   </head>
   <body>
@@ -108,7 +117,7 @@
                 </div>
 								<!-- navbar collapse -->
 								<div class="header-btn">
-									<a href="#0" class="main-btn btn-hover">Request a Demo</a>
+									<a href="#0" onclick="showPopup()" class="main-btn btn-hover">Request a Demo</a>
 								</div>
               </nav>
               <!-- navbar -->
@@ -132,7 +141,7 @@
 							<p>Protect your workers and projects with AI technology that predicts and prevents accidents.
 								​</p>
 							
-							<a href="#0" class="main-btn btn-hover">Request a Demo</a>
+							<a href="#0" onclick="showPopup()" class="main-btn btn-hover">Request a Demo</a>
             </div>
 					</div>
 					<div class="col-xxl-6 col-xl-6 col-lg-6">
