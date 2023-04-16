@@ -1,27 +1,326 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en">
-
+<html class="no-js" lang="">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="worker safety, safety and health, EHS, OSHA, WCHC, safety AI, ">
-    <meta name="description" content="Making the world safer, 1 step at a time.">
-    <title>Securade</title>
-    <meta property="og:title" content="Securade">
-    <meta property="og:description" content="Making the world safer, 1 step at a time.">
-    <meta property="og:image" content="https://securade.ai/images/Securadecolorlogo-transparent.png">
-    <meta property="og:url" content="https://securade.ai/">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Securade - Safety, powered by AI</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico"/>
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css"/>
+    <link rel="stylesheet" href="assets/css/tiny-slider.css"/>
+    <link rel="stylesheet" href="assets/css/animate.css"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
   </head>
-
   <body>
-    <div style="overflow-y:auto; overflow-x:hidden;"> 
-      <iframe 
-      src="https://securade.streamlit.app?embed=true"
-      title="Securade Demo"
-      width="100%"
-      height="2800px"
-      ></iframe>
-      </div>
-  </body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
 
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+		<!-- preloader end -->
+		
+
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="index.html">
+                  <img src="assets/images/logo/logo.png" alt="Logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+								</button>
+								
+                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+									<div class="ms-auto">
+										<ul id="nav" class="navbar-nav ms-auto">
+											<li class="nav-item">
+												<a class="page-scroll active" href="#home">Home</a>
+											</li>
+											<li class="nav-item">
+												<a class="page-scroll" href="#platform">Platform</a>
+											</li>
+											<li class="nav-item">
+												<a class="page-scroll" href="#features">Features</a>
+											</li>
+											<li class="nav-item">
+												<a class="page-scroll" href="#solutions">Solutions</a>
+											</li>
+											<li class="nav-item">
+												<a class="page-scroll" href="#team">Team</a>
+											</li>
+										</ul>
+									</div>
+                  
+                </div>
+								<!-- navbar collapse -->
+								<div class="header-btn">
+									<a href="#0" class="main-btn btn-hover">Request a Demo</a>
+								</div>
+              </nav>
+              <!-- navbar -->
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-6 col-lg-6 col-md-10">
+            <div class="hero-content">
+							<h1>Safeguard Your Worksites</h1>
+							<p>Protect your workers and projects with AI technology that predicts and prevents accidents.
+								​</p>
+							
+							<a href="#0" class="main-btn btn-hover">Request a Demo</a>
+            </div>
+					</div>
+					<div class="col-xxl-6 col-xl-6 col-lg-6">
+						<div class="hero-image text-center text-lg-end">
+							<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/787279049?h=797a83a1c8&autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+							<!-- <img src="assets/images/hero/hero-image.svg" alt=""> -->
+						</div>
+					</div>
+        </div>
+			</div>
+    </section>
+		<!-- ========================= hero-section end ========================= -->
+
+		<!-- ========================= about-section start ========================= -->
+		<section id="platform" class="about-section">
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 order-last order-lg-first">
+						<div class="about-image">
+							<img src="assets/images/about/mock-up.png" alt="">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="about-content-wrapper">
+							<div class="section-title">
+								<h2 class="mb-20">Securade HUB&trade;<br class="d-none d-lg-block">
+									Edge AI platform</h2>
+								<p class="mb-30">Access 100s of algorithms instantly with real-time insights to prevent accidents. 
+									Install once and make any camera smart to implement your use case in seconds. 
+									Monitor worksites in real-time to quickly identify and address any safety concerns. 
+									Ensure compliance with company safety policies and regulations with our customizable policy engine.
+									Stay informed with detailed reports and analytics on your worksite’s safety performance.</p>
+								<!-- <a href="#0" class="main-btn btn-hover border-btn">Discover More</a> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ========================= about-section end ========================= -->
+
+		<!-- ========================= feature-section start ========================= -->
+		<section id="features" class="feature-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5 col-md-10">
+						<div class="section-title mb-60">
+							<h2 class="mb-20">Features</h2>
+							<p>
+								Design and assemble a bespoke solution for all your workplace safety and productivity needs.
+								Our platform enables customers to go from idea to implementation in a matter of minutes.
+							</p>
+						</div>
+					</div>
+
+					<div class="col-lg-7">
+						<div class="row">
+							<div class="col-lg-6 col-md-6">
+								<div class="single-feature">
+									<div class="feature-icon">
+										<i class="lni lni-display"></i>
+									</div>
+									<div class="feature-content">
+										<h4>SOTA AI for Workplace Safety</h4>
+										<p>We have developed a state of the art object detection model for the workplace 
+											safety domain.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6">
+								<div class="single-feature">
+									<div class="feature-icon">
+										<i class="lni lni-compass"></i>
+									</div>
+									<div class="feature-content">
+										<h4>Easy to Use</h4>
+										<p>Implement policies and create compliance reports with a flexible and
+											intuitive interface. Use the Securade Safety Score&trade; to calculate ROI
+											and reduce liability.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6">
+								<div class="single-feature">
+									<div class="feature-icon">
+										<i class="lni lni-grid-alt"></i>
+									</div>
+									<div class="feature-content">
+										<h4>AI Marketplace</h4>
+										<p>Get access to 100s of use cases based on open-source models or bring your own model to 
+										Securade HUB&trade;.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6">
+								<div class="single-feature">
+									<div class="feature-icon">
+										<i class="lni lni-layers"></i>
+									</div>
+									<div class="feature-content">
+										<h4>Generative AI</h4>
+										<p>No need to label or annotate bounding boxes, we use Generative AI for automated object detection.
+										Fine-tune a model to detect a new object with as few as 5 images in 5 mins. </p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ========================= feature-section end ========================= -->
+
+		<!-- ========================= cta-section start ========================= -->
+		<section id="solutions" class="cta-section pt-130 pb-100">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6 col-md-10">
+						<div class="cta-content-wrapper">
+							<div class="section-title">
+								<h2 class="mb-20">Workplace Safety</h2>
+								<p class="mb-30">
+									Our workplace safety solution includes PPE detection, proximity detection and exclusion zones.
+									Together these use cases ensure that workers are wearing the required personal protective
+									equipment, maintain safe distances from machinery and avoid prohibited areas. Safety incident 
+									response is supported with alerts, notifications and reporting.
+								</p>
+								<!-- <a href="#0" class="main-btn btn-hover border-btn">Try it Free</a>-->
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="cta-image text-lg-end">
+							<img src="assets/images/cta/cta-image.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ========================= cta-section end ========================= -->
+
+		<!-- ========================= footer start ========================= -->
+		<footer class="footer pt-120">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+						<div class="footer-widget">
+							<div class="logo">
+								<a href="index.html"> <img src="assets/images/logo/logo.png" alt="logo" 
+									style="max-width: 180px;"> </a>
+							</div>
+							<p class="desc">Safety, powered by AI.</p>
+							<ul class="social-links">
+								<!-- <li><a href="#0"><i class="lni lni-facebook"></i></a></li>-->
+								<li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
+								<!--<li><a href="#0"><i class="lni lni-instagram"></i></a></li>
+								<li><a href="#0"><i class="lni lni-twitter"></i></a></li>-->
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+						<div class="footer-widget">
+							<h3>Company</h3>
+							<ul class="links">
+								<li><a href="#home">Home</a></li>
+								<li><a href="#platform">Platform</a></li>
+								<li><a href="#features">Features</a></li>
+								<li><a href="#solutions">Solutions</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
+						<div class="footer-widget">
+							<h3>About Us</h3>
+							<ul class="links">
+								<li><a href="#team">Team</a></li>
+								<li>Contact Us</li>
+								<li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+								<!--<li><a href="#0">Awesome Design</a></li>
+								<li><a href="#0">Ready to Use</a></li>
+								<li><a href="#0">Essential Selection</a></li>-->
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-4 col-md-6">
+						<div class="footer-widget">
+							<h3>Subscribe for Updates</h3>
+							<form action="#">
+								<input type="email" placeholder="Email">
+								<button class="main-btn btn-hover">Subscribe</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- ========================= footer end ========================= -->
+
+
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ========================= JS here ========================= -->
+    <script src="assets/js/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="assets/js/tiny-slider.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/polyfill.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
