@@ -1662,3 +1662,7 @@ p {
 .spacer {
   margin-left: 20%;
 }
+
+.spacer > .card > img {
+  width: 100%;
+}
