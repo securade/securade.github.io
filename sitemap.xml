@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://securade.ai/index.html</loc>
-<lastmod>2023-12-24T16:25:38+08:00</lastmod>
+<lastmod>2023-12-30T20:16:39+08:00</lastmod>
+</url>
+<url>
+<loc>https://securade.ai/404.html</loc>
+<lastmod>2023-12-30T20:16:39+08:00</lastmod>
 </url>
 <url>
 <loc>https://securade.ai/page2.html</loc>
@@ -49,10 +53,6 @@
 <lastmod>2023-12-24T16:25:38+08:00</lastmod>
 </url>
 <url>
-<loc>https://securade.ai/blog/enhancing-preschool-safety-singapore-cctv copy.html</loc>
-<lastmod>2023-12-24T16:25:38+08:00</lastmod>
-</url>
-<url>
 <loc>https://securade.ai/blog/enhancing-preschool-safety-singapore-cctv.html</loc>
 <lastmod>2023-12-24T16:25:38+08:00</lastmod>
 </url>
@@ -95,6 +95,10 @@
 <url>
 <loc>https://securade.ai/blog/top-5-safety-challenges-oil-gas-securade-ai.html</loc>
 <lastmod>2023-12-24T16:25:38+08:00</lastmod>
+</url>
+<url>
+<loc>https://securade.ai/blog/transform-cameras-securade-ai-upgrade.html</loc>
+<lastmod>2023-12-29T19:27:05+08:00</lastmod>
 </url>
 <url>
 <loc>https://securade.ai/blog/working-at-height-safely-with-video-analytics.html</loc>
