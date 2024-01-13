@@ -238,7 +238,8 @@ p {
   border-radius: 5px;
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  /* right: 30px; */
+  left: 30px;
   z-index: 9;
   cursor: pointer;
   transition: all 0.3s ease-out 0s;
