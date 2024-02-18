@@ -1,6 +1,198 @@
 import os
 import argparse
+import numpy as np
+import xml.etree.ElementTree as ET
+import requests
+import spacy
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from collections import defaultdict
+from prettytable import PrettyTable
 from bs4 import BeautifulSoup
+from spacy.matcher import Matcher
+
+
+
+# Load a Spacy model for NLP tasks
+nlp = spacy.load('en_core_web_lg')
+
+def format_link_opportunities(deduplicated_opportunities):
+    """Format and print the link opportunities in a table, one row per keyword-target URL pair for each source URL."""
+    table = PrettyTable()
+    table.field_names = ["Source URL", "Keyword", "Target URL"]
+    
+    for source_url, opportunities in deduplicated_opportunities.items():
+        for keyword, target_url in opportunities:
+            # Add a row for each keyword-target pair under the current source URL
+            table.add_row([source_url, keyword, target_url])
+    
+    # Check if there are any opportunities to display
+    if len(table._rows) == 0:
+        print("No internal linking opportunities found.")
+    else:
+        print(table)
+
+def extract_keywords(text, common_words_set, min_length=2, max_length=48):
+    """
+    Extract relevant SEO keywords using SpaCy, excluding common English nouns and filtering out excessively long keywords.
+    
+    :param text: Text to extract keywords from.
+    :param common_words_set: A set of common words to exclude.
+    :param min_length: Minimum length of keywords to consider.
+    :param max_length: Maximum length of keywords to allow.
+    :return: A list of unique, relevant keywords.
+    """
+    doc = nlp(text)
+    keywords = []
+    matcher = Matcher(nlp.vocab)
+
+    # Define POS patterns for matcher
+    patterns = [
+        [{"POS": "ADJ"}, {"POS": "NOUN"}],  # Adjective followed by a noun
+        [{"POS": "PROPN"}, {"POS": "PROPN"}]  # Sequence of proper nouns
+    ]
+    matcher.add("POS_PATTERNS", patterns)
+
+    # Use matcher to find patterns in text
+    matches = matcher(doc)
+    for _, start, end in matches:
+        span = doc[start:end].text.lower()
+        if len(span) >= min_length and len(span) <= max_length and span not in common_words_set:
+            keywords.append(span)
+
+    # Named Entity Recognition and dependency parsing integration
+    for ent in doc.ents:
+        if ent.label_ in ['PERSON', 'NORP', 'ORG', 'GPE', 'LOC', 'PRODUCT', 'EVENT', 'WORK_OF_ART']:
+            ent_text = ent.text.lower()
+            if len(ent_text) <= max_length:
+                keywords.append(ent_text)
+
+    for token in doc:
+        if token.dep_ in ["nsubj", "dobj", "pobj"] and not token.is_stop:
+            subtree_span = doc[token.left_edge.i : token.right_edge.i + 1].text.lower()
+            if len(subtree_span) >= min_length and len(subtree_span) <= max_length and subtree_span not in common_words_set:
+                keywords.append(subtree_span)
+
+    # Remove duplicates and return
+    return list(set(keywords))
+
+def find_most_relevant_link(keyword, header_texts):
+    """Find the most relevant link for a keyword based on similarity scores."""
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(header_texts + [keyword])
+    cosine_similarities = cosine_similarity(tfidf_matrix[-1], tfidf_matrix[:-1]).flatten()
+    return cosine_similarities
+
+def calculate_relevance_score(source_url, keyword, target_url, contents):
+    """
+    Calculate a relevance score for a keyword between a source and target URL.
+    The score is based on the frequency of the keyword in the target's content and semantic similarity.
+    """
+    target_content = contents[target_url]['headers'] + " " + contents[target_url]['paragraphs']
+    source_content = contents[source_url]['headers'] + " " + contents[source_url]['paragraphs']
+
+    # Calculate keyword frequency in the target content
+    keyword_frequency = target_content.lower().count(keyword.lower())
+
+    # Calculate semantic similarity (placeholder, see note below)
+    doc_source = nlp(source_content)
+    doc_target = nlp(target_content)
+    similarity = doc_source.similarity(doc_target)
+
+    # Combine frequency and similarity into a single score
+    relevance_score = (keyword_frequency * 0.7) + (similarity * 0.3)
+
+    return relevance_score
+
+def analyze_content_and_identify_links(contents):
+    """Analyze content and identify internal linking opportunities based on header texts."""
+    link_opportunities = defaultdict(list)
+    urls = list(contents.keys())
+    header_texts = [contents[url]['headers'] for url in urls]
+    common_words = spacy.lang.en.stop_words.STOP_WORDS
+
+    for source_url in urls:
+        print("Analyzing URL: " + source_url)
+        paragraph_text = contents[source_url]['paragraphs']
+        keywords = extract_keywords(paragraph_text, common_words)
+        
+        for keyword in keywords:
+          
+            # Ignore the source URL's header text when searching for the most relevant link
+            relevant_header_texts = [text if url != source_url else '' for url, text in zip(urls, header_texts)]
+            cosine_similarities = find_most_relevant_link(keyword, relevant_header_texts)
+            for target_idx, similarity_score in enumerate(cosine_similarities):
+                if similarity_score > 0:  # Consider only positive similarity scores
+                    target_url = urls[target_idx]
+                    link_opportunities[keyword].append((source_url, target_url))
+
+    # Deduplicate: For each keyword, keep only the most relevant (first) source-target pair
+    deduplicated_opportunities = {k: v[0] for k, v in link_opportunities.items() if v}
+    # Now, filter to keep only the top 3 keywords for each source URL
+    final_opportunities = defaultdict(list)
+
+    for keyword, links in deduplicated_opportunities.items():
+        source_url, target_url = links
+        # Assuming some relevance score calculation is available; using placeholder
+        relevance_score = calculate_relevance_score(source_url, keyword, target_url, contents)
+        final_opportunities[source_url].append((relevance_score, keyword, target_url))
+    
+    # Sort and keep top 3 for each source URL
+    for source_url, opportunities in final_opportunities.items():
+        sorted_opportunities = sorted(opportunities, reverse=True)[:3]  # Sort based on relevance score
+        final_opportunities[source_url] = [(keyword, target_url) for _, keyword, target_url in sorted_opportunities]
+
+    return final_opportunities
+
+def parse_sitemap(sitemap_path):
+    """Parse sitemap.xml and extract URLs."""
+    urls = []
+    tree = ET.parse(sitemap_path)
+    root = tree.getroot()
+    for url in root.findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url'):
+        loc = url.find('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')
+        if loc is not None:
+            # Include URLs ending with .html, .htm, or having no file extension
+            if loc.text.endswith('.html') or loc.text.endswith('.htm') or ('.' not in loc.text.split('/')[-1]):
+                urls.append(loc.text.strip())
+    return urls
+  
+def scrape_urls(urls):
+    """Scrape content from a list of URLs, focusing on <p>, <h1>, and <h2> tags within <article>."""
+    contents = {}
+    # User-Agent string of a Chrome browser
+    chrome_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36"
+    # Set headers to mimic Chrome browser
+    request_headers = {
+        "User-Agent": chrome_user_agent
+    }
+    for url in urls:
+        response = requests.get(url, headers=request_headers)
+        # print(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Find the <article> section
+            article = soup.find('article')
+            if article:
+                # Extract text from <h1> tag within the found <article>
+                headers = article.find_all(['h1'])
+                header_text = ' '.join(header.get_text().strip() for header in headers)
+                
+                # Extract text from all <p> tags within the found <article>
+                paragraphs = article.find_all('p')
+                paragraph_text = ' '.join(p.get_text().strip() for p in paragraphs)
+                
+                # Store extracted texts in a structured manner, excluding combined text
+                contents[url] = {
+                    'headers': header_text,
+                    'paragraphs': paragraph_text
+                }
+            else:
+                print(f"No article found in {url}")
+        else:
+            print(f"Failed to fetch {url}")
+    return contents
 
 def extract_info_from_html(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -271,19 +463,26 @@ def generate_html_structure(folder_path):
 
 def main():
     parser = argparse.ArgumentParser(description="Generate HTML structure from HTML files in a folder.")
-    parser.add_argument('folder_path', type=str, help="Path to the folder containing HTML files.")
+    parser.add_argument('-f', '--folder_path', type=str, help="Path to the folder containing HTML files.")
     parser.add_argument('-o', '--output', type=str, help="Path to output the generated HTML content.")
+    parser.add_argument('-s', '--sitemap', type=str, help="Path to the sitemap.xml file.")
 
     args = parser.parse_args()
 
-    html_content = generate_html_structure(args.folder_path)
-
-    if args.output:
-        with open(args.output, 'w', encoding='utf-8') as file:
-            file.write(html_content)
-        print(f"HTML content written to {args.output}")
+    if args.sitemap:
+        urls = parse_sitemap(args.sitemap)
+        contents = scrape_urls(urls)
+        link_opportunities = analyze_content_and_identify_links(contents)
+        format_link_opportunities(link_opportunities)
     else:
-        print(html_content)
+      html_content = generate_html_structure(args.folder_path)
+
+      if args.output:
+          with open(args.output, 'w', encoding='utf-8') as file:
+              file.write(html_content)
+          print(f"HTML content written to {args.output}")
+      else:
+          print(html_content)
 
 if __name__ == "__main__":
     main()
