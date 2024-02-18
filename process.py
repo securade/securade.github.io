@@ -33,7 +33,7 @@ def format_link_opportunities(deduplicated_opportunities):
     else:
         print(table)
 
-def extract_keywords(text, common_words_set, min_length=2, max_length=48):
+def extract_keywords(text, common_words_set, min_length=2, max_length=32):
     """
     Extract relevant SEO keywords using SpaCy, excluding common English nouns and filtering out excessively long keywords.
     
@@ -115,17 +115,26 @@ def analyze_content_and_identify_links(contents):
     for source_url in urls:
         print("Analyzing URL: " + source_url)
         paragraph_text = contents[source_url]['paragraphs']
+        existing_links = {link[1] for link in contents[source_url].get('links', [])}  # Extract existing link URLs
+        existing_anchor_texts = {link[0].lower() for link in contents[source_url].get('links', [])}  # Extract existing anchor texts
+
         keywords = extract_keywords(paragraph_text, common_words)
         
         for keyword in keywords:
-          
+            # Filter out keywords that are already used as anchor text
+            if keyword.lower() in existing_anchor_texts:
+                continue
+
             # Ignore the source URL's header text when searching for the most relevant link
             relevant_header_texts = [text if url != source_url else '' for url, text in zip(urls, header_texts)]
             cosine_similarities = find_most_relevant_link(keyword, relevant_header_texts)
+            
             for target_idx, similarity_score in enumerate(cosine_similarities):
                 if similarity_score > 0:  # Consider only positive similarity scores
                     target_url = urls[target_idx]
-                    link_opportunities[keyword].append((source_url, target_url))
+                    # Filter out target links that are already linked from the source URL
+                    if target_url not in existing_links:
+                        link_opportunities[keyword].append((source_url, target_url))
 
     # Deduplicate: For each keyword, keep only the most relevant (first) source-target pair
     deduplicated_opportunities = {k: v[0] for k, v in link_opportunities.items() if v}
@@ -159,7 +168,7 @@ def parse_sitemap(sitemap_path):
     return urls
   
 def scrape_urls(urls):
-    """Scrape content from a list of URLs, focusing on <p>, <h1>, and <h2> tags within <article>."""
+    """Scrape content from a list of URLs, focusing on <p>, <h1>, and <a> tags within <article>."""
     contents = {}
     # User-Agent string of a Chrome browser
     chrome_user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36"
@@ -169,24 +178,27 @@ def scrape_urls(urls):
     }
     for url in urls:
         response = requests.get(url, headers=request_headers)
-        # print(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
             # Find the <article> section
             article = soup.find('article')
             if article:
-                # Extract text from <h1> tag within the found <article>
+                # Extract text from <h1> and <p> tags within the found <article>
                 headers = article.find_all(['h1'])
                 header_text = ' '.join(header.get_text().strip() for header in headers)
                 
-                # Extract text from all <p> tags within the found <article>
                 paragraphs = article.find_all('p')
                 paragraph_text = ' '.join(p.get_text().strip() for p in paragraphs)
                 
-                # Store extracted texts in a structured manner, excluding combined text
+                # Extract existing anchor texts and URLs they point to
+                links = article.find_all('a')
+                anchor_texts_urls = [(a.get_text().strip(), a.get('href')) for a in links if a.get('href')]
+
+                # Store extracted texts and links in a structured manner
                 contents[url] = {
                     'headers': header_text,
-                    'paragraphs': paragraph_text
+                    'paragraphs': paragraph_text,
+                    'links': anchor_texts_urls  # Add the extracted anchor texts and URLs
                 }
             else:
                 print(f"No article found in {url}")
