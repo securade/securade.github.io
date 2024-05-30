@@ -243,7 +243,7 @@ def generate_html_structure(folder_path):
 	<meta property="og:title" content="Securade.ai - Safety, powered by AI">
 	<meta property="og:description" content="Revolutionizing worker safety and productivity with the first generative AI video analytics platform, predicting and preventing workplace accidents.">
 	<meta property="og:image" content="https://securade.ai/images/logo.png">
-	<meta property="og:url" content="https://securade.ai/page2.html">
+	<meta property="og:url" content="https://securade.ai/page3.html">
 	
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico"/>
     <!-- Place favicon.ico in the root directory -->
@@ -318,24 +318,24 @@ def generate_html_structure(folder_path):
                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
 									<div class="ms-auto">
 										<ul id="nav" class="navbar-nav ms-auto">
-											<li class="nav-item">
-												<a class="nav-link" href="index.html#home">Home</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="index.html#features">Features</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="index.html#platform">HUB</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="index.html#tower">Tower</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="index.html#solutions">Solutions</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="resources.html">Resources</a>
-											</li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="index.html#home">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="index.html#platform">HUB</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="index.html#tower">Tower</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="index.html#sentinel">Sentinel</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="safety-copilot.html">Safety Copilot&trade;</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="resources.html">Resources</a>
+                                        </li>   
 										</ul>
 									</div>
                   
@@ -398,10 +398,8 @@ def generate_html_structure(folder_path):
 							<h3>Company</h3>
 							<ul class="links">
 								<li><a href="index.html#home">Home</a></li>
-								<li><a href="index.html#features">Features</a></li>
-								<li><a href="index.html#platform">HUB</a></li>
-								<li><a href="index.html#tower">Tower</a></li>
-								<li><a href="index.html#solutions">Solutions</a></li>
+								<li><a href="safety-copilot.html">Safety Copilot&trade;</a></li>
+								<li><a href="resources.html">Resources</a></li>
 							</ul>
 						</div>
 					</div>
@@ -412,7 +410,6 @@ def generate_html_structure(folder_path):
 								<!--
 								<li><a href="#team">Team</a></li>
 								-->
-								<li><a href="resources.html">Resources</a></li>
 								<li>Contact Us</li>
 								<li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
 								<li>OkyaSoft Pte. Ltd.</li>
