@@ -4,6 +4,7 @@ import numpy as np
 import xml.etree.ElementTree as ET
 import requests
 import spacy
+import re
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -11,6 +12,7 @@ from collections import defaultdict
 from prettytable import PrettyTable
 from bs4 import BeautifulSoup
 from spacy.matcher import Matcher
+from datetime import datetime
 
 
 
@@ -217,8 +219,13 @@ def extract_info_from_html(file_path):
         img_src = img_tag['src'] if img_tag and img_tag.has_attr('src') else '../assets/images/default-image.jpeg'
         img_src = img_src[3:]
         alt_text = img_tag['alt'] if img_tag and img_tag.has_attr('alt') else 'Default alt text'
+        date_div = soup.find('div', class_='text-muted fst-italic mb-2')
+        date_text = date_div.text.strip() if date_div else 'No Date'
+        date_pattern = r'Posted on (\w+ \d+, \d+)'
+        match = re.search(date_pattern, date_text)
+        date = match.group(1) if match else 'No Date'
 
-        return title, img_src, alt_text
+        return title, img_src, alt_text, date
 
 def generate_html_structure(folder_path):
     html_content = ''
@@ -450,10 +457,12 @@ def generate_html_structure(folder_path):
 </html>
 '''
 
+    html_blocks = []
+
     for file in os.listdir(folder_path):
         if file.endswith('.html'):
             file_path = os.path.join(folder_path, file)
-            title, img_src, alt_text = extract_info_from_html(file_path)
+            title, img_src, alt_text, date = extract_info_from_html(file_path)
 
             html_block = f'''
 <div class="col-12">
@@ -469,8 +478,14 @@ def generate_html_structure(folder_path):
     </div>
 </div>
 '''
-            html_content += html_block
+        date_obj = datetime.strptime(date, '%B %d, %Y')  # Assuming the date format is 'Month Day, Year'
+        html_blocks.append((date_obj, html_block))
 
+    html_blocks.sort(reverse=True)
+
+    for _, html_block in html_blocks:
+        html_content += html_block
+    
     return html_begin + html_content + html_end
 
 def main():
