@@ -234,13 +234,13 @@ def generate_html_structure(folder_path):
     <!DOCTYPE html>
     <html class="no-js" lang="en">
     <head>
-	<title>Securade.ai - Safety, powered by AI</title>
+	<title>Securade.ai - Resources</title>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="Revolutionizing worker safety and productivity with the first generative AI video analytics platform, predicting and preventing workplace accidents.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta property="og:type" content="website">
-	<meta property="og:title" content="Securade.ai - Safety, powered by AI">
+	<meta property="og:title" content="Securade.ai - Resources">
 	<meta property="og:description" content="Revolutionizing worker safety and productivity with the first generative AI video analytics platform, predicting and preventing workplace accidents.">
 	<meta property="og:image" content="https://securade.ai/images/logo.png">
 	<meta property="og:url" content="https://securade.ai/page3.html">
@@ -412,7 +412,6 @@ def generate_html_structure(folder_path):
 								-->
 								<li>Contact Us</li>
 								<li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
-								<li>OkyaSoft Pte. Ltd.</li>
 								<!--<li><a href="#0">Awesome Design</a></li>
 								<li><a href="#0">Ready to Use</a></li>
 								<li><a href="#0">Essential Selection</a></li>-->
