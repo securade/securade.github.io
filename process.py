@@ -488,6 +488,7 @@ def generate_html_structure(folder_path):
 def main():
     parser = argparse.ArgumentParser(description="Generate HTML structure from HTML files in a folder.")
     parser.add_argument('-f', '--folder_path', type=str, help="Path to the folder containing HTML files.")
+    parser.add_argument('--add-footer', action='store_true', help="Add footers to the HTML files in the specified folder.")
     parser.add_argument('-o', '--output', type=str, help="Path to output the generated HTML content.")
     parser.add_argument('-s', '--sitemap', type=str, help="Path to the sitemap.xml file.")
 
@@ -498,15 +499,96 @@ def main():
         contents = scrape_urls(urls)
         link_opportunities = analyze_content_and_identify_links(contents)
         format_link_opportunities(link_opportunities)
-    else:
-      html_content = generate_html_structure(args.folder_path)
+    elif args.folder_path:
+        if args.add_footer:
+            generate_footers(args.folder_path)
+        else:
+            html_content = generate_html_structure(args.folder_path)
+            
+            if args.output:
+                with open(args.output, 'w', encoding='utf-8') as file:
+                    file.write(html_content)
+                print(f"HTML content written to {args.output}")
+            else:
+                print(html_content)
 
-      if args.output:
-          with open(args.output, 'w', encoding='utf-8') as file:
-              file.write(html_content)
-          print(f"HTML content written to {args.output}")
-      else:
-          print(html_content)
+
+FOOTER_HTML = """
+<!-- ========================= footer start ========================= -->
+<footer class="footer pt-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                <div class="footer-widget">
+                    <div class="logo">
+                        <a href="../index.html"> <img src="../assets/images/logo/logo.png" alt="logo" 
+                            style="max-width: 180px;"> </a>
+                    </div>
+                    <p class="desc">Safety, powered by AI.</p>
+                    <ul class="social-links">
+                        <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+                <div class="footer-widget">
+                    <h3>Company</h3>
+                    <ul class="links">
+                        <li><a href="../index.html#home">Home</a></li>
+                        <li><a href="../safety-copilot.html">Safety Copilot&trade;</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-widget">
+                    <h3>About Us</h3>
+                    <ul class="links">
+                        <li>Contact Us</li>
+                        <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="footer-widget">
+                    <h3>Subscribe for Updates</h3>
+                    <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
+                        <div id="mce-responses" class="clear foot">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>
+                        <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ========================= footer end ========================= -->
+"""
+
+def generate_footers(folder_path):
+    footer_start = "<!-- ========================= footer start ========================= -->"
+    footer_end = "<!-- ========================= footer end ========================= -->"
+    
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".html"):
+                file_path = os.path.join(root, file)
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                start_index = content.find(footer_start)
+                end_index = content.find(footer_end) + len(footer_end)
+                
+                if start_index != -1 and end_index != -1:
+                    updated_content = content[:start_index] + FOOTER_HTML + content[end_index:]
+                    with open(file_path, 'w', encoding='utf-8') as f:
+                        f.write(updated_content)
+                    print(f"Footer updated in {file_path}")
+                else:
+                    print(f"No footer found in {file_path}")
 
 if __name__ == "__main__":
     main()
