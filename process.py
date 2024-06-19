@@ -14,8 +14,6 @@ from bs4 import BeautifulSoup
 from spacy.matcher import Matcher
 from datetime import datetime
 
-
-
 # Load a Spacy model for NLP tasks
 nlp = spacy.load('en_core_web_lg')
 
@@ -227,10 +225,10 @@ def extract_info_from_html(file_path):
 
         return title, img_src, alt_text, date
 
-def generate_html_structure(folder_path):
+def generate_html_structure(folder_path, HEADER_HTML, FOOTER_HTML):
     html_content = ''
     
-    html_begin = f'''
+    html_begin = '''
     <!DOCTYPE html>
     <html class="no-js" lang="en">
     <head>
@@ -297,71 +295,16 @@ def generate_html_structure(folder_path):
       </div>
     </div>
 		<!-- preloader end -->
-		
+    '''
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
-      <div class="navbar-area">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">
-                  <img src="assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-								</button>
-								
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-									<div class="ms-auto">
-										<ul id="nav" class="navbar-nav ms-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="index.html#home">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="index.html#platform">HUB</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="index.html#tower">Tower</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="index.html#sentinel">Sentinel</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="safety-copilot.html">Safety Copilot&trade;</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="resources.html">Resources</a>
-                                        </li>   
-										</ul>
-									</div>
-                  
-                </div>
-								<!-- navbar collapse -->
-								<div class="header-btn">
-									<button onclick="showPopup()" class="main-btn btn-hover">Request a Demo</button>
-								</div>
-              </nav>
-              <!-- navbar -->
-            </div>
-          </div>
-          <!-- row -->
-        </div>
-        <!-- container -->
-      </div>
-      <!-- navbar area -->
-    </header>
-    <!-- ========================= header end ========================= -->
+    feature_section= '''
 	<section id="resources" class="feature-section">
 	<div class="container">
 	    <div class="row mb-2">
         <h1 class="fw-bolder mb-1">Resources</h1>
    '''
    
-    html_end = f'''
+    page_end = '''
    </div>
    </div>
 	  </section>
@@ -373,72 +316,9 @@ def generate_html_structure(folder_path):
         <li class="page-item active"><a class="page-link" href="page3.html">3</a></li>
 		</ul>
 	  </nav>
+    '''
 
-		<!-- ========================= footer start ========================= -->
-		<footer class="footer pt-120">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-						<div class="footer-widget">
-							<div class="logo">
-								<a href="index.html"> <img src="assets/images/logo/logo.png" alt="logo" 
-									style="max-width: 180px;"> </a>
-							</div>
-							<p class="desc">Safety, powered by AI.</p>
-							<ul class="social-links">
-								<!-- <li><a href="#0"><i class="lni lni-facebook"></i></a></li>-->
-								<li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-								<!--<li><a href="#0"><i class="lni lni-instagram"></i></a></li>
-								<li><a href="#0"><i class="lni lni-twitter"></i></a></li>-->
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
-						<div class="footer-widget">
-							<h3>Company</h3>
-							<ul class="links">
-								<li><a href="index.html#home">Home</a></li>
-								<li><a href="safety-copilot.html">Safety Copilot&trade;</a></li>
-								<li><a href="resources.html">Resources</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-						<div class="footer-widget">
-							<h3>About Us</h3>
-							<ul class="links">
-								<!--
-								<li><a href="#team">Team</a></li>
-								-->
-								<li>Contact Us</li>
-								<li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
-								<!--<li><a href="#0">Awesome Design</a></li>
-								<li><a href="#0">Ready to Use</a></li>
-								<li><a href="#0">Essential Selection</a></li>-->
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-4 col-md-6">
-						<div class="footer-widget">
-							<h3>Subscribe for Updates</h3>
-							<!-- Begin Mailchimp Signup Form -->
-							<form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-								<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-								<div id="mce-responses" class="clear foot">
-									<div class="response" id="mce-error-response" style="display:none"></div>
-									<div class="response" id="mce-success-response" style="display:none"></div>
-								</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-								<button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
-						</form>
-						<!--End mc_embed_signup-->
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- ========================= footer end ========================= -->
-
-
+    last_section = '''
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">
       <i class="lni lni-chevron-up"></i>
@@ -483,7 +363,7 @@ def generate_html_structure(folder_path):
     for _, html_block in html_blocks:
         html_content += html_block
     
-    return html_begin + html_content + html_end
+    return html_begin + HEADER_HTML + feature_section + html_content + page_end + FOOTER_HTML + last_section
 
 def main():
     parser = argparse.ArgumentParser(description="Generate HTML structure from HTML files in a folder.")
@@ -494,6 +374,119 @@ def main():
     parser.add_argument('-s', '--sitemap', type=str, help="Path to the sitemap.xml file.")
 
     args = parser.parse_args()
+    
+    if args.output:
+        path_prefix = ""
+    else:
+        path_prefix = "../"
+
+    FOOTER_HTML = f"""
+    <!-- ========================= footer start ========================= -->
+    <footer class="footer pt-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+                    <div class="footer-widget">
+                        <div class="logo">
+                            <a href="{path_prefix}index.html"> <img src="{path_prefix}assets/images/logo/logo.png" alt="logo" 
+                                style="max-width: 180px;"> </a>
+                        </div>
+                        <p class="desc">Safety, powered by AI.</p>
+                        <ul class="social-links">
+                            <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+                    <div class="footer-widget">
+                        <h3>Company</h3>
+                        <ul class="links">
+                            <li><a href="{path_prefix}index.html#home">Home</a></li>
+                            <li><a href="{path_prefix}safety-copilot.html">Safety Copilot&trade;</a></li>
+                            <li><a href="{path_prefix}resources.html">Resources</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
+                    <div class="footer-widget">
+                        <h3>About Us</h3>
+                        <ul class="links">
+                            <li>Contact Us</li>
+                            <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <h3>Subscribe for Updates</h3>
+                        <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
+                            <div id="mce-responses" class="clear foot">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    """
+
+    HEADER_HTML = f"""
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+    <div class="navbar-area">
+        <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="{path_prefix}index.html">
+                <img src="{path_prefix}assets/images/logo/logo.png" alt="Logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                    <div class="ms-auto">
+                        <ul id="nav" class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{path_prefix}index.html#home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{path_prefix}index.html#platform">HUB</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{path_prefix}index.html#tower">Tower</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{path_prefix}index.html#sentinel">Sentinel</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{path_prefix}safety-copilot.html">Safety Copilot&trade;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{path_prefix}resources.html">Resources</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- navbar -->
+            </div>
+        </div>
+        <!-- row -->
+        </div>
+        <!-- container -->
+    </div>
+    <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    """
 
     if args.sitemap:
         urls = parse_sitemap(args.sitemap)
@@ -502,127 +495,18 @@ def main():
         format_link_opportunities(link_opportunities)
     elif args.folder_path:
         if args.add_header:
-            generate_headers(args.folder_path)
+            generate_headers(args.folder_path, HEADER_HTML)
             
         if args.add_footer:
-            generate_footers(args.folder_path)
+            generate_footers(args.folder_path, FOOTER_HTML)
             
         if args.output:
-            html_content = generate_html_structure(args.folder_path)
+            html_content = generate_html_structure(args.folder_path, HEADER_HTML, FOOTER_HTML)
             with open(args.output, 'w', encoding='utf-8') as file:
                 file.write(html_content)
             print(f"HTML content written to {args.output}")
 
-
-FOOTER_HTML = """
-<!-- ========================= footer start ========================= -->
-<footer class="footer pt-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-                <div class="footer-widget">
-                    <div class="logo">
-                        <a href="../index.html"> <img src="../assets/images/logo/logo.png" alt="logo" 
-                            style="max-width: 180px;"> </a>
-                    </div>
-                    <p class="desc">Safety, powered by AI.</p>
-                    <ul class="social-links">
-                        <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
-                <div class="footer-widget">
-                    <h3>Company</h3>
-                    <ul class="links">
-                        <li><a href="../index.html#home">Home</a></li>
-                        <li><a href="../safety-copilot.html">Safety Copilot&trade;</a></li>
-                        <li><a href="../resources.html">Resources</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-widget">
-                    <h3>About Us</h3>
-                    <ul class="links">
-                        <li>Contact Us</li>
-                        <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="footer-widget">
-                    <h3>Subscribe for Updates</h3>
-                    <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                        <div id="mce-responses" class="clear foot">
-                            <div class="response" id="mce-error-response" style="display:none"></div>
-                            <div class="response" id="mce-success-response" style="display:none"></div>
-                        </div>
-                        <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- ========================= footer end ========================= -->
-"""
-
-HEADER_HTML = """
-<!-- ========================= header start ========================= -->
-<header class="header">
-  <div class="navbar-area">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="../index.html">
-              <img src="../assets/images/logo/logo.png" alt="Logo" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.html#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.html#platform">HUB</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.html#tower">Tower</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.html#sentinel">Sentinel</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../safety-copilot.html">Safety Copilot&trade;</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="../resources.html">Resources</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-          </nav>
-          <!-- navbar -->
-        </div>
-      </div>
-      <!-- row -->
-    </div>
-    <!-- container -->
-  </div>
-  <!-- navbar area -->
-</header>
-<!-- ========================= header end ========================= -->
-"""
-
-def generate_footers(folder_path):
+def generate_footers(folder_path, FOOTER_HTML):
     footer_start = "<!-- ========================= footer start ========================= -->"
     footer_end = "<!-- ========================= footer end ========================= -->"
     
@@ -644,7 +528,7 @@ def generate_footers(folder_path):
                 else:
                     print(f"No footer found in {file_path}")
                     
-def generate_headers(folder_path):
+def generate_headers(folder_path, HEADER_HTML):
     header_start = "<!-- ========================= header start ========================= -->"
     header_end = "<!-- ========================= header end ========================= -->"
     
