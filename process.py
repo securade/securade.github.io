@@ -489,6 +489,7 @@ def main():
     parser = argparse.ArgumentParser(description="Generate HTML structure from HTML files in a folder.")
     parser.add_argument('-f', '--folder_path', type=str, help="Path to the folder containing HTML files.")
     parser.add_argument('--add-footer', action='store_true', help="Add footers to the HTML files in the specified folder.")
+    parser.add_argument('--add-header', action='store_true', help="Add headers to the HTML files in the specified folder.")
     parser.add_argument('-o', '--output', type=str, help="Path to output the generated HTML content.")
     parser.add_argument('-s', '--sitemap', type=str, help="Path to the sitemap.xml file.")
 
@@ -500,17 +501,17 @@ def main():
         link_opportunities = analyze_content_and_identify_links(contents)
         format_link_opportunities(link_opportunities)
     elif args.folder_path:
+        if args.add_header:
+            generate_headers(args.folder_path)
+            
         if args.add_footer:
             generate_footers(args.folder_path)
-        else:
-            html_content = generate_html_structure(args.folder_path)
             
-            if args.output:
-                with open(args.output, 'w', encoding='utf-8') as file:
-                    file.write(html_content)
-                print(f"HTML content written to {args.output}")
-            else:
-                print(html_content)
+        if args.output:
+            html_content = generate_html_structure(args.folder_path)
+            with open(args.output, 'w', encoding='utf-8') as file:
+                file.write(html_content)
+            print(f"HTML content written to {args.output}")
 
 
 FOOTER_HTML = """
@@ -568,6 +569,59 @@ FOOTER_HTML = """
 <!-- ========================= footer end ========================= -->
 """
 
+HEADER_HTML = """
+<!-- ========================= header start ========================= -->
+<header class="header">
+  <div class="navbar-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="../index.html">
+              <img src="../assets/images/logo/logo.png" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                <div class="ms-auto">
+                    <ul id="nav" class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#platform">HUB</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#tower">Tower</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html#sentinel">Sentinel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../safety-copilot.html">Safety Copilot&trade;</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="../resources.html">Resources</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
+          <!-- navbar -->
+        </div>
+      </div>
+      <!-- row -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- navbar area -->
+</header>
+<!-- ========================= header end ========================= -->
+"""
+
 def generate_footers(folder_path):
     footer_start = "<!-- ========================= footer start ========================= -->"
     footer_end = "<!-- ========================= footer end ========================= -->"
@@ -589,6 +643,28 @@ def generate_footers(folder_path):
                     print(f"Footer updated in {file_path}")
                 else:
                     print(f"No footer found in {file_path}")
+                    
+def generate_headers(folder_path):
+    header_start = "<!-- ========================= header start ========================= -->"
+    header_end = "<!-- ========================= header end ========================= -->"
+    
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".html"):
+                file_path = os.path.join(root, file)
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                start_index = content.find(header_start)
+                end_index = content.find(header_end) + len(header_end)
+                
+                if start_index != -1 and end_index != -1:
+                    updated_content = content[:start_index] + HEADER_HTML + content[end_index:]
+                    with open(file_path, 'w', encoding='utf-8') as f:
+                        f.write(updated_content)
+                    print(f"Header updated in {file_path}")
+                else:
+                    print(f"No header found in {file_path}")
 
 if __name__ == "__main__":
     main()
