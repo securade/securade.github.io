@@ -340,7 +340,6 @@ def generate_html_structure(folder_path, HEADER_HTML, FOOTER_HTML):
         if file.endswith('.html'):
             file_path = os.path.join(folder_path, file)
             title, img_src, alt_text, date = extract_info_from_html(file_path)
-
             html_block = f'''
 <div class="col-12">
     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -355,8 +354,8 @@ def generate_html_structure(folder_path, HEADER_HTML, FOOTER_HTML):
     </div>
 </div>
 '''
-        date_obj = datetime.strptime(date, '%B %d, %Y')  # Assuming the date format is 'Month Day, Year'
-        html_blocks.append((date_obj, html_block))
+            date_obj = datetime.strptime(date, '%B %d, %Y')  # Assuming the date format is 'Month Day, Year'
+            html_blocks.append((date_obj, html_block))
 
     html_blocks.sort(reverse=True)
 
