@@ -393,6 +393,7 @@ def main():
                         <p class="desc">Safety, powered by AI.</p>
                         <ul class="social-links">
                             <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
+                            <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
                         </ul>
                     </div>
                 </div>
