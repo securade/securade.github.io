@@ -186,29 +186,30 @@ Return only the filename, nothing else."""
         return f"securadeaiGenericBlog.jpeg"
     
 def generate_blog_content(title, description, category):
-    """Generate SEO-optimized blog content in structured format with HTML."""
-    prompt = f"""Create a comprehensive, SEO-optimized blog post with the following requirements:
+    """Generate SEO-optimized blog content with proper HTML formatting and CSS classes."""
+    prompt = f"""Create a comprehensive, SEO-optimized blog post with the following specific HTML and CSS formatting requirements:
 
 Topic: {title}
 Category: {category}
 Details: {description}
 
-Important Format Requirements:
-1. Use proper HTML formatting instead of Markdown
-2. For lists, use <ul> and <li> tags
-3. For emphasis, use <em> or <strong> tags
-4. For links, use <a href="..."> tags
-5. For paragraphs, use <p> tags
-6. Use proper HTML heading tags (<h2>, <h3>)
-7. Ensure all HTML is properly closed
-8. Do not use markdown formatting (*, _, [], etc.)
+Format Requirements:
+1. All paragraphs must use <p class="fs-5 mb-4"> for consistent styling
+2. Main headings should use <h2 class="fw-bolder mb-4 mt-5">
+3. Subheadings should use <h3 class="fw-bolder mb-4 mt-5">
+4. Lists should use <ol class="fs-5 mb-4" style="list-style: decimal inside;"> or <ul class="fs-5 mb-4">
+5. List items with emphasis should use <li><strong>Title:</strong> Content</li>
+6. Links should use <a href="..." class="text-body-emphasis fw-bold"> for CTAs or regular <a href="..."> for inline links
+7. Images should include class="img-fluid rounded" and meaningful alt text
+8. Include proper spacing with mb-4 and mt-5 classes for section breaks
 
 Content Guidelines:
 1. Content should be at least 1500 words
-2. Use proper heading hierarchy
-3. Include relevant keywords naturally
-4. Add internal links to securade.ai where relevant
+2. Include relevant keywords naturally
+3. Add internal links to other Securade.ai blog posts where relevant
+4. Use proper heading hierarchy
 5. Include clear calls-to-action
+6. Format all content with consistent styling
 
 Return the content in this JSON format:
 {{
@@ -220,21 +221,21 @@ Return the content in this JSON format:
         "og_description": "Open Graph description"
     }},
     "content": {{
-        "introduction": "<p>Opening paragraphs...</p>",
+        "introduction": "<p class='fs-5 mb-4'>Opening paragraphs...</p>",
         "sections": [
             {{
-                "heading": "<h2>Section heading</h2>",
-                "content": "<p>Section content...</p>",
+                "heading": "Section Title",
+                "content": "<p class='fs-5 mb-4'>Section content...</p>",
                 "subsections": [
                     {{
-                        "heading": "<h3>Subsection heading</h3>",
-                        "content": "<p>Subsection content...</p>"
+                        "heading": "Subsection Title",
+                        "content": "<p class='fs-5 mb-4'>Subsection content...</p>"
                     }}
                 ]
             }}
         ],
-        "conclusion": "<p>Closing paragraphs...</p>",
-        "cta": "<p class='cta'>Call to action text...</p>"
+        "conclusion": "<p class='fs-5 mb-4'>Closing paragraphs...</p>",
+        "cta": "<p class='cta fs-5 mb-4'>Call to action text...</p>"
     }}
 }}"""
 
@@ -242,7 +243,7 @@ Return the content in this JSON format:
         response = client.chat.completions.create(
             model=MODEL,
             messages=[
-                {"role": "system", "content": "You are an SEO expert and technical writer specializing in workplace safety and AI technology. Always format content in HTML, not Markdown."},
+                {"role": "system", "content": "You are an SEO expert and technical writer specializing in workplace safety and AI technology. Format all content with consistent Bootstrap classes and proper HTML structure."},
                 {"role": "user", "content": prompt}
             ],
             response_format={ "type": "json_object" }
@@ -251,33 +252,38 @@ Return the content in this JSON format:
         return json.loads(response.choices[0].message.content)
     except json.JSONDecodeError:
         raise ValueError("Failed to generate properly formatted blog content")
-
+    
 def format_blog_content(content_json):
-    """Convert JSON blog content into final HTML format."""
+    """Convert JSON blog content into final HTML format with proper CSS classes."""
+    # Start with introduction section
     html_content = f"""
-        <div class="blog-content">
+        <section class="mb-5">
             <div class="introduction">
                 {content_json['content']['introduction']}
             </div>
     """
     
+    # Add each main section with proper CSS classes
     for section in content_json['content']['sections']:
+        # Add section heading with consistent styling
         html_content += f"""
-            {section['heading']}
+            <h2 class="fw-bolder mb-4 mt-5">{section['heading']}</h2>
             <div class="section-content">
                 {section['content']}
             </div>
         """
         
+        # Add subsections if they exist
         if 'subsections' in section:
             for subsection in section['subsections']:
                 html_content += f"""
-                    {subsection['heading']}
+                    <h3 class="fw-bolder mb-4 mt-5">{subsection['heading']}</h3>
                     <div class="subsection-content">
                         {subsection['content']}
                     </div>
                 """
     
+    # Add conclusion and CTA with proper styling
     html_content += f"""
             <div class="conclusion">
                 {content_json['content']['conclusion']}
@@ -285,7 +291,7 @@ def format_blog_content(content_json):
             <div class="cta mt-5">
                 {content_json['content']['cta']}
             </div>
-        </div>
+        </section>
     """
     
     return html_content
@@ -383,14 +389,10 @@ def create_pull_request(repo, blog_path, image_path, content, image_data, branch
         raise
 
 def get_template_path():
-    """Get the absolute path to the templates directory from any script location."""
-    # Get the repo root directory (where the script is running from)
+    """Get the path to the blog template."""
     repo_root = Path(os.getcwd())
-    
-    # If we're in the scripts directory, go up one level
     if repo_root.name == 'scripts':
         repo_root = repo_root.parent
-    
     return repo_root / 'templates'
 
 def main():
@@ -437,8 +439,8 @@ def main():
     
     # Format blog content into HTML
     formatted_content = format_blog_content(blog_data)
-    
-    # Load and render template
+
+    # Load and render template with updated formatting
     template_path = get_template_path()
     env = Environment(loader=FileSystemLoader(str(template_path)))
     template = env.get_template('blog_template.html')
@@ -453,7 +455,16 @@ def main():
         image_alt=image['alt'] if 'alt' in image else '',
         content=formatted_content,
         date=datetime.now().strftime('%B %d, %Y'),
-        author="Securade.ai Team"
+        author="Arjun Krishnamurthy",
+        # Add additional context for consistent styling
+        css_classes={
+            'body_content': 'col-lg-8 mx-auto',
+            'article_header': 'mb-4',
+            'title': 'fw-bolder mb-1',
+            'meta': 'text-muted fst-italic mb-2',
+            'figure': 'mb-4',
+            'image': 'img-fluid rounded'
+        }
     )
     
     # Initialize GitHub client
