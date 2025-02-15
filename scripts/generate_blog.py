@@ -355,48 +355,62 @@ def get_issue_details():
 
 def generate_seo_title_and_filename(blog_content, category):
     """Generate SEO-optimized title and filename based on the blog content."""
-    prompt = f"""Analyze this blog content and generate an SEO-optimized title and filename.
+    prompt = f"""Analyze this blog content and generate a single SEO-optimized title and filename.
 
 Blog Category: {category}
 Blog Content: {blog_content}
 
-Requirements:
-1. Title should be:
-   - 50-60 characters long
-   - Include primary keyword early
-   - Be compelling and clickable
-   - Use power words where appropriate
-   - Focus on value proposition
-   - Include relevant industry terms
+Return a SINGLE JSON object with exactly these three fields:
+1. "title": A single string containing the SEO-optimized title (50-60 characters)
+2. "filename": A single string containing the SEO-friendly filename
+3. "reasoning": A single string explaining the SEO strategy
 
-2. Filename should be:
-   - SEO-friendly
-   - Use primary keyword
-   - All lowercase
-   - Words separated by hyphens
-   - No special characters
-   - End with .html
-   - Be descriptive but concise
-   - Example: ai-powered-workplace-safety-solutions.html
+Title requirements:
+- Exactly one title, 50-60 characters
+- Primary keyword must appear early
+- Must be compelling and clickable
+- Use power words where appropriate
+- Focus on value proposition
+- Include relevant industry terms
 
-Return in JSON format:
+Filename requirements:
+- Must be a single filename
+- Must be SEO-friendly
+- Must use primary keyword
+- Must be all lowercase
+- Must use hyphens between words
+- No special characters except hyphens
+- Must end with .html
+- Must be descriptive but concise
+- Example format: ai-powered-workplace-safety-solutions.html
+
+Response format must be exactly:
 {{
-    "title": "SEO optimized title here",
-    "filename": "seo-friendly-filename.html",
-    "reasoning": "Brief explanation of keyword focus and SEO strategy"
-}}"""
+    "title": "Single title string here",
+    "filename": "single-filename-here.html",
+    "reasoning": "Single reasoning string here"
+}}
+
+Do not include arrays or lists. Each field must contain a single string value."""
 
     try:
         response = client.chat.completions.create(
             model=MODEL,
             messages=[
-                {"role": "system", "content": "You are an SEO expert specializing in technical and industry-focused content optimization."},
+                {"role": "system", "content": "You are an SEO expert. Return only single string values in your JSON response, no arrays or lists."},
                 {"role": "user", "content": prompt}
             ],
             response_format={ "type": "json_object" }
         )
         
-        return json.loads(response.choices[0].message.content)
+        result = json.loads(response.choices[0].message.content)
+        
+        # Validate response format
+        if not all(isinstance(result.get(key), str) for key in ['title', 'filename', 'reasoning']):
+            raise ValueError("Response contains non-string values")
+            
+        return result
+        
     except json.JSONDecodeError:
         raise ValueError("Failed to generate SEO title and filename")
     
@@ -537,6 +551,9 @@ def main():
         formatted_content,
         category_info['category']
     )
+
+    print("Blog data structure:", json.dumps(blog_data, indent=2))
+    print("SEO data structure:", json.dumps(seo_info, indent=2))
 
     # Update blog_data with new SEO title
     blog_data['meta']['title'] = seo_info['title']

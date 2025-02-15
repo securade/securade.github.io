@@ -1,3 +1,4 @@
 .DS_Store
 .venv
 /.cache
+scripts/__pycache__/category_utils.cpython-312.pyc
