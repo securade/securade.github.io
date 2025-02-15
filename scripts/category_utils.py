@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from bs4 import BeautifulSoup
 from datetime import datetime
-from jinja2 import Template
+from jinja2 import Template, Environment, FileSystemLoader
 
 def get_blog_card_template():
     """Return the template for a blog card with consistent styling."""
@@ -19,34 +19,6 @@ def get_blog_card_template():
             </div>
         </div>
     </div>
-    """
-
-def get_category_index_template():
-    """Return the template for the category index page."""
-    return """
-    <!DOCTYPE html>
-    <html class="no-js" lang="en">
-        <head>
-            <title>{{ category_title }} - Securade.ai</title>
-            <meta charset="utf-8" />
-            <meta http-equiv="x-ua-compatible" content="ie=edge" />
-            <meta name="description" content="{{ category_description }}">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-            <!-- Include your standard header content here -->
-        </head>
-        <body>
-            <!-- Include your standard navigation here -->
-            <section id="category-blogs" class="feature-section">
-                <div class="container">
-                    <div class="row mb-2">
-                        <h1 class="fw-bolder mb-1">{{ category_title }}</h1>
-                        {{ blog_cards }}
-                    </div>
-                </div>
-            </section>
-            <!-- Include your standard footer here -->
-        </body>
-    </html>
     """
 
 def create_or_update_category_index(category, blog_info, repo_root):
@@ -103,12 +75,45 @@ def create_or_update_category_index(category, blog_info, repo_root):
             image_alt=blog['image_alt']
         )
     
-    # Create or update index page
-    index_template = Template(get_category_index_template())
-    index_html = index_template.render(
-        category_title=category.replace('-', ' ').title(),
-        category_description=f"Latest blog posts about {category.replace('-', ' ')} from Securade.ai",
-        blog_cards=blog_cards_html
+    # Get the template path
+    template_path = repo_root / 'templates'
+    env = Environment(loader=FileSystemLoader(str(template_path)))
+    template = env.get_template('blog_template.html')
+    
+    # Create category title and description
+    category_title = category.replace('-', ' ').title()
+    category_description = f"Latest blog posts about {category.replace('-', ' ')} from Securade.ai"
+    
+    # Create the main content section
+    main_content = f"""
+    <section class="mb-5">
+        <h1 class="fw-bolder mb-1">{category_title}</h1>
+        <div class="row mb-2">
+            {blog_cards_html}
+        </div>
+    </section>
+    """
+    
+    # Render the full page using the blog template
+    index_html = template.render(
+        title=f"{category_title} - Securade.ai",
+        meta_description=category_description,
+        keywords=f"{category}, securade, ai, safety, workplace safety",
+        og_title=f"{category_title} - Securade.ai Blogs",
+        og_description=category_description,
+        content=main_content,
+        date=datetime.now().strftime('%B %d, %Y'),
+        author="Securade.ai",
+        image_url="/assets/images/logo/logo.png",
+        image_alt="Securade.ai Logo",
+        css_classes={
+            'body_content': 'col-lg-8 mx-auto',
+            'article_header': 'mb-4',
+            'title': 'fw-bolder mb-1',
+            'meta': 'text-muted fst-italic mb-2',
+            'figure': 'mb-4',
+            'image': 'img-fluid rounded'
+        }
     )
     
     # Save index page
@@ -134,14 +139,14 @@ def update_category_indexes(repo, branch_name, blog_info):
         # Create or update the file in the repository
         try:
             # Try to get existing file
-            repo.get_contents(index_path, ref=branch_name)
+            file = repo.get_contents(index_path, ref=branch_name)
             # File exists, update it
             repo.update_file(
                 path=index_path,
                 message=f"Update category index for {blog_info['category']}",
                 content=content,
                 branch=branch_name,
-                sha=repo.get_contents(index_path, ref=branch_name).sha
+                sha=file.sha
             )
         except:
             # File doesn't exist, create it

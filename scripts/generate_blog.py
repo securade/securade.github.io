@@ -352,37 +352,70 @@ def create_file_paths(title, category, image_filename):
 def create_pull_request(repo, blog_path, image_path, content, image_data, branch_name):
     """Create new branch and PR with blog post and image."""
     try:
-        # Create new branch
-        base = repo.get_branch("main")
-        repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=base.commit.sha)
+        # Try to get the branch first
+        try:
+            branch = repo.get_branch(branch_name)
+            # Branch exists, we'll use it
+            base_sha = branch.commit.sha
+        except:
+            # Branch doesn't exist, create it
+            base = repo.get_branch("main")
+            repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=base.commit.sha)
+            base_sha = base.commit.sha
         
         # Process and save image
         temp_image_name = f"temp_{int(datetime.now().timestamp())}.jpeg"
         processed_image_data = save_image_from_base64(image_data, temp_image_name)
         
         # Create image file in repo
-        repo.create_file(
-            path=image_path,
-            message=f"Add blog image: {image_path}",
-            content=processed_image_data,
-            branch=branch_name
-        )
+        try:
+            file = repo.get_contents(image_path, ref=branch_name)
+            repo.update_file(
+                path=image_path,
+                message=f"Update blog image: {image_path}",
+                content=processed_image_data,
+                branch=branch_name,
+                sha=file.sha
+            )
+        except:
+            repo.create_file(
+                path=image_path,
+                message=f"Add blog image: {image_path}",
+                content=processed_image_data,
+                branch=branch_name
+            )
         
         # Create blog post file
-        repo.create_file(
-            path=blog_path,
-            message=f"Add blog post: {blog_path}",
-            content=content,
-            branch=branch_name
-        )
+        try:
+            file = repo.get_contents(blog_path, ref=branch_name)
+            repo.update_file(
+                path=blog_path,
+                message=f"Update blog post: {blog_path}",
+                content=content,
+                branch=branch_name,
+                sha=file.sha
+            )
+        except:
+            repo.create_file(
+                path=blog_path,
+                message=f"Add blog post: {blog_path}",
+                content=content,
+                branch=branch_name
+            )
         
-        # Create pull request
-        pr = repo.create_pull(
-            title=f"Add new blog post: {blog_path}",
-            body="Automatically generated blog post from issue",
-            head=branch_name,
-            base="main"
-        )
+        # Create pull request if it doesn't exist
+        try:
+            # Try to find existing PR
+            prs = repo.get_pulls(state='open', head=branch_name)
+            pr = next(pr for pr in prs)
+        except StopIteration:
+            # No PR exists, create it
+            pr = repo.create_pull(
+                title=f"Add new blog post: {blog_path}",
+                body="Automatically generated blog post from issue",
+                head=branch_name,
+                base="main"
+            )
         
         return pr
     except Exception as e:
@@ -431,7 +464,6 @@ def main():
     else:
         raise ValueError("No image found in the issue. Please attach an image to the issue.")
     
-    # Create paths
     blog_path, image_path = create_file_paths(
         issue_details['title'],
         category_info['category'],
@@ -440,8 +472,8 @@ def main():
     
     # Format blog content into HTML
     formatted_content = format_blog_content(blog_data)
-
-    # Load and render template with updated formatting
+    
+    # Load and render template
     template_path = get_template_path()
     env = Environment(loader=FileSystemLoader(str(template_path)))
     template = env.get_template('blog_template.html')
@@ -457,7 +489,6 @@ def main():
         content=formatted_content,
         date=datetime.now().strftime('%B %d, %Y'),
         author="Arjun Krishnamurthy",
-        # Add additional context for consistent styling
         css_classes={
             'body_content': 'col-lg-8 mx-auto',
             'article_header': 'mb-4',
@@ -474,7 +505,17 @@ def main():
     
     # Create branch name
     branch_name = f"blog-{slugify(issue_details['title'])}"
-
+    
+    # Create PR with blog post and image
+    pr = create_pull_request(
+        repo,
+        blog_path,
+        image_path,
+        final_html,
+        image_data,
+        branch_name
+    )
+    
     # Prepare blog info for index updates
     blog_info = {
         'title': blog_data['meta']['title'],
@@ -486,16 +527,6 @@ def main():
     
     # Update category index
     update_category_indexes(repo, branch_name, blog_info)
-    
-    # Create pull request
-    pr = create_pull_request(
-        repo,
-        blog_path,
-        image_path,
-        final_html,
-        image_data,
-        branch_name
-    )
     
     print(f"Created PR: {pr.html_url}")
     print(f"Category: {category_info['category']} ({'new' if category_info['is_new_category'] else 'existing'})")
