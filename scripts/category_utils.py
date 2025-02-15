@@ -154,7 +154,6 @@ def create_or_update_category_index(category, blog_info, repo_root=None):
     # Create the main content section
     main_content = f"""
     <section class="mb-5">
-        <h1 class="fw-bolder mb-1">{category_title}</h1>
         <div class="row mb-2">
             {blog_cards_html}
         </div>
@@ -163,11 +162,13 @@ def create_or_update_category_index(category, blog_info, repo_root=None):
     
     # Render the full page using the blog template
     index_html = template.render(
-        title=f"{category_title} - Securade.ai",
+        title=f"{category_title}",
         meta_description=category_description,
         keywords=f"{category}, securade, ai, safety, workplace safety",
-        og_title=f"{category_title} - Securade.ai Blogs",
+        og_title=f"{category_title} - Blogs",
         og_description=category_description,
+        date=datetime.now().strftime('%B %d, %Y'),
+        author="Securade.ai",
         content=main_content,
         css_classes={
             'body_content': 'col-lg-8 mx-auto',
