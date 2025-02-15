@@ -496,7 +496,7 @@ def create_pull_request(repo, blog_path, image_paths, content, processed_images,
         except StopIteration:
             # No PR exists, create it
             pr = repo.create_pull(
-                title=f"Add new blog post: {blog_path}, fixes issue #{os.getenv('ISSUE_NUMBER')}",
+                title=f"Add new blog post: {blog_path}",
                 body="This PR fixes issue #{}.".format(os.getenv('ISSUE_NUMBER')),
                 head=branch_name,
                 base="main"
@@ -552,8 +552,8 @@ def main():
         category_info['category']
     )
 
-    print("Blog data structure:", json.dumps(blog_data, indent=2))
-    print("SEO data structure:", json.dumps(seo_info, indent=2))
+    # print("Blog data structure:", json.dumps(blog_data, indent=2))
+    # print("SEO data structure:", json.dumps(seo_info, indent=2))
 
     # Update blog_data with new SEO title
     blog_data['meta']['title'] = seo_info['title']
