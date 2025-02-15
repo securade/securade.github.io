@@ -85,6 +85,31 @@ Return your response in this JSON format:
             "reasoning": "Fallback category due to processing error"
         }
     
+def save_image_from_base64(image_data, file_path):
+    """Convert and save image data as JPEG."""
+    try:
+        # Open image using PIL
+        image = Image.open(BytesIO(image_data))
+        
+        # Convert to RGB if needed (in case of PNG with transparency)
+        if image.mode in ('RGBA', 'LA') or (image.mode == 'P' and 'transparency' in image.info):
+            background = Image.new('RGB', image.size, (255, 255, 255))
+            background.paste(image, mask=image.split()[-1] if image.mode == 'RGBA' else None)
+            image = background
+        
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        
+        # Save as JPEG file
+        image.save(file_path, format='JPEG', quality=85)
+        
+        # Return the file content for GitHub
+        with open(file_path, 'rb') as f:
+            return f.read()
+    except Exception as e:
+        print(f"Error processing image: {e}")
+        raise
+
 def generate_image_name(title, description, image_data):
     """Generate a descriptive name for the image based on its actual content and context."""
     try:
@@ -151,20 +176,29 @@ Return only the filename, nothing else."""
         return f"securadeaiGenericBlog.jpeg"
     
 def generate_blog_content(title, description, category):
-    """Generate SEO-optimized blog content in structured format."""
+    """Generate SEO-optimized blog content in structured format with HTML."""
     prompt = f"""Create a comprehensive, SEO-optimized blog post with the following requirements:
 
 Topic: {title}
 Category: {category}
 Details: {description}
 
-Follow these guidelines:
+Important Format Requirements:
+1. Use proper HTML formatting instead of Markdown
+2. For lists, use <ul> and <li> tags
+3. For emphasis, use <em> or <strong> tags
+4. For links, use <a href="..."> tags
+5. For paragraphs, use <p> tags
+6. Use proper HTML heading tags (<h2>, <h3>)
+7. Ensure all HTML is properly closed
+8. Do not use markdown formatting (*, _, [], etc.)
+
+Content Guidelines:
 1. Content should be at least 1500 words
-2. Use proper heading hierarchy (H1, H2, H3)
+2. Use proper heading hierarchy
 3. Include relevant keywords naturally
 4. Add internal links to securade.ai where relevant
 5. Include clear calls-to-action
-6. Optimize for both readability and search engines
 
 Return the content in this JSON format:
 {{
@@ -176,21 +210,21 @@ Return the content in this JSON format:
         "og_description": "Open Graph description"
     }},
     "content": {{
-        "introduction": "Opening paragraphs",
+        "introduction": "<p>Opening paragraphs...</p>",
         "sections": [
             {{
-                "heading": "Section heading",
-                "content": "Section content",
+                "heading": "<h2>Section heading</h2>",
+                "content": "<p>Section content...</p>",
                 "subsections": [
                     {{
-                        "heading": "Subsection heading",
-                        "content": "Subsection content"
+                        "heading": "<h3>Subsection heading</h3>",
+                        "content": "<p>Subsection content...</p>"
                     }}
                 ]
             }}
         ],
-        "conclusion": "Closing paragraphs",
-        "cta": "Call to action text"
+        "conclusion": "<p>Closing paragraphs...</p>",
+        "cta": "<p class='cta'>Call to action text...</p>"
     }}
 }}"""
 
@@ -198,18 +232,18 @@ Return the content in this JSON format:
         response = client.chat.completions.create(
             model=MODEL,
             messages=[
-                {"role": "system", "content": "You are an SEO expert and technical writer specializing in workplace safety and AI technology."},
+                {"role": "system", "content": "You are an SEO expert and technical writer specializing in workplace safety and AI technology. Always format content in HTML, not Markdown."},
                 {"role": "user", "content": prompt}
             ],
             response_format={ "type": "json_object" }
         )
-        # print(response)
+        
         return json.loads(response.choices[0].message.content)
     except json.JSONDecodeError:
         raise ValueError("Failed to generate properly formatted blog content")
 
 def format_blog_content(content_json):
-    """Convert JSON blog content into HTML format."""
+    """Convert JSON blog content into final HTML format."""
     html_content = f"""
         <div class="blog-content">
             <div class="introduction">
@@ -219,7 +253,7 @@ def format_blog_content(content_json):
     
     for section in content_json['content']['sections']:
         html_content += f"""
-            <h2 class="fw-bolder mb-4 mt-5">{section['heading']}</h2>
+            {section['heading']}
             <div class="section-content">
                 {section['content']}
             </div>
@@ -228,7 +262,7 @@ def format_blog_content(content_json):
         if 'subsections' in section:
             for subsection in section['subsections']:
                 html_content += f"""
-                    <h3 class="fw-bolder mb-3 mt-4">{subsection['heading']}</h3>
+                    {subsection['heading']}
                     <div class="subsection-content">
                         {subsection['content']}
                     </div>
@@ -275,6 +309,8 @@ def get_issue_details():
 
 def create_file_paths(title, category, image_filename):
     """Create appropriate file paths for blog and images."""
+    # Get repository root (one level up from scripts directory)
+    repo_root = Path(__file__).parent.parent
     slug = slugify(title)
     
     if category:
@@ -283,45 +319,65 @@ def create_file_paths(title, category, image_filename):
         image_path = f"assets/images/blog/{category}/{image_filename}"
         
         # Create category directories if they don't exist
-        Path(f"blog/{category}").mkdir(parents=True, exist_ok=True)
-        Path(f"assets/images/blog/{category}").mkdir(parents=True, exist_ok=True)
+        (repo_root / "blog" / category).mkdir(parents=True, exist_ok=True)
+        (repo_root / "assets" / "images" / "blog" / category).mkdir(parents=True, exist_ok=True)
     else:
         # If no category, create directly in blog folder
         blog_path = f"blog/{slug}.html"
         image_path = f"assets/images/blog/{image_filename}"
+        
+        # Ensure base directories exist
+        (repo_root / "blog").mkdir(parents=True, exist_ok=True)
+        (repo_root / "assets" / "images" / "blog").mkdir(parents=True, exist_ok=True)
     
     return blog_path, image_path
 
 def create_pull_request(repo, blog_path, image_path, content, image_data, branch_name):
-    # Create new branch
-    base = repo.get_branch("main")
-    repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=base.commit.sha)
-    
-    # Create blog post file
-    repo.create_file(
-        path=blog_path,
-        message=f"Add blog post: {blog_path}",
-        content=content,
-        branch=branch_name
-    )
-    
-    # Create image file
-    repo.create_file(
-        path=image_path,
-        message=f"Add blog image: {image_path}",
-        content=base64.b64encode(image_data).decode(),
-        branch=branch_name
-    )
-    
-    # Create pull request
-    pr = repo.create_pull(
-        title=f"Add new blog post: {blog_path}",
-        body="Automatically generated blog post from issue",
-        head=branch_name,
-        base="main"
-    )
-    
-    return pr
+    """Create new branch and PR with blog post and image."""
+    try:
+        # Create new branch
+        base = repo.get_branch("main")
+        repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=base.commit.sha)
+        
+        # Save image to disk first
+        temp_image_path = f"temp_{os.path.basename(image_path)}"
+        processed_image_data = save_image_from_base64(image_data, temp_image_path)
+        
+        # Create image file in repo
+        repo.create_file(
+            path=image_path,
+            message=f"Add blog image: {image_path}",
+            content=processed_image_data,
+            branch=branch_name
+        )
+        
+        # Create blog post file
+        repo.create_file(
+            path=blog_path,
+            message=f"Add blog post: {blog_path}",
+            content=content,
+            branch=branch_name
+        )
+        
+        # Clean up temporary image file
+        if os.path.exists(temp_image_path):
+            os.remove(temp_image_path)
+        
+        # Create pull request
+        pr = repo.create_pull(
+            title=f"Add new blog post: {blog_path}",
+            body="Automatically generated blog post from issue",
+            head=branch_name,
+            base="main"
+        )
+        
+        return pr
+    except Exception as e:
+        print(f"Error creating PR: {e}")
+        # Clean up temporary file in case of error
+        if os.path.exists(temp_image_path):
+            os.remove(temp_image_path)
+        raise
 
 def get_template_path():
     """Get the absolute path to the templates directory from any script location."""
@@ -355,9 +411,12 @@ def main():
         category_info['category']
     )
     
+    # Process image
     if issue_details['images']:
         image = issue_details['images'][0]
         image_data = requests.get(image['url']).content
+        
+        # Generate image name
         image_name = generate_image_name(
             issue_details['title'],
             issue_details['description'],
@@ -370,7 +429,7 @@ def main():
     blog_path, image_path = create_file_paths(
         issue_details['title'],
         category_info['category'],
-        f"{slugify(image_name)}"
+        image_name
     )
     
     # Format blog content into HTML
