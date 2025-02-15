@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <title>Train a Custom Object Detection Model for Workplace Hazards - Securade.ai</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="Learn how to build a custom object detection model to identify workplace hazards, enhancing safety using AI and computer vision. Improve safety compliance.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Training a Custom Object Detection Model for Workplace Hazards">
+    <meta property="og:description" content="Build a custom object detection model to detect specific workplace hazards and improve safety with AI. This comprehensive tutorial covers the end-to-end process.">
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/workplace-safety/securadeaiWarehouseForkliftSpillHazardDetection.jpeg">
+    <meta property="og:url" content="https://securade.ai">
+    <meta name="keywords" content="custom hazard detection model, train object detector for safety, computer vision risk detection tutorial, workplace hazard AI model, object detection, workplace safety, AI, machine learning, hazard identification, computer vision">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
+    <!-- Place favicon.ico in the root directory -->
+    
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
+    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
+    <link rel="stylesheet" href="../../assets/css/animate.css"/>
+    <link rel="stylesheet" href="../../assets/css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader end -->
+
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="../../index.html">
+                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                  <div class="ms-auto">
+                    <ul id="nav" class="navbar-nav ms-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="../../index.html#home">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../../index.html#platform">HUB</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../../index.html#tower">Tower</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="../../resources.html">Resources</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ========================= header end ========================= -->
+
+    <!-- ========================= blog-section start ========================= -->
+    <section id="blog-content" class="feature-section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <article>
+              <!-- Post header-->
+              <header class="mb-4">
+                <h1 class="fw-bolder mb-1">Train a Custom Object Detection Model for Workplace Hazards</h1>
+                <div class="text-muted fst-italic mb-2">
+                  Posted on February 15, 2025 by Arjun Krishnamurthy
+                </div>
+              </header>
+              
+              <!-- Hero image -->
+              <figure class="mb-4">
+                <img class="img-fluid rounded" src="../../assets/images/blog/workplace-safety/securadeaiWarehouseForkliftSpillHazardDetection.jpeg" alt="Image"/>
+              </figure>
+              
+              <!-- Post content-->
+              <section class="mb-5">
+                
+        <section class="mb-5">
+            <div class="introduction">
+                <p class="fs-5 mb-4">Workplace safety is paramount, and traditional methods of hazard detection are often reactive and limited by human observation. Artificial intelligence, specifically computer vision, offers a proactive approach by continuously monitoring environments and identifying potential hazards in real-time. While off-the-shelf object detection models can identify common objects like people and vehicles, they often fall short in recognizing the specific, nuanced hazards present in a unique work environment. This tutorial will guide you through the process of training a <b>custom hazard detection model</b> tailored to your specific workplace needs. This means moving beyond standard PPE detection and venturing into the realm of identifying the <b>long-tail hazards</b> that are specific to your facility: a specific machine's safety indicator, the absence of a wet floor sign, or a unique configuration of equipment that presents a risk.</p>
+<p class="fs-5 mb-4">This comprehensive guide will take you through each stage of the process, from capturing and labeling images of hazard scenarios to choosing the right model architecture, training the model, deploying it, and continuously improving its performance. You'll learn how to create a computer vision risk detection system that adapts to the evolving challenges of your workplace, making it a safer and more efficient environment for everyone.</p>
+<p class="fs-5 mb-4">Whether you're looking to detect <b>spilled liquids</b>, <b>exposed wires</b>, <b>forklift traffic</b> in unauthorized areas, or specific safety compliance issues unique to your facility, this tutorial will provide you with the knowledge and tools to create a powerful AI-driven safety solution.</p>
+            </div>
+    
+            <h2 class="fw-bolder mb-4 mt-5">Identifying Long-Tail Workplace Hazards</h2>
+            <div class="section-content">
+                <p class="fs-5 mb-4">The first step in building a custom hazard detection model is to identify the specific hazards prevalent in your workplace. While generic models may recognize common objects, they often miss the 'long-tail' of hazards that are unique to your environment. These are the less frequent, but potentially high-risk, situations that standard models are not trained to detect.</p>
+<p class="fs-5 mb-4"><b>Consider the following when identifying long-tail hazards:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Specific Equipment:</strong> Hazards related to specific machines or equipment unique to your facility (e.g., a particular type of valve, a custom-built conveyor).</li>
+    <li><strong>Environmental Factors:</strong> Hazards arising from the physical layout of your workplace (e.g., blind spots, narrow passages, uneven surfaces).</li>
+    <li><strong>Process-Related Hazards:</strong> Hazards associated with specific work processes or procedures (e.g., the way materials are handled, the use of specific tools).</li>
+    <li><strong>Compliance Issues:</strong> Hazards related to non-compliance with safety regulations (e.g., obstructed fire exits, missing safety guards, improper storage of materials).</li>
+</ul>
+<p class="fs-5 mb-4"><b>Examples of long-tail hazards include:</b></p>
+<ul class="fs-5 mb-4">
+    <li>Missing or damaged safety signage (e.g., a missing wet floor sign).</li>
+    <li>A specific machine's safety indicator light turning red.</li>
+    <li>An unattended ladder leaning against a wall.</li>
+    <li>A spill of a specific type of chemical.</li>
+    <li>Improperly stacked boxes blocking an emergency exit.</li>
+</ul>
+<p class="fs-5 mb-4">By carefully analyzing your workplace and identifying these unique hazards, you can build a custom object detection model that provides a significantly higher level of safety than a generic solution.</p>
+            </div>
+        
+            <h2 class="fw-bolder mb-4 mt-5">Capturing and Labeling a Custom Dataset</h2>
+            <div class="section-content">
+                <p class="fs-5 mb-4">Once you've identified the hazards you want to detect, the next step is to create a custom dataset of images and videos showcasing these hazards. This dataset will be used to train your object detection model.</p>
+<p class="fs-5 mb-4"><b>Data Collection:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Capture Images and Videos:</strong> Take photos and videos of the hazard scenarios you've identified. Ensure the images are clear, well-lit, and represent the hazards from various angles and distances. Include variations in lighting, weather (if applicable), and background clutter to make the model more robust.</li>
+    <li><strong>Consider Different Scenarios:</strong> Capture images of the same hazard occurring in different contexts. For example, a spill might occur on different surfaces, in different lighting conditions, or with varying levels of severity.</li>
+    <li><strong>Ethical Considerations:</strong> Obtain necessary permissions before capturing images or videos of people in the workplace. Anonymize data where appropriate to protect privacy.</li>
+</ul>
+<p class="fs-5 mb-4"><b>Data Annotation:</b></p>
+<p class="fs-5 mb-4">After collecting your images, you need to label them. Labeling involves drawing bounding boxes around the objects of interest (the hazards) in each image and assigning them a class label (e.g., 'spill', 'unattended ladder', 'missing sign').</p>
+<ul class="fs-5 mb-4">
+    <li><strong>Annotation Tools:</strong> Use annotation tools like LabelImg, CVAT (Computer Vision Annotation Tool), or VGG Image Annotator (VIA) to label your images. These tools allow you to draw bounding boxes and assign labels to the objects in your dataset.</li>
+    <li><strong>Consistency is Key:</strong> Ensure consistency in your labeling. Use the same labeling conventions throughout the entire dataset. If you have multiple people labeling data, establish clear guidelines to ensure consistency.</li>
+    <li><strong>Handling Ambiguity:</strong> If you encounter ambiguous cases (e.g., a partially obscured object), make a judgment call and label it consistently. Document your decision-making process to ensure clarity.</li>
+    <li><strong>Data Augmentation:</strong> Consider using data augmentation techniques to increase the size and diversity of your dataset. Data augmentation involves creating new images by applying transformations to existing images (e.g., rotations, flips, zooms, changes in brightness and contrast).</li>
+</ul>
+
+            </div>
+        
+            <h2 class="fw-bolder mb-4 mt-5">Choosing a Model Architecture</h2>
+            <div class="section-content">
+                <p class="fs-5 mb-4">Selecting the right model architecture is crucial for achieving optimal performance. Several object detection models are available, each with its strengths and weaknesses. The best choice for you will depend on the specific requirements of your application, such as the need for real-time performance, the accuracy required, and the available computational resources.</p>
+<p class="fs-5 mb-4"><b>Popular Object Detection Models:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Faster R-CNN:</strong> A two-stage detector known for its high accuracy. It is generally slower than single-stage detectors but often provides more precise object localization.</li>
+    <li><strong>YOLO (You Only Look Once):</strong> A single-stage detector known for its speed and efficiency. It is well-suited for real-time applications but may sacrifice some accuracy compared to Faster R-CNN.</li>
+    <li><strong>SSD (Single Shot MultiBox Detector):</strong> Another single-stage detector that offers a good balance between speed and accuracy. It is often used in mobile and embedded applications.</li>
+</ul>
+<p class="fs-5 mb-4"><b>Factors to Consider:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Real-Time vs. Accuracy Trade-offs:</strong> If you need to detect hazards in real-time (e.g., in a live video stream), you'll need to choose a model that is fast enough to process each frame quickly. YOLO and SSD are generally better choices for real-time applications. If accuracy is your primary concern, Faster R-CNN may be a better option.</li>
+    <li><strong>Computational Resources:</strong> Some models require more computational resources than others. If you're deploying your model on a resource-constrained device (e.g., an embedded system), you'll need to choose a model that is lightweight and efficient.</li>
+    <li><strong>Dataset Size:</strong> The size of your dataset can also influence your choice of model. If you have a small dataset, you may want to start with a simpler model to avoid overfitting.</li>
+</ul>
+<p class="fs-5 mb-4"><b>Transfer Learning:</b></p>
+<p class="fs-5 mb-4">Consider using transfer learning to speed up the training process and improve the performance of your model. Transfer learning involves using a pre-trained model (trained on a large dataset like ImageNet or COCO) as a starting point and fine-tuning it on your custom dataset. This can significantly reduce the amount of data and training time required to achieve good results.</p>
+            </div>
+        
+            <h2 class="fw-bolder mb-4 mt-5">Training and Validation</h2>
+            <div class="section-content">
+                <p class="fs-5 mb-4">Once you've chosen your model architecture, it's time to train the model using your labeled dataset. This involves feeding the model your images and adjusting its parameters to minimize the difference between its predictions and the ground truth labels.</p>
+<p class="fs-5 mb-4"><b>Training Process:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Split Your Data:</strong> Divide your dataset into three sets: a training set (used to train the model), a validation set (used to monitor the model's performance during training), and a test set (used to evaluate the model's final performance). A common split is 70% training, 15% validation, and 15% test.</li>
+    <li><strong>Choose an Optimizer and Loss Function:</strong> Select an appropriate optimizer (e.g., Adam, SGD) and loss function (e.g., cross-entropy loss, IoU loss) for your model. These will guide the training process and help the model learn to make accurate predictions.</li>
+    <li><strong>Monitor Training Metrics:</strong> During training, monitor metrics like precision, recall, F1-score, and mAP (mean Average Precision) to assess the model's performance. These metrics provide insights into the model's ability to correctly identify hazards and avoid false positives.</li>
+    <li><strong>Hyperparameter Tuning:</strong> Experiment with different hyperparameters (e.g., learning rate, batch size, number of epochs) to optimize the model's performance. Use the validation set to evaluate the impact of different hyperparameter settings.</li>
+    <li><strong>Early Stopping:</strong> Use early stopping to prevent overfitting. Early stopping involves monitoring the model's performance on the validation set and stopping the training process when the performance starts to degrade.</li>
+</ul>
+<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiForkliftNearYellowSpillWarehouse.jpeg" alt="Image" /></figure>
+<p class="fs-5 mb-4"><b>Interpreting Metrics:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Precision:</strong> The proportion of positive identifications that were actually correct. High precision means the model has a low false positive rate.</li>
+    <li><strong>Recall:</strong> The proportion of actual positives that were identified correctly. High recall means the model has a low false negative rate.</li>
+    <li><strong>F1-Score:</strong> The harmonic mean of precision and recall. It provides a balanced measure of the model's performance.</li>
+    <li><strong>mAP (mean Average Precision):</strong> A common metric used to evaluate object detection models. It measures the average precision across all classes in your dataset.</li>
+</ul>
+<p class="fs-5 mb-4"><b>Ensuring Reliability:</b></p>
+<p class="fs-5 mb-4">It is crucial to ensure that your model is reliable for safety-critical use. Pay close attention to the precision and recall metrics. A model with low recall may miss critical hazards, while a model with low precision may trigger too many false alarms, desensitizing workers to the system.</p>
+            </div>
+        
+            <h2 class="fw-bolder mb-4 mt-5">Deploying and Iterating</h2>
+            <div class="section-content">
+                <p class="fs-5 mb-4">Once you've trained and validated your model, it's time to deploy it in a test environment. This allows you to evaluate the model's performance in a real-world setting and identify any areas for improvement.</p>
+<p class="fs-5 mb-4"><b>Deployment in a Test Environment:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Choose a Deployment Platform:</strong> Select a deployment platform that meets your needs. This could be a local server, a cloud-based platform, or an embedded system.</li>
+    <li><strong>Integrate with Video Streams:</strong> Integrate your model with live video streams from cameras in your workplace. You can use a simple Python script to capture video frames, pass them to your model for inference, and display the results.</li>
+    <li><strong>Develop Alerting Mechanisms:</strong> Implement alerting mechanisms to notify workers when a hazard is detected. This could involve sending email alerts, displaying visual warnings on a screen, or triggering an audible alarm.</li>
+</ul>
+<p class="fs-5 mb-4"><b>Pilot Results and Iteration:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Gather Feedback:</strong> Collect feedback from workers on the model's performance. Ask them about the accuracy of the detections, the relevance of the alerts, and any areas where the system could be improved.</li>
+    <li><strong>Analyze Errors:</strong> Analyze the errors made by the model. Identify common sources of errors and determine how to address them. This may involve collecting more data, refining your labeling, or adjusting the model's architecture or hyperparameters.</li>
+    <li><strong>Active Learning:</strong> Implement active learning techniques to continuously improve the model's performance. Active learning involves selecting the most informative images from your unlabeled data and labeling them to train the model. This can significantly reduce the amount of data required to achieve good results.</li>
+    <li><strong>Continuous Improvement:</strong> Object detection model improvement is an ongoing process. Continuously monitor the model's performance, gather feedback, and iterate on the model to ensure it remains accurate and effective.</li>
+</ul>
+            </div>
+        
+            <h2 class="fw-bolder mb-4 mt-5">Beyond Initial Deployment: Active Learning and Continuous Improvement</h2>
+            <div class="section-content">
+                <p class="fs-5 mb-4">The journey of building a robust workplace safety AI doesn't end with the initial deployment. As your work environment evolves and new, unforeseen hazards emerge, your model must adapt to maintain its effectiveness. This is where active learning and a commitment to continuous improvement become crucial.</p>
+
+<p class="fs-5 mb-4"><b>The Power of Active Learning:</b></p>
+<p class="fs-5 mb-4">Active learning is a machine learning technique where the model strategically selects the data points it needs to learn from, rather than relying on a randomly sampled dataset. In the context of workplace hazard detection, this means:</p>
+
+<ol class="fs-5 mb-4" style="list-style: decimal inside;">
+    <li><strong>Identifying Uncertain Detections:</strong> The model identifies images or video frames where it is least confident in its prediction. These are often cases where the hazard is partially obscured, has unusual lighting, or is presented in a novel context.</li>
+    <li><strong>Human-in-the-Loop Annotation:</strong> These uncertain cases are then presented to human annotators for labeling. This provides the model with the ground truth for the most challenging and informative examples.</li>
+    <li><strong>Retraining and Refining:</strong> The model is retrained using the newly labeled data, focusing its learning on the areas where it previously struggled.</li>
+</ol>
+<figure class="mb-4"><img class="img-fluid rounded" src="{{image_2}}" alt="{{image_2_alt}}" /></figure>
+<p class="fs-5 mb-4"><b>Benefits of Active Learning:</b></p>
+<ul class="fs-5 mb-4">
+    <li><strong>Reduced Annotation Effort:</strong> Active learning significantly reduces the amount of data that needs to be manually labeled, saving time and resources.</li>
+    <li><strong>Improved Model Accuracy:</strong> By focusing on the most informative examples, active learning leads to faster and more effective model improvement.</li>
+    <li><strong>Adaptability to New Hazards:</strong> Active learning allows the model to quickly adapt to new and evolving hazards in the workplace.</li>
+</ul>
+<p class="fs-5 mb-4"><b>Establishing a Culture of Continuous Improvement:</b></p>
+<p class="fs-5 mb-4">Beyond active learning, fostering a culture of continuous improvement is essential for long-term success. This involves:</p>
+
+<ul class="fs-5 mb-4">
+    <li><strong>Regular Performance Monitoring:</strong> Continuously track the model's performance metrics (precision, recall, F1-score) to identify any degradation or areas for improvement.</li>
+    <li><strong>Feedback Mechanisms:</strong> Establish clear channels for workers to provide feedback on the model's performance and report any missed detections or false alarms.</li>
+    <li><strong>Regular Model Updates:</strong> Schedule regular model updates to incorporate new data, address identified issues, and leverage advancements in object detection technology.</li>
+    <li><strong>Collaboration and Knowledge Sharing:</strong> Encourage collaboration and knowledge sharing among team members involved in the development and deployment of the model.</li>
+</ul>
+            </div>
+        
+            <div class="conclusion">
+                <p class="fs-5 mb-4">Training a custom object detection model for workplace hazards offers a powerful way to proactively enhance safety and prevent accidents. By identifying the unique 'long-tail' hazards specific to your environment, capturing and labeling a custom dataset, choosing the right model architecture, and continuously improving the model through active learning and feedback, you can create a robust and reliable AI-driven safety solution. This proactive approach not only reduces risks but also fosters a safer and more efficient work environment for everyone.</p>
+<p class="fs-5 mb-4">The advancements in AI and computer vision are democratizing access to cutting-edge safety technologies. By embracing these tools and methodologies, organizations can take a significant step towards creating workplaces where safety is not just a priority, but an integral part of the operational fabric.</p>
+            </div>
+            <div class="cta mt-5">
+                <p class="cta fs-5 mb-4">Support our open-source projects by starring our GitHub repository: <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">https://github.com/securade/hub</a>. By starring the repo, you join a collaborative community that drives innovation in real-time AI surveillance solutions and share insights on building robust computer vision systems.</p>
+            </div>
+        </section>
+    
+              </section>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========================= blog-section end ========================= -->
+
+    <!-- ========================= footer start ========================= -->
+    <footer class="footer pt-120">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+            <div class="footer-widget">
+              <div class="logo">
+                <a href="../../index.html">
+                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                </a>
+              </div>
+              <p class="desc">Safety, powered by AI.</p>
+              <ul class="social-links">
+                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
+                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+            <div class="footer-widget">
+              <h3>Company</h3>
+              <ul class="links">
+                <li><a href="../../index.html#home">Home</a></li>
+                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
+                <li><a href="../../resources.html">Resources</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
+            <div class="footer-widget">
+              <h3>About Us</h3>
+              <ul class="links">
+                <li>Contact Us</li>
+                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="footer-widget">
+              <h3>Subscribe for Updates</h3>
+              <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
+                <div id="mce-responses" class="clear foot">
+                  <div class="response" id="mce-error-response" style="display:none"></div>
+                  <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>
+                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ========================= JS here ========================= -->
+    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="../../assets/js/tiny-slider.js"></script>
+    <script src="../../assets/js/wow.min.js"></script>
+    <script src="../../assets/js/polyfill.js"></script>
+    <script src="../../assets/js/main.js"></script>
+  </body>
+</html>
