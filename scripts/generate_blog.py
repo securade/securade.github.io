@@ -412,7 +412,7 @@ def create_pull_request(repo, blog_path, image_path, content, image_data, branch
             # No PR exists, create it
             pr = repo.create_pull(
                 title=f"Add new blog post: {blog_path}",
-                body="Automatically generated blog post from issue",
+                body="Automatically generated blog post from issue #{}.".format(os.getenv('ISSUE_NUMBER')),
                 head=branch_name,
                 base="main"
             )
