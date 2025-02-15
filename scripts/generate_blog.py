@@ -353,21 +353,67 @@ def get_issue_details():
         'images': image_urls
     }
 
-def create_file_paths(title, category, processed_images):
+def generate_seo_title_and_filename(blog_content, category):
+    """Generate SEO-optimized title and filename based on the blog content."""
+    prompt = f"""Analyze this blog content and generate an SEO-optimized title and filename.
+
+Blog Category: {category}
+Blog Content: {blog_content}
+
+Requirements:
+1. Title should be:
+   - 50-60 characters long
+   - Include primary keyword early
+   - Be compelling and clickable
+   - Use power words where appropriate
+   - Focus on value proposition
+   - Include relevant industry terms
+
+2. Filename should be:
+   - SEO-friendly
+   - Use primary keyword
+   - All lowercase
+   - Words separated by hyphens
+   - No special characters
+   - End with .html
+   - Be descriptive but concise
+   - Example: ai-powered-workplace-safety-solutions.html
+
+Return in JSON format:
+{{
+    "title": "SEO optimized title here",
+    "filename": "seo-friendly-filename.html",
+    "reasoning": "Brief explanation of keyword focus and SEO strategy"
+}}"""
+
+    try:
+        response = client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": "You are an SEO expert specializing in technical and industry-focused content optimization."},
+                {"role": "user", "content": prompt}
+            ],
+            response_format={ "type": "json_object" }
+        )
+        
+        return json.loads(response.choices[0].message.content)
+    except json.JSONDecodeError:
+        raise ValueError("Failed to generate SEO title and filename")
+    
+def create_file_paths(filename, category, processed_images):
     """Create appropriate file paths for blog and all images."""
     repo_root = Path(__file__).parent.parent
-    slug = slugify(title)
     
     paths = {'blog': '', 'images': []}
     
     if category:
-        blog_path = f"blog/{category}/{slug}.html"
+        blog_path = f"blog/{category}/{filename}"
         image_paths = [f"assets/images/blog/{category}/{img['name']}" for img in processed_images]
         
         (repo_root / "blog" / category).mkdir(parents=True, exist_ok=True)
         (repo_root / "assets" / "images" / "blog" / category).mkdir(parents=True, exist_ok=True)
     else:
-        blog_path = f"blog/{slug}.html"
+        blog_path = f"blog/{filename}"
         image_paths = [f"assets/images/blog/{img['name']}" for img in processed_images]
         
         (repo_root / "blog").mkdir(parents=True, exist_ok=True)
@@ -483,15 +529,24 @@ def main():
         len(processed_images)
     )
 
-    # Create paths for blog and all images
+    # Format blog content
+    formatted_content = format_blog_content(blog_data)
+
+    # Generate SEO-optimized title and filename
+    seo_info = generate_seo_title_and_filename(
+        formatted_content,
+        category_info['category']
+    )
+
+    # Update blog_data with new SEO title
+    blog_data['meta']['title'] = seo_info['title']
+    blog_data['meta']['og_title'] = seo_info['title']  # Update OG title too
+
     blog_path, image_paths = create_file_paths(
-        issue_details['title'],
+        seo_info['filename'],
         category_info['category'],
         processed_images
     )
-
-    # Format blog content
-    formatted_content = format_blog_content(blog_data)
 
     # Replace image placeholders in content
     for i, image in enumerate(processed_images[1:], 1):  # Skip hero image
