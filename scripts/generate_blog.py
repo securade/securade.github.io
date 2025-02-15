@@ -88,6 +88,13 @@ Return your response in this JSON format:
 def save_image_from_base64(image_data, file_path):
     """Convert and save image data as JPEG."""
     try:
+        # Create a temporary directory in the script's directory
+        temp_dir = Path(__file__).parent / "temp"
+        temp_dir.mkdir(exist_ok=True)
+        
+        # Create full temporary file path
+        temp_file_path = temp_dir / os.path.basename(file_path)
+        
         # Open image using PIL
         image = Image.open(BytesIO(image_data))
         
@@ -97,18 +104,21 @@ def save_image_from_base64(image_data, file_path):
             background.paste(image, mask=image.split()[-1] if image.mode == 'RGBA' else None)
             image = background
         
-        # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        
         # Save as JPEG file
-        image.save(file_path, format='JPEG', quality=85)
+        image.save(str(temp_file_path), format='JPEG', quality=85)
         
         # Return the file content for GitHub
-        with open(file_path, 'rb') as f:
+        with open(temp_file_path, 'rb') as f:
             return f.read()
     except Exception as e:
         print(f"Error processing image: {e}")
         raise
+    finally:
+        # Clean up temporary file and directory
+        if temp_dir.exists():
+            for temp_file in temp_dir.glob('*'):
+                temp_file.unlink()
+            temp_dir.rmdir()
 
 def generate_image_name(title, description, image_data):
     """Generate a descriptive name for the image based on its actual content and context."""
@@ -339,9 +349,9 @@ def create_pull_request(repo, blog_path, image_path, content, image_data, branch
         base = repo.get_branch("main")
         repo.create_git_ref(ref=f"refs/heads/{branch_name}", sha=base.commit.sha)
         
-        # Save image to disk first
-        temp_image_path = f"temp_{os.path.basename(image_path)}"
-        processed_image_data = save_image_from_base64(image_data, temp_image_path)
+        # Process and save image
+        temp_image_name = f"temp_{int(datetime.now().timestamp())}.jpeg"
+        processed_image_data = save_image_from_base64(image_data, temp_image_name)
         
         # Create image file in repo
         repo.create_file(
@@ -359,10 +369,6 @@ def create_pull_request(repo, blog_path, image_path, content, image_data, branch
             branch=branch_name
         )
         
-        # Clean up temporary image file
-        if os.path.exists(temp_image_path):
-            os.remove(temp_image_path)
-        
         # Create pull request
         pr = repo.create_pull(
             title=f"Add new blog post: {blog_path}",
@@ -374,9 +380,6 @@ def create_pull_request(repo, blog_path, image_path, content, image_data, branch
         return pr
     except Exception as e:
         print(f"Error creating PR: {e}")
-        # Clean up temporary file in case of error
-        if os.path.exists(temp_image_path):
-            os.remove(temp_image_path)
         raise
 
 def get_template_path():
