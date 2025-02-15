@@ -11,6 +11,7 @@ from io import BytesIO
 from openai import OpenAI
 from slugify import slugify
 from jinja2 import Template, Environment, FileSystemLoader
+from category_utils import update_category_indexes
 
 # Configure OpenAI client
 client = OpenAI(
@@ -473,6 +474,18 @@ def main():
     
     # Create branch name
     branch_name = f"blog-{slugify(issue_details['title'])}"
+
+    # Prepare blog info for index updates
+    blog_info = {
+        'title': blog_data['meta']['title'],
+        'path': blog_path,
+        'image_path': image_path,
+        'image_alt': image['alt'] if 'alt' in image else '',
+        'category': category_info['category']
+    }
+    
+    # Update category index
+    update_category_indexes(repo, branch_name, blog_info)
     
     # Create pull request
     pr = create_pull_request(
