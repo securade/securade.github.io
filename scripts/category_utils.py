@@ -10,19 +10,45 @@ def get_blog_card_template():
     <div class="col-12">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <a href="{{ blog_url }}" class="icon-link gap-1 icon-link-hover stretched-link">
+                <a href="./{{ blog_url }}" class="icon-link gap-1 icon-link-hover stretched-link">
                     <h3 class="mb-0">{{ title }}</h3>
                 </a>
             </div>
             <div class="col-auto d-none d-lg-block">
-                <img class="rounded" width="120" height="80" src="{{ image_url }}" alt="{{ image_alt }}" />
+                <img class="rounded" width="120" height="80" src="../../../{{ image_url }}" alt="{{ image_alt }}" />
             </div>
         </div>
     </div>
     """
 
-def create_or_update_category_index(category, blog_info, repo_root, template_path):
+def find_repo_root():
+    """Find the repository root by looking for common markers."""
+    current = Path(os.getcwd()).absolute()
+    
+    # Special case: if we're in scripts directory, go up one level
+    if current.name == 'scripts':
+        return current.parent
+        
+    # Check current directory first
+    if (current / 'README.md').exists() or (current / '.git').exists():
+        return current
+    
+    # Try parent directory if current directory doesn't look like root
+    parent = current.parent
+    if (parent / 'README.md').exists() or (parent / '.git').exists():
+        return parent
+        
+    # If we still haven't found it, and we're in scripts, go up one more
+    if current.name == 'scripts' and parent.name == 'securade.github.io':
+        return parent
+        
+    # If we can't find markers, assume current directory
+    return current
+
+def create_or_update_category_index(category, blog_info, repo_root=None):
     """Create or update the category index page with the new blog."""
+    if repo_root is None:
+        repo_root = find_repo_root()
     category_path = repo_root / "blog" / category
     index_path = category_path / "index.html"
     
@@ -53,10 +79,18 @@ def create_or_update_category_index(category, blog_info, repo_root, template_pat
                     })
     
     # Add new blog to the list
+    # Get just the filename from the full path for the blog URL
+    blog_filename = os.path.basename(blog_info['path'])
+    
+    # For image path, preserve the full path from assets
+    image_path = blog_info['image_path']
+    if image_path.startswith('/'):
+        image_path = image_path[1:]  # Remove leading slash if present
+        
     blogs.append({
         'title': blog_info['title'],
-        'url': f"/{blog_info['path']}",
-        'image_url': f"/{blog_info['image_path']}",
+        'url': blog_filename,  # Just the filename since we're in the category directory
+        'image_url': image_path,  # Full path from root but without leading slash
         'image_alt': blog_info['image_alt'],
         'date': datetime.now()
     })
@@ -75,6 +109,8 @@ def create_or_update_category_index(category, blog_info, repo_root, template_pat
             image_alt=blog['image_alt']
         )
     
+    # Get the template path
+    template_path = repo_root / 'templates'
     env = Environment(loader=FileSystemLoader(str(template_path)))
     template = env.get_template('blog_template.html')
     
@@ -120,15 +156,14 @@ def create_or_update_category_index(category, blog_info, repo_root, template_pat
     
     return str(index_path.relative_to(repo_root))
 
-def update_category_indexes(repo, branch_name, blog_info, template_path):
+def update_category_indexes(repo, branch_name, blog_info):
     """Update category index pages in the repository."""
     try:
         # Get the category index path
         index_path = create_or_update_category_index(
             blog_info['category'],
             blog_info,
-            Path(os.getcwd()),
-            template_path
+            Path(os.getcwd())
         )
         
         # Commit updated index to the repository

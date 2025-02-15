@@ -526,7 +526,7 @@ def main():
     }
     
     # Update category index
-    update_category_indexes(repo, branch_name, blog_info, template_path)
+    update_category_indexes(repo, branch_name, blog_info)
     
     print(f"Created PR: {pr.html_url}")
     print(f"Category: {category_info['category']} ({'new' if category_info['is_new_category'] else 'existing'})")
