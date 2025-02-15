@@ -22,28 +22,52 @@ def get_blog_card_template():
     """
 
 def find_repo_root():
-    """Find the repository root by looking for common markers."""
+    """Find the repository root by looking for specific markers in securade.github.io repo."""
     current = Path(os.getcwd()).absolute()
+    print(f"Current working directory: {current}")
     
-    # Special case: if we're in scripts directory, go up one level
-    if current.name == 'scripts':
+    # Start with current directory
+    if current.name == 'securade.github.io':
+        print(f"Found repo root at current directory: {current}")
+        return current
+        
+    # Check if we're in the scripts directory
+    if current.name == 'scripts' and current.parent.name == 'securade.github.io':
+        print(f"Found repo root from scripts directory: {current.parent}")
         return current.parent
         
-    # Check current directory first
-    if (current / 'README.md').exists() or (current / '.git').exists():
-        return current
+    # Try parent directory if it's the repo root
+    if current.parent.name == 'securade.github.io':
+        print(f"Found repo root in parent directory: {current.parent}")
+        return current.parent
     
-    # Try parent directory if current directory doesn't look like root
-    parent = current.parent
-    if (parent / 'README.md').exists() or (parent / '.git').exists():
-        return parent
+    # If we can't find it in standard locations, search upwards for securade.github.io
+    parent = current
+    while parent != parent.parent:
+        if parent.name == 'securade.github.io':
+            print(f"Found repo root by searching upwards: {parent}")
+            return parent
+        parent = parent.parent
+    
+    # If we still haven't found it, raise an error
+    raise ValueError(f"Could not find securade.github.io repository root from {current}")
+
+def get_template_path():
+    """Get the path to the blog template."""
+    repo_root = find_repo_root()
+    print(f"Checking for templates in: {repo_root}/templates")
+    
+    template_path = repo_root / 'templates'
+    if not template_path.exists():
+        raise ValueError(f"Template directory not found at {template_path}")
+    
+    # Verify template file exists
+    template_file = template_path / 'blog_template.html'
+    if not template_file.exists():
+        raise ValueError(f"blog_template.html not found at {template_path}")
         
-    # If we still haven't found it, and we're in scripts, go up one more
-    if current.name == 'scripts' and parent.name == 'securade.github.io':
-        return parent
-        
-    # If we can't find markers, assume current directory
-    return current
+    print(f"Found template at: {template_file}")
+    return template_path
 
 def create_or_update_category_index(category, blog_info, repo_root=None):
     """Create or update the category index page with the new blog."""
@@ -109,10 +133,19 @@ def create_or_update_category_index(category, blog_info, repo_root=None):
             image_alt=blog['image_alt']
         )
     
-    # Get the template path
-    template_path = repo_root / 'templates'
+    # Get the template path and verify it exists
+    template_path = get_template_path()
+    print(f"Using template path for category index: {template_path}")
+    
+    # Create environment with template loader
     env = Environment(loader=FileSystemLoader(str(template_path)))
-    template = env.get_template('blog_template.html')
+    try:
+        template = env.get_template('blog_template.html')
+        print("Successfully loaded blog_template.html")
+    except Exception as e:
+        print(f"Error loading template: {e}")
+        print(f"Template path contents: {list(template_path.glob('*'))}")
+        raise
     
     # Create category title and description
     category_title = category.replace('-', ' ').title()
