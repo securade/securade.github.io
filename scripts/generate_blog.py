@@ -482,7 +482,7 @@ def create_pull_request(repo, blog_path, image_paths, content, processed_images,
         except StopIteration:
             # No PR exists, create it
             pr = repo.create_pull(
-                title=f"Add new blog post: {blog_path}",
+                title=f"Add new blog post: {blog_path}, fixes issue #{os.getenv('ISSUE_NUMBER')}",
                 body="This PR fixes issue #{}.".format(os.getenv('ISSUE_NUMBER')),
                 head=branch_name,
                 base="main"
