@@ -21,7 +21,7 @@ def get_blog_card_template():
     </div>
     """
 
-def create_or_update_category_index(category, blog_info, repo_root):
+def create_or_update_category_index(category, blog_info, repo_root, template_path):
     """Create or update the category index page with the new blog."""
     category_path = repo_root / "blog" / category
     index_path = category_path / "index.html"
@@ -75,8 +75,6 @@ def create_or_update_category_index(category, blog_info, repo_root):
             image_alt=blog['image_alt']
         )
     
-    # Get the template path
-    template_path = repo_root / 'templates'
     env = Environment(loader=FileSystemLoader(str(template_path)))
     template = env.get_template('blog_template.html')
     
