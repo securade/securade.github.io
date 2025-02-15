@@ -1,0 +1,97 @@
+# templates/blog_template.html
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <title>{{ title }} - Securade.ai</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_description }}">
+    <meta property="og:image" content="https://securade.ai{{ image_url }}">
+    <meta property="og:url" content="https://securade.ai{{ page_url }}">
+    <meta name="keywords" content="{{ keywords }}">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico"/>
+    <!-- Place favicon.ico in the root directory -->
+    
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/css/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/css/LineIcons.2.0.css"/>
+    <link rel="stylesheet" href="/assets/css/tiny-slider.css"/>
+    <link rel="stylesheet" href="/assets/css/animate.css"/>
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- preloader end -->
+
+    {% include 'header.html' %}
+
+    <!-- ========================= blog-section start ========================= -->
+    <section id="blog-content" class="feature-section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <article>
+              <!-- Post header-->
+              <header class="mb-4">
+                <h1 class="fw-bolder mb-1">{{ title }}</h1>
+                <div class="text-muted fst-italic mb-2">
+                  Posted on {{ date }} by {{ author }}
+                </div>
+              </header>
+              
+              <!-- Hero image -->
+              <figure class="mb-4">
+                <img class="img-fluid rounded" src="{{ image_url }}" alt="{{ image_alt }}"/>
+              </figure>
+              
+              <!-- Post content-->
+              <section class="mb-5">
+                {{ content | safe }}
+              </section>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========================= blog-section end ========================= -->
+
+    {% include 'footer.html' %}
+
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/js/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/js/tiny-slider.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/polyfill.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

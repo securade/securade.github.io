@@ -54,3 +54,6 @@ urllib3==2.2.0
 wasabi==1.1.2
 wcwidth==0.2.13
 weasel==0.3.4
+PyGithub
+openai
+python-slugify
