@@ -15,7 +15,7 @@ def get_blog_card_template():
                 </a>
             </div>
             <div class="col-auto d-none d-lg-block">
-                <img class="rounded" width="120" height="80" src="../../../{{ image_url }}" alt="{{ image_alt }}" />
+                <img class="rounded" width="120" height="80" src="../../{{ image_url }}" alt="{{ image_alt }}" />
             </div>
         </div>
     </div>
@@ -169,10 +169,6 @@ def create_or_update_category_index(category, blog_info, repo_root=None):
         og_title=f"{category_title} - Securade.ai Blogs",
         og_description=category_description,
         content=main_content,
-        date=datetime.now().strftime('%B %d, %Y'),
-        author="Securade.ai",
-        image_url="/assets/images/logo/logo.png",
-        image_alt="Securade.ai Logo",
         css_classes={
             'body_content': 'col-lg-8 mx-auto',
             'article_header': 'mb-4',
@@ -183,25 +179,21 @@ def create_or_update_category_index(category, blog_info, repo_root=None):
         }
     )
     
-    # Save index page
-    with open(index_path, 'w', encoding='utf-8') as f:
-        f.write(index_html)
-    
-    return str(index_path.relative_to(repo_root))
+    # Return the path and content instead of writing to file
+    relative_path = str(index_path.relative_to(repo_root))
+    return relative_path, index_html
 
 def update_category_indexes(repo, branch_name, blog_info):
     """Update category index pages in the repository."""
     try:
-        # Get the category index path
-        index_path = create_or_update_category_index(
+        # Get the category index path and content
+        index_path, content = create_or_update_category_index(
             blog_info['category'],
             blog_info,
             Path(os.getcwd())
         )
         
-        # Commit updated index to the repository
-        with open(index_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        print(f"Creating/updating category index at: {index_path}")
         
         # Create or update the file in the repository
         try:
