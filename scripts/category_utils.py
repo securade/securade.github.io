@@ -120,14 +120,15 @@ def create_or_update_category_index(category, blog_info, repo_root, template_pat
     
     return str(index_path.relative_to(repo_root))
 
-def update_category_indexes(repo, branch_name, blog_info):
+def update_category_indexes(repo, branch_name, blog_info, template_path):
     """Update category index pages in the repository."""
     try:
         # Get the category index path
         index_path = create_or_update_category_index(
             blog_info['category'],
             blog_info,
-            Path(os.getcwd())
+            Path(os.getcwd()),
+            template_path
         )
         
         # Commit updated index to the repository
