@@ -18,7 +18,7 @@ client = OpenAI(
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
-MODEL = "gemini-2.0-flash-lite-preview-02-05"
+MODEL = "gemini-2.0-flash"
 
 def get_existing_categories():
     """Get list of existing blog categories from the blog directory."""
@@ -32,17 +32,29 @@ def analyze_content_for_category(title, description, existing_categories):
     """Analyze content to determine the most appropriate category."""
     categories_str = ", ".join(existing_categories) if existing_categories else "none"
     
-    prompt = f"""Analyze this blog post and determine the most appropriate category.
+    prompt = f"""Analyze this blog post and determine the most appropriate high-level category.
 
 Existing categories: {categories_str}
 
-If the content doesn't fit well into any existing category, suggest a new category name that is concise and descriptive.
+Guidelines for categorization:
+1. Use broad, generic categories that can encompass multiple related topics
+2. Prefer existing categories if the content reasonably fits
+3. Only suggest a new category if the content truly doesn't fit existing ones
+4. Think in terms of main themes rather than specific topics
 
-Consider:
-1. The main topic and focus of the content
-2. The target audience
-3. The type of information being presented
-4. How similar content is typically categorized
+Example categories and their scope:
+- workplace-safety: Any content about safety protocols, procedures, prevention, PPE, etc.
+- technology: AI, machine learning, video analytics, software solutions, etc.
+- industry-solutions: Specific implementations, case studies, industry-specific applications
+- best-practices: Guidelines, standards, recommendations, how-tos
+- compliance: Regulations, standards, certifications, legal requirements
+- innovations: New developments, cutting-edge solutions, future trends
+
+Format Requirements:
+1. Use lowercase letters only
+2. Replace spaces with hyphens
+3. Keep it concise and generic
+4. No special characters except hyphens
 
 Title: {title}
 Description: {description}
@@ -51,14 +63,14 @@ Return your response in this JSON format:
 {{
     "category": "suggested-category-name",
     "is_new_category": boolean,
-    "reasoning": "brief explanation of your choice"
+    "reasoning": "brief explanation of why this category is most appropriate and how it fits into the broader content structure"
 }}"""
 
     try:
         response = client.chat.completions.create(
             model=MODEL,
             messages=[
-                {"role": "system", "content": "You are a content categorization expert."},
+                {"role": "system", "content": "You are a content categorization expert with a focus on creating broad, reusable categories."},
                 {"role": "user", "content": prompt}
             ],
             response_format={ "type": "json_object" }
@@ -72,7 +84,72 @@ Return your response in this JSON format:
             "is_new_category": len(existing_categories) == 0,
             "reasoning": "Fallback category due to processing error"
         }
+    
+def generate_image_name(title, description, image_data):
+    """Generate a descriptive name for the image based on its actual content and context."""
+    try:
+        # Convert binary image data to base64
+        base64_image = base64.b64encode(image_data).decode('utf-8')
+        
+        # First analyze the image content
+        vision_response = client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "Analyze this image and describe its key elements. Focus on workplace safety, AI technology, or industrial elements if present."
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:image/jpeg;base64,{base64_image}"
+                            }
+                        }
+                    ]
+                }
+            ]
+        )
+        
+        image_description = vision_response.choices[0].message.content
 
+        # Now generate a filename based on both image content and blog context
+        prompt = f"""Generate a descriptive filename for an image used in a blog post.
+
+Context:
+Blog Title: {title}
+Blog Description: {description}
+Image Content Analysis: {image_description}
+
+Requirements:
+1. Use descriptive words that reflect the actual image content
+2. Use camelCase format
+3. Include 'securadeai' as prefix
+4. Must end with .jpeg
+5. No spaces, hyphens, or special characters
+6. Example format: securadeaiWorkplaceSafetyDashboard.jpeg, securadeaiAiCameraSystem.jpeg
+
+Return only the filename, nothing else."""
+
+        name_response = client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": "You are an expert at creating descriptive and SEO-friendly image filenames."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+        
+        filename = name_response.choices[0].message.content.strip()
+        # Ensure it meets our requirements
+        if not filename.startswith("securadeai") or not filename.endswith(".jpeg"):
+            filename = f"securadeaiGenericBlog.jpeg"
+        return filename
+    except Exception as e:
+        print(f"Error generating image name: {e}")
+        return f"securadeaiGenericBlog.jpeg"
+    
 def generate_blog_content(title, description, category):
     """Generate SEO-optimized blog content in structured format."""
     prompt = f"""Create a comprehensive, SEO-optimized blog post with the following requirements:
@@ -126,7 +203,7 @@ Return the content in this JSON format:
             ],
             response_format={ "type": "json_object" }
         )
-        print(response)
+        # print(response)
         return json.loads(response.choices[0].message.content)
     except json.JSONDecodeError:
         raise ValueError("Failed to generate properly formatted blog content")
@@ -276,11 +353,14 @@ def main():
         category_info['category']
     )
     
-    # Process image
     if issue_details['images']:
         image = issue_details['images'][0]
         image_data = requests.get(image['url']).content
-        image_name = image['name']
+        image_name = generate_image_name(
+            issue_details['title'],
+            issue_details['description'],
+            image_data
+        )
     else:
         raise ValueError("No image found in the issue. Please attach an image to the issue.")
     
