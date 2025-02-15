@@ -10,12 +10,12 @@ def get_blog_card_template():
     <div class="col-12">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <a href="./{{ blog_url }}" class="icon-link gap-1 icon-link-hover stretched-link">
+                <a href="{{ blog_url }}" class="icon-link gap-1 icon-link-hover stretched-link">
                     <h3 class="mb-0">{{ title }}</h3>
                 </a>
             </div>
             <div class="col-auto d-none d-lg-block">
-                <img class="rounded" width="120" height="80" src="../../{{ image_url }}" alt="{{ image_alt }}" />
+                <img class="rounded" width="120" height="80" src="{{ image_url }}" alt="{{ image_alt }}" />
             </div>
         </div>
     </div>
@@ -127,9 +127,9 @@ def create_or_update_category_index(category, blog_info, repo_root=None):
     blog_cards_html = ""
     for blog in blogs:
         blog_cards_html += card_template.render(
-            blog_url=blog['url'],
+            blog_url=blog['url'] if blog['url'].startswith("./") else "./" + blog['url'],
             title=blog['title'],
-            image_url=blog['image_url'],
+            image_url=blog['image_url'] if blog['image_url'].startswith("../../") else "../../" + blog['image_url'],
             image_alt=blog['image_alt']
         )
     
