@@ -277,16 +277,18 @@ def create_file_paths(title, category, image_filename):
     """Create appropriate file paths for blog and images."""
     slug = slugify(title)
     
-    # Create category directory if it doesn't exist
-    category_path = Path(f"blog/{category}")
-    category_path.mkdir(parents=True, exist_ok=True)
-    
-    # Create images category directory if it doesn't exist
-    image_category_path = Path(f"assets/images/blog/{category}")
-    image_category_path.mkdir(parents=True, exist_ok=True)
-    
-    blog_path = f"blog/{category}/{slug}.html"
-    image_path = f"assets/images/blog/{category}/{image_filename}"
+    if category:
+        # If category is specified, create in category subfolder
+        blog_path = f"blog/{category}/{slug}.html"
+        image_path = f"assets/images/blog/{category}/{image_filename}"
+        
+        # Create category directories if they don't exist
+        Path(f"blog/{category}").mkdir(parents=True, exist_ok=True)
+        Path(f"assets/images/blog/{category}").mkdir(parents=True, exist_ok=True)
+    else:
+        # If no category, create directly in blog folder
+        blog_path = f"blog/{slug}.html"
+        image_path = f"assets/images/blog/{image_filename}"
     
     return blog_path, image_path
 
