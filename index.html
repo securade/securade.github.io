@@ -16,13 +16,17 @@
     <!-- Place favicon.ico in the root directory -->
     <link rel="canonical" href="https://securade.ai/index.html" />
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta2.min.css" />
+    <!-- Replace the standard link with this -->
+	<link rel="preload" href="/css/bootstrap-5.0.0-beta2.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="/css/bootstrap-5.0.0-beta2.min.css"></noscript>
     <link rel="stylesheet" href="assets/css/LineIcons.2.0.css"/>
     <link rel="stylesheet" href="assets/css/tiny-slider.css"/>
     <link rel="stylesheet" href="assets/css/animate.css"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
 	<!-- Add icon library -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Replace the standard CDN link with this -->
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/[version]/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/[version]/css/font-awesome.min.css"></noscript>
 	<!--
 	<script id="mcjs">
 	function showPopup() { 
