@@ -1,300 +1,346 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <title>AI Object Tracking: Build Your Own "Marauder's Map" - Securade.ai</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: AI Object Tracking: Build Your Own "Marauder's Map", Securade.ai
+description: Learn how to build a computer vision application, inspired by the Marauder's Map, using Securade HUB. Track objects and build custom vision AI solutions quickly.
+canonical_path: /blog/technology/ai-object-tracking-marauders-map.html
+og_title: AI Object Tracking: Build Your Own "Marauder's Map"
+og_description: Discover how to rapidly develop an AI-powered tracking map using Securade HUB. Track objects in real-time and build custom vision AI solutions with ease.
+og_image: /assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg
+og_type: article
+nav_active: resources
+extra_schema:,
+ {"@type": "Article", "@id": "https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html#article", "headline": "AI Object Tracking: Build Your Own \"Marauder's Map\"", "description": "Learn how to build a computer vision application, inspired by the Marauder's Map, using Securade HUB. Track objects and build custom vision AI solutions quickly.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg", "datePublished": "2025-04-24", "dateModified": "2025-04-24", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "computer vision, AI, Securade HUB, object tracking, Marauder's Map, open source, AI application, image processing, tracking map, vision AI"},
+ {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Learn how to build a computer vision application, inspired by the Marauder's Map, using Securade HUB. Track objects and build custom vision AI solutions quickly.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="AI Object Tracking: Build Your Own "Marauder's Map"">
-    <meta property="og:description" content="Discover how to rapidly develop an AI-powered tracking map using Securade HUB. Track objects in real-time and build custom vision AI solutions with ease.">
-    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg">
-    <meta property="og:url" content="https://securade.ai">
-    <meta name="keywords" content="computer vision, AI, Securade HUB, object tracking, Marauder's Map, open source, AI application, image processing, tracking map, vision AI">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="../../assets/css/animate.css"/>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>AI Object Tracking: Build Your Own "Marauder's Map", Securade.ai</title>
+    <meta name="description" content="Learn how to build a computer vision application, inspired by the Marauder's Map, using Securade HUB. Track objects and build custom vision AI solutions quickly." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader end -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AI Object Tracking: Build Your Own "Marauder's Map"" />
+    <meta property="og:description" content="Discover how to rapidly develop an AI-powered tracking map using Securade HUB. Track objects in real-time and build custom vision AI solutions with ease." />
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html" />
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="AI Object Tracking: Build Your Own "Marauder's Map"" />
+    <meta name="twitter:description" content="Discover how to rapidly develop an AI-powered tracking map using Securade HUB. Track objects in real-time and build custom vision AI solutions with ease." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, {"@type": "Article", "@id": "https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html#article", "headline": "AI Object Tracking: Build Your Own \"Marauder's Map\"", "description": "Learn how to build a computer vision application, inspired by the Marauder's Map, using Securade HUB. Track objects and build custom vision AI solutions quickly.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg", "datePublished": "2025-04-24", "dateModified": "2025-04-24", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "computer vision, AI, Securade HUB, object tracking, Marauder's Map, open source, AI application, image processing, tracking map, vision AI"}, {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/ai-object-tracking-marauders-map.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
       <div class="navbar-area">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#platform">HUB</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#tower">Tower</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="../../resources.html">Resources</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
-    <!-- ========================= header end ========================= -->
+<!-- @endpartial:header -->
 
-    <!-- ========================= blog-section start ========================= -->
-    <section id="blog-content" class="feature-section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <article>
-              <!-- Post header-->
-              <header class="mb-4">
-                <h1 class="fw-bolder mb-1">AI Object Tracking: Build Your Own "Marauder's Map"</h1>
-                <div class="text-muted fst-italic mb-2">
-                  Posted on April 24, 2025 by Arjun Krishnamurthy
-                </div>
-              </header>
-              
-              <!-- Hero image -->
-              <figure class="mb-4">
-                <img class="img-fluid rounded" src="../../assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg" alt="Image"/>
-              </figure>
-              
-              <!-- Post content-->
-              <section class="mb-5">
-                
-        <section class="mb-5">
-            <div class="introduction">
-                <p class="fs-5 mb-4">Imagine building your own version of Harry Potter’s Marauder’s Map, but instead of magical parchment, you’re using computer vision and AI to track objects in real-time. This blog post will guide you through the process of developing such an application using Securade HUB, demonstrating how you can go from idea to functional prototype in days, not weeks. We'll explore how to connect detections from multiple cameras to a dynamically updated map, allowing you to track people or objects as they move through a defined space. This project showcases the power and accessibility of modern AI tools, empowering individuals and organizations to build custom, purpose-built vision AI applications efficiently.</p>
-<p class="fs-5 mb-4">The beauty of this project lies in its simplicity and adaptability. By leveraging open-source tools and readily available hardware, you can create a sophisticated tracking system that meets your specific needs. Whether you're interested in home automation, security systems, or even just a fun weekend project, the principles and techniques outlined in this guide will provide you with a solid foundation. Let’s dive into how you can build your own AI-powered tracking map using Securade HUB.</p>
-            </div>
-    
-            <h2 class="fw-bolder mb-4 mt-5">Understanding the Core Components</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Building a computer vision application requires several key components working in harmony. Let's break down each element and understand its role in the overall system:</p>
-<ul class="fs-5 mb-4">
-  <li><strong>Cameras:</strong> These are the eyes of your system, capturing images or video streams of the environment.</li>
-  <li><strong>Object Detection Model:</strong> This is the brain of your system, responsible for identifying and locating objects of interest within the camera feeds. Examples include YOLO (You Only Look Once), SSD (Single Shot Detector), or custom-trained models.</li>
-  <li><strong>Securade HUB:</strong> This acts as the central nervous system, orchestrating the flow of data between the cameras, the object detection model, and the tracking map. It provides a framework for managing data streams, running inference, and visualizing results.</li>
-  <li><strong>Tracking Algorithm:</strong> This component maintains the identity of objects as they move between camera views, ensuring that you can track individuals or objects seamlessly.</li>
-  <li><strong>Dynamic Map:</strong> This is the visual representation of the tracking data, displaying the location of objects in real-time on a map or floor plan.</li>
-</ul>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Setting Up Your Environment</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Before you start coding, you'll need to set up your development environment. This involves installing the necessary software and libraries, configuring your cameras, and preparing your data.</p>
-<ol class="fs-5 mb-4" style="list-style: decimal inside;">
-  <li><strong>Install Python:</strong> Ensure you have Python 3.6 or later installed on your system.</li>
-  <li><strong>Install Securade HUB:</strong> You can install HUB using sources: <code>git clone https://github.com/securade/hub</code> and follow the instructions in the README.</li>
-  <li><strong>Install Dependencies:</strong> Install any additional libraries required by your object detection model and tracking algorithm, such as TensorFlow, PyTorch, or OpenCV.</li>
-  <li><strong>Configure Cameras:</strong> Set up your cameras and ensure they are accessible from your development machine. You may need to install drivers or configure network settings.</li>
-  <li><strong>Prepare Data:</strong> If you plan to train a custom object detection model, you'll need to gather and label a dataset of images or videos.</li>
-</ol>
-<p class="fs-5 mb-4">Proper environment setup is crucial for a smooth development process. Take the time to ensure that all components are correctly installed and configured before moving on.</p>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Implementing Object Detection with Securade HUB</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Securade HUB simplifies the process of integrating object detection models into your application. Here's how you can use HUB to run inference on camera feeds:</p>
-<ol class="fs-5 mb-4" style="list-style: decimal inside;">
-  <li><strong>Define Data Streams:</strong> Configure HUB to ingest data from your cameras. This involves specifying the camera URLs or file paths and defining the data format.</li>
-  <li><strong>Integrate Object Detection Model:</strong> Connect your object detection model to HUB. This may involve writing a custom adapter or using a pre-built integration.</li>
-  <li><strong>Process Data:</strong> Configure HUB to process the incoming data streams using your object detection model. This involves defining the inference pipeline and specifying the processing parameters.</li>
-  <li><strong>Visualize Results:</strong> Use HUB's built-in visualization tools to display the object detections on the camera feeds. This allows you to verify that the model is working correctly and fine-tune the parameters.</li>
-</ol>
-<p class="fs-5 mb-4">HUB's modular architecture makes it easy to swap out different object detection models or customize the processing pipeline to meet your specific needs. </p>
-<figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/57c86610-2e8d-4981-a3ed-de1da9150187" alt="Object detection pipeline" /></figure>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Tracking Objects Between Cameras</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Tracking objects as they move between different camera views is a challenging task, but it's essential for creating a seamless tracking experience. Here are some techniques you can use to address this challenge:</p>
-<ul class="fs-5 mb-4">
-  <li><strong>Feature Matching:</strong> Extract features from the detected objects in each camera view and match them based on similarity. This allows you to identify the same object in different views.</li>
-  <li><strong>Kalman Filtering:</strong> Use Kalman filtering to predict the future location of objects based on their past movements. This helps to smooth out noisy detections and handle occlusions.</li>
-  <li><strong>Re-identification Models:</strong> Train a re-identification model to recognize individuals or objects across different camera views, even when their appearance changes.</li>
-  <li><strong>Geometric Constraints:</strong> Use geometric constraints, such as the relative positions of cameras, to constrain the tracking process and improve accuracy.</li>
-</ul>
-<p class="fs-5 mb-4">The choice of tracking technique depends on the specific requirements of your application, such as the number of cameras, the complexity of the environment, and the desired level of accuracy.</p>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Building a Dynamic Tracking Map</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">The final step is to build a dynamic map that displays the location of objects in real-time. This involves creating a visual representation of the environment and mapping the object detections to their corresponding locations on the map.</p>
-<ol class="fs-5 mb-4" style="list-style: decimal inside;">
-  <li><strong>Create a Map or Floor Plan:</strong> Design a map or floor plan of the environment, either manually or using a mapping tool.</li>
-  <li><strong>Calibrate Cameras:</strong> Calibrate the cameras to determine their position and orientation in the environment. This allows you to transform the object detections from camera coordinates to world coordinates.</li>
-  <li><strong>Map Detections to Map:</strong> Map the object detections to their corresponding locations on the map, taking into account the camera calibration and any geometric constraints.</li>
-  <li><strong>Update Map in Real-Time:</strong> Update the map in real-time as new detections are received from the cameras. This involves updating the position of the objects on the map and displaying any relevant information, such as their name or ID.</li>
-</ol>
-<p class="fs-5 mb-4">You can use various tools and technologies to build the dynamic map, such as HTML5 Canvas, Leaflet, or a game engine like Unity or Unreal Engine.</p>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Tips and Tricks for Success</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Here are some additional tips and tricks to help you succeed in building your computer vision application:</p>
-<ul class="fs-5 mb-4">
-  <li><strong>Start Simple:</strong> Begin with a simple setup, such as a single camera and a basic object detection model, and gradually add complexity as you progress.</li>
-  <li><strong>Use Pre-trained Models:</strong> Leverage pre-trained object detection models to save time and effort. You can fine-tune these models on your own data to improve their accuracy.</li>
-  <li><strong>Optimize Performance:</strong> Optimize the performance of your application by reducing the image resolution, using hardware acceleration, and parallelizing the processing.</li>
-  <li><strong>Handle Edge Cases:</strong> Anticipate and handle edge cases, such as occlusions, lighting changes, and camera failures.</li>
-  <li><strong>Test Thoroughly:</strong> Test your application thoroughly in different environments and scenarios to ensure its reliability and accuracy.</li>
-</ul>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Advanced Techniques and Future Directions</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Once you have a basic tracking application up and running, you can explore more advanced techniques to enhance its functionality and performance. Here are some ideas for future directions:</p>
-<ul class="fs-5 mb-4">
-  <li><strong>3D Tracking:</strong> Extend the tracking system to track objects in 3D space, providing more accurate and detailed location information.</li>
-  <li><strong>Activity Recognition:</strong> Integrate activity recognition models to identify the actions and behaviors of individuals, such as walking, running, or sitting.</li>
-  <li><strong>Anomaly Detection:</strong> Implement anomaly detection algorithms to identify unusual or suspicious activities, such as unauthorized access or loitering.</li>
-  <li><strong>Multi-Camera Fusion:</strong> Fuse data from multiple cameras to create a more comprehensive and robust tracking system.</li>
-  <li><strong>Privacy Protection:</strong> Implement privacy-preserving techniques to protect the privacy of individuals being tracked, such as blurring faces or anonymizing data.</li>
-</ul>
-<p class="fs-5 mb-4">The possibilities are endless when it comes to computer vision and AI. By combining these technologies with your creativity and problem-solving skills, you can build innovative solutions that address real-world challenges.</p>
-            </div>
-        
-            <div class="conclusion">
-                <p class="fs-5 mb-4">This blog post has demonstrated how you can build a computer vision application using Securade HUB in days, not weeks. By combining various tools and technologies, you can create a powerful tracking map inspired by Harry Potter’s Marauder’s Map. This fun, weekend project illustrates how individuals and organizations have more tools available to quickly take an idea and build a custom, purpose-built vision AI application. We encourage you to explore the possibilities and build your own innovative solutions using Securade HUB.</p>
-            </div>
-            <div class="cta mt-5">
-                <p class="cta fs-5 mb-4">Ready to get started? Star our open source project HUB on <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">GitHub</a> and use it as a basis to build on top of!</p>
-            </div>
-        </section>
-    
-              </section>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========================= blog-section end ========================= -->
+<main id="main">
+ <article class="article">
+ <div class="container">
+ <div class="article-header">
+ <ol class="breadcrumbs" aria-label="Breadcrumb">
+ <li><a href="/">Home</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/blog/technology/">Technology</a></li><li class="current">AI Object Tracking: Build Your Own "Marauder's Map"</li>
+ </ol>
+ <span class="article-eyebrow">Technology</span>
+ <h1>AI Object Tracking: Build Your Own "Marauder's Map"</h1>
+ <p class="article-meta">
+ <span>By Arjun Krishnamurthy</span>
+ <span class="dot">·</span>
+ <time datetime="2025-04-24">April 24, 2025</time>
+ </p>
+ </div>
+ <figure class="article-hero">
+ <img src="/assets/images/blog/technology/securadeaiAntiqueMapOnTable.jpeg" alt="Image" />
+ </figure>
 
-    <!-- ========================= footer start ========================= -->
-    <footer class="footer pt-120">
+ <div class="article-body">
+ <section class="mb-5">
+ <p class="fs-5 mb-4">Harry Potter's Marauder's Map shows every person inside Hogwarts in real time. It's a fun thought experiment for a computer vision project: build a map of your own space that updates live as people move through it. Multiple cameras feeding a tracker, a floor plan with dots that move around, and you have a small version of the same idea. With Securade HUB, you can get a working prototype done in a weekend.</p>
+ <p class="fs-5 mb-4">This is a build-along guide for putting one together. The setup is small enough to be a hobby project, big enough to teach you the moving parts of a real computer-vision application. Once you've got the basics working, the same scaffolding works for actual production use cases.</p>
+
+ <h2 class="fw-bolder mb-4 mt-5">The pieces you need</h2>
+ <p class="fs-5 mb-4">Five components that have to work together. Get any one wrong and the whole thing doesn't tick.</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Cameras.</strong> The eyes of the system. Any IP camera with RTSP support works for a hobby setup; webcams are fine for a single-room demo.</li>
+ <li><strong>Detector.</strong> The model that finds people (or whatever you're tracking) in each frame. YOLO is the default for this; SSD or a custom-trained model also fine.</li>
+ <li><strong>Securade HUB.</strong> The orchestration layer. Takes feeds in, runs inference, manages state, emits results.</li>
+ <li><strong>Tracking algorithm.</strong> Maintains the identity of each tracked entity as they move between camera views.</li>
+ <li><strong>Map view.</strong> The visual output. A floor plan with live dots showing where each tracked entity is.</li>
+ </ul>
+
+ <h2 class="fw-bolder mb-4 mt-5">Setting up the environment</h2>
+ <p class="fs-5 mb-4">Quick setup checklist before you start writing code:</p>
+ <ol class="fs-5 mb-4" style="list-style: decimal inside;">
+ <li><strong>Python 3.6 or newer.</strong> Confirm with <code>python3 --version</code>.</li>
+ <li><strong>HUB installed.</strong> <code>git clone https://github.com/securade/hub</code> then follow the README.</li>
+ <li><strong>Dependencies.</strong> TensorFlow or PyTorch for the detector, OpenCV for the image handling.</li>
+ <li><strong>Cameras configured.</strong> Each camera reachable from your dev machine, RTSP URLs noted.</li>
+ <li><strong>Training data.</strong> Only needed if you're using a custom detector; pre-trained models cover most weekend-project use cases.</li>
+ </ol>
+ <p class="fs-5 mb-4">Spend a bit of time on this; getting the environment right saves debugging later. Most of the project's friction tends to be at setup time, not at coding time.</p>
+
+ <h2 class="fw-bolder mb-4 mt-5">Running detection through HUB</h2>
+ <p class="fs-5 mb-4">HUB makes the detection plumbing a config exercise rather than a coding exercise. The high-level flow:</p>
+ <ol class="fs-5 mb-4" style="list-style: decimal inside;">
+ <li><strong>Define your data streams.</strong> Camera URLs or file paths go into the HUB config. One stream per camera.</li>
+ <li><strong>Plug in the detector.</strong> HUB has integrations for the standard models; you can write a custom adapter if you need something exotic.</li>
+ <li><strong>Set up the pipeline.</strong> Specify how frames flow from cameras through the detector to the output sinks.</li>
+ <li><strong>Watch the detections.</strong> HUB's visualisation tools let you see what the model is detecting in real time, which is essential for tuning.</li>
+ </ol>
+ <p class="fs-5 mb-4">The architecture is modular, so swapping detectors or adjusting the pipeline is a config change rather than a rewrite.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/57c86610-2e8d-4981-a3ed-de1da9150187" alt="Object detection pipeline" /></figure>
+
+ <h2 class="fw-bolder mb-4 mt-5">Tracking people between cameras</h2>
+ <p class="fs-5 mb-4">The harder part. A person leaves camera 1, walks down a hallway, appears on camera 2. The system needs to know that person 2 in camera 2 is the same person 1 in camera 1, not a new entity. Four techniques that work, in increasing order of sophistication:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Feature matching.</strong> Extract visual features from each detection, match across cameras by similarity. Cheap, decent for small setups.</li>
+ <li><strong>Kalman filtering.</strong> Predict where each tracked entity should be next based on past motion. Smooths out noisy detections and handles brief occlusions.</li>
+ <li><strong>Re-identification (ReID) models.</strong> Train a separate model to recognise the same person across camera views even with appearance changes. Standard for production-grade tracking.</li>
+ <li><strong>Geometric constraints.</strong> Use camera placement and floor geometry to constrain where a person could plausibly be after leaving one camera view. Cuts the search space and improves accuracy.</li>
+ </ul>
+ <p class="fs-5 mb-4">For a hobby project, feature matching plus Kalman filtering is enough. For anything serious, add ReID.</p>
+
+ <h2 class="fw-bolder mb-4 mt-5">Drawing the map</h2>
+ <p class="fs-5 mb-4">The fun visual bit. You need a floor plan and a way to project camera-space detections onto it.</p>
+ <ol class="fs-5 mb-4" style="list-style: decimal inside;">
+ <li><strong>Sketch a floor plan.</strong> Hand-drawn is fine for a weekend project; for production, use whatever CAD or mapping tool you have.</li>
+ <li><strong>Calibrate the cameras.</strong> Figure out each camera's position and orientation relative to the floor plan. Affine transform or homography is usually enough.</li>
+ <li><strong>Project detections onto the map.</strong> For each detection in camera space, compute the corresponding floor-plan position using the calibration.</li>
+ <li><strong>Update live.</strong> As detections come in, move the dots on the map. Add labels if you want names or IDs.</li>
+ </ol>
+ <p class="fs-5 mb-4">Front-end options: HTML5 Canvas if you want a web app, Leaflet for a more map-like look, Unity if you want to go full game-engine. For a Marauder's Map vibe, Canvas with a styled background image works really well.</p>
+
+ <h2 class="fw-bolder mb-4 mt-5">Things that consistently help</h2>
+ <p class="fs-5 mb-4">A few practical notes from doing this kind of thing:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Start tiny.</strong> One camera, one detector, one test person. Get that working end-to-end before you add cameras.</li>
+ <li><strong>Use pre-trained models.</strong> You don't need to train from scratch for a project like this. YOLO pre-trained on COCO will find people just fine.</li>
+ <li><strong>Optimise where it matters.</strong> Lower the resolution if you're CPU-bound. Use GPU acceleration if available. Parallelise across cameras.</li>
+ <li><strong>Handle the weird cases.</strong> Occlusions, lighting changes, someone walking into a poorly-lit corner. Your system needs to degrade gracefully.</li>
+ <li><strong>Test in your actual space.</strong> Lab tests look great. Real rooms have different lighting, different angles, different furniture. Test where you'll deploy.</li>
+ </ul>
+
+ <h2 class="fw-bolder mb-4 mt-5">Where to take it next</h2>
+ <p class="fs-5 mb-4">Once the basic Marauder's Map is working, there's plenty more to build on top:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>3D tracking.</strong> Get depth information so you know not just where people are but how tall and which direction they're facing.</li>
+ <li><strong>Activity recognition.</strong> Walking, sitting, running, falling. Adds a layer of semantic meaning to the tracking.</li>
+ <li><strong>Anomaly detection.</strong> Spot unusual patterns: someone who shouldn't be there, loitering, restricted-zone breaches.</li>
+ <li><strong>Multi-camera fusion.</strong> Combine signals from overlapping camera views for more robust tracking.</li>
+ <li><strong>Privacy.</strong> Blur faces, anonymise data. Important if you're going to actually deploy this anywhere people don't expect it.</li>
+ </ul>
+ <p class="fs-5 mb-4">From here, the same scaffolding extends into security systems, workplace safety monitoring, sports analytics, or any other domain where you need to know where people are and what they're doing.</p>
+
+ <div class="conclusion">
+ <p class="fs-5 mb-4">A Marauder's Map style tracking system used to be a serious engineering project. With modern tooling, it's a weekend build. The fact that you can get this kind of thing working so quickly is what makes the current era of computer vision interesting: the gap between "I have an idea" and "I have a working prototype" has collapsed. Pick a project, give it a Saturday, and see what you can build.</p>
+ </div>
+ <div class="cta mt-5">
+ <p class="cta fs-5 mb-4">Ready to get started? Star our open source project HUB on <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">GitHub</a> and use it as a basis to build on top of!</p>
+ </div>
+ </div>
+ </div>
+ </article>
+</main>
+
+<!-- @partial:footer -->
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="footer-widget">
               <div class="logo">
-                <a href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
                 </a>
               </div>
-              <p class="desc">Safety, powered by AI.</p>
-              <ul class="social-links">
-                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
             <div class="footer-widget">
-              <h3>Company</h3>
+              <h3>Platform</h3>
               <ul class="links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
-                <li><a href="../../resources.html">Resources</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-widget">
-              <h3>About Us</h3>
-              <ul class="links">
-                <li>Contact Us</li>
-                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
               </ul>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h3>Subscribe for Updates</h3>
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
               <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                <div id="mce-responses" class="clear foot">
-                  <div class="response" id="mce-error-response" style="display:none"></div>
-                  <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>
-                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
       </div>
     </footer>
-    <!-- ========================= footer end ========================= -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="../../assets/js/tiny-slider.js"></script>
-    <script src="../../assets/js/wow.min.js"></script>
-    <script src="../../assets/js/polyfill.js"></script>
-    <script src="../../assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>

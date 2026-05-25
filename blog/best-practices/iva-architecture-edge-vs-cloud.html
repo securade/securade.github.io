@@ -1,335 +1,397 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <title>IVA Architecture: Edge vs Cloud - The Ultimate Guide - Securade.ai</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: IVA Architecture: Edge vs Cloud - The Ultimate Guide, Securade.ai
+description: Explore the differences between edge and cloud processing for IVA. Learn how to choose the right architecture based on latency, bandwidth, security, and cost.
+canonical_path: /blog/best-practices/iva-architecture-edge-vs-cloud.html
+og_title: IVA Architecture: Edge vs Cloud - The Ultimate Guide
+og_description: Discover the optimal architecture for your IVA system: edge or cloud? Weigh the pros and cons of each approach to maximize performance and efficiency.
+og_image: /assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg
+og_type: article
+nav_active: resources
+extra_schema:,
+ {"@type": "Article", "@id": "https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html#article", "headline": "IVA Architecture: Edge vs Cloud - The Ultimate Guide", "description": "Explore the differences between edge and cloud processing for IVA. Learn how to choose the right architecture based on latency, bandwidth, security, and cost.", "image": "https://securade.ai/assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg", "datePublished": "2025-02-21", "dateModified": "2025-02-21", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html"}, "inLanguage": "en", "articleSection": "Best Practices", "keywords": "edge computing, cloud computing, intelligent video analytics, IVA, video analytics, AI, machine learning, security cameras, computer vision, data processing, latency, bandwidth, security, cost, architecture"},
+ {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Best Practices", "item": "https://securade.ai/blog/best-practices/"}]}
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Explore the differences between edge and cloud processing for IVA. Learn how to choose the right architecture based on latency, bandwidth, security, and cost.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="IVA Architecture: Edge vs Cloud - The Ultimate Guide">
-    <meta property="og:description" content="Discover the optimal architecture for your IVA system: edge or cloud? Weigh the pros and cons of each approach to maximize performance and efficiency.">
-    <meta property="og:image" content="https://securade.ai/assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg">
-    <meta property="og:url" content="https://securade.ai">
-    <meta name="keywords" content="edge computing, cloud computing, intelligent video analytics, IVA, video analytics, AI, machine learning, security cameras, computer vision, data processing, latency, bandwidth, security, cost, architecture">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="../../assets/css/animate.css"/>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>IVA Architecture: Edge vs Cloud - The Ultimate Guide, Securade.ai</title>
+    <meta name="description" content="Explore the differences between edge and cloud processing for IVA. Learn how to choose the right architecture based on latency, bandwidth, security, and cost." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader end -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="IVA Architecture: Edge vs Cloud - The Ultimate Guide" />
+    <meta property="og:description" content="Discover the optimal architecture for your IVA system: edge or cloud? Weigh the pros and cons of each approach to maximize performance and efficiency." />
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html" />
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="IVA Architecture: Edge vs Cloud - The Ultimate Guide" />
+    <meta name="twitter:description" content="Discover the optimal architecture for your IVA system: edge or cloud? Weigh the pros and cons of each approach to maximize performance and efficiency." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, {"@type": "Article", "@id": "https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html#article", "headline": "IVA Architecture: Edge vs Cloud - The Ultimate Guide", "description": "Explore the differences between edge and cloud processing for IVA. Learn how to choose the right architecture based on latency, bandwidth, security, and cost.", "image": "https://securade.ai/assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg", "datePublished": "2025-02-21", "dateModified": "2025-02-21", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html"}, "inLanguage": "en", "articleSection": "Best Practices", "keywords": "edge computing, cloud computing, intelligent video analytics, IVA, video analytics, AI, machine learning, security cameras, computer vision, data processing, latency, bandwidth, security, cost, architecture"}, {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/best-practices/iva-architecture-edge-vs-cloud.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Best Practices", "item": "https://securade.ai/blog/best-practices/"}]}
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
       <div class="navbar-area">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#platform">HUB</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#tower">Tower</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="../../resources.html">Resources</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
-    <!-- ========================= header end ========================= -->
+<!-- @endpartial:header -->
 
-    <!-- ========================= blog-section start ========================= -->
-    <section id="blog-content" class="feature-section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <article>
-              <!-- Post header-->
-              <header class="mb-4">
-                <h1 class="fw-bolder mb-1">IVA Architecture: Edge vs Cloud - The Ultimate Guide</h1>
-                <div class="text-muted fst-italic mb-2">
-                  Posted on February 21, 2025 by Arjun Krishnamurthy
-                </div>
-              </header>
-              
-              <!-- Hero image -->
-              <figure class="mb-4">
-                <img class="img-fluid rounded" src="../../assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg" alt="Image"/>
-              </figure>
-              
-              <!-- Post content-->
-              <section class="mb-5">
-                
-        <section class="mb-5">
-            <div class="introduction">
-                <p class="fs-5 mb-4">Intelligent Video Analytics (IVA) is revolutionizing industries from security and surveillance to retail and manufacturing. At its core, IVA utilizes computer vision and machine learning to analyze video streams in real-time, extracting valuable insights and automating processes. However, the effectiveness of an IVA system heavily relies on its underlying architecture, specifically where the data processing takes place: on the edge or in the cloud.</p>
-<p class="fs-5 mb-4">Choosing between edge and cloud processing is a critical decision that impacts latency, bandwidth consumption, security, cost, and scalability. This blog post will delve into the nuances of each approach, providing a comprehensive comparison to help you determine the optimal architecture for your IVA deployment.</p>
-            </div>
-    
-            <h2 class="fw-bolder mb-4 mt-5">Understanding Edge Processing</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Edge processing involves performing data analysis and processing directly on the device or local network where the video data originates. This typically involves deploying AI algorithms on edge devices such as smart cameras, on-site servers, or specialized edge computing platforms. The key benefit is reduced latency, as data doesn't need to travel to a remote data center for processing.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Benefits of Edge Processing for IVA</h3>
-                    <div class="subsection-content">
-                        <ul class="fs-5 mb-4">
-    <li><strong>Low Latency:</strong> Enables real-time analysis and immediate action, crucial for time-sensitive applications like security alerts and anomaly detection.</li>
-    <li><strong>Reduced Bandwidth Consumption:</strong> Processing data locally minimizes the amount of data transmitted to the cloud, saving on bandwidth costs and improving network efficiency.</li>
-    <li><strong>Enhanced Privacy and Security:</strong> Sensitive data can be processed and stored locally, reducing the risk of data breaches and compliance issues.</li>
-    <li><strong>Offline Operation:</strong> Edge devices can continue to function even without a constant internet connection, ensuring uninterrupted IVA capabilities.</li>
-    <li><strong>Scalability:</strong> Deploying processing power at the edge can improve overall system scalability.</li>
-</ul>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Challenges of Edge Processing for IVA</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">While edge processing offers significant advantages, it also presents some challenges:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>Limited Processing Power:</strong> Edge devices typically have less processing power than cloud servers, which can limit the complexity of AI algorithms that can be deployed.</li>
-    <li><strong>Higher Upfront Costs:</strong> Deploying edge devices with sufficient processing capabilities can involve higher upfront hardware costs.</li>
-    <li><strong>Maintenance and Management:</strong> Managing and maintaining a large number of distributed edge devices can be complex and require specialized expertise.</li>
-    <li><strong>Security Vulnerabilities:</strong> Physical security of edge devices becomes a major concern.</li>
-    <li><strong>Limited storage:</strong> Local storage is often restricted on many edge devices.</li>
-</ul>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Understanding Cloud Processing</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Cloud processing involves transmitting video data to a remote data center where AI algorithms are executed on powerful servers. This approach leverages the virtually unlimited computing resources and scalability of the cloud, enabling complex AI models and centralized data management.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Benefits of Cloud Processing for IVA</h3>
-                    <div class="subsection-content">
-                        <ul class="fs-5 mb-4">
-    <li><strong>Scalability and Flexibility:</strong> Cloud platforms offer virtually unlimited computing resources, allowing you to scale your IVA system up or down as needed.</li>
-    <li><strong>Cost-Effectiveness:</strong> Cloud computing eliminates the need for upfront hardware investments and reduces ongoing maintenance costs through pay-as-you-go pricing models.</li>
-    <li><strong>Centralized Management:</strong> Cloud platforms provide centralized management tools for deploying, monitoring, and updating AI algorithms across your entire IVA system.</li>
-    <li><strong>Advanced Analytics:</strong> Cloud environments support complex AI models and big data analytics, enabling more sophisticated insights and predictions.</li>
-    <li><strong>Easy accessibility:</strong> Data and insights are accessible from anywhere with an internet connection.</li>
-</ul>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Challenges of Cloud Processing for IVA</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Despite its advantages, cloud processing also has its drawbacks:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>High Latency:</strong> Transmitting data to a remote data center introduces latency, which can be problematic for real-time applications.</li>
-    <li><strong>High Bandwidth Costs:</strong> Uploading large video streams to the cloud can consume significant bandwidth, leading to high costs.</li>
-    <li><strong>Privacy and Security Concerns:</strong> Storing sensitive data in the cloud raises privacy and security concerns, requiring robust security measures.</li>
-    <li><strong>Dependence on Internet Connectivity:</strong> Cloud-based IVA systems require a stable internet connection, which can be a limitation in areas with poor connectivity.</li>
-    <li><strong>Vendor Lock-in:</strong> Relying on a specific cloud provider can lead to vendor lock-in and limit flexibility.</li>
-</ul>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Edge vs. Cloud: A Detailed Comparison</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">To make an informed decision, it's essential to compare edge and cloud processing across several key factors:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>Latency:</strong> Edge processing offers significantly lower latency than cloud processing, making it ideal for real-time applications.</li>
-    <li><strong>Bandwidth:</strong> Edge processing minimizes bandwidth consumption, while cloud processing requires substantial bandwidth for data transmission.</li>
-    <li><strong>Security:</strong> Edge processing can enhance privacy and security by keeping data local, while cloud processing requires robust security measures to protect data in transit and at rest.</li>
-    <li><strong>Cost:</strong> Edge processing involves higher upfront hardware costs but lower ongoing bandwidth costs, while cloud processing eliminates upfront hardware costs but incurs ongoing computing and bandwidth charges.</li>
-    <li><strong>Scalability:</strong> Cloud processing offers greater scalability and flexibility than edge processing, allowing you to easily scale your IVA system up or down as needed.</li>
-    <li><strong>Complexity:</strong> Edge processing can be more complex to deploy and manage due to the distributed nature of edge devices, while cloud processing offers centralized management tools and simplified deployment.</li>
-</ul>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Hybrid Approach: The Best of Both Worlds</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">In many cases, the optimal solution involves a hybrid approach that combines the benefits of both edge and cloud processing. This entails performing some processing tasks on the edge to reduce latency and bandwidth consumption, while leveraging the cloud for more complex analytics, centralized management, and long-term data storage.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Examples of Hybrid IVA Architectures</h3>
-                    <div class="subsection-content">
-                        <ul class="fs-5 mb-4">
-    <li><strong>Real-time Alerting:</strong> Edge devices can perform basic object detection and trigger real-time alerts for security breaches, while the cloud can be used for more detailed analysis and forensic investigations.</li>
-    <li><strong>Traffic Management:</strong> Edge devices can count vehicles and monitor traffic flow in real-time, while the cloud can be used to analyze traffic patterns and optimize traffic light timings.</li>
-    <li><strong>Retail Analytics:</strong> Edge devices can track customer movements and dwell times in stores, while the cloud can be used to analyze sales data and optimize product placement.</li>
-</ul>
-<figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/5187ec8a-4452-4355-adff-92ef16908daf" alt="Hybrid IVA architecture diagram" /></figure>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Factors to Consider When Choosing an IVA Architecture</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Selecting the right architecture for your IVA system depends on several factors:</p>
-<ol class="fs-5 mb-4" style="list-style: decimal inside;">
-    <li><strong>Application Requirements:</strong> Consider the latency, bandwidth, and security requirements of your specific IVA application.</li>
-    <li><strong>Network Infrastructure:</strong> Evaluate the available bandwidth and reliability of your network connection.</li>
-    <li><strong>Data Sensitivity:</strong> Assess the sensitivity of the video data and the potential risks associated with storing it in the cloud.</li>
-    <li><strong>Budget:</strong> Determine your budget for hardware, software, and ongoing operational costs.</li>
-    <li><strong>Scalability Needs:</strong> Estimate your future scalability needs and choose an architecture that can accommodate them.</li>
-    <li><strong>Technical Expertise:</strong> Consider the level of technical expertise required to deploy and manage the IVA system.</li>
-</ol>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Best Practices for Implementing IVA Architectures</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Regardless of whether you choose edge, cloud, or a hybrid approach, follow these best practices:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>Secure Your Devices and Data:</strong> Implement robust security measures to protect your edge devices and data from unauthorized access.</li>
-    <li><strong>Optimize AI Algorithms:</strong> Optimize your AI algorithms for performance and efficiency, especially when deploying them on edge devices with limited processing power.</li>
-    <li><strong>Monitor System Performance:</strong> Monitor the performance of your IVA system regularly to identify and address any issues.</li>
-    <li><strong>Choose the Right Hardware:</strong> Select hardware that is optimized for IVA workloads and provides the necessary processing power and memory.</li>
-    <li><strong>Regularly Update Software:</strong> Keep your software up to date to ensure that you have the latest security patches and bug fixes.</li>
-</ul>
-<figure class="mb-4"><img class="img-fluid rounded" src="../../assets/images/blog/best-practices/securadeaiWorkplaceSafetyAiCamera.jpeg" alt="Diagram of a secure edge device" /></figure>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Future Trends in IVA Architectures</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">The field of IVA is constantly evolving, with several emerging trends shaping the future of IVA architectures:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>AI-Powered Edge Devices:</strong> Advancements in AI chips and embedded systems are enabling more powerful AI processing on edge devices.</li>
-    <li><strong>Federated Learning:</strong> Federated learning allows AI models to be trained on decentralized data without sharing the raw data itself, enhancing privacy and security.</li>
-    <li><strong>5G Connectivity:</strong> The rollout of 5G networks is providing faster and more reliable connectivity for IVA systems, enabling new applications and use cases.</li>
-    <li><strong>Serverless Computing:</strong> Serverless computing allows you to run AI algorithms in the cloud without managing servers, simplifying deployment and reducing costs.</li>
-</ul>
-            </div>
-        
-            <div class="conclusion">
-                <p class="fs-5 mb-4">Choosing the right architecture for your Intelligent Video Analytics (IVA) system is a critical decision that impacts its performance, cost, and security. By carefully considering the factors outlined in this blog post, you can select the architecture that best meets your specific needs and maximizes the value of your IVA deployment. Whether you opt for edge, cloud, or a hybrid approach, remember to prioritize security, optimize your AI algorithms, and monitor system performance to ensure a successful IVA implementation.</p>
-<p class="fs-5 mb-4">As IVA technology continues to advance, staying informed about the latest trends and best practices is crucial for maintaining a competitive edge and achieving optimal results. The right architecture serves as the backbone for effective, efficient, and secure IVA implementations, enabling organizations to unlock the full potential of video analytics and drive meaningful outcomes.</p>
-            </div>
-            <div class="cta mt-5">
-                <p class="cta fs-5 mb-4">Enjoyed this deep dive into IVA architectures? Give our GitHub project a star to show your support and stay updated on the latest advancements in AI and video analytics: <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">Star our project on GitHub!</a></p>
-            </div>
-        </section>
-    
-              </section>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========================= blog-section end ========================= -->
+<main id="main">
+ <article class="article">
+ <div class="container">
+ <div class="article-header">
+ <ol class="breadcrumbs" aria-label="Breadcrumb">
+ <li><a href="/">Home</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/blog/best-practices/">Best Practices</a></li><li class="current">IVA Architecture: Edge vs Cloud - The Ultimate Guide</li>
+ </ol>
+ <span class="article-eyebrow">Best Practices</span>
+ <h1>IVA Architecture: Edge vs Cloud - The Ultimate Guide</h1>
+ <p class="article-meta">
+ <span>By Arjun Krishnamurthy</span>
+ <span class="dot">·</span>
+ <time datetime="2025-02-21">February 21, 2025</time>
+ </p>
+ </div>
+ <figure class="article-hero">
+ <img src="/assets/images/blog/best-practices/securadeaiCloudEdgeIvaArchitecture.jpeg" alt="Image" />
+ </figure>
 
-    <!-- ========================= footer start ========================= -->
-    <footer class="footer pt-120">
+ <div class="article-body">
+ <section class="mb-5">
+ <div class="introduction">
+ <p class="fs-5 mb-4">Intelligent Video Analytics (IVA) has gone from niche to mainstream across security, retail, manufacturing, transport, and a growing list of other sectors. The premise is straightforward: run computer vision on the video stream, extract structured information, drive automated decisions. The interesting question, the one that actually shapes whether a deployment works, is where the processing happens.</p>
+ <p class="fs-5 mb-4">Edge or cloud. The choice has direct consequences for latency, bandwidth, security, total cost of ownership, and how the system scales. This post breaks down what each option looks like in practice and gives you a framework for matching the architecture to the workload.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Edge processing, explained</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Edge processing runs the analytics on the device or local network where the video originates. The AI model lives on a smart camera, an on-site server, or a dedicated edge box. Video never leaves the local network, or only the relevant clips and metadata do. Latency drops because there's no round-trip to a remote data centre.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Where edge wins</h3>
+ <div class="subsection-content">
+ <ul class="fs-5 mb-4">
+ <li><strong>Low latency.</strong> Sub-second detection-to-alert is realistic when the inference is local. For security, intrusion, and anomaly detection, that lag matters.</li>
+ <li><strong>Bandwidth savings.</strong> You're not pushing raw HD video off-site. Only the events, clips, and metadata that matter travel onward.</li>
+ <li><strong>Privacy and data residency.</strong> Footage of people stays on the local network. That's much easier to defend against GDPR or sectoral regulators than "we ship it all to us-east-1".</li>
+ <li><strong>Offline resilience.</strong> When the WAN drops, the system keeps running. Alerts queue and sync when connectivity returns.</li>
+ <li><strong>Scale by distribution.</strong> Each site brings its own compute. You don't need a centralised farm sized for total camera count.</li>
+ </ul>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Where edge gets hard</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">The benefits aren't free. Things to plan for:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Less horsepower per device.</strong> An edge box can't match a cloud GPU cluster. Larger or more complex models may need quantisation or pruning to fit.</li>
+ <li><strong>Upfront capital cost.</strong> Hardware is paid for on day one rather than amortised across a monthly bill.</li>
+ <li><strong>Fleet management.</strong> Hundreds of distributed devices need a real management story: OTA updates, monitoring, secure boot, drift detection.</li>
+ <li><strong>Physical security.</strong> The device is on-site. Someone could unplug it, steal it, or tamper with it.</li>
+ <li><strong>Local storage limits.</strong> Edge boxes have finite disk. Retention strategy needs to account for what stays local and what gets archived.</li>
+ </ul>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Cloud processing, explained</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Cloud processing ships the video stream to a remote data centre where the inference runs on shared GPU capacity. The appeal is elastic compute, central management, and the ability to run larger models than would fit on an edge device.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Where cloud wins</h3>
+ <div class="subsection-content">
+ <ul class="fs-5 mb-4">
+ <li><strong>Elastic scale.</strong> Add cameras without buying hardware. Spin up GPU capacity for a backfill job, then turn it off.</li>
+ <li><strong>Lower upfront cost.</strong> No site visits, no capex. Pay-as-you-go aligns spend with usage.</li>
+ <li><strong>Central management.</strong> One pane of glass for model deployment, monitoring, and updates across the entire estate.</li>
+ <li><strong>Heavier models.</strong> Multi-camera reasoning, long-context vision-language models, big ensembles. The cloud can run things an edge device can't.</li>
+ <li><strong>Accessibility.</strong> Dashboards and search work from anywhere with a browser.</li>
+ </ul>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Where cloud gets hard</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">The trade-offs that don't make it into the sales deck:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Latency.</strong> Network round-trip plus queue time plus inference. Hard to hit sub-second for real-time alerting.</li>
+ <li><strong>Bandwidth bill.</strong> Continuous HD upload from dozens of cameras is expensive, both on the WAN link and on egress out of customer sites.</li>
+ <li><strong>Privacy footprint.</strong> Sensitive footage now lives off-site. That changes your DPIA, your compliance posture, and your incident response plan.</li>
+ <li><strong>Internet dependency.</strong> When the link goes down, the cameras are blind. For safety-critical workloads, that's not acceptable.</li>
+ <li><strong>Vendor lock-in.</strong> Provider-specific APIs and data formats make migration expensive.</li>
+ </ul>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Edge vs cloud, head to head</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Six dimensions worth comparing side by side:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Latency.</strong> Edge wins. Local inference is typically 10x faster end-to-end than a cloud round-trip.</li>
+ <li><strong>Bandwidth.</strong> Edge wins. You're moving metadata, not raw video.</li>
+ <li><strong>Security and privacy.</strong> Edge is easier to defend on data residency grounds. Cloud is fine if you have a credible encryption and access control story.</li>
+ <li><strong>Cost.</strong> Edge front-loads spend (hardware), cloud spreads it (compute and egress). Over a 3-year horizon, edge usually wins on TCO for steady workloads. Cloud wins for bursty or short-duration workloads.</li>
+ <li><strong>Scalability.</strong> Cloud wins on elasticity. Edge scales by adding boxes, which is fine but slower.</li>
+ <li><strong>Operational complexity.</strong> Cloud is easier to operate centrally. Edge needs a real fleet management story.</li>
+ </ul>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">The hybrid pattern, which is what most real deployments look like</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">In practice, the answer is usually both. Run the time-critical and bandwidth-heavy parts at the edge (detection, alerting, clip extraction), and push the rest to the cloud (aggregation, longer-term storage, heavy-duty analytics, dashboards). You get the latency and privacy benefits of edge and the scale and central management of cloud.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">What hybrid looks like in different settings</h3>
+ <div class="subsection-content">
+ <ul class="fs-5 mb-4">
+ <li><strong>Real-time alerting.</strong> Edge detects the event and fires the alert in milliseconds. Cloud receives the clip and metadata for forensics, review, and trend analysis.</li>
+ <li><strong>Traffic management.</strong> Edge counts vehicles and adjusts signals in real time. Cloud aggregates city-wide patterns and feeds longer-horizon planning.</li>
+ <li><strong>Retail analytics.</strong> Edge tracks dwell time and queue lengths. Cloud joins that to sales data, builds the cross-store dashboards, and runs the merchandising models.</li>
+ </ul>
+ <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/5187ec8a-4452-4355-adff-92ef16908daf" alt="Hybrid IVA architecture diagram" /></figure>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">How to pick</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Six questions to answer before settling on an architecture:</p>
+ <ol class="fs-5 mb-4" style="list-style: decimal inside;">
+ <li><strong>What does the application actually need?</strong> Latency budget, bandwidth available, security posture. Real-time safety alerting has very different needs from monthly footfall analytics.</li>
+ <li><strong>What's the network like at each site?</strong> Symmetric fibre is a different world from a single 4G uplink shared with the rest of the business.</li>
+ <li><strong>How sensitive is the footage?</strong> A warehouse looks different from a hospital ward. Map the regulatory exposure honestly.</li>
+ <li><strong>What's the budget shape?</strong> Capex-friendly or opex-friendly. Both work, they just lead to different architectures.</li>
+ <li><strong>Where is this going to be in 3 years?</strong> Plan for the scale you'll actually need, not the one you're starting from.</li>
+ <li><strong>Who's going to run it?</strong> Edge fleets need ops capability. If you don't have it, you'll either build it or pay someone else to.</li>
+ </ol>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Things that hold true regardless of where you process</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Edge, cloud, hybrid: the basics don't change.</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Secure the device and the data.</strong> Treat every camera, every box, every model endpoint as a potential attack surface.</li>
+ <li><strong>Optimise the models for the hardware.</strong> Quantisation, pruning, distillation. A model that runs at 5 FPS on the target device is useful; one that doesn't fit isn't.</li>
+ <li><strong>Monitor the system, not just the cameras.</strong> Drift, false positive rates, alert volumes, model latency. Watch them like any production service.</li>
+ <li><strong>Pick hardware that matches the workload.</strong> Generic boxes are tempting but rarely cost-optimal for AI inference at scale.</li>
+ <li><strong>Update regularly.</strong> Models, OS, firmware. The longer you defer, the harder the eventual update gets.</li>
+ </ul>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/best-practices/securadeaiWorkplaceSafetyAiCamera.jpeg" alt="Diagram of a secure edge device" /></figure>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">What's coming next</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A few shifts worth tracking:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Edge silicon keeps getting better.</strong> Each generation of AI accelerators shifts more of the workload that needed cloud GPUs onto a 50W box.</li>
+ <li><strong>Federated learning.</strong> Models improve from distributed data without the raw video ever leaving the site. The privacy story is genuinely better.</li>
+ <li><strong>5G and private wireless.</strong> Lower-latency, higher-bandwidth links make some hybrid patterns that were impractical before viable.</li>
+ <li><strong>Serverless inference.</strong> For bursty cloud workloads, serverless GPU is changing the cost profile of cloud-side processing.</li>
+ </ul>
+ </div>
+
+ <div class="conclusion">
+ <p class="fs-5 mb-4">Picking the right architecture for an IVA system is one of the load-bearing decisions in the deployment. Get it right and the system scales, the bills are predictable, and the latency budget is met. Get it wrong and you're either rebuilding it within a year or living with a system that's slow, expensive, or both. The framework above is the one we use when scoping a deployment. Match the architecture to the latency budget, the bandwidth available, the regulatory posture, and the operational maturity of the team that's going to run it. Edge, cloud, or hybrid: the right answer is the one that fits the workload.</p>
+ <p class="fs-5 mb-4">The field is moving fast. New edge silicon, new model architectures, new networking options. Keep checking that the architecture you picked 18 months ago is still the right one for the next 18.</p>
+ </div>
+ <div class="cta mt-5">
+ <p class="cta fs-5 mb-4">Enjoyed this deep dive into IVA architectures? Give our GitHub project a star to show your support and stay updated on the latest advancements in AI and video analytics: <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">Star our project on GitHub!</a></p>
+ </div>
+ </div>
+ </div>
+ </article>
+</main>
+
+<!-- @partial:footer -->
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="footer-widget">
               <div class="logo">
-                <a href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
                 </a>
               </div>
-              <p class="desc">Safety, powered by AI.</p>
-              <ul class="social-links">
-                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
             <div class="footer-widget">
-              <h3>Company</h3>
+              <h3>Platform</h3>
               <ul class="links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
-                <li><a href="../../resources.html">Resources</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-widget">
-              <h3>About Us</h3>
-              <ul class="links">
-                <li>Contact Us</li>
-                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
               </ul>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h3>Subscribe for Updates</h3>
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
               <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                <div id="mce-responses" class="clear foot">
-                  <div class="response" id="mce-error-response" style="display:none"></div>
-                  <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>
-                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
       </div>
     </footer>
-    <!-- ========================= footer end ========================= -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="../../assets/js/tiny-slider.js"></script>
-    <script src="../../assets/js/wow.min.js"></script>
-    <script src="../../assets/js/polyfill.js"></script>
-    <script src="../../assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>

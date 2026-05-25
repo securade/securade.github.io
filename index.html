@@ -1,531 +1,577 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-	<title>Securade.ai - Safety, powered by AI</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: Securade.ai - Generative AI Video Analytics for Workplace Safety
+description: Securade.ai uses generative AI to turn the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents in construction, manufacturing, oil and gas, and logistics.
+canonical_path: /
+og_title: Securade.ai - Generative AI Video Analytics for Workplace Safety
+og_description: Generative AI video analytics that turns existing CCTV cameras into safety copilots that predict and prevent workplace accidents.
+og_type: website
+nav_active: home
+extra_schema: ,
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://securade.ai/#hub",
+      "name": "Securade.ai HUB",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Linux, Docker",
+      "url": "https://github.com/securade/hub",
+      "description": "Edge AI platform that runs hundreds of computer-vision algorithms on existing CCTV cameras for real-time workplace safety monitoring.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "Open Source" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://securade.ai/#sentinel",
+      "name": "Securade.ai Sentinel",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Linux, Docker",
+      "url": "https://github.com/securade/sentinel",
+      "description": "Automated surveillance application using generative AI and LLMs to analyse live CCTV feeds and answer natural-language queries about video content.",
+      "publisher": { "@id": "https://securade.ai/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://securade.ai/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Securade.ai?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots that predict and prevent workplace accidents in construction, manufacturing, oil and gas, and logistics." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Securade.ai work with existing CCTV cameras?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Securade.ai HUB connects to any RTSP/ONVIF-compliant IP camera, so existing infrastructure can be upgraded without replacing hardware." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Securade.ai HUB open source?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Securade.ai HUB is available as open source on GitHub at github.com/securade/hub, and a commercial license is offered for production deployments with priority support." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does generative AI video analytics work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Generative AI models can detect new objects and behaviours from natural-language prompts or a handful of example images, with no bounding-box annotation required. Securade.ai uses this approach to fine-tune detectors for site-specific PPE, exclusion zones, and unsafe acts in minutes." }
+        },
+        {
+          "@type": "Question",
+          "name": "What industries does Securade.ai support?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Construction, manufacturing, oil & gas, logistics, warehousing, preschools, and any environment with CCTV infrastructure and worker-safety requirements." }
+        }
+      ]
+    }
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Revolutionizing worker safety and productivity with the first generative AI video analytics platform, predicting and preventing workplace accidents.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="website">
-	<meta property="og:title" content="Securade.ai - Safety, powered by AI">
-	<meta property="og:description" content="Revolutionizing worker safety and productivity with the first generative AI video analytics platform, predicting and preventing workplace accidents.">
-	<meta property="og:image" content="https://securade.ai/images/logo.png">
-	<meta property="og:url" content="https://securade.ai/index.html">
-	
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="canonical" href="https://securade.ai/index.html" />
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="assets/css/animate.css"/>
-    <link rel="stylesheet" href="assets/css/main.css"/>
-	<!-- Add icon library -->
-	<!-- Replace the standard CDN link with this -->
-	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/[version]/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/[version]/css/font-awesome.min.css"></noscript>
-	<!--
-	<script id="mcjs">
-	function showPopup() { 
-		!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}
-		(document,"script","https://chimpstatic.com/mcjs-connected/js/users/c1838467fb5c2b0a86380a903/9bce73c0b98ece59d41dfe5e5.js");
-	
-		//unsetting the cookie
-		document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";                  
-		document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-	}
-		
-	//document.getElementById("show-popup").onclick = function() { showPopup(); }
-	</script>
-	-->
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>Securade.ai - Generative AI Video Analytics for Workplace Safety</title>
+    <meta name="description" content="Securade.ai uses generative AI to turn the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents in construction, manufacturing, oil and gas, and logistics." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Securade.ai - Generative AI Video Analytics for Workplace Safety" />
+    <meta property="og:description" content="Generative AI video analytics that turns existing CCTV cameras into safety copilots that predict and prevent workplace accidents." />
+    <meta property="og:image" content="https://securade.ai/assets/images/og-default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="Securade.ai - Generative AI Video Analytics for Workplace Safety" />
+    <meta name="twitter:description" content="Generative AI video analytics that turns existing CCTV cameras into safety copilots that predict and prevent workplace accidents." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/og-default.png" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, { "@type": "SoftwareApplication", "@id": "https://securade.ai/#hub", "name": "Securade.ai HUB", "applicationCategory": "SecurityApplication", "operatingSystem": "Linux, Docker", "url": "https://github.com/securade/hub", "description": "Edge AI platform that runs hundreds of computer-vision algorithms on existing CCTV cameras for real-time workplace safety monitoring.", "publisher": { "@id": "https://securade.ai/#organization" }, "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "Open Source" } }, { "@type": "SoftwareApplication", "@id": "https://securade.ai/#sentinel", "name": "Securade.ai Sentinel", "applicationCategory": "SecurityApplication", "operatingSystem": "Linux, Docker", "url": "https://github.com/securade/sentinel", "description": "Automated surveillance application using generative AI and LLMs to analyse live CCTV feeds and answer natural-language queries about video content.", "publisher": { "@id": "https://securade.ai/#organization" } }, { "@type": "FAQPage", "@id": "https://securade.ai/#faq", "mainEntity": [ { "@type": "Question", "name": "What is Securade.ai?", "acceptedAnswer": { "@type": "Answer", "text": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots that predict and prevent workplace accidents in construction, manufacturing, oil and gas, and logistics." } }, { "@type": "Question", "name": "Does Securade.ai work with existing CCTV cameras?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Securade.ai HUB connects to any RTSP/ONVIF-compliant IP camera, so existing infrastructure can be upgraded without replacing hardware." } }, { "@type": "Question", "name": "Is Securade.ai HUB open source?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Securade.ai HUB is available as open source on GitHub at github.com/securade/hub, and a commercial license is offered for production deployments with priority support." } }, { "@type": "Question", "name": "How does generative AI video analytics work?", "acceptedAnswer": { "@type": "Answer", "text": "Generative AI models can detect new objects and behaviours from natural-language prompts or a handful of example images, with no bounding-box annotation required. Securade.ai uses this approach to fine-tune detectors for site-specific PPE, exclusion zones, and unsafe acts in minutes." } }, { "@type": "Question", "name": "What industries does Securade.ai support?", "acceptedAnswer": { "@type": "Answer", "text": "Construction, manufacturing, oil & gas, logistics, warehousing, preschools, and any environment with CCTV infrastructure and worker-safety requirements." } } ] }
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+<link rel="preload" as="image" href="/assets/videos/hero-demo-poster.jpg" fetchpriority="high" />
+<link rel="preload" as="video" href="/assets/videos/hero-demo.mp4" type="video/mp4" />
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="navbar-area">
+        <div class="container">
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link " href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+<!-- @endpartial:header -->
+
+<main id="main">
+
+  <!-- ============================ Hero ============================ -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center" style="row-gap: 3rem;">
+        <div class="col-lg-6">
+          <div class="hero-content reveal">
+            <span class="eyebrow">Safety, powered by AI</span>
+            <h1>Generative AI <span class="accent">video analytics</span> for workplace safety.</h1>
+            <p>We watch your existing CCTV feeds for the stuff that turns into accidents: missing PPE, workers in crane swing paths, forklifts too close to people. You see it in time to act.</p>
+            <div class="hero-cta-group">
+              <a href="https://securade.ai/subscribe" class="main-btn">Buy a license</a>
+              <a href="https://github.com/securade/hub" class="main-btn border-btn" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true" style="margin-right:.25rem"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Open source on GitHub
+              </a>
+            </div>
+            <p class="hero-sub-link">Already a customer? <a href="https://securade.ai/billing">Manage your subscription &rarr;</a></p>
+
+            <div class="awards-strip">
+              <span class="awards-strip-label">Recognised by</span>
+              <div class="awards-grid">
+                <div class="award">
+                  <img src="/assets/images/about/AI-for-public-good-award-special-mention.png" width="64" height="64" alt="AI for Public Good award badge" />
+                  <div class="award-name">AI for Public Good<span>Special Mention, 2023</span></div>
+                </div>
+                <div class="award">
+                  <img src="/assets/images/about/tech4good.png" width="64" height="64" alt="IEEE Tech4Good 2023 project badge" />
+                  <div class="award-name">IEEE Tech4Good<span>Selected project, 2023</span></div>
+                </div>
+                <div class="award">
+                  <img src="/assets/images/about/wshaaward2023.png" width="64" height="64" alt="WSH Award 2023 winner badge" />
+                  <div class="award-name">WSH Award 2023<span>Winner, Singapore</span></div>
+                </div>
               </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="hero-image" style="aspect-ratio: 16/9;">
+            <video class="hero-video" autoplay loop muted playsinline preload="metadata"
+                   poster="/assets/videos/hero-demo-poster.jpg" aria-label="Securade.ai HUB live worksite monitoring demo">
+              <source src="/assets/videos/hero-demo.webm" type="video/webm" />
+              <source src="/assets/videos/hero-demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ Features ============================ -->
+  <section id="features" class="feature-section">
+    <div class="container">
+      <div class="row" style="row-gap: 2.5rem;">
+        <div class="col-lg-5">
+          <div class="section-title reveal">
+            <span class="eyebrow">Platform</span>
+            <h2>Built for your site, not a generic playbook.</h2>
+            <p>Every worksite is different, so we don't try to ship one canned setup. You pick the detectors that match what's actually on your site, or train your own in about five minutes if you can't find one. Everything runs at the edge, on hardware you probably already have lying around.</p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="feature-grid">
+            <div class="single-feature reveal">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div class="feature-content">
+                <h3>Detection built for industrial sites</h3>
+                <p>Models tuned for hard hats, high-vis vests, exclusion zones, and unsafe acts. Less false positives than generic CV.</p>
+              </div>
+            </div>
+            <div class="single-feature reveal">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M16 8l-6 3-3 6 6-3 3-6z"/></svg>
+              </div>
+              <div class="feature-content">
+                <h3>Simple to operate</h3>
+                <p>Set policies, generate compliance reports, and track a Safety Score that quantifies ROI and liability. No PhD required.</p>
+              </div>
+            </div>
+            <div class="single-feature reveal">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              </div>
+              <div class="feature-content">
+                <h3>Hundreds of detectors out of the box</h3>
+                <p>Pick what you need from the marketplace, or bring your own model to HUB.</p>
+              </div>
+            </div>
+            <div class="single-feature reveal">
+              <div class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4.5L18 21l-6-3-6 3 1.5-7.5L3 9l6-1z"/></svg>
+              </div>
+              <div class="feature-content">
+                <h3>Train a new detector in five minutes</h3>
+                <p>Skip the labelling. Generative AI fine-tunes a detector for a new object from as few as five example images.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-		<!-- preloader end -->
-		
+  </section>
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
-      <div class="navbar-area">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">
-                  <img src="assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-								</button>
-								
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-									<div class="ms-auto">
-										<ul id="nav" class="navbar-nav ms-auto">
-											<li class="nav-item">
-												<a class="page-scroll active" href="#home">Home</a>
-											</li>
-											<li class="nav-item">
-												<a class="page-scroll" href="#platform">HUB</a>
-											</li>
-											<li class="nav-item">
-												<a class="page-scroll" href="#tower">Tower</a>
-											</li>
-											<li class="nav-item">
-												<a class="page-scroll" href="#sentinel">Sentinel</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="safety-copilot.html">Safety Copilot&trade;</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="resources.html">Resources</a>
-											</li>
-										</ul>
-									</div>
-                  
-                </div>
-								<!-- navbar collapse 
-								<div class="header-btn">
-									<button onclick="showPopup()" class="main-btn btn-hover">Safety Copilot&trade;</button>
-								</div> -->
-              </nav>
-              <!-- navbar -->
+  <!-- ============================ HUB ============================ -->
+  <section id="platform" class="about-section">
+    <div class="container">
+      <div class="row align-items-center" style="row-gap: 2.5rem;">
+        <div class="col-lg-6 order-last order-lg-first reveal">
+          <div class="about-image"><img src="/assets/images/illustrations/hub.svg" alt="Diagram of Securade.ai HUB connecting to multiple CCTV cameras with real-time detection results" width="640" height="480" loading="lazy" /></div>
+        </div>
+        <div class="col-lg-6 reveal">
+          <div class="about-content-wrapper">
+            <span class="product-badge">HUB</span>
+            <h2>Edge AI for every camera you already own.</h2>
+            <p>Install once and any camera becomes smart. Hundreds of detection algorithms run in real time, alerts fire when something goes wrong, and a customisable policy engine keeps everything aligned with your safety rules. Analytics roll up into reports that prove compliance.</p>
+            <div class="hero-cta-group">
+              <a href="https://github.com/securade/hub" class="main-btn" rel="noopener">Get started on GitHub</a>
+              <a href="/blog/technology/" class="main-btn btn-ghost">Read the docs</a>
             </div>
           </div>
-          <!-- row -->
         </div>
-        <!-- container -->
       </div>
-      <!-- navbar area -->
-    </header>
-    <!-- ========================= header end ========================= -->
-    <!-- ========================= hero-section start ========================= -->
-	<section id="home" class="hero-section">
-		<div class="container">
-		  <div class="row align-items-center">
-			<!-- Left Column -->
-			<div class="col-xl-6 col-lg-6 col-md-10">
-			  <div class="hero-content">
-				<h1>Safeguard Your Worksites</h1>
-				<p>Protect your workers and projects with award winning Generative AI based video analytics 
-				  technology that predicts and prevents accidents.</p>
-				<!-- Awards -->
-				<div class="d-flex gap-4 mb-4">
-				  <img src="assets/images/about/AI-for-public-good-award-special-mention.png" alt="AI for Public Good Award">
-				  <img src="assets/images/about/tech4good.png" alt="IEEE Tech4Good Project"> 
-				  <img src="assets/images/about/wshaaward2023.png" alt="Winner Award 2023">
-				</div>
-				
-				<!-- Action Buttons - Icons on mobile, full text on desktop -->
-				<div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-3 mt-5">
-				  <a href="https://github.com/securade/hub" 
-					 class="main-btn btn-hover text-center"
-					 style="background-color: transparent; border: 2px solid #5CBFBF; color: #5CBFBF; min-width: 60px; min-width: 160px;">
-					<i class="lni lni-github-original d-block d-md-none"></i>
-					<span class="d-none d-md-inline"><i class="lni lni-github-original me-2"></i>Open Source</span>
-				  </a>
-				  <a href="https://securade.ai/subscribe" 
-					 class="main-btn btn-hover text-center" 
-					 style="background-color: #5CBFBF; padding: 15px 30px; color: white; min-width: 60px; min-width: 160px;">
-					<i class="lni lni-shopping-basket d-block d-md-none"></i>
-					<span class="d-none d-md-inline"><i class="lni lni-shopping-basket me-2"></i>Buy License</span>
-				  </a>
-				  <a href="https://securade.ai/billing" 
-					 class="main-btn btn-hover text-center"
-					 style="background-color: transparent; border: 2px solid #5CBFBF; color: #5CBFBF; min-width: 60px; min-width: 160px;">
-					<i class="lni lni-user d-block d-md-none"></i>
-					<span class="d-none d-md-inline"><i class="lni lni-user me-2"></i>Manage Subscription</span>
-				  </a>
-				</div>
-			  </div>
-			</div>
-			
-			<!-- Right Column -->
-			<div class="col-xxl-6 col-xl-6 col-lg-6">
-			  <div class="hero-image text-center text-lg-end">
-				<div style="padding:56.25% 0 0 0;position:relative;">
-				  <iframe loading="lazy" 
-						  src="https://player.vimeo.com/video/787279049?h=797a83a1c8&autoplay=1&loop=1&title=0&byline=0&portrait=0&background=1" 
-						  style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-						  frameborder="0" 
-						  allow="autoplay; fullscreen; picture-in-picture">
-				  </iframe>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </section>
-		<!-- ========================= hero-section end ========================= -->
+    </div>
+  </section>
 
-		<!-- ========================= about-section start ========================= -->
-		<!-- ========================= about-section end ========================= -->
+  <!-- ============================ Tower ============================ -->
+  <section id="tower" class="cta-section">
+    <div class="container">
+      <div class="row align-items-center" style="row-gap: 2.5rem;">
+        <div class="col-lg-6 reveal">
+          <div class="cta-content-wrapper">
+            <span class="product-badge">Tower</span>
+            <h2>A complete safety AI deployment, in a box.</h2>
+            <p>A self-contained kit with a HUB, 4G internet, two cameras, screen, UPS power back-up, and an industrial socket. Everything sits in an IP66 weatherproof enclosure. Built for sites where CCTV and networking are a challenge. Runs on generator power or solar, pole-mountable.</p>
+            <a href="/blog/securade-ai-tower-construction-safety.html" class="main-btn border-btn">See it in action</a>
+          </div>
+        </div>
+        <div class="col-lg-6 reveal">
+          <div class="cta-image text-lg-end"><img src="/assets/images/illustrations/tower.svg" alt="Diagram of the Securade.ai Tower mobile deployment kit with solar panel, two cameras and weatherproof enclosure on a worksite" width="640" height="480" loading="lazy" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		<!-- ========================= feature-section start ========================= -->
-		<section id="features" class="feature-section">
-			<div class="container">
-				<div class="row">
+  <!-- ============================ Sentinel ============================ -->
+  <section id="sentinel" class="cta-section">
+    <div class="container">
+      <div class="row align-items-center" style="row-gap: 2.5rem;">
+        <div class="col-lg-6 order-last order-lg-first reveal">
+          <div class="cta-image"><img src="/assets/images/illustrations/sentinel.svg" alt="Diagram of Securade.ai Sentinel showing a live worksite camera frame and a natural-language chat conversation about what is happening on site" width="640" height="480" loading="lazy" /></div>
+        </div>
+        <div class="col-lg-6 reveal">
+          <div class="cta-content-wrapper">
+            <span class="product-badge">Sentinel</span>
+            <h2>Ask any question of any camera, in plain English.</h2>
+            <p>Sentinel applies generative AI and LLMs to live CCTV feeds. It recognises activity and records it as searchable text, so you can query feeds in natural language and get answers, ChatGPT-style.</p>
+            <a href="https://github.com/securade/sentinel" class="main-btn border-btn" rel="noopener">Try Sentinel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-					<div class="col-lg-5 col-md-10">
-						<div class="section-title mb-60">
-							<h2 class="mb-20">Features</h2>
-							<p>
-								Design and assemble a bespoke solution for all your workplace safety and productivity needs.
-								Our platform enables customers to go from idea to implementation in a matter of minutes.
-							</p>
-						</div>
-					</div>
+  <!-- ============================ Workplace Safety ============================ -->
+  <section id="solutions" class="cta-section">
+    <div class="container">
+      <div class="row align-items-center" style="row-gap: 2.5rem;">
+        <div class="col-lg-6 reveal">
+          <div class="cta-content-wrapper">
+            <span class="product-badge">Workplace Safety</span>
+            <h2>The boring stuff that actually prevents injuries.</h2>
+            <p>Pull up any incident log and you'll see the same handful of patterns. A hard hat that came off. Someone standing way too close to a forklift. A guy who walked into an exclusion zone because the cone was knocked over. We watch for those on the camera feeds you already have, ping whoever needs to know in real time, and the events get rolled up into a weekly report your EHS team won't ignore.</p>
+            <a href="/blog/industry-solutions/" class="main-btn border-btn">Explore case studies</a>
+          </div>
+        </div>
+        <div class="col-lg-6 reveal">
+          <div class="cta-image text-lg-end">
+            <img
+              src="/assets/images/cta/cta-image-1280x1128.jpg"
+              srcset="/assets/images/cta/cta-image-480x423.jpg 480w,
+                      /assets/images/cta/cta-image-696x613.jpg 696w,
+                      /assets/images/cta/cta-image-960x846.jpg 960w,
+                      /assets/images/cta/cta-image-1280x1128.jpg 1280w,
+                      /assets/images/cta/cta-image-1670x1472.jpg 1670w,
+                      /assets/images/cta/cta-image-2048x1805.jpg 2048w"
+              sizes="(min-width: 992px) 45vw, 100vw"
+              alt="Worker on a construction site with AI-detected PPE compliance overlay"
+              loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ============================ FAQ ============================ -->
+  <section id="faq" class="feature-section">
+    <div class="container">
+      <div class="row" style="row-gap: 2rem;">
+        <div class="col-lg-4">
+          <div class="section-title reveal">
+            <span class="eyebrow">FAQ</span>
+            <h2>Common questions.</h2>
+            <p>If you don't see your question here, <a href="mailto:hello@securade.ai">drop us a note</a>.</p>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="faq reveal">
+            <details class="faq-item">
+              <summary>What is Securade.ai?</summary>
+              <div class="faq-item-content">We run generative AI on top of your CCTV feeds and watch for the stuff that turns into accidents: hard hats missing, people standing where forklifts move, that kind of thing. The point is to catch it before someone gets hurt, instead of pulling footage out after the fact. We work with construction, manufacturing, oil and gas, and logistics teams.</div>
+            </details>
+            <details class="faq-item">
+              <summary>Does Securade.ai work with existing CCTV cameras?</summary>
+              <div class="faq-item-content">Yes. HUB talks to any RTSP/ONVIF camera, so you can keep the cameras you have and just point them at it. No rip-and-replace.</div>
+            </details>
+            <details class="faq-item">
+              <summary>Is Securade.ai HUB open source?</summary>
+              <div class="faq-item-content">Yes, HUB is on GitHub at <a href="https://github.com/securade/hub" rel="noopener">github.com/securade/hub</a>. We also sell a commercial license for production deployments with priority support, in case that fits better — you can <a href="https://securade.ai/subscribe">buy one here</a>.</div>
+            </details>
+            <details class="faq-item">
+              <summary>How does generative AI video analytics work?</summary>
+              <div class="faq-item-content">The short version: instead of labelling thousands of bounding boxes by hand, you describe what you're after in plain language or show the model five example pictures. The model figures out the rest. That's how we fine-tune detectors for site-specific PPE, exclusion zones, and unsafe acts in minutes, not weeks.</div>
+            </details>
+            <details class="faq-item">
+              <summary>What industries does Securade.ai support?</summary>
+              <div class="faq-item-content">Mostly construction sites, factories, oil &amp; gas plants, and logistics yards. But honestly, if there are cameras and people moving around machinery, the same approach works. One of our weirder deployments was at a preschool in Singapore (to watch the playground), which we did not see coming.</div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-					<div class="col-lg-7">
-						<div class="row">
-							<div class="col-lg-6 col-md-6">
-								<div class="single-feature">
-									<div class="feature-icon">
-										<i class="lni lni-display"></i>
-									</div>
-									<div class="feature-content">
-										<h4>SOTA AI for Workplace Safety</h4>
-										<p>We have developed a state of the art object detection model for the workplace 
-											safety domain.</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="single-feature">
-									<div class="feature-icon">
-										<i class="lni lni-compass"></i>
-									</div>
-									<div class="feature-content">
-										<h4>Easy to Use</h4>
-										<p>Implement policies and create compliance reports with a flexible and
-											intuitive interface. Use the Securade.ai Safety Score to calculate ROI
-											and reduce liability.</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="single-feature">
-									<div class="feature-icon">
-										<i class="lni lni-grid-alt"></i>
-									</div>
-									<div class="feature-content">
-										<h4>AI Marketplace</h4>
-										<p>Get access to 100s of use cases based on open-source models or bring your own model to 
-										Securade.ai HUB.
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6">
-								<div class="single-feature">
-									<div class="feature-icon">
-										<i class="lni lni-layers"></i>
-									</div>
-									<div class="feature-content">
-										<h4>Generative AI</h4>
-										<p>No need to label or annotate bounding boxes, we use Generative AI for automated object detection.
-										Fine-tune a model to detect a new object with as few as 5 images in 5 mins. </p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+  <!-- ============================ Latest from blog ============================ -->
+  <section id="resources-preview" class="feature-section">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-5" style="gap:1rem">
+        <div>
+          <span class="eyebrow">Resources</span>
+          <h2 style="margin:0">Latest from the blog.</h2>
+        </div>
+        <a href="/resources.html" class="icon-link">Browse all articles</a>
+      </div>
+      <div class="card-grid reveal">
+        <a href="/blog/transform-cameras-securade-ai-upgrade.html" class="post-card">
+          <div class="post-card-media">
+            <img src="/assets/images/blog/A-futuristic-high-tech-camera-integrated-with-advanced-AI-technology-symbolizing-the-innovative-no-code-upgrade-capabilities-of-Securade.ai-HUB.jpeg" alt="A modern AI-enhanced CCTV camera concept render" loading="lazy" />
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-chip">Technology</span>
+            <h3>Transform cameras with Securade.ai</h3>
+            <p style="color:var(--ink-muted);font-size:.9375rem;margin:0">A no-code upgrade path that turns any IP camera into an AI-aware safety device.</p>
+            <div class="post-card-meta">Read article</div>
+          </div>
+        </a>
+        <a href="/blog/ai-driven-fire-safety-workplace.html" class="post-card">
+          <div class="post-card-media">
+            <img src="/assets/images/blog/An-outdoor-industrial-workplace-featuring-realistic-advanced-AI-fire-safety-technology.jpeg" alt="Outdoor industrial site with AI-powered fire-safety monitoring" loading="lazy" />
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-chip">Workplace Safety</span>
+            <h3>AI-driven fire safety in the workplace</h3>
+            <p style="color:var(--ink-muted);font-size:.9375rem;margin:0">How vision AI can spot fire hazards before they escalate into incidents.</p>
+            <div class="post-card-meta">Read article</div>
+          </div>
+        </a>
+        <a href="/blog/maximizing-safety-with-ai-features-edge-app.html" class="post-card">
+          <div class="post-card-media">
+            <img src="/assets/images/blog/securade.ai-edge-app-screenshot.jpeg" alt="Securade.ai Edge App screenshot showing live monitoring" loading="lazy" />
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-chip">Technology</span>
+            <h3>Maximising safety with AI features</h3>
+            <p style="color:var(--ink-muted);font-size:.9375rem;margin:0">An in-depth look at how the Securade.ai Edge App combines real-time monitoring with intelligent alerts.</p>
+            <div class="post-card-meta">Read article</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
-		<section id="platform" class="about-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 order-last order-lg-first">
-						<div class="about-image">
-							<!-- Responsive Image -->
-							<img 
-							src="assets/images/about/mock-up-1280x1128.jpg"
-							srcset="
-							assets/images/about/mock-up-480x423.jpg 480w,
-							assets/images/about/mock-up-696x613.jpg 696w,
-							assets/images/about/mock-up-960x846.jpg 960w,
-							assets/images/about/mock-up-1095x965.jpg 1095w,
-							assets/images/about/mock-up-1280x1128.jpg 1280w,
-							assets/images/about/mock-up-1440x1269.jpg 1440w,
-							assets/images/about/mock-up-1670x1472.jpg 1670w,
-							assets/images/about/mock-up-1870x1648.jpg 1870w,
-							assets/images/about/mock-up-2048x1805.jpg 2048w
-							"
-							sizes="
-								(min-width: 1000px) 45vw, (min-width: 780px) 696px, (min-width: 580px) 480px, calc(100vw - 60px)
-							"
-							alt="Edge App"
-							style="max-width: 100%; height: auto;"
-							>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="about-content-wrapper">
-							<div class="section-title">
-								<h2 class="mb-20">Securade.ai HUB<br class="d-none d-lg-block">
-									Edge AI platform</h2>
-								<p class="mb-30">Access 100s of algorithms instantly with real-time insights to prevent accidents. 
-									Install once and make any camera smart to implement your use case in seconds. 
-									Monitor worksites in real-time to quickly identify and address any safety concerns. 
-									Ensure compliance with company safety policies and regulations with our customizable policy engine.
-									Stay informed with detailed reports and analytics on your worksite's safety performance.</p>
-								<a href="https://github.com/securade/hub" class="main-btn btn-hover border-btn">Get Started</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+</main>
 
-		<!-- ========================= feature-section end ========================= -->
-		<section id="tower" class="cta-section pt-130 pb-100">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-6 col-md-10">
-						<div class="cta-content-wrapper">
-							<div class="section-title">
-								<h2 class="mb-20">Securade.ai Tower<br class="d-none d-lg-block">
-									Mobile Deployment Kit</h2>
-								<p class="mb-30">
-									A self contained kit that includes a HUB, 4G internet, 2 cameras, a screen, a power back up
-									with UPS and an industrial socket point for charging, all packaged in an IP66 weatherproof enclosure. The 
-									Tower is primarily targeted for worksites where the deployment of CCTV cameras 
-									and network connectivity is a challenge. It is powered by existing industrial power generators 
-									or solar panels on site and can also be mounted on poles as needed.
-								</p>
-								<a href="blog/securade-ai-tower-construction-safety.html" class="main-btn btn-hover border-btn">Discover More</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="cta-image text-lg-end">
-							<!-- Responsive Image -->
-							<img 
-							src="assets/images/about/the-tower-6-1280x1128.jpg"
-							srcset="
-								assets/images/about/the-tower-6-480x423.jpg 480w,
-								assets/images/about/the-tower-6-696x613.jpg 696w,
-								assets/images/about/the-tower-6-960x846.jpg 960w,
-								assets/images/about/the-tower-6-1095x965.jpg 1095w,
-								assets/images/about/the-tower-6-1280x1128.jpg 1280w,
-								assets/images/about/the-tower-6-1440x1269.jpg 1440w,
-								assets/images/about/the-tower-6-1670x1472.jpg 1670w,
-								assets/images/about/the-tower-6-1870x1648.jpg 1870w,
-								assets/images/about/the-tower-6-2048x1805.jpg 2048w
-							"
-							sizes="(min-width: 1400px) 636px, (min-width: 1200px) 546px, (min-width: 1000px) 456px, (min-width: 780px) 696px, (min-width: 580px) 480px, calc(100vw - 60px)"
-							alt="Securade.ai Tower"
-							style="max-width: 100%; height: auto;"
-							>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-				<section id="sentinel" class="cta-section pt-130 pb-100">
-					<div class="container">
-						<div class="row align-items-center">
-		
-							<div class="col-lg-6 order-last order-lg-first">
-								<div class="cta-image text-lg-end">
-									<!-- Responsive Image -->
-									<img 
-									src="assets/images/about/sentinel-1280x1128.jpg"
-									srcset="
-										assets/images/about/sentinel-480x423.jpg 480w,
-										assets/images/about/sentinel-696x613.jpg 696w,
-										assets/images/about/sentinel-960x846.jpg 960w,
-										assets/images/about/sentinel-1095x965.jpg 1095w,
-										assets/images/about/sentinel-1280x1128.jpg 1280w,
-										assets/images/about/sentinel-1440x1269.jpg 1440w,
-										assets/images/about/sentinel-1670x1472.jpg 1670w,
-										assets/images/about/sentinel-1870x1648.jpg 1870w,
-										assets/images/about/sentinel-2048x1805.jpg 2048w
-									"
-									sizes="
-										(max-width: 480px) 480px,
-										(max-width: 696px) 696px,
-										(max-width: 960px) 960px,
-										(max-width: 1095px) 1095px,
-										(max-width: 1280px) 1280px,
-										(max-width: 1440px) 1440px,
-										(max-width: 1670px) 1670px,
-										(max-width: 1870px) 1870px,
-										2048px
-									"
-									alt="Your image description"
-									style="max-width: 100%; height: auto;"
-									>
-								</div>
-							</div>
-		
-							<div class="col-lg-6">
-								<div class="cta-content-wrapper">
-									<div class="section-title">
-										<h2 class="mb-20">Securade.ai Sentinel<br class="d-none d-lg-block">
-											Automated Surveillance</h2>
-										<p class="mb-30">
-											A monitoring and surveillance application that enables visual Q&A and video captioning for existing CCTV cameras.
-											Securade.ai Sentinel uses generative AI and LLMs to automatically analyse live video feeds from CCTV cameras 
-											to recognise activities and record them as text. The live video feeds can also be queried in natural language 
-											to answer questions in a chatGPT like interface.
-										</p>
-										<a href="https://github.com/securade/sentinel" class="main-btn btn-hover border-btn">Try Now</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-		<!-- ========================= cta-section start ========================= -->
-		<section id="solutions" class="cta-section pt-130 pb-100">
-			<div class="container">
-				<div class="row align-items-center">
+<!-- @partial:footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="footer-widget">
+              <div class="logo">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
+                </a>
+              </div>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
+            <div class="footer-widget">
+              <h3>Platform</h3>
+              <ul class="links">
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="footer-widget">
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
+              <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
+      </div>
+    </footer>
 
-					<div class="col-lg-6 order-last order-lg-first">
-						<div class="cta-image text-lg-end">
-							<!-- Responsive Image -->
-							<img 
-							src="assets/images/cta/cta-image-1280x1128.jpg"
-							srcset="
-								assets/images/cta/cta-image-480x423.jpg 480w,
-								assets/images/cta/cta-image-696x613.jpg 696w,
-								assets/images/cta/cta-image-960x846.jpg 960w,
-								assets/images/cta/cta-image-1095x965.jpg 1095w,
-								assets/images/cta/cta-image-1280x1128.jpg 1280w,
-								assets/images/cta/cta-image-1440x1269.jpg 1440w,
-								assets/images/cta/cta-image-1670x1472.jpg 1670w,
-								assets/images/cta/cta-image-1870x1648.jpg 1870w,
-								assets/images/cta/cta-image-2048x1805.jpg 2048w
-							"
-							sizes="(min-width: 1400px) 636px, (min-width: 1200px) 546px, (min-width: 1000px) 456px, (min-width: 780px) 696px, (min-width: 580px) 480px, calc(100vw - 60px)"
-							alt="Workplace Safety Solution"
-							style="max-width: 100%; height: auto;"
-							>
-						</div>
-					</div>
-
-					<div class="col-lg-6">
-						<div class="cta-content-wrapper">
-							<div class="section-title">
-								<h2 class="mb-20">Workplace Safety</h2>
-								<p class="mb-30">
-									Our workplace safety solution includes PPE detection, proximity detection and exclusion zones.
-									Together these use cases ensure that workers are wearing the required personal protective
-									equipment, maintain safe distances from machinery and avoid prohibited areas. Safety incident 
-									response is supported with alerts, notifications and reporting.
-								</p>
-								<!-- <a href="#0" class="main-btn btn-hover border-btn">Try it Free</a>-->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- ========================= footer start ========================= -->
-		<footer class="footer pt-120">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-						<div class="footer-widget">
-							<div class="logo">
-								<a href="index.html"> <img src="assets/images/logo/logo.png" alt="logo" 
-									style="max-width: 180px;"> </a>
-							</div>
-							<p class="desc">Safety, powered by AI.</p>
-							<ul class="social-links">
-								<!-- <li><a href="#0"><i class="lni lni-facebook"></i></a></li>-->
-								<li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-								<!--<li><a href="#0"><i class="lni lni-instagram"></i></a></li>-->
-								<li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
-						<div class="footer-widget">
-							<h3>Company</h3>
-							<ul class="links">
-								<li><a href="#home">Home</a></li>
-								<li><a href="safety-copilot.html">Safety Copilot&trade;</a></li>
-								<li><a href="resources.html">Resources</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-						<div class="footer-widget">
-							<h3>About Us</h3>
-							<ul class="links">
-								<!--
-								<li><a href="#team">Team</a></li>
-								-->
-								<li>Contact Us</li>
-								<li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
-								<!--<li><a href="#0">Awesome Design</a></li>
-								<li><a href="#0">Ready to Use</a></li>
-								<li><a href="#0">Essential Selection</a></li>-->
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-4 col-md-6">
-						<div class="footer-widget">
-							<h3>Subscribe for Updates</h3>
-							<!-- Begin Mailchimp Signup Form -->
-							<form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-								<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-								<div id="mce-responses" class="clear foot">
-									<div class="response" id="mce-error-response" style="display:none"></div>
-									<div class="response" id="mce-success-response" style="display:none"></div>
-								</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-								<button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
-						</form>
-						<!--End mc_embed_signup-->
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- ========================= footer end ========================= -->
-
-
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="assets/js/tiny-slider.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>

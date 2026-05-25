@@ -1,312 +1,374 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <title>Generative AI: Boost Object Detection with These Best Practices - Securade.ai</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: Generative AI: Boost Object Detection with These Best Practices, Securade.ai
+description: Explore best practices for generative AI in object detection. Learn data generation, model training, and overcoming challenges for improved performance.
+canonical_path: /blog/best-practices/generative-ai-object-detection-best-practices.html
+og_title: Generative AI: Boost Object Detection with These Best Practices
+og_description: A comprehensive guide to using generative AI for enhanced object detection. Learn how to generate data, train models, and overcome common challenges.
+og_image: /assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg
+og_type: article
+nav_active: resources
+extra_schema:,
+ {"@type": "Article", "@id": "https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html#article", "headline": "Generative AI: Boost Object Detection with These Best Practices", "description": "Explore best practices for generative AI in object detection. Learn data generation, model training, and overcoming challenges for improved performance.", "image": "https://securade.ai/assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg", "datePublished": "2025-05-09", "dateModified": "2025-05-09", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html"}, "inLanguage": "en", "articleSection": "Best Practices", "keywords": "generative AI, object detection, computer vision, GANs, diffusion models, synthetic data, data augmentation, model training, AI safety, AI best practices"},
+ {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Best Practices", "item": "https://securade.ai/blog/best-practices/"}]}
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Explore best practices for generative AI in object detection. Learn data generation, model training, and overcoming challenges for improved performance.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Generative AI: Boost Object Detection with These Best Practices">
-    <meta property="og:description" content="A comprehensive guide to leveraging generative AI for enhanced object detection. Learn how to generate data, train models, and overcome common challenges.">
-    <meta property="og:image" content="https://securade.ai/assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg">
-    <meta property="og:url" content="https://securade.ai">
-    <meta name="keywords" content="generative AI, object detection, computer vision, GANs, diffusion models, synthetic data, data augmentation, model training, AI safety, AI best practices">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="../../assets/css/animate.css"/>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>Generative AI: Boost Object Detection with These Best Practices, Securade.ai</title>
+    <meta name="description" content="Explore best practices for generative AI in object detection. Learn data generation, model training, and overcoming challenges for improved performance." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader end -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Generative AI: Boost Object Detection with These Best Practices" />
+    <meta property="og:description" content="A comprehensive guide to using generative AI for enhanced object detection. Learn how to generate data, train models, and overcome common challenges." />
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html" />
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="Generative AI: Boost Object Detection with These Best Practices" />
+    <meta name="twitter:description" content="A comprehensive guide to using generative AI for enhanced object detection. Learn how to generate data, train models, and overcome common challenges." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, {"@type": "Article", "@id": "https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html#article", "headline": "Generative AI: Boost Object Detection with These Best Practices", "description": "Explore best practices for generative AI in object detection. Learn data generation, model training, and overcoming challenges for improved performance.", "image": "https://securade.ai/assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg", "datePublished": "2025-05-09", "dateModified": "2025-05-09", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html"}, "inLanguage": "en", "articleSection": "Best Practices", "keywords": "generative AI, object detection, computer vision, GANs, diffusion models, synthetic data, data augmentation, model training, AI safety, AI best practices"}, {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/best-practices/generative-ai-object-detection-best-practices.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Best Practices", "item": "https://securade.ai/blog/best-practices/"}]}
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
       <div class="navbar-area">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#platform">HUB</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#tower">Tower</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="../../resources.html">Resources</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
-    <!-- ========================= header end ========================= -->
+<!-- @endpartial:header -->
 
-    <!-- ========================= blog-section start ========================= -->
-    <section id="blog-content" class="feature-section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <article>
-              <!-- Post header-->
-              <header class="mb-4">
-                <h1 class="fw-bolder mb-1">Generative AI: Boost Object Detection with These Best Practices</h1>
-                <div class="text-muted fst-italic mb-2">
-                  Posted on May 09, 2025 by Arjun Krishnamurthy
-                </div>
-              </header>
-              
-              <!-- Hero image -->
-              <figure class="mb-4">
-                <img class="img-fluid rounded" src="../../assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg" alt="Image"/>
-              </figure>
-              
-              <!-- Post content-->
-              <section class="mb-5">
-                
-        <section class="mb-5">
-            <div class="introduction">
-                <p class="fs-5 mb-4">Generative AI is rapidly transforming the field of computer vision, particularly in object detection. Traditional object detection methods often face limitations in handling rare objects, varying environmental conditions, and insufficient training data. Generative AI offers innovative solutions by creating synthetic data, augmenting existing datasets, and improving model robustness. This blog post will outline the best practices for leveraging generative AI to enhance your object detection capabilities, ensuring more accurate and reliable results.</p><p class="fs-5 mb-4">We'll explore how to effectively generate synthetic data, integrate it with real-world data, train robust models, and address common challenges. By following these guidelines, you can harness the power of generative AI to overcome the limitations of traditional object detection and achieve state-of-the-art performance.</p>
-            </div>
-    
-            <h2 class="fw-bolder mb-4 mt-5">Understanding Generative AI for Object Detection</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Generative AI models, such as Generative Adversarial Networks (GANs) and diffusion models, are revolutionizing object detection by providing powerful tools for data augmentation and synthetic data generation. These models learn the underlying distribution of the data and can create new, realistic samples that can be used to train object detection models.</p><p class="fs-5 mb-4">GANs, for example, consist of two neural networks: a generator that creates synthetic images and a discriminator that distinguishes between real and synthetic images. Through adversarial training, the generator learns to produce increasingly realistic images, which can then be used to augment the training dataset. Diffusion models, on the other hand, work by gradually adding noise to an image and then learning to reverse this process, allowing them to generate new images from random noise. This process often results in high-quality and diverse synthetic data.</p><p class="fs-5 mb-4">The advantages of using generative AI for object detection include improved robustness, reduced data needs, and the ability to handle rare or challenging objects. However, there are also limitations to consider, such as ensuring the realism of synthetic data, addressing potential biases, and managing computational costs.</p>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Best Practices in Data Generation</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Effective data generation is crucial for successful generative AI-based object detection. Here are key best practices to follow:</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Defining Your Needs</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Before generating any data, clearly identify the specific object detection challenges you aim to address. Are you dealing with rare objects, varying lighting conditions, occlusions, or unusual viewpoints? Understanding these challenges will guide the data generation process.</p><p class="fs-5 mb-4">Determine the types and amount of synthetic data required to address these challenges. Consider factors such as the diversity of the data, the level of realism needed, and the computational resources available. A well-defined plan will ensure that you generate the right data to improve your object detection model.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Choosing the Right Generative Model</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">The choice of generative model depends on the specific object detection task and the desired characteristics of the synthetic data. GANs are well-suited for generating high-resolution images with fine details, while diffusion models excel at generating diverse and realistic images, especially when dealing with complex scenes.</p><p class="fs-5 mb-4">Consider factors such as image quality, diversity, control over generated content, and computational efficiency when selecting a generative model. Experiment with different architectures and techniques to find the best fit for your needs. For instance, StyleGANs are popular for generating photorealistic faces, while other GAN variants may be better suited for generating objects in different environments.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Ensuring Data Realism and Diversity</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">The realism and diversity of synthetic data are critical for its effectiveness in training object detection models. Techniques such as domain randomization and photorealistic rendering can significantly improve the realism of synthetic data.</p><p class="fs-5 mb-4">Domain randomization involves varying the parameters of the synthetic environment, such as lighting, textures, and backgrounds, to create a wide range of scenarios. This helps the model generalize better to real-world data. Photorealistic rendering techniques aim to create synthetic images that are indistinguishable from real images, further enhancing the model's ability to learn from synthetic data. Strategies for generating diverse data include varying viewpoints, lighting conditions, backgrounds, and object poses. This ensures that the model is exposed to a wide range of scenarios and can handle real-world variability.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Annotation Strategies for Synthetic Data</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">One of the key advantages of using synthetic data is that annotations can be automatically generated with high accuracy. This eliminates the need for manual annotation, which can be time-consuming and expensive.</p><p class="fs-5 mb-4">Use the tools available within the generation software to annotate the images or create scripts to read the scene and object configurations to automatically generate annotations in the desired format (e.g., bounding boxes, segmentation masks). Be mindful of potential discrepancies between synthetic and real data annotations, such as differences in annotation style or accuracy. Address these discrepancies by carefully validating the annotations and, if necessary, refining the annotation process.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Integrating Generative Data with Real Data</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Integrating synthetic data with real data requires careful consideration to maximize the benefits and minimize potential drawbacks. Here's how to do it effectively:</p><figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/45b2654d-8c02-4f89-b818-e44547828848" alt="Synthetic Data Integration" /></figure>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Determining the Optimal Mix</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">The optimal mix of synthetic and real data depends on the specific object detection task and the characteristics of the available data. In some cases, using primarily synthetic data may be sufficient, especially when real data is scarce or expensive to acquire. In other cases, a balanced approach, where synthetic data is used to augment a smaller set of real data, may yield better results.</p><p class="fs-5 mb-4">Experiment with different ratios of synthetic and real data to find the combination that maximizes the model's performance on real-world data. Consider using techniques such as transfer learning, where the model is first trained on synthetic data and then fine-tuned on real data, to leverage the benefits of both types of data.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Avoiding Negative Transfer</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Negative transfer occurs when synthetic data negatively impacts the model's performance on real data. This can happen when the synthetic data is too different from the real data or when the model overfits to the synthetic data.</p><p class="fs-5 mb-4">Identify and mitigate potential issues by carefully evaluating the model's performance on both synthetic and real data. Techniques such as domain adaptation and fine-tuning can help to bridge the gap between synthetic and real data distributions. Domain adaptation involves training the model to be invariant to the differences between the synthetic and real domains, while fine-tuning involves adjusting the model's parameters on real data after it has been trained on synthetic data.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Model Training and Evaluation with Generative Data</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Training and evaluating object detection models with generative data require specific considerations to ensure optimal performance:</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Adapting Training Pipelines</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">When training object detection models with mixed real and synthetic datasets, consider adjusting the training pipeline to account for the characteristics of each type of data. For example, you may want to use different batch sizes for real and synthetic data, or apply different data augmentation techniques to each type of data.</p><p class="fs-5 mb-4">Experiment with different loss function adjustments to balance the contributions of real and synthetic data to the overall loss. For example, you may want to assign different weights to the losses computed on real and synthetic data, or use a loss function that is specifically designed to handle mixed datasets.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Robust Evaluation Metrics</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Even when using synthetic data for training, it is essential to evaluate the model's performance on real-world data. This provides a more accurate assessment of the model's generalization capabilities and ensures that it performs well in real-world scenarios.</p><p class="fs-5 mb-4">Use appropriate evaluation metrics, such as mean Average Precision (mAP), to assess the model's performance. Establish benchmarks using real-world datasets to compare the model's performance against state-of-the-art methods and track progress over time.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Iterative Refinement</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">The data generation and training process should be continuously evaluated and refined. Identify and address weaknesses in the generated data by analyzing the model's performance on different subsets of the data and identifying areas where it struggles.</p><p class="fs-5 mb-4">Refine the data generation process by adjusting the parameters of the generative model, improving the realism of the synthetic data, or generating additional data to address specific challenges. Regularly evaluate the model's performance and iterate on the data generation and training process until you achieve the desired results.</p><figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/143e5a12-3fe7-4cae-9189-68b7fb6fedb9" alt="Model Training Process" /></figure>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Addressing Common Challenges and Pitfalls</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Despite the benefits of generative AI for object detection, there are several challenges and pitfalls to be aware of:</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Mode Collapse in GANs</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Mode collapse is a common problem in GANs, where the generator produces only a limited variety of images, failing to capture the full diversity of the data distribution. To mitigate mode collapse, try training with different architectures or loss functions.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Lack of Diversity in Generated Data</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Ensure that the generated data covers the full range of possible scenarios and variations. Generate training images with unique backgrounds, lighting conditions, and camera angles to expose your model to all possible scenarios.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">The Reality Gap Between Synthetic and Real Images</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Even with advanced rendering techniques, there may still be a gap between synthetic and real images. If your model is overfitting the training data, try to reduce the complexity of the training set. Domain randomization techniques are often useful in these situations.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Ethical Considerations</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Address ethical considerations related to the use of synthetic data, such as the potential for generating biased or misleading data. Take steps to ensure that the synthetic data is representative of the real-world population and does not perpetuate harmful stereotypes.</p><figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/0fd57f72-89ca-4ee6-9977-3b47c1e280c4" alt="Addressing Challenges" /></figure>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Case Studies and Examples</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Generative AI has been successfully applied in object detection across various domains. Here are a few examples:</p><ul class="fs-5 mb-4" style="list-style: decimal inside;"><li><strong>Autonomous Driving:</strong> Generative AI is used to generate synthetic data of rare events, such as accidents or near-misses, to train self-driving car models.</li><li><strong>Medical Imaging:</strong> Generative AI is used to augment medical imaging datasets, improving the accuracy of diagnostic models and reducing the need for large amounts of patient data.</li><li><strong>Retail:</strong> Generative AI is used to generate synthetic images of products in different environments, improving the accuracy of object detection models for inventory management and visual search.</li></ul>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Future Directions and Emerging Trends</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">The field of generative AI for object detection is rapidly evolving, with several promising research areas and emerging trends:</p><ul class="fs-5 mb-4"><li><strong>3D Generative Models:</strong> Generating synthetic 3D models of objects and scenes to improve object detection in 3D environments.</li><li><strong>Unsupervised Data Generation:</strong> Developing generative models that can learn from unlabeled data, further reducing the need for manual annotation.</li><li><strong>Adversarial Training for Robustness:</strong> Using adversarial training techniques to improve the robustness of object detection models against adversarial attacks and noisy data.</li></ul>
-            </div>
-        
-            <div class="conclusion">
-                <p class="fs-5 mb-4">Generative AI offers a powerful toolkit for enhancing object detection capabilities. By following these best practices in data generation, model training, and evaluation, you can harness the potential of generative AI to overcome the limitations of traditional object detection methods and achieve state-of-the-art performance. From addressing rare objects to improving robustness in diverse environments, generative AI is revolutionizing the field of computer vision.</p><p class="fs-5 mb-4">We encourage you to explore and experiment with these techniques to unlock the full potential of generative AI in your object detection applications. The possibilities are vast, and the future of object detection is undoubtedly intertwined with the continued advancements in generative AI.</p>
-            </div>
-            <div class="cta mt-5">
-                <p class="cta fs-5 mb-4">If you found this information helpful, consider starring our open source project <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">HUB</a> on GitHub! Your support helps us continue to develop and improve tools for the AI community.</p>
-            </div>
-        </section>
-    
-              </section>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========================= blog-section end ========================= -->
+<main id="main">
+ <article class="article">
+ <div class="container">
+ <div class="article-header">
+ <ol class="breadcrumbs" aria-label="Breadcrumb">
+ <li><a href="/">Home</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/blog/best-practices/">Best Practices</a></li><li class="current">Generative AI: Boost Object Detection with These Best Practices</li>
+ </ol>
+ <span class="article-eyebrow">Best Practices</span>
+ <h1>Generative AI: Boost Object Detection with These Best Practices</h1>
+ <p class="article-meta">
+ <span>By Arjun Krishnamurthy</span>
+ <span class="dot">·</span>
+ <time datetime="2025-05-09">May 09, 2025</time>
+ </p>
+ </div>
+ <figure class="article-hero">
+ <img src="/assets/images/blog/best-practices/securadeaiAiAssistedAutomotiveDesign.jpeg" alt="Image" />
+ </figure>
 
-    <!-- ========================= footer start ========================= -->
-    <footer class="footer pt-120">
+ <div class="article-body">
+ <section class="mb-5">
+ <div class="introduction">
+ <p class="fs-5 mb-4">Object detection is one of those problems that's mostly about data. A great detector trained on a thin dataset still fails on the edge cases. The interesting question now is: can we use generative AI to fill the dataset gaps that real-world collection can't cover?</p><p class="fs-5 mb-4">In our experience, the answer is yes, with caveats. Synthetic data closes the long tail when used carefully, and amplifies your dataset's blind spots when used carelessly. Here's what we've learned about doing it right.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">What generative AI brings to detection</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Two families of model do most of the heavy lifting. GANs (Generative Adversarial Networks) pit a generator against a discriminator until the generator gets good at faking the data distribution. Diffusion models take a different route: start from noise, denoise step by step, end up with an image. Both produce useful synthetic training data; they just have different cost/quality trade-offs.</p><p class="fs-5 mb-4">GANs are fast at inference and produce high-resolution outputs with fine textures. They're prone to mode collapse, which means they sometimes get stuck generating only a narrow slice of the data they were trained on. Diffusion models are slower and more compute-hungry, but they give you more diversity and tend to handle complex scenes better. For most detection augmentation work today, diffusion is winning, but GANs still have their place when you need speed.</p><p class="fs-5 mb-4">The upside of going synthetic is real: more data to train on, control over the rare cases that don't show up enough in production, perfect labels without paying for annotation. The downside is also real: synthetic images can carry biases from the generator, the domain gap to real data can sneak in, and the compute bills aren't trivial.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Generating data that actually helps</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A lot of the value lives in how you frame the data generation problem. A few practices that have saved us time.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Know what you're fixing</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Start by figuring out where your current detector falls over. Run it across a representative test set and look at the failure modes. Is it weak on night-time scenes? Heavy occlusion? A specific rare class? You want synthetic data that targets these gaps, not just more of what you already have.</p><p class="fs-5 mb-4">From there, scope the volume and variety you need. A few thousand high-quality, targeted synthetic images often beats fifty thousand generic ones. Cheaper to generate, cheaper to validate, more useful at training time.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Pick the model that matches the task</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">For high-fidelity texture work (faces, surface defects), a StyleGAN variant is often the right call. For complex scenes with multiple objects and varied compositions, modern diffusion models like SDXL or controllable variants give you better diversity.</p><p class="fs-5 mb-4">Don't pick the fanciest model out of habit. The right question is "what's the cheapest model that produces images good enough to improve my detector?" Often that's a smaller, faster model than the headline-grabbing one.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Realism and diversity, in that order</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Two techniques pull most of the weight here. Domain randomisation: vary every parameter you can (lighting, texture, backgrounds, weather, sensor noise) so the synthetic distribution is wider than the real one. The model trained on it learns to be robust because it has seen everything.</p><p class="fs-5 mb-4">Photorealistic rendering: closer the synthetic frames look to real ones, the smaller the domain gap. Modern renderers like Omniverse or Unreal MetaHumans can produce frames that are hard to tell from real footage. The cost is more compute and a longer pipeline. Use it when domain randomisation alone isn't closing the gap.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Free labels are the underrated win</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">The thing that makes synthetic data really attractive is that you generated the scene, so you know where everything is. Bounding boxes, segmentation masks, depth, keypoints, all of it comes out of the generator for free. No annotators.</p><p class="fs-5 mb-4">Just make sure the synthetic labels follow the same conventions as your real labels. If your real-data boxes include the bottom 5 pixels of shadow and your synthetic ones don't, the model will be quietly confused. A label sanity check across a sample of mixed real/synthetic data catches this.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Mixing synthetic and real</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Almost no one uses pure synthetic data. The real win comes from blending. The blend ratio is where most of the experimentation happens.</p><figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/45b2654d-8c02-4f89-b818-e44547828848" alt="Synthetic Data Integration" /></figure>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Finding the right ratio</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Start with a 1:1 ratio, train, evaluate. Then sweep. We've seen ratios from 1:5 (heavily real) to 5:1 (heavily synthetic) win on different projects depending on how much real data was available and how good the generator was.</p><p class="fs-5 mb-4">A staged approach often wins: pretrain on synthetic, fine-tune on real. The model picks up the general structure from the synthetic data and the real-world details from the fine-tune. Especially useful when real data is scarce.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Watch for negative transfer</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Sometimes adding synthetic data makes the model worse on real data. That's negative transfer, and it usually means the synthetic data is biased in a way the model is now memorising. Always measure real-data performance separately, not just aggregate metrics.</p><p class="fs-5 mb-4">When you hit negative transfer, options are: shrink the synthetic share, improve the realism, or add a domain-adaptation loss that pushes the synthetic and real features closer together in latent space.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Training and evaluation on mixed data</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A few tactical adjustments help when training on mixed datasets.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Adjusting the training pipeline</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Common pattern: oversample real data in each batch so the model doesn't drift toward synthetic-domain features. A batch of 64 with 16 real and 48 synthetic gives different results from 32/32, even with identical totals across the epoch.</p><p class="fs-5 mb-4">A weighted loss is another lever. Penalise mistakes on real samples more heavily than mistakes on synthetic ones. It biases the gradient toward "be right on real data, even if you're a bit off on synthetic".</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Evaluate on real data, full stop</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Synthetic test metrics lie. The only number that matters is performance on a real-data validation set that the model has never seen and that was never used in tuning.</p><p class="fs-5 mb-4">Standard metrics still apply: mAP at multiple IoU thresholds for detection, per-class breakdowns, calibration plots if confidence scores matter to your downstream system. Compare against a baseline trained on only-real data so you can quantify what the synthetic augmentation actually bought you.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Iterate, don't ship-and-forget</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">First synthetic batch will not be perfect. Run the resulting model, look at where it still fails, adjust the generator to target those failure modes, regenerate, retrain. The loop is what makes the approach pay off.</p><p class="fs-5 mb-4">Track the generator's output distribution over iterations too. It's easy for tweaks to accidentally narrow the diversity, which then hurts the next training run.</p><figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/143e5a12-3fe7-4cae-9189-68b7fb6fedb9" alt="Model Training Process" /></figure>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">The traps people fall into</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A short list of failure modes worth watching for.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Mode collapse</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Classic GAN problem: the generator finds one or two images it can fake well, and keeps producing variants of those. Spot it by sampling the generator output and looking at the diversity yourself. If everything looks the same, switch architectures (WGAN-GP, StyleGAN), or change the loss.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Narrow diversity</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Even without full mode collapse, generators trend toward over-representing certain backgrounds, lighting, or compositions. Force the variety with explicit conditioning on backgrounds, angles, lighting, then sanity-check the output.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">The reality gap</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Synthetic frames almost always look slightly off compared to real ones. The model picks up on those tells and learns to rely on them. Domain randomisation, careful colour matching, and adding real-world sensor noise to the synthetic frames all help close the gap.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">The ethical side</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Synthetic data can encode and amplify biases. If your generator was trained mostly on faces of one demographic, the synthetic faces it produces will skew that way, and so will any detector trained on them. Audit the distribution; balance the generation; don't shortcut this part.</p><figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/0fd57f72-89ca-4ee6-9977-3b47c1e280c4" alt="Addressing Challenges" /></figure>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Where this is actually shipping</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A few domains where synthetic-augmented detection is well past the research stage:</p><ul class="fs-5 mb-4" style="list-style: decimal inside;"><li><strong>Autonomous vehicles:</strong> synthetic crash and near-miss scenarios you can't safely capture in the real world. Waymo, Cruise, and others lean heavily on this.</li><li><strong>Medical imaging:</strong> synthetic CT and MRI slices augment patient data, which is hard and expensive to get in volume. Helps especially with rare conditions where real samples are scarce.</li><li><strong>Retail and inventory:</strong> synthetic product shots in varied store lighting, used to train detectors for shelf monitoring and self-checkout.</li></ul>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">What's coming next</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A few directions worth tracking:</p><ul class="fs-5 mb-4"><li><strong>3D generative models:</strong> NeRFs and 3D Gaussian splats, used to generate consistent multi-view training data. Big upside for robotics and AR.</li><li><strong>Self-supervised generation:</strong> learning generators from unlabelled video without paired annotations. Cuts the dependency on labelled data even further.</li><li><strong>Adversarial robustness training:</strong> using synthetic adversarial examples to harden detectors against deliberate attacks and noisy inputs.</li></ul>
+ </div>
+
+ <div class="conclusion">
+ <p class="fs-5 mb-4">Generative AI is a useful tool in object detection, not a magic wand. It's strongest when it targets the gaps in your real data rather than trying to replace it wholesale. The teams getting good results aren't the ones using the fanciest generators; they're the ones being disciplined about which gaps they're filling and measuring what the synthetic data actually buys them.</p><p class="fs-5 mb-4">Start small. Generate 1000 targeted synthetic frames for one failure mode, mix them into your training set, measure the lift on a real-data validation set. If it works, expand. If it doesn't, adjust before scaling up.</p>
+ </div>
+ <div class="cta mt-5">
+ <p class="cta fs-5 mb-4">If this was useful, a star on <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">HUB</a> helps other people find it. The repo has a few synthetic-data utilities baked in if you want to play.</p>
+ </div>
+ </div>
+ </div>
+ </article>
+</main>
+
+<!-- @partial:footer -->
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="footer-widget">
               <div class="logo">
-                <a href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
                 </a>
               </div>
-              <p class="desc">Safety, powered by AI.</p>
-              <ul class="social-links">
-                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
             <div class="footer-widget">
-              <h3>Company</h3>
+              <h3>Platform</h3>
               <ul class="links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
-                <li><a href="../../resources.html">Resources</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-widget">
-              <h3>About Us</h3>
-              <ul class="links">
-                <li>Contact Us</li>
-                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
               </ul>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h3>Subscribe for Updates</h3>
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
               <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                <div id="mce-responses" class="clear foot">
-                  <div class="response" id="mce-error-response" style="display:none"></div>
-                  <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>
-                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
       </div>
     </footer>
-    <!-- ========================= footer end ========================= -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="../../assets/js/tiny-slider.js"></script>
-    <script src="../../assets/js/wow.min.js"></script>
-    <script src="../../assets/js/polyfill.js"></script>
-    <script src="../../assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>

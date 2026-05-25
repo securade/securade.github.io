@@ -1,326 +1,388 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <title>AI Safety: Edge vs Cloud - The Ultimate Guide - Securade.ai</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: AI Safety: Edge vs Cloud - The Ultimate Guide, Securade.ai
+description: Explore the pros and cons of edge AI vs. cloud AI for safety monitoring. Understand latency, bandwidth, privacy, cost, and scalability to choose the best solution.
+canonical_path: /blog/technology/ai-safety-edge-vs-cloud.html
+og_title: AI Safety: Edge vs Cloud - The Ultimate Guide
+og_description: Discover the optimal deployment strategy for your AI-powered safety monitoring system: edge, cloud, or a hybrid approach.
+og_image: /assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg
+og_type: article
+nav_active: resources
+extra_schema:,
+ {"@type": "Article", "@id": "https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html#article", "headline": "AI Safety: Edge vs Cloud - The Ultimate Guide", "description": "Explore the pros and cons of edge AI vs. cloud AI for safety monitoring. Understand latency, bandwidth, privacy, cost, and scalability to choose the best solution.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg", "datePublished": "2025-02-15", "dateModified": "2025-02-15", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "edge AI, cloud AI, AI safety, video analytics, on-premise video analytics, cloud video analytics, AI CCTV, privacy edge AI solutions, edge vs cloud AI safety"},
+ {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Explore the pros and cons of edge AI vs. cloud AI for safety monitoring. Understand latency, bandwidth, privacy, cost, and scalability to choose the best solution.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="AI Safety: Edge vs Cloud - The Ultimate Guide">
-    <meta property="og:description" content="Discover the optimal deployment strategy for your AI-powered safety monitoring system: edge, cloud, or a hybrid approach.">
-    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg">
-    <meta property="og:url" content="https://securade.ai">
-    <meta name="keywords" content="edge AI, cloud AI, AI safety, video analytics, on-premise video analytics, cloud video analytics, AI CCTV, privacy edge AI solutions, edge vs cloud AI safety">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="../../assets/css/animate.css"/>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>AI Safety: Edge vs Cloud - The Ultimate Guide, Securade.ai</title>
+    <meta name="description" content="Explore the pros and cons of edge AI vs. cloud AI for safety monitoring. Understand latency, bandwidth, privacy, cost, and scalability to choose the best solution." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader end -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AI Safety: Edge vs Cloud - The Ultimate Guide" />
+    <meta property="og:description" content="Discover the optimal deployment strategy for your AI-powered safety monitoring system: edge, cloud, or a hybrid approach." />
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html" />
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="AI Safety: Edge vs Cloud - The Ultimate Guide" />
+    <meta name="twitter:description" content="Discover the optimal deployment strategy for your AI-powered safety monitoring system: edge, cloud, or a hybrid approach." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, {"@type": "Article", "@id": "https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html#article", "headline": "AI Safety: Edge vs Cloud - The Ultimate Guide", "description": "Explore the pros and cons of edge AI vs. cloud AI for safety monitoring. Understand latency, bandwidth, privacy, cost, and scalability to choose the best solution.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg", "datePublished": "2025-02-15", "dateModified": "2025-02-15", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "edge AI, cloud AI, AI safety, video analytics, on-premise video analytics, cloud video analytics, AI CCTV, privacy edge AI solutions, edge vs cloud AI safety"}, {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/ai-safety-edge-vs-cloud.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
       <div class="navbar-area">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#platform">HUB</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#tower">Tower</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="../../resources.html">Resources</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
-    <!-- ========================= header end ========================= -->
+<!-- @endpartial:header -->
 
-    <!-- ========================= blog-section start ========================= -->
-    <section id="blog-content" class="feature-section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <article>
-              <!-- Post header-->
-              <header class="mb-4">
-                <h1 class="fw-bolder mb-1">AI Safety: Edge vs Cloud - The Ultimate Guide</h1>
-                <div class="text-muted fst-italic mb-2">
-                  Posted on February 15, 2025 by Arjun Krishnamurthy
-                </div>
-              </header>
-              
-              <!-- Hero image -->
-              <figure class="mb-4">
-                <img class="img-fluid rounded" src="../../assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg" alt="Image"/>
-              </figure>
-              
-              <!-- Post content-->
-              <section class="mb-5">
-                
-        <section class="mb-5">
-            <div class="introduction">
-                <p class="fs-5 mb-4">Artificial intelligence (AI) is revolutionizing workplace safety, enabling proactive monitoring and intervention to prevent accidents and injuries. A crucial decision when implementing AI-powered safety solutions is where to run the video analytics: on the edge (on-premises devices) or in the cloud. This choice significantly impacts latency, bandwidth usage, privacy, cost, scalability, and maintenance. This blog post provides a comprehensive comparison of edge AI and cloud AI for safety monitoring, helping you determine the best approach for your organization.</p>
-<p class="fs-5 mb-4">The fundamental question is: do we process camera feeds locally at each site, or send them to a cloud service for analysis? The answer isn't always straightforward and often depends on the specific requirements and constraints of your environment. Let's delve into the key factors to consider.</p>
-            </div>
-    
-            <h2 class="fw-bolder mb-4 mt-5">Latency: The Need for Speed</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Latency, the delay between an event occurring and the system responding, is a critical consideration for safety-related applications. In scenarios where immediate action is required to prevent harm, minimizing latency is paramount.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Edge Computing: Real-Time Responsiveness</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Edge computing excels in providing real-time analysis with minimal delay. By processing video data locally on devices near the cameras, edge AI eliminates the need to transmit data to a remote server for processing. This drastically reduces latency, enabling near-instantaneous alerts and interventions.</p>
-<p class="fs-5 mb-4">Consider a scenario where a worker enters a restricted area near a hazardous machine. An edge-based AI system can instantly detect the intrusion and trigger an immediate machine shutdown, preventing a potential accident. This level of responsiveness is crucial in preventing injuries and ensuring worker safety.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Cloud Computing: Potential Delays</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Cloud computing, on the other hand, introduces potential delays due to the time required to transmit video data to the cloud server for processing. While advancements in network technology have reduced latency, it can still be a significant factor, especially in areas with limited bandwidth or unreliable internet connections. The round trip of sending the data to the cloud, processing, and sending the result back could introduce seconds of delay. Those seconds could be critical to worker safety.</p>
-<p class="fs-5 mb-4">For critical, time-sensitive applications, the latency associated with cloud computing may be unacceptable. If immediate interventions are necessary, edge computing is often the preferred choice.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Bandwidth: Managing Network Capacity</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Bandwidth, the amount of data that can be transmitted over a network connection in a given time, is another crucial factor to consider. Processing video data requires significant bandwidth, especially when dealing with high-resolution video streams from multiple cameras.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Edge Computing: Bandwidth Efficiency</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Edge computing offers significant bandwidth savings by processing video data locally. Instead of transmitting entire video streams to the cloud, edge devices only send relevant data, such as alerts, metadata, or low-bandwidth summaries, to a central server. This reduces network congestion and minimizes bandwidth costs.</p>
-<p class="fs-5 mb-4">Imagine a large manufacturing facility with hundreds of cameras monitoring various workstations. If all video streams were transmitted to the cloud for processing, the network would quickly become overloaded, leading to performance issues and increased costs. By processing video data on the edge, only relevant events, such as instances of unsafe behavior, are transmitted, significantly reducing bandwidth consumption.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Cloud Computing: Bandwidth Intensive</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Cloud computing requires uploading entire video streams to a remote server for analysis. This can be impractical, especially in areas with limited or costly internet connections. In remote locations, satellite internet might be the only option, which has limited bandwidth and high costs.</p>
-<p class="fs-5 mb-4">Furthermore, uploading large amounts of video data can strain network infrastructure and impact the performance of other applications. For organizations with limited bandwidth or high data transfer costs, edge computing offers a more cost-effective and sustainable solution. The feasibility of cloud processing is therefore dependent on network infrastructure. However, it is worth it for many sites that have the available bandwidth.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Privacy and Compliance: Protecting Sensitive Data</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Privacy and compliance are paramount, especially when dealing with sensitive video footage. Organizations must adhere to regulations such as the General Data Protection Regulation (GDPR) and protect the privacy of their employees and customers.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Edge Computing: Enhanced Data Privacy</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Edge computing enhances data privacy by keeping data on-site. Sensitive video footage need not leave the premises, minimizing the risk of data breaches and unauthorized access. This is particularly important for organizations operating in industries with strict privacy regulations.</p>
-<p class="fs-5 mb-4">For example, a hospital may use edge-based AI to monitor patient safety without transmitting sensitive video data to the cloud. This helps ensure compliance with HIPAA (Health Insurance Portability and Accountability Act) and protects patient privacy.</p>
-<p class="fs-5 mb-4">Some edge processing solutions are designed to be GDPR-compliant, further strengthening data privacy. For instance, <a href="https://protex.ai/" class="text-body-emphasis fw-bold">PROTEX.AI</a> is an example of edge AI used to comply with GDPR​.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Cloud Computing: Data Security Concerns</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Cloud computing involves entrusting a third party with potentially identifiable video data. This raises concerns about data security and compliance. Organizations must carefully vet cloud providers and ensure they have robust security measures in place to protect sensitive data.</p>
-<p class="fs-5 mb-4">Worker councils may also raise concerns about the use of cloud-based video analytics, particularly if they perceive a risk to employee privacy. Addressing these concerns and ensuring transparency are crucial for gaining employee buy-in.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Scalability and Updates: Managing Growth and Change</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Scalability, the ability to easily expand the system to accommodate new cameras or locations, and updates, the process of deploying new features or security patches, are essential considerations for long-term success.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Cloud Computing: Centralized Management</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Cloud systems can be centrally updated and scaled with ease. Adding more compute resources or deploying new AI models is a simple process, making cloud computing ideal for large deployments. A cloud AI provider can manage the entire machine learning pipeline, delivering results without requiring on-site expertise.</p>
-<p class="fs-5 mb-4">For organizations with numerous locations or rapidly growing operations, cloud computing offers a streamlined and cost-effective approach to scaling AI-powered safety monitoring.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Edge Computing: Distributed Management</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Edge devices must be individually managed and updated, which can be challenging at scale. Deploying new software or security patches to hundreds or thousands of devices requires careful planning and execution.</p>
-<p class="fs-5 mb-4">However, advancements in edge device management platforms are simplifying this process. These platforms enable centralized monitoring, configuration, and updating of edge devices, reducing the administrative burden.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Cost: Balancing Upfront and Ongoing Expenses</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Cost is a critical consideration for any organization. A thorough cost analysis should consider both upfront hardware costs and ongoing operational expenses.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Edge Computing: Upfront Investment</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Edge computing requires an upfront investment in hardware, such as edge devices or servers. Each camera or site needs its own processing capabilities, which can be a significant expense, especially for large deployments.</p>
-<p class="fs-5 mb-4">However, ongoing costs are typically lower with edge computing. Once the hardware is in place, there are minimal recurring expenses, aside from maintenance and occasional upgrades.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Cloud Computing: Subscription-Based Model</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Cloud computing typically has lower initial costs, as organizations can leverage existing cameras and pay a subscription fee for access to AI-powered video analytics. This can be an attractive option for organizations with limited capital budgets.</p>
-<p class="fs-5 mb-4">However, cloud costs can escalate quickly with high data volumes and per-camera fees. As the number of cameras and the amount of video data increase, the monthly subscription fees can become substantial.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Use Case Fit: Tailoring the Solution to the Need</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">The best approach for deploying AI-powered safety monitoring depends on the specific use case and requirements. Some applications are better suited for edge computing, while others are more appropriate for cloud computing. In many cases, a hybrid approach that combines the strengths of both edge and cloud is the optimal solution.</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/1cc1bfe9-4024-4f33-8d46-d652b5ae2c77" alt="Workplace accident detection" /></figure>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Edge Computing: Time-Critical Safety Controls</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Critical, time-sensitive safety controls, such as shutting off a machine when a person is too close, should be implemented on the edge. The low latency of edge computing ensures immediate responses to prevent accidents and injuries.</p>
-<p class="fs-5 mb-4">Other use cases that benefit from edge computing include real-time fall detection, hard hat detection, and PPE compliance monitoring.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Cloud Computing: High-Level Analytics</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">High-level analytics that are not time-critical, such as monthly safety trend analysis or training new models, can be performed in the cloud. The cloud's scalability and processing power enable complex analysis of large datasets.</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/c4fd23bd-016d-4fc2-9aed-c75ff6714a42" alt="Safety Trend Analysis" /></figure>
-<p class="fs-5 mb-4">Furthermore, the cloud can be used to store video footage for archival purposes or for training AI models. This provides a central repository for all video data, enabling comprehensive analysis and continuous improvement of safety protocols.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Hybrid Approach: The Best of Both Worlds</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Many systems use a hybrid approach, combining immediate detection on the edge with aggregated data analysis in the cloud. This enables real-time safety interventions while also providing valuable insights for long-term safety improvements.</p>
-<p class="fs-5 mb-4">For example, an edge-based system can detect instances of unsafe behavior and trigger immediate alerts. The aggregated data from these events can then be sent to the cloud for further analysis, identifying trends and patterns that can inform safety training and policy changes.</p>
-                    </div>
-                
-            <div class="conclusion">
-                <p class="fs-5 mb-4">Choosing between edge AI and cloud AI for safety monitoring is a complex decision with significant implications. Carefully consider the factors outlined in this blog post, including latency, bandwidth, privacy, cost, and scalability. By understanding the strengths and weaknesses of each approach, you can make an informed decision that optimizes safety, reduces costs, and ensures compliance.</p>
-<p class="fs-5 mb-4">Remember that a hybrid approach, combining the benefits of both edge and cloud, is often the most effective solution. By tailoring the deployment strategy to the specific use case, you can maximize the value of AI-powered safety monitoring and create a safer and more productive workplace.</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/e58fe531-f7c3-4b57-8cb3-5df3cb10db62" alt="AI safety monitoring system" /></figure>
-            </div>
-            <div class="cta mt-5">
-                <p class="cta fs-5 mb-4">Ready to explore edge-based AI solutions? Check out <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">securade.ai HUB</a> and star the repo to stay updated on the latest developments!</p>
-            </div>
-        </section>
-    
-              </section>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========================= blog-section end ========================= -->
+<main id="main">
+ <article class="article">
+ <div class="container">
+ <div class="article-header">
+ <ol class="breadcrumbs" aria-label="Breadcrumb">
+ <li><a href="/">Home</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/blog/technology/">Technology</a></li><li class="current">AI Safety: Edge vs Cloud - The Ultimate Guide</li>
+ </ol>
+ <span class="article-eyebrow">Technology</span>
+ <h1>AI Safety: Edge vs Cloud - The Ultimate Guide</h1>
+ <p class="article-meta">
+ <span>By Arjun Krishnamurthy</span>
+ <span class="dot">·</span>
+ <time datetime="2025-02-15">February 15, 2025</time>
+ </p>
+ </div>
+ <figure class="article-hero">
+ <img src="/assets/images/blog/technology/securadeaiEdgeVsCloudAiComparison.jpeg" alt="Image" />
+ </figure>
 
-    <!-- ========================= footer start ========================= -->
-    <footer class="footer pt-120">
+ <div class="article-body">
+ <section class="mb-5">
+ <div class="introduction">
+ <p class="fs-5 mb-4">AI is showing up in more workplace safety systems every year. The big architectural question for anyone deploying it is where the actual video analysis runs: on a box sitting next to the cameras, or somewhere up in a cloud data centre. That single decision shapes latency, bandwidth bills, privacy posture, hardware costs, scalability, and how painful updates are going to be.</p>
+ <p class="fs-5 mb-4">So, do you process camera feeds locally at each site, or ship them to a cloud service? It's rarely a clean yes-or-no, and the right answer changes with your network, your regulations, and what you're actually trying to detect. Here are the trade-offs that tend to matter.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Latency: when seconds count</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Latency is the gap between something happening on camera and the system reacting to it. For safety, that gap is everything. If you're trying to stop a forklift before it clips a worker, a two-second round trip is two seconds too long.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Edge: responds in milliseconds</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">When the inference runs locally, there's no network round trip. Edge analytics can flag an event and fire an action in tens of milliseconds, which is the kind of speed safety controls actually need.</p>
+ <p class="fs-5 mb-4">Picture this: a worker steps into a restricted zone near a press. An edge box sees it, sends a stop signal to the PLC, and the machine halts before anyone gets hurt. The whole loop closes locally. That's the use case edge was built for.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Cloud: rarely fast enough for life-safety</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Cloud setups have to ship the frames somewhere, run inference, and ship a result back. Even on a good link, that's hundreds of milliseconds. On a flaky 4G connection at a remote site, it can be seconds. For most life-safety triggers, that's not a workable budget.</p>
+ <p class="fs-5 mb-4">If the action you want to take is "shut something off right now", cloud isn't your friend. Edge is.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Bandwidth: how much pipe do you actually have?</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A 1080p H.264 feed runs around 4 Mbps. Multiply that by 50 cameras and you're pushing 200 Mbps of upstream traffic, 24/7. That's a lot of pipe, and at a remote construction site or oil rig, you probably don't have it.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Edge: only sends what matters</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">With edge analytics, the raw video stays local. What goes out is small: an alert payload, an event clip, a thumbnail, some metadata. You drop your egress traffic by orders of magnitude.</p>
+ <p class="fs-5 mb-4">A manufacturing site with 200 cameras and edge inference might only ever upload a few MB an hour, mostly when something actually happens. The same site running cloud analytics would saturate any reasonable internet connection.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Cloud: bandwidth hungry by design</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Cloud analysis needs the frames. That means uploading 24/7, per camera. At remote sites where satellite internet is the only option, that's both technically painful and expensive.</p>
+ <p class="fs-5 mb-4">Heavy upload also competes with whatever else your site needs the connection for. If you have the bandwidth to spare, cloud works fine. If you don't, you'll find out the hard way.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Privacy and compliance: where does the footage live?</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Video footage of workers is personal data under GDPR and similar regimes. The decision about where that data goes is also a decision about your legal exposure.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Edge: footage never leaves the site</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">If inference runs on a box you own, footage doesn't need to cross your perimeter. That's a much cleaner story for legal, for works councils, and for any auditor who wants to know where personal data is being processed.</p>
+ <p class="fs-5 mb-4">A hospital running edge analytics for fall detection in patient rooms, for example, keeps the video local. HIPAA is easier to argue when nothing left the building.</p>
+ <p class="fs-5 mb-4">Vendors like <a href="https://protex.ai/" class="text-body-emphasis fw-bold">PROTEX.AI</a> have built their pitch around exactly this: GDPR compliance by virtue of edge processing.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Cloud: a third party in the loop</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">With cloud analytics, identifiable footage of your employees is sitting on someone else's infrastructure. You can vet the vendor, sign a DPA, encrypt in transit and at rest, and you still own the risk if something goes wrong.</p>
+ <p class="fs-5 mb-4">In our experience, works councils tend to push back hardest on cloud-based video analytics, even when the technical controls are solid. Edge sidesteps a lot of that conversation.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Scaling and updates</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Scaling is about adding more cameras and sites without re-architecting. Updates are about getting new models and security patches deployed everywhere they need to be.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Cloud: one place to push changes</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Cloud has a clear advantage here. You push a new model once, and every camera attached to the service starts using it. Scaling compute is somebody else's problem; you just turn the dial.</p>
+ <p class="fs-5 mb-4">For operators running dozens of sites or thousands of cameras, that's genuinely attractive. The MLOps work happens once, in one place.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Edge: many devices, more management</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Pushing a new model to 200 edge devices is more work than pushing it to one cloud cluster. There's network variability, device state, and the occasional box that's been switched off.</p>
+ <p class="fs-5 mb-4">Modern edge fleet platforms have caught up, though. Tools for centralised device monitoring, OTA updates, and rollback are mature enough that managing 1000 edge boxes isn't the nightmare it used to be in 2020. Painful, but a solved problem.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Cost: upfront vs. monthly</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Edge and cloud have different cost shapes. Pick the one that matches your finance team's appetite.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Edge: capex now, opex small</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Edge hardware is a one-time hit. A reasonable box per site (or per cluster of cameras) plus the cameras themselves. After that, the monthly costs are mostly maintenance and occasional hardware swaps.</p>
+ <p class="fs-5 mb-4">If you can stomach the upfront spend, you're typically cheaper over a 3-5 year window, especially as you add cameras.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Cloud: low to start, expensive at scale</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Cloud services usually charge per camera per month. The first ten cameras are cheap. The hundredth one is not. Storage and egress add to the bill the moment you start looking at archive footage.</p>
+ <p class="fs-5 mb-4">For pilots and small deployments, cloud is the obvious choice. For large estates that run for years, the math tends to flip toward edge.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">What goes where</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Most production deployments aren't pure edge or pure cloud. They're a split based on what each workload actually needs.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/1cc1bfe9-4024-4f33-8d46-d652b5ae2c77" alt="Workplace accident detection" /></figure>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Put on the edge: anything time-critical</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">If the action is "stop a machine" or "trigger a local alarm", do it on the edge. The latency cost of going through the cloud is too high.</p>
+ <p class="fs-5 mb-4">Same goes for real-time fall detection, PPE compliance, exclusion zone breaches, and anything where you want a response inside a second.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Send to the cloud: anything aggregate</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Trend analysis across weeks of data, dashboards for the safety team, model retraining on labelled events: that work doesn't need millisecond latency, and the cloud's scale-up makes it cheaper to run.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/c4fd23bd-016d-4fc2-9aed-c75ff6714a42" alt="Safety Trend Analysis" /></figure>
+ <p class="fs-5 mb-4">Cloud is also the natural place to archive event clips and keep a labelled dataset for the next model iteration. One central store, easy to query.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">The hybrid pattern</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Most teams end up with both. Edge boxes do the live inference and fire the immediate alerts. Edge boxes also forward a small stream of events and metadata to a cloud back end that handles dashboards, retraining, and long-term storage.</p>
+ <p class="fs-5 mb-4">You get the real-time response of edge and the analytical reach of cloud, without paying for either to do the wrong job.</p>
+ </div>
+
+ <div class="conclusion">
+ <p class="fs-5 mb-4">There isn't one right answer. If your sites have decent connectivity, light privacy constraints, and a small camera count, cloud might be all you need. If you're at a remote worksite with thin internet, hundreds of cameras, and a works council watching, edge is going to be the easier story.</p>
+ <p class="fs-5 mb-4">The pragmatic answer is usually both: edge for live safety controls, cloud for the analytics and the longer view. Pick the split that fits the constraints in front of you.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/e58fe531-f7c3-4b57-8cb3-5df3cb10db62" alt="AI safety monitoring system" /></figure>
+ </div>
+ <div class="cta mt-5">
+ <p class="cta fs-5 mb-4">Want to try edge-based safety AI? Take a look at <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">securade.ai HUB</a> on GitHub and star the repo to follow along.</p>
+ </div>
+ </div>
+ </div>
+ </article>
+</main>
+
+<!-- @partial:footer -->
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="footer-widget">
               <div class="logo">
-                <a href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
                 </a>
               </div>
-              <p class="desc">Safety, powered by AI.</p>
-              <ul class="social-links">
-                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
             <div class="footer-widget">
-              <h3>Company</h3>
+              <h3>Platform</h3>
               <ul class="links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
-                <li><a href="../../resources.html">Resources</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-widget">
-              <h3>About Us</h3>
-              <ul class="links">
-                <li>Contact Us</li>
-                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
               </ul>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h3>Subscribe for Updates</h3>
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
               <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                <div id="mce-responses" class="clear foot">
-                  <div class="response" id="mce-error-response" style="display:none"></div>
-                  <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>
-                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
       </div>
     </footer>
-    <!-- ========================= footer end ========================= -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="../../assets/js/tiny-slider.js"></script>
-    <script src="../../assets/js/wow.min.js"></script>
-    <script src="../../assets/js/polyfill.js"></script>
-    <script src="../../assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>

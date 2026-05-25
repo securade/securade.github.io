@@ -581,26 +581,38 @@ def main():
     env = Environment(loader=FileSystemLoader(str(template_path)))
     template = env.get_template('blog_template.html')
     
+    category_slug = category_info.get('category') or ''
+    category_label = category_slug.replace('-', ' ').title() if category_slug else 'Blog'
+    page_url = '/' + blog_path
+    today = datetime.now()
+
     final_html = template.render(
         title=blog_data['meta']['title'],
         meta_description=blog_data['meta']['description'],
         keywords=', '.join(blog_data['meta']['keywords']),
         og_title=blog_data['meta']['og_title'],
         og_description=blog_data['meta']['og_description'],
-        image_url=f"/{image_paths[0]}",  # Hero image
+        image_url=f"/{image_paths[0]}",  # Hero image (root-relative)
         image_alt=processed_images[0]['alt'],
         content=formatted_content,
-        date=datetime.now().strftime('%B %d, %Y'),
+        date=today.strftime('%B %d, %Y'),
+        date_iso=today.strftime('%Y-%m-%d'),
         author="Arjun Krishnamurthy",
-        css_classes={
-            'body_content': 'col-lg-8 mx-auto',
-            'article_header': 'mb-4',
-            'title': 'fw-bolder mb-1',
-            'meta': 'text-muted fst-italic mb-2',
-            'figure': 'mb-4',
-            'image': 'img-fluid rounded'
-        }
+        page_url=page_url,
+        category_slug=category_slug,
+        category_label=category_label,
     )
+
+    # Render partials inline so the committed file is fully built.
+    try:
+        from build import replace_partial_blocks, parse_page_block, build_context  # type: ignore
+        # Use a fake file path matching the eventual blog_path for canonical URL computation.
+        fake_path = Path(__file__).resolve().parent.parent / blog_path
+        meta = parse_page_block(final_html)
+        ctx = build_context(meta, fake_path)
+        final_html, _ = replace_partial_blocks(final_html, ctx)
+    except Exception as e:
+        print(f"  warning: partials not pre-rendered ({e}); build.py must run in CI", flush=True)
     
     # Initialize GitHub client
     g = Github(os.getenv('GITHUB_TOKEN'))

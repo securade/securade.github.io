@@ -1,295 +1,344 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <title>AI Vision: Detect Danger Zones & Boost Workplace Safety - Securade.ai</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: AI Vision: Detect Danger Zones & Boost Workplace Safety, Securade.ai
+description: Discover how AI-powered vision systems detect people in danger zones, improving workplace safety with automated alerts, analytics, and real-time monitoring.
+canonical_path: /blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html
+og_title: AI Vision: Detect Danger Zones & Boost Workplace Safety
+og_description: Improve workplace safety with AI vision systems that detect people in danger zones, triggering automated alerts and providing real-time insights.
+og_image: /assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg
+og_type: article
+nav_active: resources
+extra_schema:,
+ {"@type": "Article", "@id": "https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html#article", "headline": "AI Vision: Detect Danger Zones & Boost Workplace Safety", "description": "Discover how AI-powered vision systems detect people in danger zones, improving workplace safety with automated alerts, analytics, and real-time monitoring.", "image": "https://securade.ai/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg", "datePublished": "2025-04-17", "dateModified": "2025-04-17", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html"}, "inLanguage": "en", "articleSection": "Workplace Safety", "keywords": "AI, Workplace Safety, Computer Vision, Danger Zone Detection, Red Zone Monitoring, Vision AI, Automated Alerts, Safety Protocols, Operational Awareness, Machine Learning"},
+ {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Workplace Safety", "item": "https://securade.ai/blog/workplace-safety/"}]}
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Discover how AI-powered vision systems detect people in danger zones, improving workplace safety with automated alerts, analytics, and real-time monitoring.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="AI Vision: Detect Danger Zones & Boost Workplace Safety">
-    <meta property="og:description" content="Improve workplace safety with AI vision systems that detect people in danger zones, triggering automated alerts and providing real-time insights.">
-    <meta property="og:image" content="https://securade.ai/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg">
-    <meta property="og:url" content="https://securade.ai">
-    <meta name="keywords" content="AI, Workplace Safety, Computer Vision, Danger Zone Detection, Red Zone Monitoring, Vision AI, Automated Alerts, Safety Protocols, Operational Awareness, Machine Learning">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="../../assets/css/animate.css"/>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>AI Vision: Detect Danger Zones & Boost Workplace Safety, Securade.ai</title>
+    <meta name="description" content="Discover how AI-powered vision systems detect people in danger zones, improving workplace safety with automated alerts, analytics, and real-time monitoring." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader end -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AI Vision: Detect Danger Zones & Boost Workplace Safety" />
+    <meta property="og:description" content="Improve workplace safety with AI vision systems that detect people in danger zones, triggering automated alerts and providing real-time insights." />
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html" />
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="AI Vision: Detect Danger Zones & Boost Workplace Safety" />
+    <meta name="twitter:description" content="Improve workplace safety with AI vision systems that detect people in danger zones, triggering automated alerts and providing real-time insights." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, {"@type": "Article", "@id": "https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html#article", "headline": "AI Vision: Detect Danger Zones & Boost Workplace Safety", "description": "Discover how AI-powered vision systems detect people in danger zones, improving workplace safety with automated alerts, analytics, and real-time monitoring.", "image": "https://securade.ai/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg", "datePublished": "2025-04-17", "dateModified": "2025-04-17", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html"}, "inLanguage": "en", "articleSection": "Workplace Safety", "keywords": "AI, Workplace Safety, Computer Vision, Danger Zone Detection, Red Zone Monitoring, Vision AI, Automated Alerts, Safety Protocols, Operational Awareness, Machine Learning"}, {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/workplace-safety/ai-vision-detect-danger-zones-workplace-safety.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Workplace Safety", "item": "https://securade.ai/blog/workplace-safety/"}]}
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
       <div class="navbar-area">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#platform">HUB</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#tower">Tower</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="../../resources.html">Resources</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
-    <!-- ========================= header end ========================= -->
+<!-- @endpartial:header -->
 
-    <!-- ========================= blog-section start ========================= -->
-    <section id="blog-content" class="feature-section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <article>
-              <!-- Post header-->
-              <header class="mb-4">
-                <h1 class="fw-bolder mb-1">AI Vision: Detect Danger Zones & Boost Workplace Safety</h1>
-                <div class="text-muted fst-italic mb-2">
-                  Posted on April 17, 2025 by Arjun Krishnamurthy
-                </div>
-              </header>
-              
-              <!-- Hero image -->
-              <figure class="mb-4">
-                <img class="img-fluid rounded" src="../../assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg" alt="Image"/>
-              </figure>
-              
-              <!-- Post content-->
-              <section class="mb-5">
-                
-        <section class="mb-5">
-            <div class="introduction">
-                <p class="fs-5 mb-4">Workplace safety is paramount, and ensuring the well-being of employees in hazardous environments is a critical responsibility. Traditional safety measures often rely on manual monitoring and reactive responses. However, advancements in Artificial Intelligence (AI), particularly in computer vision, offer a transformative approach to proactively detect and respond to potentially dangerous situations. This blog post explores how vision AI can be leveraged to detect people in danger zones, significantly enhancing workplace safety protocols and operational awareness. By building a vision AI application you can automate downstream actions, configure automated alerts and connect vision insights to analytics platforms for deeper understanding and proactive decision-making.</p>
-<p class="fs-5 mb-4">We'll guide you through the process of building a vision AI application, automating alerts, and integrating analytics. Furthermore, we’ll cover important considerations when choosing computer vision models and selecting the correct camera for these types of situations. Let's dive into how visual AI is revolutionizing safety measures.</p>
-            </div>
-    
-            <h2 class="fw-bolder mb-4 mt-5">Red Zone Monitoring: Visual AI's Role in Enhancing Safety</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">'Red zones,' or danger zones, are areas within a workplace where potential hazards pose a significant risk to personnel. These zones can range from construction sites with heavy machinery to manufacturing floors with moving equipment or areas with high voltage electrical equipment. Monitoring these areas effectively is crucial for preventing accidents and injuries.</p>
-<p class="fs-5 mb-4">Visual AI offers a proactive solution by continuously analyzing video streams from strategically placed cameras. The system can identify when a person enters a designated danger zone and immediately trigger alerts. This real-time detection allows for immediate intervention, preventing potential accidents before they occur. This is a significant improvement over traditional methods that rely on manual observation or reactive measures after an incident.</p>
-<p class="fs-5 mb-4">The benefits of implementing visual AI for red zone monitoring include:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>Reduced Risk of Accidents:</strong> Continuous monitoring and real-time alerts minimize the potential for accidents and injuries.</li>
-    <li><strong>Improved Response Times:</strong> Immediate notification of dangerous situations allows for faster intervention and response.</li>
-    <li><strong>Enhanced Operational Awareness:</strong> Provides a comprehensive view of activity within danger zones, enabling better decision-making.</li>
-    <li><strong>Compliance with Regulations:</strong> Helps organizations meet and exceed safety regulations and standards.</li>
-</ul>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Building a Vision AI Application: A Step-by-Step Guide</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Creating a vision AI application for danger zone detection involves several key steps. This section will walk you through the process, from data collection to deployment.</p>
+<main id="main">
+ <article class="article">
+ <div class="container">
+ <div class="article-header">
+ <ol class="breadcrumbs" aria-label="Breadcrumb">
+ <li><a href="/">Home</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/blog/workplace-safety/">Workplace Safety</a></li><li class="current">AI Vision: Detect Danger Zones & Boost Workplace Safety</li>
+ </ol>
+ <span class="article-eyebrow">Workplace Safety</span>
+ <h1>AI Vision: Detect Danger Zones & Boost Workplace Safety</h1>
+ <p class="article-meta">
+ <span>By Arjun Krishnamurthy</span>
+ <span class="dot">·</span>
+ <time datetime="2025-04-17">April 17, 2025</time>
+ </p>
+ </div>
+ <figure class="article-hero">
+ <img src="/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg" alt="Image" />
+ </figure>
 
-<ol class="fs-5 mb-4" style="list-style: decimal inside;">
-    <li><strong>Data Collection and Annotation:</strong> Gather a diverse dataset of images and videos that represent various scenarios within the danger zones. This data should include examples of people both inside and outside the designated areas, as well as different lighting conditions and environmental factors. Annotate the data by labeling the regions of interest (i.e., the danger zones and the people).</li>
-    <li><strong>Model Selection:</strong> Choose an appropriate computer vision model for object detection. Popular choices include YOLO (You Only Look Once), SSD (Single Shot Detector), and Faster R-CNN. Consider factors such as accuracy, speed, and computational requirements when selecting a model.</li>
-    <li><strong>Model Training:</strong> Train the selected model using the annotated dataset. This process involves feeding the data into the model and adjusting its parameters to improve its ability to accurately detect people in danger zones. Consider using techniques such as transfer learning to leverage pre-trained models and reduce training time.</li>
-    <li><strong>Model Evaluation:</strong> Evaluate the performance of the trained model using a separate validation dataset. Assess metrics such as precision, recall, and F1-score to determine the model's accuracy and reliability. Fine-tune the model as needed to optimize its performance.</li>
-    <li><strong>Deployment:</strong> Deploy the trained model to a suitable platform for real-time processing. This could involve deploying the model on edge devices (e.g., cameras with onboard processing) or on a cloud-based server. Ensure that the deployment environment meets the computational and latency requirements of the application.</li>
-</ol>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Automating Alerts and Analytics: Maximizing Impact</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Once the vision AI application is deployed, the next step is to configure automated alerts and connect vision insights to analytics platforms. This allows for proactive decision-making and continuous improvement of safety protocols.</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiVisionAiApplicationDevelopment.jpeg" alt="Alert configuration dashboard" /></figure>
-<p class="fs-5 mb-4">Automated alerts can be triggered based on specific events, such as a person entering a danger zone or exceeding a predefined time limit within the zone. These alerts can be sent via email, SMS, or integrated into existing safety management systems.</p>
-<p class="fs-5 mb-4">Integrating vision insights with analytics platforms provides a deeper understanding of safety trends and patterns. By analyzing data on the frequency and duration of entries into danger zones, organizations can identify areas of concern and implement targeted safety measures. This data can also be used to evaluate the effectiveness of existing safety protocols and make informed decisions about resource allocation.</p>
-<p class="fs-5 mb-4">Key capabilities include:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>Real-time Alerts:</strong> Immediate notifications when a person enters a danger zone.</li>
-    <li><strong>Historical Analysis:</strong> Tracking the frequency and duration of entries into danger zones over time.</li>
-    <li><strong>Trend Identification:</strong> Identifying patterns and trends in safety incidents to inform preventative measures.</li>
-    <li><strong>Performance Evaluation:</strong> Assessing the effectiveness of safety protocols and resource allocation.</li>
-</ul>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">Important Considerations: Model Selection and Camera Choice</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Selecting the right computer vision model and camera are crucial for the success of a vision AI application for danger zone detection. This section outlines key factors to consider when making these choices.</p>
+ <div class="article-body">
+ <section class="mb-5">
+ <p class="fs-5 mb-4">A "red zone" is a part of a worksite where being in the wrong place at the wrong time will get you hurt. Under a swinging crane load. Inside the slewing radius of a heavy excavator. Inside the safety perimeter of an industrial press mid-cycle. The traditional answer was painted lines, signs, and the assumption that workers would respect them. Sometimes they do, sometimes they don't, and the consequences when they don't are severe.</p>
+ <p class="fs-5 mb-4">Vision AI on the cameras you already have is what turns those painted lines into something the system actually enforces. The model watches the zone, sees when someone crosses in, fires an alert in real time, and (if you've wired it that way) triggers safety interlocks on the equipment. This piece walks through how to build that kind of application, the alerting and analytics layer, and the practical considerations on camera and model choice.</p>
 
-<h3 class="fw-bolder mb-4 mt-5">Computer Vision Model Selection</h3>
-<p class="fs-5 mb-4">When choosing a computer vision model, consider the following factors:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>Accuracy:</strong> The model should be able to accurately detect people in various conditions, including different lighting and environmental factors.</li>
-    <li><strong>Speed:</strong> The model should be able to process video streams in real-time to ensure timely alerts.</li>
-    <li><strong>Computational Requirements:</strong> The model should be able to run on the chosen deployment platform, whether it's an edge device or a cloud-based server.</li>
-    <li><strong>Transfer learning potential:</strong> Using pre-trained models can reduce training time and improve accuracy.</li>
-</ul>
-<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiAutomatingAlertsAnalyticsComputer.jpeg" alt="Different Computer Vision Models" /></figure>
+ <h2 class="fw-bolder mb-4 mt-5">Watching the red zones</h2>
+ <p class="fs-5 mb-4">Red zones exist on basically every industrial site. Construction sites have crane swing paths and exclusion zones around heavy plant. Manufacturing floors have press perimeters and conveyor pinch points. Electrical infrastructure has clearance areas around live gear. The categories vary, but the underlying need is the same: keep people out of these areas when they shouldn't be there, and respond fast if they end up there anyway.</p>
+ <p class="fs-5 mb-4">A vision AI system runs on the existing cameras pointed at the zones. The model knows where the zone boundary is, watches for human figures in the frame, and triggers when someone crosses in. Latency from event to alert is typically under a second. That's much faster than a supervisor noticing and reacting, which is often the difference between catching the situation and reading about it in an incident report.</p>
+ <p class="fs-5 mb-4">What the system actually delivers:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Far fewer accidents</strong> because the precursors get caught.</li>
+ <li><strong>Faster response</strong> when something does happen.</li>
+ <li><strong>Better awareness</strong> of what's actually happening in the high-risk zones, beyond what spot-checks reveal.</li>
+ <li><strong>Easier compliance</strong> with OSHA-style and local safety regulations because the audit trail comes built in.</li>
+ </ul>
 
-<h3 class="fw-bolder mb-4 mt-5">Camera Selection</h3>
-<p class="fs-5 mb-4">The choice of camera is equally important. Consider the following factors:</p>
-<ul class="fs-5 mb-4">
-    <li><strong>Resolution:</strong> Higher resolution cameras provide more detailed images, improving the accuracy of object detection.</li>
-    <li><strong>Frame Rate:</strong> A higher frame rate ensures that fast-moving objects are captured accurately.</li>
-    <li><strong>Low-Light Performance:</strong> The camera should be able to capture clear images in low-light conditions.</li>
-    <li><strong>Environmental Durability:</strong> The camera should be able to withstand the environmental conditions of the workplace, such as temperature, humidity, and dust.</li>
-    <li><strong>Network Connectivity:</strong> Ensure the camera can reliably transmit video streams to the processing platform.</li>
-</ul>
-            </div>
-        
-            <h2 class="fw-bolder mb-4 mt-5">HUB: An Open Source Data Management Tool</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">When building a vision AI application, efficient data management is paramount. <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">HUB</a>, our open-source data management tool, simplifies the process of organizing, annotating, and versioning your datasets. HUB provides a centralized platform for managing your data pipeline, ensuring consistency and reproducibility in your AI projects.</p>
+ <h2 class="fw-bolder mb-4 mt-5">How to build one</h2>
+ <p class="fs-5 mb-4">Five-step process. Each step has its own depth but the overall shape is straightforward.</p>
 
-<p class="fs-5 mb-4">Key features of HUB include:</p>
+ <ol class="fs-5 mb-4" style="list-style: decimal inside;">
+ <li><strong>Collect and label data.</strong> Images and short clips from the cameras that will be in production. Include people inside zones, people outside zones, different lighting, different weather. Label the zone boundaries and the human figures.</li>
+ <li><strong>Pick a model.</strong> YOLO, SSD, or Faster R-CNN are the usual choices. YOLO's the default for live video because it's fast enough. Pick based on your latency budget and accuracy requirements.</li>
+ <li><strong>Train it.</strong> Use transfer learning from a pre-trained backbone; never train from scratch unless you have a really good reason. Fine-tune on your labelled dataset until the validation metrics stabilise.</li>
+ <li><strong>Evaluate it honestly.</strong> Held-out test set, precision and recall and F1, careful attention to where the model fails. Tune until the failure modes are acceptable for the safety application.</li>
+ <li><strong>Deploy where the cameras are.</strong> Edge box near the cameras for the lowest latency, cloud server if your network and use case allow it. Either way, validate latency end-to-end before declaring the deployment done.</li>
+ </ol>
 
-<ul class="fs-5 mb-4">
-    <li><strong>Data Versioning:</strong> Track changes to your data and annotations, ensuring reproducibility.</li>
-    <li><strong>Annotation Tools:</strong> Utilize a suite of annotation tools to label your data efficiently.</li>
-    <li><strong>Collaboration:</strong> Enable team collaboration with shared access and version control.</li>
-    <li><strong>Scalability:</strong> Manage large datasets with ease.</li>
-</ul>
-<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiComputerVisionModelsCameraSelection.jpeg" alt="HUB data management tool" /></figure>
-<p class="fs-5 mb-4">By leveraging HUB, you can streamline your data management workflow, accelerate the development of your vision AI application, and ensure its long-term success.</p>
-            </div>
-        
-            <div class="conclusion">
-                <p class="fs-5 mb-4">Detecting people in danger zones with AI offers a powerful and proactive approach to enhancing workplace safety. By leveraging computer vision, automated alerts, and analytics, organizations can significantly reduce the risk of accidents, improve response times, and enhance operational awareness. Implementing these technologies requires careful consideration of model selection, camera choice, and data management practices. As AI continues to evolve, its role in workplace safety will only become more prominent, paving the way for safer and more efficient work environments.</p>
-            </div>
-            <div class="cta mt-5">
-                <p class="cta fs-5 mb-4">Ready to enhance workplace safety with AI? Star our open-source project <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">HUB</a> on GitHub and start building your vision AI application today!</p>
-            </div>
-        </section>
-    
-              </section>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========================= blog-section end ========================= -->
+ <h2 class="fw-bolder mb-4 mt-5">Alerts and analytics, where the value compounds</h2>
+ <p class="fs-5 mb-4">Detecting the entry is the first half. Doing something useful with the detection is the second half. Wire the alerts into the channels your team actually pays attention to: SMS, email, Slack, the safety management system, the supervisor's pager. Threshold the alerts sensibly so the team doesn't get fatigued.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiVisionAiApplicationDevelopment.jpeg" alt="Alert configuration dashboard" /></figure>
+ <p class="fs-5 mb-4">Common alert types: someone entering a zone, someone staying in a zone past a threshold time, repeated entries by the same worker over a shift. Each fires different downstream actions depending on your setup.</p>
+ <p class="fs-5 mb-4">The analytics side is where you get the compounding value. Over weeks and months of operation, the events pile up into a dataset. Which zones get violated most often. Which shifts have the highest entry rates. Which crew is responsible. Whether the violations correlate with weather, time of day, or specific tasks. That data feeds back into safety planning: where to add signage, who to retrain, which procedures need updating.</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Live alerting</strong> for the immediate incidents.</li>
+ <li><strong>Historical analysis</strong> across zones, time periods, and crews.</li>
+ <li><strong>Trend detection</strong> for the patterns that aren't obvious from individual events.</li>
+ <li><strong>Programme evaluation</strong> for whether interventions actually moved the numbers.</li>
+ </ul>
 
-    <!-- ========================= footer start ========================= -->
-    <footer class="footer pt-120">
+ <h2 class="fw-bolder mb-4 mt-5">Picking the model and the camera</h2>
+ <p class="fs-5 mb-4">Two decisions that shape what you end up with. Get them wrong and the system underperforms regardless of how good the rest of the pipeline is.</p>
+
+ <h3 class="fw-bolder mb-4 mt-5">Model</h3>
+ <p class="fs-5 mb-4">Things to weigh:</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Accuracy in your actual conditions.</strong> Not benchmark numbers; performance on the lighting, angle, and clutter your cameras will see.</li>
+ <li><strong>Speed.</strong> The model has to process frames fast enough that alerts arrive in time to matter.</li>
+ <li><strong>Compute fit.</strong> Edge box vs. cloud changes which models are practical.</li>
+ <li><strong>Transfer learning.</strong> Almost always start from a pre-trained backbone.</li>
+ </ul>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiAutomatingAlertsAnalyticsComputer.jpeg" alt="Different Computer Vision Models" /></figure>
+
+ <h3 class="fw-bolder mb-4 mt-5">Camera</h3>
+ <p class="fs-5 mb-4">The camera matters as much as the model. Cheap cameras with bad sensors limit how good the model can be, regardless of architecture.</p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Resolution.</strong> Enough pixels on the target to detect reliably. 1080p is usually fine for medium-sized zones; 4K for very large ones.</li>
+ <li><strong>Frame rate.</strong> 15-30fps for most safety applications. Higher for fast-moving things like vehicles.</li>
+ <li><strong>Low-light performance.</strong> Critical for outdoor sites and any 24/7 operation. IR or starlight sensors help.</li>
+ <li><strong>Environmental rating.</strong> IP67 or better for outdoor. Heat and humidity tolerance for industrial environments.</li>
+ <li><strong>Network reliability.</strong> The camera needs to keep streaming to the edge box; a flaky network undermines everything.</li>
+ </ul>
+
+ <h2 class="fw-bolder mb-4 mt-5">HUB for the data side</h2>
+ <p class="fs-5 mb-4">Building a vision AI application is mostly a data exercise. <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">HUB</a> is our open-source platform that handles the data side: dataset organisation, annotation, versioning, the model training pipeline. Central place for all of it so you're not stitching tools together by hand.</p>
+
+ <p class="fs-5 mb-4">What HUB does for you:</p>
+
+ <ul class="fs-5 mb-4">
+ <li><strong>Versioning</strong> for datasets and annotations, so you can reproduce results from any past training run.</li>
+ <li><strong>Annotation tooling</strong> for the labelling work that always takes longer than you expect.</li>
+ <li><strong>Collaboration features</strong> for teams working on the same dataset.</li>
+ <li><strong>Scale handling</strong> for the larger datasets you'll end up with as the project matures.</li>
+ </ul>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiComputerVisionModelsCameraSelection.jpeg" alt="HUB data management tool" /></figure>
+ <p class="fs-5 mb-4">HUB takes the operational complexity out of the data pipeline so you can focus on the model and the deployment.</p>
+
+ <div class="conclusion">
+ <p class="fs-5 mb-4">Vision AI for danger-zone detection is real, ships in production, and meaningfully reduces injury rates. The deployment patterns are well understood; the open-source tooling is mature; the only thing left is to actually do it. Pick a zone, pick a camera, pick a model, get it running, measure the lift, expand from there. The first deployment is the hardest; the subsequent ones use the same pattern.</p>
+ </div>
+ <div class="cta mt-5">
+ <p class="cta fs-5 mb-4">Ready to enhance workplace safety with AI? Star our open-source project <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">HUB</a> on GitHub and start building your vision AI application today!</p>
+ </div>
+ </div>
+ </div>
+ </article>
+</main>
+
+<!-- @partial:footer -->
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="footer-widget">
               <div class="logo">
-                <a href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
                 </a>
               </div>
-              <p class="desc">Safety, powered by AI.</p>
-              <ul class="social-links">
-                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
             <div class="footer-widget">
-              <h3>Company</h3>
+              <h3>Platform</h3>
               <ul class="links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
-                <li><a href="../../resources.html">Resources</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-widget">
-              <h3>About Us</h3>
-              <ul class="links">
-                <li>Contact Us</li>
-                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
               </ul>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h3>Subscribe for Updates</h3>
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
               <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                <div id="mce-responses" class="clear foot">
-                  <div class="response" id="mce-error-response" style="display:none"></div>
-                  <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>
-                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
       </div>
     </footer>
-    <!-- ========================= footer end ========================= -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="../../assets/js/tiny-slider.js"></script>
-    <script src="../../assets/js/wow.min.js"></script>
-    <script src="../../assets/js/polyfill.js"></script>
-    <script src="../../assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>

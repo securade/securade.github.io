@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="hub-title hub-desc">
+  <title id="hub-title">Securade.ai HUB illustration</title>
+  <desc id="hub-desc">A central edge AI device with five CCTV cameras connected to it, exchanging real-time detection data.</desc>
+  <defs>
+    <radialGradient id="hub-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5cbfbf" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#5cbfbf" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#5cbfbf" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hub-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1722"/>
+      <stop offset="100%" stop-color="#18222f"/>
+    </linearGradient>
+    <pattern id="hub-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.18"/>
+    </pattern>
+    <filter id="hub-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0b1220" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Grid backdrop -->
+  <rect width="640" height="480" fill="url(#hub-grid)" color="#5cbfbf"/>
+
+  <!-- Soft glow -->
+  <circle cx="320" cy="240" r="200" fill="url(#hub-glow)"/>
+
+  <!-- Connection lines -->
+  <g stroke="#5cbfbf" stroke-width="1.5" fill="none" opacity="0.7" stroke-dasharray="2 6">
+    <path d="M 130 90 Q 230 165 320 240"/>
+    <path d="M 510 95 Q 410 170 320 240"/>
+    <path d="M 95 285 Q 200 260 320 240"/>
+    <path d="M 545 295 Q 440 270 320 240"/>
+    <path d="M 320 240 L 320 410"/>
+  </g>
+
+  <!-- Camera nodes -->
+  <g filter="url(#hub-shadow)">
+    <!-- Camera top-left -->
+    <g transform="translate(95 65)">
+      <rect width="80" height="50" rx="8" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.08"/>
+      <circle cx="22" cy="25" r="13" fill="#0f1722"/>
+      <circle cx="22" cy="25" r="7" fill="#5cbfbf"/>
+      <circle cx="20" cy="22" r="2" fill="#ffffff" opacity="0.8"/>
+      <rect x="44" y="14" width="24" height="4" rx="2" fill="#0b1220" opacity="0.4"/>
+      <rect x="44" y="22" width="18" height="4" rx="2" fill="#0b1220" opacity="0.25"/>
+      <circle cx="68" cy="40" r="3" fill="#22c55e"/>
+    </g>
+    <!-- Camera top-right -->
+    <g transform="translate(465 70)">
+      <rect width="80" height="50" rx="8" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.08"/>
+      <circle cx="22" cy="25" r="13" fill="#0f1722"/>
+      <circle cx="22" cy="25" r="7" fill="#5cbfbf"/>
+      <circle cx="20" cy="22" r="2" fill="#ffffff" opacity="0.8"/>
+      <rect x="44" y="14" width="24" height="4" rx="2" fill="#0b1220" opacity="0.4"/>
+      <rect x="44" y="22" width="18" height="4" rx="2" fill="#0b1220" opacity="0.25"/>
+      <circle cx="68" cy="40" r="3" fill="#22c55e"/>
+    </g>
+    <!-- Camera left -->
+    <g transform="translate(60 260)">
+      <rect width="80" height="50" rx="8" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.08"/>
+      <circle cx="22" cy="25" r="13" fill="#0f1722"/>
+      <circle cx="22" cy="25" r="7" fill="#5cbfbf"/>
+      <circle cx="20" cy="22" r="2" fill="#ffffff" opacity="0.8"/>
+      <rect x="44" y="14" width="24" height="4" rx="2" fill="#0b1220" opacity="0.4"/>
+      <rect x="44" y="22" width="18" height="4" rx="2" fill="#0b1220" opacity="0.25"/>
+      <circle cx="68" cy="40" r="3" fill="#22c55e"/>
+    </g>
+    <!-- Camera right -->
+    <g transform="translate(500 270)">
+      <rect width="80" height="50" rx="8" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.08"/>
+      <circle cx="22" cy="25" r="13" fill="#0f1722"/>
+      <circle cx="22" cy="25" r="7" fill="#5cbfbf"/>
+      <circle cx="20" cy="22" r="2" fill="#ffffff" opacity="0.8"/>
+      <rect x="44" y="14" width="24" height="4" rx="2" fill="#0b1220" opacity="0.4"/>
+      <rect x="44" y="22" width="18" height="4" rx="2" fill="#0b1220" opacity="0.25"/>
+      <circle cx="68" cy="40" r="3" fill="#22c55e"/>
+    </g>
+    <!-- Camera bottom -->
+    <g transform="translate(280 390)">
+      <rect width="80" height="50" rx="8" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.08"/>
+      <circle cx="22" cy="25" r="13" fill="#0f1722"/>
+      <circle cx="22" cy="25" r="7" fill="#5cbfbf"/>
+      <circle cx="20" cy="22" r="2" fill="#ffffff" opacity="0.8"/>
+      <rect x="44" y="14" width="24" height="4" rx="2" fill="#0b1220" opacity="0.4"/>
+      <rect x="44" y="22" width="18" height="4" rx="2" fill="#0b1220" opacity="0.25"/>
+      <circle cx="68" cy="40" r="3" fill="#22c55e"/>
+    </g>
+  </g>
+
+  <!-- Central HUB card -->
+  <g filter="url(#hub-shadow)" transform="translate(220 180)">
+    <rect width="200" height="120" rx="14" fill="url(#hub-card)"/>
+    <rect x="0" y="0" width="200" height="120" rx="14" fill="none" stroke="#5cbfbf" stroke-opacity="0.4"/>
+    <!-- HUB badge -->
+    <rect x="14" y="14" width="36" height="20" rx="10" fill="#5cbfbf" fill-opacity="0.18"/>
+    <text x="32" y="28" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#5cbfbf" text-anchor="middle" letter-spacing="0.5">HUB</text>
+    <!-- detection list rows -->
+    <g font-family="Inter, sans-serif" font-size="11" fill="#a0aec0">
+      <circle cx="24" cy="56" r="3" fill="#22c55e"/>
+      <text x="34" y="60">hard hat detected</text>
+      <text x="170" y="60" fill="#a0aec0" text-anchor="end" font-size="10">98%</text>
+
+      <circle cx="24" cy="78" r="3" fill="#22c55e"/>
+      <text x="34" y="82">high-vis vest ok</text>
+      <text x="170" y="82" fill="#a0aec0" text-anchor="end" font-size="10">96%</text>
+
+      <circle cx="24" cy="100" r="3" fill="#f59e0b"/>
+      <text x="34" y="104">person near forklift</text>
+      <text x="170" y="104" fill="#f59e0b" text-anchor="end" font-size="10">82%</text>
+    </g>
+  </g>
+</svg>

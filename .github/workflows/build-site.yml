@@ -1,0 +1,45 @@
+name: Build site (render partials)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - '_partials/**'
+      - 'scripts/build.py'
+  pull_request:
+    paths:
+      - '**.html'
+      - '_partials/**'
+      - 'scripts/build.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run build (renders partials in-place)
+        run: python scripts/build.py
+
+      - name: Commit rebuilt HTML if changed
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain '*.html')" ]]; then
+            git add '*.html'
+            git commit -m "build: re-render partials"
+            git push
+          else
+            echo "No changes after build."
+          fi

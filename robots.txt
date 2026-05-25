@@ -1,0 +1,63 @@
+# Securade.ai — robots.txt
+# Sitemap discovery
+Sitemap: https://securade.ai/sitemap.xml
+
+# Default policy: allow search crawlers
+User-agent: *
+Allow: /
+Disallow: /_partials/
+Disallow: /scripts/
+Disallow: /templates/
+
+# AI crawlers — explicitly opted in so policy is documented.
+# We want Securade.ai content to be citable by AI assistants and AI Overviews.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /

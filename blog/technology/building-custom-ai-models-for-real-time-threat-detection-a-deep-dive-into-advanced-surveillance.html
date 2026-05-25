@@ -1,312 +1,377 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <title>Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance - Securade.ai</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance, Securade.ai
+description: Explore building custom AI models for real-time threat detection in advanced surveillance. Learn about computer vision, model training, and deployment.
+canonical_path: /blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html
+og_title: Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance
+og_description: A deep dive into developing custom deep learning models for real-time threat detection in advanced surveillance systems. Learn about dataset preparation, model training, deployment, and ethical considerations.
+og_image: /assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg
+og_type: article
+nav_active: resources
+extra_schema:,
+ {"@type": "Article", "@id": "https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html#article", "headline": "Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance", "description": "Explore building custom AI models for real-time threat detection in advanced surveillance. Learn about computer vision, model training, and deployment.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg", "datePublished": "2025-02-15", "dateModified": "2025-02-15", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "AI threat detection, real-time surveillance, computer vision, deep learning models, CCTV integration, security systems, AI security, threat analysis, video analytics, security cameras"},
+ {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Explore building custom AI models for real-time threat detection in advanced surveillance. Learn about computer vision, model training, and deployment.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance">
-    <meta property="og:description" content="A deep dive into developing custom deep learning models for real-time threat detection in advanced surveillance systems. Learn about dataset preparation, model training, deployment, and ethical considerations.">
-    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg">
-    <meta property="og:url" content="https://securade.ai">
-    <meta name="keywords" content="AI threat detection, real-time surveillance, computer vision, deep learning models, CCTV integration, security systems, AI security, threat analysis, video analytics, security cameras">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="../../assets/css/animate.css"/>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance, Securade.ai</title>
+    <meta name="description" content="Explore building custom AI models for real-time threat detection in advanced surveillance. Learn about computer vision, model training, and deployment." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader end -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance" />
+    <meta property="og:description" content="A deep dive into developing custom deep learning models for real-time threat detection in advanced surveillance systems. Learn about dataset preparation, model training, deployment, and ethical considerations." />
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html" />
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance" />
+    <meta name="twitter:description" content="A deep dive into developing custom deep learning models for real-time threat detection in advanced surveillance systems. Learn about dataset preparation, model training, deployment, and ethical considerations." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, {"@type": "Article", "@id": "https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html#article", "headline": "Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance", "description": "Explore building custom AI models for real-time threat detection in advanced surveillance. Learn about computer vision, model training, and deployment.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg", "datePublished": "2025-02-15", "dateModified": "2025-02-15", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "AI threat detection, real-time surveillance, computer vision, deep learning models, CCTV integration, security systems, AI security, threat analysis, video analytics, security cameras"}, {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/building-custom-ai-models-for-real-time-threat-detection-a-deep-dive-into-advanced-surveillance.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
       <div class="navbar-area">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#platform">HUB</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#tower">Tower</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="../../resources.html">Resources</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
-    <!-- ========================= header end ========================= -->
+<!-- @endpartial:header -->
 
-    <!-- ========================= blog-section start ========================= -->
-    <section id="blog-content" class="feature-section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <article>
-              <!-- Post header-->
-              <header class="mb-4">
-                <h1 class="fw-bolder mb-1">Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance</h1>
-                <div class="text-muted fst-italic mb-2">
-                  Posted on February 15, 2025 by Arjun Krishnamurthy
-                </div>
-              </header>
-              
-              <!-- Hero image -->
-              <figure class="mb-4">
-                <img class="img-fluid rounded" src="../../assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg" alt="Image"/>
-              </figure>
-              
-              <!-- Post content-->
-              <section class="mb-5">
-                
-        <section class="mb-5">
-            <div class="introduction">
-                <p class="fs-5 mb-4">In an era defined by rapidly evolving security threats, traditional surveillance systems are increasingly inadequate. The sheer volume of data generated by CCTV cameras often overwhelms human operators, leading to delayed responses and missed critical events. Enter Artificial Intelligence (AI), specifically custom-built deep learning models, offering the promise of real-time threat detection with unparalleled accuracy and speed. This blog post will explore the technical journey of building and deploying such models, focusing on the nuances of computer vision, dataset management, model optimization, and ethical implications.</p>
-<p class="fs-5 mb-4">We will delve into the practical steps involved in creating these models, from collecting and preparing the training data to integrating them into existing surveillance infrastructures. Furthermore, we will address the inherent challenges, such as minimizing false positives, ensuring scalability, and navigating the complex ethical landscape surrounding AI-powered surveillance. This guide is designed to provide developers, security professionals, and anyone interested in the future of security technology with actionable insights and best practices.</p>
-            </div>
-    
-            <h2 class="fw-bolder mb-4 mt-5">Understanding the Fundamentals of AI-Powered Threat Detection</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">AI-powered threat detection leverages the power of computer vision to analyze video streams in real-time, identifying potential threats and alerting security personnel. At its core, this technology relies on deep learning, a subset of AI that uses artificial neural networks with multiple layers (hence 'deep') to learn complex patterns from vast amounts of data. This section will break down the essential concepts and components that make up an AI-driven surveillance system.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Computer Vision: Enabling Machines to See</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Computer vision is the field of AI that empowers machines to interpret and understand images and videos. It encompasses a wide range of techniques, including object detection, image classification, and semantic segmentation. In the context of threat detection, computer vision algorithms are trained to identify specific objects or behaviors of interest, such as weapons, suspicious movements, or unauthorized access.</p>
-<p class="fs-5 mb-4">Popular computer vision architectures for threat detection include Convolutional Neural Networks (CNNs), which are particularly effective at extracting features from images. CNNs have revolutionized various domains, including image recognition and video analysis, making them an ideal choice for analyzing surveillance footage.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Deep Learning: The Engine Behind Intelligent Surveillance</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Deep learning models, particularly CNNs, have proven exceptionally capable of learning complex patterns from visual data. These models require massive amounts of labeled data for effective training, which means a considerable investment in dataset preparation and management. The accuracy and reliability of the AI system are directly proportional to the quality and quantity of the training data.</p>
-<p class="fs-5 mb-4">Moreover, choosing the right deep learning architecture and optimizing its parameters is crucial for achieving high performance in real-time threat detection. Different architectures excel at different tasks, and careful consideration must be given to the specific requirements of the surveillance environment.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Building Your Custom AI Threat Detection Model: A Step-by-Step Guide</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Creating a custom AI model for real-time threat detection involves a series of well-defined steps, from gathering and labeling data to training, validating, and deploying the model. This section provides a detailed, step-by-step guide to help you navigate the entire process.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Step 1: Data Acquisition and Preparation</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">The first and arguably most critical step is collecting a diverse and representative dataset of surveillance footage. This dataset should include examples of the threats you want to detect (e.g., people carrying weapons, unauthorized entry) as well as normal, non-threatening activities. Data augmentation techniques can be employed to increase the dataset size and improve the model's generalization ability. Data augmentation includes rotations, crops, color adjustments, and noise injection into images. These processes help the models learn to recognize objects under various conditions.</p>
-<p class="fs-5 mb-4">Once you've gathered the data, it needs to be meticulously labeled. Labeling involves identifying and annotating the objects or behaviors of interest in each image or video frame. This process is often time-consuming, but it is essential for training an accurate and reliable model. There are various tools available for data labeling, ranging from open-source options to commercial platforms. It’s crucial to ensure data privacy and compliance when collecting and labeling surveillance footage.</p>
-<p class="fs-5 mb-4"><strong>Key Considerations:</strong></p>
-<ul class="fs-5 mb-4">
-  <li><strong>Dataset Size:</strong> A larger, more diverse dataset generally leads to better model performance.</li>
-  <li><strong>Labeling Accuracy:</strong> Accurate and consistent labeling is crucial for training a reliable model.</li>
-  <li><strong>Data Privacy:</strong> Ensure compliance with data privacy regulations when collecting and handling surveillance footage.</li>
-</ul>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Step 2: Model Selection and Training</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Choosing the right deep learning architecture is crucial for achieving optimal performance. Several pre-trained models, such as YOLO (You Only Look Once), SSD (Single Shot Detector), and Faster R-CNN, are specifically designed for object detection and are well-suited for threat detection applications. These pre-trained models can be fine-tuned on your specific dataset, which can significantly reduce training time and improve accuracy. Fine-tuning a pre-trained model helps to accelerate development, while also improving performance. Transfer learning is the idea of leveraging knowledge gained from solving a similar problem.</p>
-<p class="fs-5 mb-4">During training, the model learns to identify patterns in the data and associate them with the corresponding labels. The training process involves iteratively adjusting the model's parameters to minimize the difference between its predictions and the actual labels. It's essential to monitor the model's performance during training and adjust the training parameters as needed to prevent overfitting or underfitting.</p>
-<p class="fs-5 mb-4"><strong>Common Architectures:</strong></p>
-<ol class="fs-5 mb-4" style="list-style: decimal inside;">
-  <li><strong>YOLO (You Only Look Once):</strong> Known for its speed and efficiency, making it suitable for real-time applications.</li>
-  <li><strong>SSD (Single Shot Detector):</strong> Balances speed and accuracy, providing a good compromise for many applications.</li>
-  <li><strong>Faster R-CNN:</strong> Offers high accuracy but can be more computationally intensive.</li>
-</ol>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Step 3: Model Evaluation and Validation</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Once the model is trained, it needs to be evaluated to assess its performance and identify potential weaknesses. This involves testing the model on a separate dataset that was not used during training. This validation dataset is used to evaluate how well the model will perform on unseen data. Common metrics for evaluating object detection models include precision, recall, and F1-score. Precision measures the accuracy of the positive predictions, recall measures the model's ability to identify all positive instances, and the F1-score is the harmonic mean of precision and recall.</p>
-<p class="fs-5 mb-4">If the model's performance is not satisfactory, you may need to adjust the training parameters, gather more data, or even choose a different architecture. It's crucial to iterate on the model until it meets your desired performance criteria.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Step 4: Deployment and Integration</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Deploying your AI threat detection model involves integrating it into your existing surveillance infrastructure. This may involve setting up a dedicated server to run the model, connecting it to your CCTV cameras, and configuring the system to send alerts when a threat is detected. Optimizing the model for low-latency performance is critical for real-time threat detection. This may involve techniques such as model quantization, pruning, and parallel processing. Model optimization is essential for efficient inference.</p>
-<p class="fs-5 mb-4">Furthermore, consider integrating the AI system with other security tools and systems, such as access control systems and alarm systems, to create a comprehensive security solution. </p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Optimizing Performance for Low-Latency Environments</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">In real-time surveillance, latency is the enemy. The delay between an event occurring and the AI system detecting it must be minimized to ensure timely responses. This section explores various techniques for optimizing the performance of your AI model for low-latency environments.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Model Quantization and Pruning</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Model quantization reduces the size of the model by converting its parameters from floating-point numbers to integers. This can significantly reduce the memory footprint and computational requirements of the model, leading to faster inference times. Model pruning involves removing unnecessary connections from the neural network, further reducing its size and complexity. Quantization methods include techniques like post-training quantization and quantization-aware training.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Hardware Acceleration</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Leveraging specialized hardware, such as GPUs (Graphics Processing Units) and TPUs (Tensor Processing Units), can significantly accelerate the inference process. GPUs are particularly well-suited for parallel processing, which is essential for deep learning. TPUs are custom-designed for AI workloads and can provide even greater performance gains.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Edge Computing</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Edge computing involves processing data closer to the source, reducing the need to transmit large amounts of data to a central server. This can significantly reduce latency and improve the responsiveness of the AI system. This approach is especially beneficial in scenarios with limited bandwidth or unreliable network connections.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Addressing Challenges and Ethical Considerations</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">While AI-powered threat detection offers significant advantages, it also presents several challenges and ethical considerations that must be addressed. This section explores some of the most pressing issues and offers guidance on how to mitigate them.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Minimizing False Positives</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">False positives, where the AI system incorrectly identifies a threat, can lead to unnecessary alarms and wasted resources. Minimizing false positives requires careful attention to data quality, model training, and threshold configuration. Adjusting the detection thresholds can help strike a balance between minimizing false positives and maximizing detection accuracy. Additionally, implementing a human-in-the-loop system, where human operators review and validate the AI system's alerts, can help reduce the impact of false positives.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Ensuring Scalability</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">As the number of cameras and data volume grows, the AI system must be able to scale efficiently to handle the increased workload. This may involve using distributed computing techniques, optimizing the model for parallel processing, and leveraging cloud-based resources.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Navigating Ethical Concerns</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">AI-powered surveillance raises several ethical concerns, including privacy, bias, and accountability. It's crucial to implement safeguards to protect individual privacy, ensure fairness in the AI system's predictions, and establish clear lines of accountability for its actions. Transparency and explainability are also essential for building trust in the AI system.</p>
-                    </div>
-                
-            <div class="conclusion">
-                <p class="fs-5 mb-4">Building custom AI models for real-time threat detection is a complex but rewarding endeavor. By carefully considering the key concepts, following the step-by-step guide, and addressing the challenges and ethical considerations, you can create a powerful surveillance system that enhances security and protects your assets. AI-powered surveillance represents a significant advancement in security technology, offering the potential to detect threats with unprecedented accuracy and speed. However, it's crucial to approach this technology responsibly, ensuring that it is used ethically and in a way that respects individual privacy and human rights.</p>
-<p class="fs-5 mb-4">As AI technology continues to evolve, we can expect to see even more sophisticated and effective threat detection systems emerge. By staying informed and embracing innovation, you can leverage the power of AI to create a safer and more secure environment.</p>
-            </div>
-            <div class="cta mt-5">
-<p class="cta fs-5 mb-4">Support our open-source projects by starring our GitHub repository: <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">https://github.com/securade/hub</a>. By starring the repo, you join a collaborative community that drives innovation in real-time AI surveillance solutions and share insights on building robust computer vision systems.</p>
-            </div>
-        </section>
-    
-              </section>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========================= blog-section end ========================= -->
+<main id="main">
+ <article class="article">
+ <div class="container">
+ <div class="article-header">
+ <ol class="breadcrumbs" aria-label="Breadcrumb">
+ <li><a href="/">Home</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/blog/technology/">Technology</a></li><li class="current">Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance</li>
+ </ol>
+ <span class="article-eyebrow">Technology</span>
+ <h1>Building Custom AI Models for Real-Time Threat Detection: Advanced Surveillance</h1>
+ <p class="article-meta">
+ <span>By Arjun Krishnamurthy</span>
+ <span class="dot">·</span>
+ <time datetime="2025-02-15">February 15, 2025</time>
+ </p>
+ </div>
+ <figure class="article-hero">
+ <img src="/assets/images/blog/technology/securadeaiRealTimeThreatDetectionMonitor.jpeg" alt="Image" />
+ </figure>
 
-    <!-- ========================= footer start ========================= -->
-    <footer class="footer pt-120">
+ <div class="article-body">
+ <section class="mb-5">
+ <div class="introduction">
+ <p class="fs-5 mb-4">A typical mid-sized facility might have 200 cameras, each generating 25 frames per second. That's 5,000 frames a second of footage that nobody is actually watching in real time. The cameras record, the recordings get filed away, and most events never get reviewed unless something bad happens.</p>
+ <p class="fs-5 mb-4">Custom deep-learning models change that math. The cameras stay the same. What changes is that a model sits behind them and watches the frames as they come in, flagging things you actually care about: weapons, intrusions, unattended bags, unsafe behaviour. This is a walkthrough of what's involved in building and deploying that kind of model, from the data work through to the deployment side.</p>
+ <p class="fs-5 mb-4">It's written for engineers and security folks who want to know what they're getting into. The work is doable. It's also more about good data and good integration than it is about exotic architectures.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">The basics of what's actually happening</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">AI threat detection is computer vision running on video frames. The model sees a frame, runs inference, and outputs predictions: bounding boxes, labels, confidence scores. If a prediction crosses a threshold, you fire an alert. The underlying technology is deep learning, which mostly just means convolutional neural networks plus the ecosystem that has built up around them over the past decade.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Computer vision: making the camera useful</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Computer vision covers a lot of ground: object detection, classification, segmentation, tracking, pose estimation. For threat detection you mostly care about object detection (finding things in the frame) and sometimes pose estimation (figuring out what people are doing).</p>
+ <p class="fs-5 mb-4">CNNs are still the workhorse for this. They pull features out of the image at multiple scales and combine them into detections. There are newer transformer-based approaches that beat them on some benchmarks, but for production video at edge latency budgets, a good CNN is still where most deployments land.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Deep learning: where the data goes</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">A deep model is only as good as what you trained it on. That means labelled data. A lot of it. The accuracy of your detector is almost entirely a function of how representative and well-labelled your training set is. You can have the best architecture in the world; if your data is bad, your detector is bad.</p>
+ <p class="fs-5 mb-4">Architecture matters too, but in a more limited way. The right architecture for your problem usually picks itself once you know your latency budget, your hardware, and your accuracy targets.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Building the thing, step by step</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">The actual workflow has four steps. None of them are glamorous. Most of the work, by hours, is in the first one.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Step 1: data</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">You need a dataset that covers the threats you want to detect, plus a lot of negative examples. If you're building a weapon detector, you need footage of weapons in your actual environments under your actual lighting. Footage from a different building under different lighting is not the same thing, and the model will struggle when it sees yours.</p>
+ <p class="fs-5 mb-4">Augmentation helps stretch a small dataset. Rotations, crops, colour shifts, simulated lighting changes, all of these expand what the model has seen. It's not a substitute for real data, but it pushes a small dataset further than you'd expect.</p>
+ <p class="fs-5 mb-4">Then comes labelling. This is the part everyone underestimates. Labelling 10,000 frames accurately is genuinely a week of someone's work. There are tools that help (CVAT, Roboflow, Label Studio), and there are commercial labelling services, but the labels still need someone who knows your domain to review them.</p>
+ <p class="fs-5 mb-4"><strong>What to actually pay attention to:</strong></p>
+ <ul class="fs-5 mb-4">
+ <li><strong>Dataset size:</strong> bigger and more diverse usually beats clever. Aim for thousands of labelled examples, not hundreds.</li>
+ <li><strong>Label quality:</strong> inconsistent labels make the model learn the wrong things. Have a written labelling standard and review samples.</li>
+ <li><strong>Privacy:</strong> if you're capturing real people, that's personal data. Treat it like it.</li>
+ </ul>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Step 2: pick a model and train it</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Don't train from scratch. Start with a pre-trained backbone and fine-tune it on your data. The standard options are YOLO (fast, decent accuracy), SSD (balanced), and Faster R-CNN (higher accuracy, slower). For real-time video, YOLO variants are usually what you'll end up running.</p>
+ <p class="fs-5 mb-4">Training itself is mostly babysitting. You set a learning rate, you start the loop, you watch the validation loss. If it overfits, you adjust regularisation or get more data. If it underfits, you train longer or try a bigger model. The cycle is repetitive, but the diagnostics are well understood and there's tooling for all of it.</p>
+ <p class="fs-5 mb-4"><strong>The three architectures you'll actually consider:</strong></p>
+ <ol class="fs-5 mb-4" style="list-style: decimal inside;">
+ <li><strong>YOLO:</strong> default choice for live video. The recent variants (v8, v9) are very good.</li>
+ <li><strong>SSD:</strong> still around, sometimes wins on specific hardware.</li>
+ <li><strong>Faster R-CNN:</strong> good if you have GPU budget and care about accuracy more than latency.</li>
+ </ol>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Step 3: evaluate honestly</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Hold out a test set the model has never seen. Score it on precision (of the things you flagged, how many were real?), recall (of the things that were real, how many did you flag?), and F1 (the balance between the two). Look at the failure cases. Don't just look at the aggregate score.</p>
+ <p class="fs-5 mb-4">If it doesn't pass, fix the data first. Adding more labelled examples of the cases the model is getting wrong almost always helps more than changing the architecture.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Step 4: deploy it next to the cameras</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Once the model is good enough, you wire it up to your camera feeds, run inference, and send alerts. The deployment side has its own optimisations: quantising the model so it runs faster, pruning weights you don't need, picking the right hardware for the inference target.</p>
+ <p class="fs-5 mb-4">From there, the alerts need to land somewhere useful: an access control system, a fire panel, a security ops dashboard. The integration layer is usually where deployments stall, so plan for it early.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Squeezing latency out of the pipeline</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A live surveillance model with a 2-second inference delay is useless. You're trying to act on what just happened, not what happened a moment ago. So latency optimisation is part of the job, not an afterthought.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Quantisation and pruning</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Quantising converts your model's 32-bit floats to 8-bit integers. That's a 4x memory reduction and usually a 2-3x speed-up on supported hardware, with a small drop in accuracy. Post-training quantisation is the easy version; quantisation-aware training is the version that doesn't lose much accuracy.</p>
+ <p class="fs-5 mb-4">Pruning removes weights the model doesn't really need. Combined with quantisation, you can usually get a model down to a fraction of its training-time footprint without hurting performance much.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">The right hardware</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">GPUs are the default. They handle the parallelism that CNNs are built around. Cheaper edge accelerators like Jetson Nano or Coral USB get you a long way for less power. Cloud TPUs are great for batch inference but rarely the right answer for live streams.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Putting the model near the cameras</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Running inference on a box at the site, rather than shipping frames to a cloud cluster, cuts the network round trip entirely. For real-time use cases, that's not a nice-to-have; it's the only way to hit the latency budget.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">The things that will bite you</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Three problems show up in every deployment.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">False positives</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">A model that fires constantly is worse than no model at all, because the people on the receiving end stop reading the alerts. Tune your detection threshold conservatively and accept that you'll miss some edge cases in exchange for trust. A human-in-the-loop review of borderline cases helps a lot, especially in the first few months when you're still learning where the model goes wrong.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Scaling</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Going from 10 cameras to 1000 changes the engineering problem. You'll need to think about how you push model updates to all the edge devices, how you collect new training data from the fleet, and how you monitor the health of the model across sites.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">The ethics, which are not optional</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">You're building something that watches people. Bias in the training data shows up as bias in the detections. Privacy expectations vary by jurisdiction and by industry. Accountability for what the model decides has to sit with a person, not the model. None of this is decorative; people will ask you about it, and you should have answers.</p>
+ </div>
+
+ <div class="conclusion">
+ <p class="fs-5 mb-4">Custom threat detection isn't easy, but none of the pieces are mysterious. Most of the work is in the data, some of it is in the deployment, and a smaller-than-you'd-think portion is in the model itself. If you get the data right and the integration right, the model becomes the easy part.</p>
+ <p class="fs-5 mb-4">The tooling has matured a lot. The models have matured. The bottlenecks now are operational: labelling, fleet management, alert routing, and making sure the system stays honest as your environment changes.</p>
+ </div>
+ <div class="cta mt-5">
+ <p class="cta fs-5 mb-4">If you want a starting point that already has the camera I/O, model serving, and alert routing wired up, take a look at <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">securade.ai HUB</a> on GitHub. It's open source.</p>
+ </div>
+ </div>
+ </div>
+ </article>
+</main>
+
+<!-- @partial:footer -->
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="footer-widget">
               <div class="logo">
-                <a href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
                 </a>
               </div>
-              <p class="desc">Safety, powered by AI.</p>
-              <ul class="social-links">
-                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
             <div class="footer-widget">
-              <h3>Company</h3>
+              <h3>Platform</h3>
               <ul class="links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
-                <li><a href="../../resources.html">Resources</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-widget">
-              <h3>About Us</h3>
-              <ul class="links">
-                <li>Contact Us</li>
-                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
               </ul>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h3>Subscribe for Updates</h3>
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
               <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                <div id="mce-responses" class="clear foot">
-                  <div class="response" id="mce-error-response" style="display:none"></div>
-                  <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>
-                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
       </div>
     </footer>
-    <!-- ========================= footer end ========================= -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="../../assets/js/tiny-slider.js"></script>
-    <script src="../../assets/js/wow.min.js"></script>
-    <script src="../../assets/js/polyfill.js"></script>
-    <script src="../../assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>

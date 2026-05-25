@@ -20,7 +20,7 @@ jobs:
       uses: cicirello/generate-sitemap@v1
       with:
         base-url-path: https://securade.ai/
-        exclude-paths: /templates /scripts /404.html /tos.html /privacy.html /billing.html /subscribe.html
+        exclude-paths: /templates /scripts /_partials /404.html /tos.html /privacy.html /billing.html /subscribe.html /safety-copilot.html /page2.html /page3.html
     
     - name: Output stats
       run: |

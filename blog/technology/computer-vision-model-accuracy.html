@@ -1,303 +1,379 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <title>Computer Vision Accuracy: Boost Model Performance Now! - Securade.ai</title>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- @page
+title: Computer Vision Accuracy: Boost Model Performance Now!, Securade.ai
+description: Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation.
+canonical_path: /blog/technology/computer-vision-model-accuracy.html
+og_title: Computer Vision Accuracy: Boost Model Performance Now!
+og_description: Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation.
+og_image: /assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg
+og_type: article
+nav_active: resources
+extra_schema:,
+ {"@type": "Article", "@id": "https://securade.ai/blog/technology/computer-vision-model-accuracy.html#article", "headline": "Computer Vision Accuracy: Boost Model Performance Now!", "description": "Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg", "datePublished": "2025-03-13", "dateModified": "2025-03-13", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/computer-vision-model-accuracy.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "computer vision, model accuracy, machine learning, deep learning, data augmentation, hyperparameter tuning, transfer learning, ensemble methods, image recognition, object detection"},
+ {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/computer-vision-model-accuracy.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+@endpage -->
+<!-- @partial:head -->
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Computer Vision Accuracy: Boost Model Performance Now!">
-    <meta property="og:description" content="Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation.">
-    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg">
-    <meta property="og:url" content="https://securade.ai">
-    <meta name="keywords" content="computer vision, model accuracy, machine learning, deep learning, data augmentation, hyperparameter tuning, transfer learning, ensemble methods, image recognition, object detection">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.ico"/>
-    <!-- Place favicon.ico in the root directory -->
-    
-    <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="../../assets/css/LineIcons.2.0.css"/>
-    <link rel="stylesheet" href="../../assets/css/tiny-slider.css"/>
-    <link rel="stylesheet" href="../../assets/css/animate.css"/>
-    <link rel="stylesheet" href="../../assets/css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <title>Computer Vision Accuracy: Boost Model Performance Now!, Securade.ai</title>
+    <meta name="description" content="Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation." />
+    <meta name="author" content="Securade.ai" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://securade.ai/blog/technology/computer-vision-model-accuracy.html" />
 
-    <!-- ========================= preloader start ========================= -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- preloader end -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Securade.ai" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Computer Vision Accuracy: Boost Model Performance Now!" />
+    <meta property="og:description" content="Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation." />
+    <meta property="og:image" content="https://securade.ai/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://securade.ai/blog/technology/computer-vision-model-accuracy.html" />
 
-    <!-- ========================= header start ========================= -->
-    <header class="header">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@securadeai" />
+    <meta name="twitter:title" content="Computer Vision Accuracy: Boost Model Performance Now!" />
+    <meta name="twitter:description" content="Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation." />
+    <meta name="twitter:image" content="https://securade.ai/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg" />
+
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon.ico" />
+
+    <!-- Theme color (browser chrome) -->
+    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Inter typeface — non-blocking via media-swap pattern -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+
+    <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
+    <!-- Theme stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.min.css" />
+
+    <!-- Apply persisted theme before paint to prevent flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('securade-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+<!-- @endpartial:head -->
+<!-- @partial:schema-org -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://securade.ai/#organization",
+      "name": "Securade.ai",
+      "alternateName": "Securade",
+      "url": "https://securade.ai/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://securade.ai/assets/images/logo/logo.png",
+        "width": 512,
+        "height": 128
+      },
+      "description": "Securade.ai is a generative AI video analytics platform that turns existing CCTV cameras into safety copilots, predicting and preventing workplace accidents in construction, manufacturing, oil and gas, and logistics.",
+      "email": "hello@securade.ai",
+      "foundingDate": "2022",
+      "sameAs": [
+        "https://www.linkedin.com/company/securade-ai/",
+        "https://x.com/securadeai",
+        "https://github.com/securade"
+      ],
+      "award": [
+        "IEEE Tech4Good 2023",
+        "AI for Public Good Special Mention 2023",
+        "WSH Award 2023"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://securade.ai/#website",
+      "url": "https://securade.ai/",
+      "name": "Securade.ai",
+      "description": "Generative AI video analytics for workplace safety.",
+      "publisher": { "@id": "https://securade.ai/#organization" },
+      "inLanguage": "en"
+    }, {"@type": "Article", "@id": "https://securade.ai/blog/technology/computer-vision-model-accuracy.html#article", "headline": "Computer Vision Accuracy: Boost Model Performance Now!", "description": "Learn proven strategies and techniques to enhance the accuracy of your computer vision models. Data quality, model architecture, training, and evaluation.", "image": "https://securade.ai/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg", "datePublished": "2025-03-13", "dateModified": "2025-03-13", "author": {"@type": "Person", "name": "Arjun Krishnamurthy"}, "publisher": {"@id": "https://securade.ai/#organization"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://securade.ai/blog/technology/computer-vision-model-accuracy.html"}, "inLanguage": "en", "articleSection": "Technology", "keywords": "computer vision, model accuracy, machine learning, deep learning, data augmentation, hyperparameter tuning, transfer learning, ensemble methods, image recognition, object detection"}, {"@type": "BreadcrumbList", "@id": "https://securade.ai/blog/technology/computer-vision-model-accuracy.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://securade.ai/"}, {"@type": "ListItem", "position": 2, "name": "Resources", "item": "https://securade.ai/resources.html"}, {"@type": "ListItem", "position": 3, "name": "Technology", "item": "https://securade.ai/blog/technology/"}]}
+  ]
+}
+    </script>
+<!-- @endpartial:schema-org -->
+</head>
+<body>
+<!-- @partial:header -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
       <div class="navbar-area">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <div class="ms-auto">
-                    <ul id="nav" class="navbar-nav ms-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#home">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#platform">HUB</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#tower">Tower</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../index.html#sentinel">Sentinel</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="../../safety-copilot.html">Safety Copilot&trade;</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="../../resources.html">Resources</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
+          <nav class="navbar" aria-label="Primary">
+            <a class="navbar-brand" href="/" aria-label="Securade.ai home">
+              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="primary-nav">
+              <ul id="nav" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="/#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#platform">HUB</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#tower">Tower</a></li>
+                <li class="nav-item"><a class="nav-link " href="/#sentinel">Sentinel</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/resources.html">Resources</a></li>
+                <li class="nav-item">
+                  <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
             </div>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
-    <!-- ========================= header end ========================= -->
+<!-- @endpartial:header -->
 
-    <!-- ========================= blog-section start ========================= -->
-    <section id="blog-content" class="feature-section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <article>
-              <!-- Post header-->
-              <header class="mb-4">
-                <h1 class="fw-bolder mb-1">Computer Vision Accuracy: Boost Model Performance Now!</h1>
-                <div class="text-muted fst-italic mb-2">
-                  Posted on March 13, 2025 by Arjun Krishnamurthy
-                </div>
-              </header>
-              
-              <!-- Hero image -->
-              <figure class="mb-4">
-                <img class="img-fluid rounded" src="../../assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg" alt="Image"/>
-              </figure>
-              
-              <!-- Post content-->
-              <section class="mb-5">
-                
-        <section class="mb-5">
-            <div class="introduction">
-                <p class="fs-5 mb-4">Imagine an autonomous vehicle misinterpreting a stop sign or a medical diagnosis system missing a critical tumor. These real-world examples highlight the critical importance of accurate computer vision. When computer vision models aren't accurate, the consequences can range from minor inconveniences to life-threatening situations.</p>
+<main id="main">
+ <article class="article">
+ <div class="container">
+ <div class="article-header">
+ <ol class="breadcrumbs" aria-label="Breadcrumb">
+ <li><a href="/">Home</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/blog/technology/">Technology</a></li><li class="current">Computer Vision Accuracy: Boost Model Performance Now!</li>
+ </ol>
+ <span class="article-eyebrow">Technology</span>
+ <h1>Computer Vision Accuracy: Boost Model Performance Now!</h1>
+ <p class="article-meta">
+ <span>By Arjun Krishnamurthy</span>
+ <span class="dot">·</span>
+ <time datetime="2025-03-13">March 13, 2025</time>
+ </p>
+ </div>
+ <figure class="article-hero">
+ <img src="/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg" alt="Image" />
+ </figure>
 
-<p class="fs-5 mb-4">Computer vision accuracy refers to how well a model can correctly identify and classify objects or patterns in images or videos. In simpler terms, it's about how reliably the model "sees" and understands the visual world. A highly accurate model minimizes errors and provides dependable results.</p>
+ <div class="article-body">
+ <section class="mb-5">
+ <div class="introduction">
+ <p class="fs-5 mb-4">A self-driving car that confuses a stop sign for a yield. A radiology assistant that misses a tumour on a chest X-ray. The cost of computer vision being a bit off, in the wrong domain, is real. So this is the topic everyone who builds CV systems eventually obsesses over: how do you actually get the accuracy higher?</p>
 
-<p class="fs-5 mb-4">Striving for high accuracy is not just a matter of academic interest; it's essential for the successful deployment and real-world impact of computer vision applications. Accurate models lead to safer autonomous systems, more reliable medical diagnoses, improved quality control in manufacturing, and countless other benefits.</p>
+ <p class="fs-5 mb-4">By accuracy we mean a few different things, depending on the task. Did the classifier pick the right label? Did the detector draw the box in the right place? Did the segmenter trace the boundary correctly? Different tasks, different metrics, but the same general question: how often does the model agree with reality.</p>
 
-<p class="fs-5 mb-4">This post will serve as your comprehensive guide to improving the accuracy of your computer vision models. We will explore key strategies and techniques that span from data management and model architecture to training strategies and evaluation methods. By understanding and implementing these approaches, you can significantly enhance the performance and reliability of your computer vision systems.</p>
-            </div>
-    
-            <h2 class="fw-bolder mb-4 mt-5">Data is King: Focus on Data Quality and Quantity</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">In computer vision, as in many areas of machine learning, the quality and quantity of your data are paramount. A well-trained model is built on a foundation of high-quality, representative data. Let's delve into the strategies for maximizing the impact of your training data.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Increase the Size of Your Training Dataset</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Generally, the more data you feed your computer vision model, the better it will be able to generalize to new, unseen images. A larger dataset exposes the model to a wider range of variations, allowing it to learn more robust and reliable features.</p>
+ <p class="fs-5 mb-4">Squeezing more accuracy out of a model isn't a single trick. It's a combination of better data, the right architecture, careful training, and ruthless evaluation. The piece below walks through the levers we pull most often, in the order they tend to give the biggest returns.</p>
 
-<p class="fs-5 mb-4"><strong>Data Augmentation:</strong> One powerful technique for artificially increasing the size of your dataset is data augmentation. This involves applying various transformations to your existing images, such as rotations, flips, crops, color adjustments, and adding noise. By creating slightly modified versions of your original images, you can effectively expand your dataset without collecting new data. Data augmentation helps the model become more invariant to different perspectives and conditions.</p>
+ <p class="fs-5 mb-4">The summary if you want it now: fix your data first, then your training, then your architecture. People reverse that order at their peril.</p>
+ </div>
 
-<p class="fs-5 mb-4"><strong>Synthetic Data Generation:</strong> In some cases, you can also explore synthetic data generation. This involves creating artificial images or videos using computer graphics or simulations. While synthetic data may not perfectly reflect the real world, it can be a valuable tool for augmenting your dataset, especially when real-world data is scarce or difficult to obtain.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Improve Data Quality and Diversity</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">While quantity is important, data quality and diversity are equally critical. Even a large dataset can lead to poor performance if the data is noisy, biased, or unrepresentative of the real-world scenarios your model will encounter.</p>
+ <h2 class="fw-bolder mb-4 mt-5">Data first, always</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">If you only do one thing on this list, do this one. A mediocre architecture trained on excellent data beats a state-of-the-art architecture trained on garbage. We've seen this play out on every project we've ever shipped.</p>
+ </div>
 
-<p class="fs-5 mb-4"><strong>Labeling Accuracy:</strong> Accurate and consistent annotations are essential for training a reliable computer vision model. If your labels are incorrect or inconsistent, the model will learn the wrong patterns and make inaccurate predictions. Implement clear labeling guidelines and consider using multiple annotators to verify the accuracy of labels. Establish a review process to catch and correct errors.</p>
+ <h3 class="fw-bolder mb-4 mt-5">Get more data, then get more of the right data</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">More data generally helps, with diminishing returns. A model trained on 10,000 images sees more variation in lighting, pose, and occlusion than one trained on 1,000. That variation is how it learns to generalise instead of memorise.</p>
 
-<p class="fs-5 mb-4"><strong>Class Balance:</strong> Imbalanced datasets, where some classes have significantly more examples than others, can negatively impact accuracy. The model may become biased towards the majority class and perform poorly on the minority class. To address class imbalance, consider techniques like oversampling (duplicating or generating synthetic examples for the minority class), undersampling (removing examples from the majority class), or using weighted loss functions that penalize misclassifications of the minority class more heavily.</p>
+ <p class="fs-5 mb-4"><strong>Augmentation:</strong> the cheap way to stretch what you have. Horizontal flips, small rotations, colour jitter, random crops, occasional cutout. Stick to augmentations that mirror something that could actually happen in the wild. Don't rotate a stop sign 90 degrees, because that's not a real stop sign.</p>
 
-<p class="fs-5 mb-4"><strong>Data Diversity:</strong> Your training data must represent the real-world scenarios your model will encounter. This means capturing variations in lighting, angles, backgrounds, object appearances, and other relevant factors. If your training data is too uniform, the model may struggle to generalize to new and unseen conditions. Actively seek out diverse data sources and consider collecting data under different conditions to improve the robustness of your model.</p>
+ <p class="fs-5 mb-4"><strong>Synthetic data:</strong> a Unity or Unreal scene set up to generate labelled training images. Works well for rare classes or hazardous situations you can't safely capture. Doesn't fully substitute for real data, but pairs well with it. The trick is closing the sim-to-real gap, which is its own rabbit hole.</p>
+ </div>
 
-<p class="fs-5 mb-4"><strong>Data Cleaning and Preprocessing:</strong> Noisy or irrelevant data can hinder the learning process and reduce accuracy. Identify and handle outliers, corrupted images, or other anomalies. Common preprocessing steps include normalization (scaling pixel values to a consistent range) and resizing images to a uniform size.</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Model Architecture and Training Strategies</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Beyond data, the choice of model architecture and training strategies plays a crucial role in achieving high accuracy. Selecting the appropriate architecture for your task and carefully optimizing the training process can significantly improve performance.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Choose the Right Model Architecture</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Different computer vision tasks require different model architectures. Convolutional Neural Networks (CNNs) are well-suited for image classification and object detection, while Recurrent Neural Networks (RNNs) and Transformers are often used for video analysis. Popular architectures include ResNet, EfficientNet, YOLO, and Faster R-CNN. The best architecture depends on the complexity of the task, the size of your dataset, and the computational resources available.</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiDataAnalysisCommunicationIllustration.jpeg" alt="Diagram of a CNN architecture" /></figure>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Optimize Training Parameters (Hyperparameter Tuning)</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Hyperparameters control the training process of a model. Key hyperparameters that affect accuracy include the learning rate (how quickly the model learns), batch size (number of examples processed in each iteration), number of epochs (number of times the model iterates over the entire dataset), and regularization strength (how much the model is penalized for complexity). Hyperparameter tuning involves finding the optimal combination of these parameters to maximize performance. Common techniques include grid search (trying all possible combinations), random search (randomly sampling combinations), and Bayesian optimization (using a probabilistic model to guide the search).</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Implement Regularization Techniques</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Overfitting occurs when a model learns the training data too well and fails to generalize to new, unseen data. Regularization techniques help prevent overfitting by adding constraints to the model's learning process. Common methods include L1 and L2 regularization (adding penalties to the model's weights) and dropout (randomly dropping out neurons during training).</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAiModelTrainingOptimizationWorkflow.jpeg" alt="Graph showing overfitting vs underfitting" /></figure>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Consider Transfer Learning and Fine-tuning</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Transfer learning leverages pre-trained models that have been trained on large datasets. Instead of training a model from scratch, you can fine-tune a pre-trained model on your specific task. This can significantly reduce training time and improve accuracy, especially when dealing with limited data. Common pre-trained models include those trained on ImageNet.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Employ Ensemble Methods</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Ensemble methods combine the predictions from multiple models to improve overall accuracy and robustness. By averaging or weighting the predictions of different models, you can often achieve better performance than any single model alone. Common ensemble techniques include bagging (training multiple models on different subsets of the data) and boosting (training models sequentially, with each model focusing on the errors made by previous models).</p>
-                    </div>
-                
-            <h2 class="fw-bolder mb-4 mt-5">Evaluation and Iteration</h2>
-            <div class="section-content">
-                <p class="fs-5 mb-4">Evaluating your model's performance is critical for identifying areas for improvement. Choosing the right evaluation metrics and implementing robust evaluation procedures are essential for accurately assessing the model's capabilities.</p>
-            </div>
-        
-                    <h3 class="fw-bolder mb-4 mt-5">Choose the Right Evaluation Metrics</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Accuracy alone may not be the best metric for all tasks, especially when dealing with imbalanced datasets. Other relevant evaluation metrics include precision (the proportion of correctly predicted positive cases), recall (the proportion of actual positive cases that were correctly predicted), F1-score (the harmonic mean of precision and recall), IoU (Intersection over Union) for object detection, and mAP (mean Average Precision). Understanding the strengths and weaknesses of each metric is crucial for evaluating model performance in the context of your specific problem.</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiCatFaceRedBoxCircleEye.jpeg" alt="Confusion matrix showing precision and recall" /></figure>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Implement Robust Evaluation Procedures</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Use separate training, validation, and test sets to evaluate your model's performance. The training set is used to train the model, the validation set is used to tune hyperparameters, and the test set is used to provide a final, unbiased estimate of the model's performance. Cross-validation is a technique for obtaining more reliable performance estimates by partitioning the data into multiple folds and training and evaluating the model on different combinations of folds.</p>
-                    </div>
-                
-                    <h3 class="fw-bolder mb-4 mt-5">Analyze Errors and Iterate</h3>
-                    <div class="subsection-content">
-                        <p class="fs-5 mb-4">Understanding where your model is failing is crucial for identifying areas for improvement. Visualize misclassified examples to identify patterns in the errors. Analyze the types of errors the model is making and look for common characteristics of the misclassified images. Improving accuracy is often an iterative process involving revisiting data, model architecture, and training strategies based on evaluation results.</p>
-<figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAnimalCollageDataDiversity.jpeg" alt="Example of error analysis in computer vision" /></figure>
-                    </div>
-                
-            <div class="conclusion">
-                <p class="fs-5 mb-4">Improving the accuracy of your computer vision models requires a multifaceted approach that encompasses data quality, model architecture, training strategies, and evaluation methods. By focusing on these key areas, you can significantly enhance the performance and reliability of your computer vision systems.</p>
+ <h3 class="fw-bolder mb-4 mt-5">Quality and diversity beat raw count</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">A million images of the same thing under the same lighting is one image with a million extra copies. You want variation, and you want clean labels.</p>
 
-<p class="fs-5 mb-4">Remember that improving accuracy is often an iterative process. Continuously evaluate your model's performance, analyze errors, and refine your data, model architecture, and training strategies based on the results.</p>
+ <p class="fs-5 mb-4"><strong>Label quality:</strong> the single biggest place we see projects shoot themselves. Two annotators looking at the same image and labelling it differently means the model can't learn a consistent decision boundary. Write a labelling guide. Train annotators on it. Have a second pair of eyes on a sample of every batch.</p>
 
-<p class="fs-5 mb-4">The field of computer vision is constantly evolving, with new techniques and architectures emerging all the time. Stay up-to-date with the latest advancements and continue experimenting with different approaches to achieve optimal results. We encourage you to explore, innovate, and push the boundaries of what's possible with computer vision.</p>
-            </div>
-            <div class="cta mt-5">
-                <p class="cta fs-5 mb-4">If you found this guide helpful, give our GitHub repo a star: <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">Securade Hub on GitHub</a></p>
-            </div>
-        </section>
-    
-              </section>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ========================= blog-section end ========================= -->
+ <p class="fs-5 mb-4"><strong>Class imbalance:</strong> if 95% of your training set is "no defect" and 5% is "defect", the model will happily predict "no defect" everywhere and call it a day. Three remedies, often combined: oversample the rare class, undersample the common one, or use a weighted loss that penalises rare-class mistakes more heavily.</p>
 
-    <!-- ========================= footer start ========================= -->
-    <footer class="footer pt-120">
+ <p class="fs-5 mb-4"><strong>Diversity:</strong> if every image in your dataset was shot at noon in the same lab, your model will fall over on a rainy Tuesday in a different building. Make sure the distribution of your training data actually overlaps with the distribution your model will see in production. Lighting, angle, distance, sensor, background.</p>
+
+ <p class="fs-5 mb-4"><strong>Clean it up:</strong> corrupt files, duplicates, mislabelled examples, all hurt. Normalise pixel scales, resize consistently, and run a deduplication pass before training.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Pick the architecture, then tune the training</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">Once your data is in order, the next gains come from picking the right model and training it properly.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Match architecture to task</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">CNNs (ResNet, EfficientNet) are still the default for classification. For detection, YOLO is the most common choice; Faster R-CNN if you need higher accuracy and have GPU budget. For segmentation, U-Net or DeepLab. Video tends to use 3D CNNs, ConvLSTMs, or video transformers.</p>
+
+ <p class="fs-5 mb-4">Vision transformers (ViT, Swin) have started to compete with CNNs on some benchmarks. They need more data and more compute to shine. If you have both, they're worth trying; if you don't, stick with a good CNN.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiDataAnalysisCommunicationIllustration.jpeg" alt="Diagram of a CNN architecture" /></figure>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Tune the hyperparameters that actually matter</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Most of the accuracy gains from hyperparameter tuning come from getting the learning rate right. Too high and the model bounces around. Too low and it never gets anywhere. Use a learning rate schedule (warmup then cosine decay is a safe default) and a learning rate finder to set the initial value.</p>
+
+ <p class="fs-5 mb-4">After that: batch size affects gradient noise, more epochs help if you're not overfitting, weight decay regularises. The other knobs matter less than people think. Don't go down a Bayesian optimisation rabbit hole for a 0.5% gain; spend that time on data.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Stop the model from memorising the training set</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Overfitting is the failure mode where training accuracy goes up but validation accuracy stalls or drops. The model has memorised your training set instead of learning the underlying patterns. Watch for the gap.</p>
+
+ <p class="fs-5 mb-4">Standard defenses: dropout (turn off random neurons during training), weight decay (penalise large weights), early stopping (cut training off when validation stops improving), and good old "use more data".</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAiModelTrainingOptimizationWorkflow.jpeg" alt="Graph showing overfitting vs underfitting" /></figure>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Start from somebody else's weights</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">For almost any task with limited labelled data, transfer learning from an ImageNet-pretrained backbone is a free 5-15% accuracy boost. Don't train from random initialisation unless you have a very good reason.</p>
+
+ <p class="fs-5 mb-4">For domain-specific tasks (medical imaging, satellite imagery, industrial inspection) consider backbones pretrained on closer domains if they're available. DINO and CLIP-style pretrained encoders are also worth trying.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Ensembles, when you have the budget</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Training three models with different seeds or architectures and averaging their predictions usually buys you 1-3% accuracy. The cost is 3x training and 3x inference, so it's a bet that pays off most for offline analytics, less for real-time use.</p>
+ </div>
+
+ <h2 class="fw-bolder mb-4 mt-5">Evaluation that tells you the truth</h2>
+ <div class="section-content">
+ <p class="fs-5 mb-4">A model is only as good as the evaluation that tells you it's good. Bad evaluation hides problems until they show up in production.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Pick metrics that match the problem</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">"Accuracy" by itself is a lazy metric. With imbalanced data, a model that always predicts the majority class can score 95% accuracy while being useless. Use precision, recall, and F1 to see what's actually happening.</p>
+
+ <p class="fs-5 mb-4">For object detection, the standard is mean Average Precision (mAP) at various IoU thresholds. For segmentation, mean IoU. For multi-class problems with cost asymmetries, weight the metrics to match.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiCatFaceRedBoxCircleEye.jpeg" alt="Confusion matrix showing precision and recall" /></figure>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Keep your test set honest</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">Three splits: train (model fits to this), validation (used for picking hyperparameters and early stopping), test (touched once, at the end, to report the number). The number of times we've seen people accidentally tune against the test set is depressing. Don't.</p>
+
+ <p class="fs-5 mb-4">Cross-validation is the more robust version, especially when data is scarce. K-fold cross-validation across 5 splits gives you a much better estimate of how the model will behave on new data than a single train/val/test split would.</p>
+ </div>
+
+ <h3 class="fw-bolder mb-4 mt-5">Look at the failures</h3>
+ <div class="subsection-content">
+ <p class="fs-5 mb-4">The aggregate metric tells you how well the model does on average. The failure cases tell you why. Pull 50 misclassified examples and look at them. Patterns usually pop out: certain lighting, certain object sizes, certain angles, a labelling error you missed.</p>
+
+ <p class="fs-5 mb-4">Whatever you find here informs the next round. More augmentation in the failure mode. More labelled examples of the case the model is missing. A small architectural tweak to handle scale. Iterate.</p>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAnimalCollageDataDiversity.jpeg" alt="Example of error analysis in computer vision" /></figure>
+ </div>
+
+ <div class="conclusion">
+ <p class="fs-5 mb-4">Improving computer vision accuracy is mostly grunt work. Fix the data, train carefully, evaluate honestly, look at the failures, fix the data again. The exotic stuff (new architectures, fancy loss functions, ensemble tricks) sits on top of that foundation, not in place of it.</p>
+
+ <p class="fs-5 mb-4">Treat it as a loop. Train, evaluate, look at errors, adjust, retrain. The teams we see ship the best models aren't necessarily the smartest; they're the ones who iterate fastest.</p>
+
+ <p class="fs-5 mb-4">The field moves fast, but the fundamentals don't. Solid data work and disciplined evaluation outlast any specific architecture.</p>
+ </div>
+ <div class="cta mt-5">
+ <p class="cta fs-5 mb-4">If this was useful, a star on our GitHub repo helps other people find it: <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">Securade HUB on GitHub</a>.</p>
+ </div>
+ </div>
+ </div>
+ </article>
+</main>
+
+<!-- @partial:footer -->
+    <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="footer-widget">
               <div class="logo">
-                <a href="../../index.html">
-                  <img src="../../assets/images/logo/logo.png" alt="logo" style="max-width: 180px;">
+                <a href="/" aria-label="Securade.ai">
+                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
                 </a>
               </div>
-              <p class="desc">Safety, powered by AI.</p>
-              <ul class="social-links">
-                <li><a href="https://www.linkedin.com/company/securade-ai/"><i class="lni lni-linkedin"></i></a></li>
-                <li><a href="https://x.com/securadeai"><i class="lni lni-twitter"></i></a></li>
+              <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
+              <ul class="social-links" aria-label="Securade.ai on social media">
+                <li>
+                  <a href="https://www.linkedin.com/company/securade-ai/" aria-label="Securade.ai on LinkedIn" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .78 0 1.74v20.52C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/securadeai" aria-label="Securade.ai on X" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/securade" aria-label="Securade.ai on GitHub" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.17c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.52.11-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.86.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.19.7.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 offset-xl-1">
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 offset-xl-1">
             <div class="footer-widget">
-              <h3>Company</h3>
+              <h3>Platform</h3>
               <ul class="links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../safety-copilot.html">Safety Copilot&trade;</a></li>
-                <li><a href="../../resources.html">Resources</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
-            <div class="footer-widget">
-              <h3>About Us</h3>
-              <ul class="links">
-                <li>Contact Us</li>
-                <li><a href="mailto:hello@securade.ai">hello@securade.ai</a></li>
+                <li><a href="/#platform">HUB</a></li>
+                <li><a href="/#tower">Tower</a></li>
+                <li><a href="/#sentinel">Sentinel</a></li>
+                <li><a href="/resources.html">Resources</a></li>
               </ul>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer-widget">
-              <h3>Subscribe for Updates</h3>
+              <h3>Stay in the loop</h3>
+              <p class="desc">Workplace safety, video analytics, and AI. One email a month, no spam.</p>
               <form action="https://securade.us8.list-manage.com/subscribe/post?u=c1838467fb5c2b0a86380a903&amp;id=223c7c53e5&amp;f_id=001ea8e3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email">
-                <div id="mce-responses" class="clear foot">
-                  <div class="response" id="mce-error-response" style="display:none"></div>
-                  <div class="response" id="mce-success-response" style="display:none"></div>
-                </div>
-                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="main-btn btn-hover">Subscribe</button>
+                <label for="mce-EMAIL" class="sr-only" style="position:absolute;left:-9999px;">Email</label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="you@company.com" autocomplete="email" />
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="main-btn">Subscribe</button>
               </form>
             </div>
           </div>
         </div>
+        <div class="footer-bottom">
+          <span>&copy; 2023 Securade.ai. Safety, powered by AI.</span>
+          <span><a href="/privacy.html">Privacy</a> &middot; <a href="/tos.html">Terms</a></span>
+        </div>
       </div>
     </footer>
-    <!-- ========================= footer end ========================= -->
 
-    <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
     </a>
-
-    <!-- ========================= JS here ========================= -->
-    <script src="../../assets/js/bootstrap-5.0.0-beta2.min.js"></script>
-    <script src="../../assets/js/tiny-slider.js"></script>
-    <script src="../../assets/js/wow.min.js"></script>
-    <script src="../../assets/js/polyfill.js"></script>
-    <script src="../../assets/js/main.js"></script>
-  </body>
+<!-- @endpartial:footer -->
+<!-- @partial:scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+<!-- @endpartial:scripts -->
+</body>
 </html>
