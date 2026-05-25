@@ -89,7 +89,7 @@
   --ink: #f4f6fa;
   --ink-strong: #ffffff;
   --ink-muted: #a0aec0;
-  --ink-faint: #6b7585;
+  --ink-faint: #94a3b8;  /* WCAG AA: ≥4.5:1 on --surface */
   --surface: #0f1722;
   --surface-2: #0a1018;
   --surface-3: #18222f;
@@ -113,7 +113,7 @@
     --ink: #f4f6fa;
     --ink-strong: #ffffff;
     --ink-muted: #a0aec0;
-    --ink-faint: #6b7585;
+    --ink-faint: #94a3b8;  /* WCAG AA: ≥4.5:1 on --surface */
     --surface: #0f1722;
     --surface-2: #0a1018;
     --surface-3: #18222f;
@@ -538,7 +538,7 @@ hr {
   line-height: 1.2;
   letter-spacing: 0.005em;
   color: white;
-  background: var(--brand-600);  /* darker than --accent for WCAG AA contrast with white text */
+  background: var(--brand-700);  /* WCAG AA: #1f6868 on white text = 5.96:1 */
   border: 1.5px solid transparent;
   border-radius: var(--radius-pill);
   text-decoration: none;
@@ -553,7 +553,7 @@ hr {
 }
 .main-btn:hover,
 .btn:hover {
-  background: var(--brand-700);
+  background: var(--brand-800);
   color: white;
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
@@ -872,11 +872,15 @@ section { position: relative; }
   gap: 0.875rem;
   margin-top: 1.5rem;
 }
-.hero-sub-link {
-  margin-top: 1rem;
-  font-size: 0.9375rem;
-  color: var(--ink-muted);
+/* Specificity must beat .hero-content > p above (0,1,1). */
+.hero-content > .hero-sub-link {
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+  max-width: none;
+  font-size: 0.875rem;
+  color: var(--ink-faint);
 }
+.hero-sub-link a { color: var(--ink-muted); }
 .hero-sub-link a {
   color: var(--ink-strong);
   font-weight: 600;
@@ -907,13 +911,39 @@ section { position: relative; }
 }
 
 /* Awards strip */
+.awards-band {
+  padding-block: clamp(1.5rem, 2vw + .5rem, 2.5rem);
+  background: color-mix(in srgb, var(--brand-100) 22%, var(--surface));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="dark"] .awards-band { background: var(--surface-2); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .awards-band { background: var(--surface-2); }
+}
+.awards-band .awards-strip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem 2rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.awards-band .awards-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+}
+@media (max-width: 768px) {
+  .awards-band .awards-strip { flex-direction: column; align-items: flex-start; }
+  .awards-band .awards-grid { grid-template-columns: 1fr; gap: .75rem; width: 100%; }
+}
 .awards-strip {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.75rem 0 0;
-  margin-top: 2.5rem;
-  border-top: 1px solid var(--border);
 }
 .awards-strip-label {
   font-size: 0.75rem;
@@ -1014,7 +1044,39 @@ section { position: relative; }
    ============================================================ */
 .about-section,
 .cta-section {
-  padding-block: clamp(3rem, 5vw + 1rem, 7rem);
+  padding-block: clamp(4rem, 6vw + 1rem, 8rem);
+  position: relative;
+}
+
+/* Alternating tinted backgrounds give the stack of product sections visual rhythm
+   so they don't all read as one continuous wall. */
+#platform,
+#sentinel {
+  background: var(--surface);
+}
+#tower,
+#solutions {
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--brand-100) 35%, var(--surface)),
+    color-mix(in srgb, var(--brand-100) 18%, var(--surface)));
+}
+[data-theme="dark"] #tower,
+[data-theme="dark"] #solutions {
+  background: var(--surface-2);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #tower,
+  :root:not([data-theme="light"]) #solutions {
+    background: var(--surface-2);
+  }
+}
+
+/* Hairline between consecutive product sections to reinforce the boundary. */
+.about-section + .cta-section,
+.cta-section + .cta-section,
+.cta-section + .feature-section,
+.about-section + .feature-section {
+  border-top: 1px solid var(--border);
 }
 
 .about-section .row,
@@ -1150,7 +1212,7 @@ section { position: relative; }
   background: var(--accent-soft);
   border-radius: var(--radius-pill);
 }
-.post-card h3 {
+.post-card h3, .post-card-title {
   font-size: 1.125rem;
   line-height: 1.3;
   margin-bottom: 0.5rem;

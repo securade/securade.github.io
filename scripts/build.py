@@ -112,10 +112,10 @@ def collect_blog_posts() -> list[dict]:
 def render_card(post: dict) -> str:
     return (
         f'<a href="{post["url"]}" class="post-card" data-category="{post["category_slug"] or "uncategorized"}">'
-        f'<div class="post-card-media"><img src="{post["image"]}" alt="" loading="lazy" /></div>'
+        f'<div class="post-card-media"><img src="{post["image"]}" alt="" loading="lazy" width="640" height="360" /></div>'
         f'<div class="post-card-body">'
         f'<span class="post-card-chip">{post["category_label"]}</span>'
-        f'<h3>{post["title"]}</h3>'
+        f'<h2 class="post-card-title">{post["title"]}</h2>'
         f'<div class="post-card-meta"><time datetime="{post["date_iso"]}">{post["date_iso"]}</time></div>'
         f'</div></a>'
     )
@@ -371,10 +371,102 @@ def process_file(file_path: Path, check: bool = False) -> bool:
     return False
 
 
+# Paths that should never appear in sitemap.xml. Matches the previous
+# cicirello/generate-sitemap workflow exclusions so search-console state is preserved.
+SITEMAP_EXCLUDE_PATHS = {
+    "/404.html",
+    "/tos.html",
+    "/privacy.html",
+    "/billing.html",
+    "/subscribe.html",
+    "/safety-copilot.html",
+    "/page2.html",
+    "/page3.html",
+}
+SITEMAP_EXCLUDE_DIRS = {"templates", "scripts", "_partials"}
+
+
+def build_minified_css(check: bool = False) -> bool:
+    """Generate assets/css/theme.min.css from theme.css. Returns True if changed."""
+    src_path = ROOT / "assets/css/theme.css"
+    dst_path = ROOT / "assets/css/theme.min.css"
+    if not src_path.exists():
+        return False
+    src = src_path.read_text(encoding="utf-8")
+    s = re.sub(r"/\*.*?\*/", "", src, flags=re.DOTALL)
+    s = re.sub(r"\s+", " ", s)
+    s = re.sub(r"\s*([{}:;,>])\s*", r"\1", s)
+    s = re.sub(r";}", "}", s)
+    new_text = s.strip()
+    old_text = dst_path.read_text(encoding="utf-8") if dst_path.exists() else ""
+    if new_text == old_text:
+        return False
+    if check:
+        print("  would change: assets/css/theme.min.css")
+        return True
+    dst_path.write_text(new_text, encoding="utf-8")
+    print(f"  built: assets/css/theme.min.css ({len(new_text)} bytes)")
+    return True
+
+
+def url_for_html(file_path: Path) -> str:
+    rel = file_path.relative_to(ROOT).as_posix()
+    if rel == "index.html":
+        return "/"
+    if rel.endswith("/index.html"):
+        return "/" + rel[: -len("index.html")]
+    return "/" + rel
+
+
+def build_sitemap(check: bool = False) -> bool:
+    """Generate sitemap.xml from the current set of HTML pages. Returns True if file changed."""
+    urls: list[tuple[str, str]] = []
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = [
+            d for d in dirnames
+            if d not in EXCLUDE_DIRS
+            and d not in SITEMAP_EXCLUDE_DIRS
+            and not d.startswith(".")
+        ]
+        for fname in filenames:
+            if not fname.endswith(".html"):
+                continue
+            fp = Path(dirpath) / fname
+            url = url_for_html(fp)
+            if url in SITEMAP_EXCLUDE_PATHS:
+                continue
+            mtime = datetime.fromtimestamp(fp.stat().st_mtime, tz=timezone.utc)
+            lastmod = mtime.strftime("%Y-%m-%dT%H:%M:%S+00:00")
+            urls.append((url, lastmod))
+
+    urls.sort(key=lambda u: u[0])
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for url, lastmod in urls:
+        lines.append("<url>")
+        lines.append(f"<loc>{SITE_URL}{url}</loc>")
+        lines.append(f"<lastmod>{lastmod}</lastmod>")
+        lines.append("</url>")
+    lines.append("</urlset>")
+    new_text = "\n".join(lines) + "\n"
+
+    sitemap_path = ROOT / "sitemap.xml"
+    old_text = sitemap_path.read_text(encoding="utf-8") if sitemap_path.exists() else ""
+    if new_text == old_text:
+        return False
+    if check:
+        print(f"  would change: sitemap.xml ({len(urls)} urls)")
+        return True
+    sitemap_path.write_text(new_text, encoding="utf-8")
+    print(f"  built: sitemap.xml ({len(urls)} urls)")
+    return True
+
+
 def main():
     parser = argparse.ArgumentParser(description="Build Securade.ai static site")
     parser.add_argument("targets", nargs="*", help="Specific files/dirs to build (defaults to all)")
     parser.add_argument("--check", action="store_true", help="Exit 1 if any file would change")
+    parser.add_argument("--no-sitemap", action="store_true", help="Skip sitemap.xml generation")
     args = parser.parse_args()
 
     targets = [Path(t) for t in args.targets] if args.targets else None
@@ -383,6 +475,15 @@ def main():
     for fp in iter_html_files(targets):
         count += 1
         if process_file(fp, check=args.check):
+            any_changed = True
+
+    # CSS minification and sitemap regenerate from the full repo regardless of which
+    # files were built; both are derived from many sources.
+    if not args.targets:
+        if build_minified_css(check=args.check):
+            any_changed = True
+    if not args.no_sitemap and not args.targets:
+        if build_sitemap(check=args.check):
             any_changed = True
 
     print(f"\nProcessed {count} HTML file(s).")

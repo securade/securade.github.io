@@ -1,116 +1,196 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="sentinel-title sentinel-desc">
   <title id="sentinel-title">Securade.ai Sentinel illustration</title>
-  <desc id="sentinel-desc">A CCTV viewfinder showing a worksite, with a chat conversation asking what is happening on the site and getting a natural-language answer.</desc>
+  <desc id="sentinel-desc">A live CCTV viewfinder showing a worksite with PPE and equipment detections, alongside a multi-turn chat conversation answering natural-language questions about the scene.</desc>
   <defs>
     <linearGradient id="sent-card" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0f1722"/>
       <stop offset="100%" stop-color="#18222f"/>
     </linearGradient>
+    <linearGradient id="sent-scene" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1525"/>
+      <stop offset="60%" stop-color="#0f1f33"/>
+      <stop offset="100%" stop-color="#1a2632"/>
+    </linearGradient>
     <pattern id="sent-grid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
       <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#5cbfbf" stroke-width="0.5" opacity="0.18"/>
     </pattern>
     <radialGradient id="sent-glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#5cbfbf" stop-opacity="0.4"/>
+      <stop offset="0%" stop-color="#5cbfbf" stop-opacity="0.40"/>
       <stop offset="100%" stop-color="#5cbfbf" stop-opacity="0"/>
     </radialGradient>
     <filter id="sent-shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0b1220" flood-opacity="0.2"/>
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0b1220" flood-opacity="0.20"/>
     </filter>
   </defs>
 
   <rect width="640" height="480" fill="url(#sent-grid)"/>
-  <circle cx="200" cy="240" r="220" fill="url(#sent-glow)"/>
+  <circle cx="180" cy="220" r="240" fill="url(#sent-glow)"/>
 
-  <!-- Video frame -->
-  <g filter="url(#sent-shadow)" transform="translate(60 80)">
-    <rect width="320" height="200" rx="12" fill="url(#sent-card)"/>
-    <rect width="320" height="200" rx="12" fill="none" stroke="#5cbfbf" stroke-opacity="0.4"/>
+  <!-- VIDEO FRAME -->
+  <g filter="url(#sent-shadow)" transform="translate(40 60)">
+    <rect width="340" height="220" rx="12" fill="url(#sent-scene)"/>
+    <rect width="340" height="220" rx="12" fill="none" stroke="#5cbfbf" stroke-opacity="0.40"/>
+
     <!-- Frame corner markers -->
     <g stroke="#5cbfbf" stroke-width="2.5" fill="none">
       <path d="M 16 30 L 16 16 L 30 16"/>
-      <path d="M 290 16 L 304 16 L 304 30"/>
-      <path d="M 16 170 L 16 184 L 30 184"/>
-      <path d="M 290 184 L 304 184 L 304 170"/>
+      <path d="M 310 16 L 324 16 L 324 30"/>
+      <path d="M 16 190 L 16 204 L 30 204"/>
+      <path d="M 310 204 L 324 204 L 324 190"/>
     </g>
+
     <!-- LIVE indicator -->
     <g transform="translate(22 30)">
+      <circle cx="6" cy="6" r="6" fill="#ef4444" opacity="0.30"/>
       <circle cx="6" cy="6" r="4" fill="#ef4444"/>
-      <circle cx="6" cy="6" r="4" fill="#ef4444" opacity="0.4"/>
-      <text x="18" y="10" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">LIVE</text>
+      <text x="20" y="10" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1.2">LIVE</text>
+      <text x="58" y="10" font-family="Inter, sans-serif" font-size="9" fill="#a0aec0" letter-spacing="0.5">· CAM-04 · DOCK</text>
     </g>
-    <!-- Time -->
-    <text x="298" y="40" font-family="ui-monospace, monospace" font-size="10" fill="#a0aec0" text-anchor="end">14:32:18</text>
-    <!-- Worksite scene -->
-    <!-- ground -->
-    <rect x="20" y="140" width="280" height="40" fill="#1a2632" opacity="0.7"/>
-    <!-- crane mast -->
-    <line x1="80" y1="60" x2="80" y2="170" stroke="#a0aec0" stroke-width="2"/>
-    <line x1="80" y1="60" x2="160" y2="70" stroke="#a0aec0" stroke-width="2"/>
-    <line x1="80" y1="68" x2="155" y2="68" stroke="#a0aec0" stroke-width="0.5" stroke-dasharray="3 3"/>
-    <!-- workers -->
-    <g>
-      <!-- worker 1 -->
-      <circle cx="180" cy="138" r="5" fill="#fbbf24"/>
-      <rect x="175" y="142" width="10" height="18" fill="#5cbfbf"/>
-      <rect x="174" y="158" width="3" height="12" fill="#0b1220"/>
-      <rect x="183" y="158" width="3" height="12" fill="#0b1220"/>
-      <!-- detection box -->
-      <rect x="168" y="130" width="26" height="44" fill="none" stroke="#22c55e" stroke-width="1.5"/>
-      <rect x="168" y="120" width="60" height="10" fill="#22c55e"/>
-      <text x="172" y="128" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#0b1220">PERSON · PPE OK</text>
+    <!-- timestamp -->
+    <text x="318" y="40" font-family="ui-monospace, monospace" font-size="10" fill="#a0aec0" text-anchor="end">14:32:18</text>
+
+    <!-- Scene: sky line and horizon -->
+    <line x1="14" y1="120" x2="326" y2="120" stroke="#5cbfbf" stroke-opacity="0.10" stroke-dasharray="2 4"/>
+
+    <!-- Distant crane -->
+    <g stroke="#a0aec0" stroke-opacity="0.50" stroke-width="1.4" fill="none">
+      <line x1="60" y1="60" x2="60" y2="180"/>
+      <line x1="60" y1="60" x2="150" y2="68"/>
+      <line x1="60" y1="60" x2="32" y2="68"/>
+      <line x1="60" y1="68" x2="148" y2="68"/>
+      <line x1="100" y1="68" x2="100" y2="86"/>
     </g>
-    <g>
-      <!-- worker 2 -->
-      <circle cx="240" cy="140" r="5" fill="#fbbf24"/>
-      <rect x="235" y="144" width="10" height="18" fill="#f59e0b"/>
-      <rect x="234" y="160" width="3" height="12" fill="#0b1220"/>
-      <rect x="243" y="160" width="3" height="12" fill="#0b1220"/>
-      <rect x="228" y="132" width="26" height="44" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+    <rect x="96" y="86" width="8" height="10" fill="#5b6b80" opacity="0.6"/>
+
+    <!-- Storage containers / stacked boxes -->
+    <g fill="#3f4a5c" opacity="0.85">
+      <rect x="20" y="142" width="60" height="34" rx="2"/>
+      <rect x="20" y="122" width="42" height="22" rx="2" fill="#5b6b80" opacity="0.85"/>
     </g>
-    <!-- forklift -->
-    <g transform="translate(40 150)">
-      <rect width="30" height="18" rx="2" fill="#f59e0b"/>
-      <rect x="6" y="-4" width="14" height="8" fill="#f59e0b"/>
-      <circle cx="7" cy="20" r="3.5" fill="#0b1220"/>
-      <circle cx="23" cy="20" r="3.5" fill="#0b1220"/>
-      <rect x="-14" y="0" width="14" height="2" fill="#a0aec0"/>
-      <rect x="-14" y="14" width="14" height="2" fill="#a0aec0"/>
+    <g stroke="#0b1220" stroke-opacity="0.4" stroke-width="0.6">
+      <line x1="20" y1="158" x2="80" y2="158"/>
+      <line x1="40" y1="142" x2="40" y2="176"/>
+      <line x1="60" y1="142" x2="60" y2="176"/>
     </g>
-    <!-- detection box on forklift -->
-    <rect x="22" y="140" width="58" height="38" fill="none" stroke="#5cbfbf" stroke-width="1.5"/>
-    <rect x="22" y="130" width="60" height="10" fill="#5cbfbf"/>
-    <text x="26" y="138" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#0b1220">FORKLIFT</text>
+
+    <!-- ground band -->
+    <rect x="14" y="180" width="312" height="24" fill="#1a2632" opacity="0.85"/>
+    <line x1="14" y1="180" x2="326" y2="180" stroke="#5cbfbf" stroke-opacity="0.18"/>
+
+    <!-- Worker 1 (with helmet + vest, detection box PPE OK) -->
+    <g transform="translate(160 132)">
+      <circle cx="0" cy="0" r="5" fill="#fbbf24"/>
+      <path d="M -7 0 Q 0 -7 7 0" fill="#fbbf24"/>
+      <rect x="-5" y="4" width="10" height="20" fill="#5cbfbf"/>
+      <rect x="-6" y="22" width="3" height="12" fill="#0b1220"/>
+      <rect x="3" y="22" width="3" height="12" fill="#0b1220"/>
+      <rect x="-12" y="-10" width="34" height="50" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <rect x="-12" y="-20" width="72" height="10" fill="#22c55e"/>
+      <text x="-8" y="-12" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#0b1220">PERSON · PPE OK</text>
+    </g>
+
+    <!-- Worker 2 (also OK) -->
+    <g transform="translate(218 134)">
+      <circle cx="0" cy="0" r="5" fill="#fbbf24"/>
+      <path d="M -7 0 Q 0 -7 7 0" fill="#fbbf24"/>
+      <rect x="-5" y="4" width="10" height="20" fill="#f59e0b"/>
+      <rect x="-6" y="22" width="3" height="12" fill="#0b1220"/>
+      <rect x="3" y="22" width="3" height="12" fill="#0b1220"/>
+      <rect x="-12" y="-10" width="34" height="50" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+    </g>
+
+    <!-- Worker 3 in restricted zone (RED bounding box) -->
+    <g transform="translate(286 142)">
+      <circle cx="0" cy="0" r="5" fill="#0b1220"/>
+      <rect x="-5" y="4" width="10" height="18" fill="#3f4a5c"/>
+      <rect x="-6" y="20" width="3" height="12" fill="#0b1220"/>
+      <rect x="3" y="20" width="3" height="12" fill="#0b1220"/>
+      <rect x="-13" y="-9" width="34" height="46" fill="none" stroke="#ef4444" stroke-width="1.6"/>
+      <rect x="-13" y="-19" width="86" height="10" fill="#ef4444"/>
+      <text x="-9" y="-11" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#ffffff">NO HARD HAT</text>
+    </g>
+
+    <!-- Forklift with bounding box -->
+    <g transform="translate(50 152)">
+      <rect width="36" height="22" rx="2" fill="#f59e0b"/>
+      <rect x="8" y="-4" width="16" height="8" fill="#f59e0b"/>
+      <rect x="6" y="-12" width="2" height="14" fill="#a0aec0"/>
+      <rect x="26" y="-12" width="2" height="14" fill="#a0aec0"/>
+      <rect x="6" y="-12" width="22" height="2" fill="#a0aec0"/>
+      <circle cx="8" cy="24" r="4" fill="#0b1220"/>
+      <circle cx="28" cy="24" r="4" fill="#0b1220"/>
+      <rect x="-16" y="2" width="16" height="2" fill="#a0aec0"/>
+      <rect x="-16" y="18" width="16" height="2" fill="#a0aec0"/>
+    </g>
+    <rect x="32" y="138" width="64" height="44" fill="none" stroke="#5cbfbf" stroke-width="1.5"/>
+    <rect x="32" y="128" width="80" height="10" fill="#5cbfbf"/>
+    <text x="36" y="136" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#0b1220">FORKLIFT · MOVING</text>
+
+    <!-- Restricted-zone polygon overlay -->
+    <polygon points="262,128 326,128 326,180 250,180" fill="#ef4444" fill-opacity="0.10" stroke="#ef4444" stroke-opacity="0.55" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="296" y="144" font-family="Inter, sans-serif" font-size="8" fill="#ef4444" text-anchor="middle" letter-spacing="0.8">RESTRICTED</text>
+
+    <!-- bottom HUD strip -->
+    <rect x="14" y="200" width="312" height="0.5" fill="#5cbfbf" opacity="0.3"/>
+    <g font-family="ui-monospace, monospace" font-size="8" fill="#a0aec0">
+      <text x="22" y="215">DETECTIONS · 4</text>
+      <text x="120" y="215" fill="#22c55e">PPE OK · 2</text>
+      <text x="200" y="215" fill="#ef4444">ALERT · 1</text>
+      <text x="318" y="215" text-anchor="end">25 FPS</text>
+    </g>
   </g>
 
-  <!-- Chat conversation -->
-  <g transform="translate(400 70)">
-    <!-- User bubble -->
-    <g filter="url(#sent-shadow)">
-      <rect x="0" y="0" width="200" height="56" rx="14" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.06"/>
-      <text x="14" y="20" font-family="Inter, sans-serif" font-size="10" fill="#7a8699" font-weight="600">YOU · 14:32</text>
-      <text x="14" y="40" font-family="Inter, sans-serif" font-size="13" fill="#0b1220">What's happening at Site A</text>
-      <text x="14" y="52" font-family="Inter, sans-serif" font-size="13" fill="#0b1220">right now?</text>
-      <path d="M 24 56 L 18 66 L 32 56 Z" fill="#ffffff"/>
+  <!-- CHAT CONVERSATION -->
+  <g transform="translate(400 50)">
+    <!-- header -->
+    <g>
+      <rect x="0" y="0" width="200" height="22" rx="11" fill="#5cbfbf" fill-opacity="0.18"/>
+      <circle cx="14" cy="11" r="5" fill="#5cbfbf"/>
+      <text x="14" y="15" font-family="Inter, sans-serif" font-size="8" font-weight="800" fill="#ffffff" text-anchor="middle">S</text>
+      <text x="26" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#2a8585" letter-spacing="0.5">SENTINEL</text>
+      <text x="194" y="15" font-family="Inter, sans-serif" font-size="9" fill="#5b6b80" text-anchor="end">online</text>
     </g>
 
-    <!-- AI response -->
-    <g transform="translate(0 80)" filter="url(#sent-shadow)">
-      <rect width="220" height="130" rx="14" fill="url(#sent-card)"/>
-      <rect width="220" height="130" rx="14" fill="none" stroke="#5cbfbf" stroke-opacity="0.5"/>
-      <!-- Logo/avatar -->
-      <g transform="translate(14 14)">
-        <circle cx="10" cy="10" r="10" fill="#5cbfbf"/>
-        <text x="10" y="14" font-family="Inter, sans-serif" font-size="10" font-weight="800" fill="#ffffff" text-anchor="middle">S</text>
+    <!-- User bubble 1 -->
+    <g transform="translate(0 30)" filter="url(#sent-shadow)">
+      <rect width="206" height="42" rx="12" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.06"/>
+      <text x="14" y="16" font-family="Inter, sans-serif" font-size="9" fill="#7a8699" font-weight="600">YOU · 14:32</text>
+      <text x="14" y="32" font-family="Inter, sans-serif" font-size="12" fill="#0b1220">What's happening at Site A?</text>
+      <path d="M 18 42 L 14 50 L 26 42 Z" fill="#ffffff"/>
+    </g>
+
+    <!-- AI response 1 -->
+    <g transform="translate(0 88)" filter="url(#sent-shadow)">
+      <rect width="220" height="98" rx="12" fill="url(#sent-card)"/>
+      <rect width="220" height="98" rx="12" fill="none" stroke="#5cbfbf" stroke-opacity="0.50"/>
+      <text x="14" y="16" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#5cbfbf">SENTINEL · 14:32</text>
+      <g font-family="Inter, sans-serif" font-size="11" fill="#e0e6ed">
+        <text x="14" y="36">Three workers and one forklift</text>
+        <text x="14" y="52">on dock cam. Two have full PPE,</text>
+        <text x="14" y="68">one is in the restricted zone</text>
+        <text x="14" y="84" fill="#ef4444" font-weight="600">without a hard hat — alert fired.</text>
       </g>
-      <text x="38" y="22" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#5cbfbf">SENTINEL · 14:32</text>
-      <g font-family="Inter, sans-serif" font-size="12" fill="#e0e6ed">
-        <text x="14" y="52">Two workers on site, both</text>
-        <text x="14" y="69">wearing PPE. A forklift is</text>
-        <text x="14" y="86">moving near them but stays</text>
-        <text x="14" y="103">3.2m clear. No alerts in the</text>
-        <text x="14" y="120">last 30 minutes.</text>
+      <path d="M 198 98 L 204 106 L 192 98 Z" fill="#18222f"/>
+    </g>
+
+    <!-- User bubble 2 -->
+    <g transform="translate(0 200)" filter="url(#sent-shadow)">
+      <rect width="206" height="42" rx="12" fill="#ffffff" stroke="#0b1220" stroke-opacity="0.06"/>
+      <text x="14" y="16" font-family="Inter, sans-serif" font-size="9" fill="#7a8699" font-weight="600">YOU · 14:33</text>
+      <text x="14" y="32" font-family="Inter, sans-serif" font-size="12" fill="#0b1220">How long has he been there?</text>
+      <path d="M 18 42 L 14 50 L 26 42 Z" fill="#ffffff"/>
+    </g>
+
+    <!-- AI response 2 (typing) -->
+    <g transform="translate(0 258)" filter="url(#sent-shadow)">
+      <rect width="220" height="82" rx="12" fill="url(#sent-card)"/>
+      <rect width="220" height="82" rx="12" fill="none" stroke="#5cbfbf" stroke-opacity="0.50"/>
+      <text x="14" y="16" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#5cbfbf">SENTINEL · 14:33</text>
+      <g font-family="Inter, sans-serif" font-size="11" fill="#e0e6ed">
+        <text x="14" y="36">2 min 14 sec. He entered from the</text>
+        <text x="14" y="52">east gate at 14:30:42 and has</text>
+        <text x="14" y="68">been stationary since 14:31:50.</text>
       </g>
-      <path d="M 196 130 L 202 140 L 188 130 Z" fill="#18222f"/>
     </g>
   </g>
 </svg>

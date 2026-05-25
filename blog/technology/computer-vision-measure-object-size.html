@@ -125,7 +125,10 @@ extra_schema:,
         <div class="container">
           <nav class="navbar" aria-label="Primary">
             <a class="navbar-brand" href="/" aria-label="Securade.ai home">
-              <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+              <picture>
+                <source srcset="/assets/images/logo/logo.webp" type="image/webp">
+                <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="160" height="52" class="brand-logo" />
+              </picture>
             </a>
             <button class="navbar-toggler" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="toggler-icon"></span>
@@ -223,7 +226,6 @@ extra_schema:,
  <li><strong>The measurement formula is straightforward.</strong> <code>Object Size = (Object Feature / Reference Feature) * Reference Size</code>. Watch out for unit consistency.</li>
  <li><strong>Validation catches systematic errors.</strong> Measure things you know the dimensions of. If the system is consistently off by 5%, you can correct for it. If it's off in unpredictable ways, something earlier in the pipeline is wrong.</li>
  </ul>
- </div>
 
  <h2 class="fw-bolder mb-4 mt-5">Example of Object Measurement in Computer Vision: How to Measure an Almond with a Penny</h2>
  <div class="section-content">
@@ -299,7 +301,6 @@ extra_schema:,
  <p class="fs-5 mb-4">For more advanced scenarios (occlusion, varying lighting, non-rigid objects), specialised models exist and the gap from simple to sophisticated keeps narrowing. The fundamentals (good image, calibrated camera, reference object, validation) stay the same regardless of how fancy the model gets.</p>
 
  <p class="fs-5 mb-4">Computer vision measurement is one of those skills that's genuinely useful and not that hard to pick up. Solid grasp of the image processing basics, OpenCV familiarity, and a willingness to validate against ground truth will get you most of the way. The almond example above is a real starting point you can run today.</p>
- </div>
 
  <div class="conclusion">
  <p class="fs-5 mb-4">In summary, measuring object size with computer vision is a powerful technique with applications across various industries. By understanding the fundamental principles, building a robust workflow, and validating your results, you can create accurate and reliable object measurement systems. This guide has provided you with the knowledge and tools to get started. Embrace the challenges and opportunities that computer vision offers, and unlock the potential for innovation in your field.</p>
@@ -307,8 +308,6 @@ extra_schema:,
  </div>
  <div class="cta mt-5">
  <p class="cta fs-5 mb-4">Loved this guide? Star our GitHub repo for more exciting computer vision projects: <a href="https://github.com/securade/hub" class="text-body-emphasis fw-bold">https://github.com/securade/hub</a></p>
- </div>
- </div>
  </div>
  </article>
 </main>
@@ -321,7 +320,10 @@ extra_schema:,
             <div class="footer-widget">
               <div class="logo">
                 <a href="/" aria-label="Securade.ai">
-                  <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
+                  <picture>
+                    <source srcset="/assets/images/logo/logo.webp" type="image/webp">
+                    <img src="/assets/images/logo/logo.png" alt="Securade.ai" width="180" height="58" class="brand-logo" />
+                  </picture>
                 </a>
               </div>
               <p class="desc">Generative AI video analytics that turns the CCTV cameras you already have into safety copilots that predict and prevent workplace accidents.</p>
