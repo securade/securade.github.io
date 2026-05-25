@@ -49,14 +49,8 @@ extra_schema:,
     <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Inter typeface — non-blocking via media-swap pattern -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+    <!-- Inter variable font (self-hosted); @font-face declared in theme.css with font-display: swap -->
+    <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
 
     <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
     <!-- Theme stylesheet -->
@@ -177,7 +171,7 @@ extra_schema:,
  </p>
  </div>
  <figure class="article-hero">
- <img src="/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg" alt="Image" />
+ <img src="/assets/images/blog/workplace-safety/securadeaiRedZoneAiMonitoring.jpeg" alt="Image" / width="800" height="533" loading="lazy" decoding="async">
  </figure>
 
  <div class="article-body">
@@ -209,7 +203,7 @@ extra_schema:,
 
  <h2 class="fw-bolder mb-4 mt-5">Alerts and analytics, where the value compounds</h2>
  <p class="fs-5 mb-4">Detecting the entry is the first half. Doing something useful with the detection is the second half. Wire the alerts into the channels your team actually pays attention to: SMS, email, Slack, the safety management system, the supervisor's pager. Threshold the alerts sensibly so the team doesn't get fatigued.</p>
- <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiVisionAiApplicationDevelopment.jpeg" alt="Alert configuration dashboard" /></figure>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiVisionAiApplicationDevelopment.jpeg" alt="Alert configuration dashboard" / width="800" height="533" loading="lazy" decoding="async"></figure>
  <p class="fs-5 mb-4">Common alert types: someone entering a zone, someone staying in a zone past a threshold time, repeated entries by the same worker over a shift. Each fires different downstream actions depending on your setup.</p>
  <p class="fs-5 mb-4">The analytics side is where you get the compounding value. Over weeks and months of operation, the events pile up into a dataset. Which zones get violated most often. Which shifts have the highest entry rates. Which crew is responsible. Whether the violations correlate with weather, time of day, or specific tasks. That data feeds back into safety planning: where to add signage, who to retrain, which procedures need updating.</p>
  <ul class="fs-5 mb-4">
@@ -230,7 +224,7 @@ extra_schema:,
  <li><strong>Compute fit.</strong> Edge box vs. cloud changes which models are practical.</li>
  <li><strong>Transfer learning.</strong> Almost always start from a pre-trained backbone.</li>
  </ul>
- <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiAutomatingAlertsAnalyticsComputer.jpeg" alt="Different Computer Vision Models" /></figure>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiAutomatingAlertsAnalyticsComputer.jpeg" alt="Different Computer Vision Models" / width="800" height="533" loading="lazy" decoding="async"></figure>
 
  <h3 class="fw-bolder mb-4 mt-5">Camera</h3>
  <p class="fs-5 mb-4">The camera matters as much as the model. Cheap cameras with bad sensors limit how good the model can be, regardless of architecture.</p>
@@ -253,7 +247,7 @@ extra_schema:,
  <li><strong>Collaboration features</strong> for teams working on the same dataset.</li>
  <li><strong>Scale handling</strong> for the larger datasets you'll end up with as the project matures.</li>
  </ul>
- <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiComputerVisionModelsCameraSelection.jpeg" alt="HUB data management tool" /></figure>
+ <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/workplace-safety/securadeaiComputerVisionModelsCameraSelection.jpeg" alt="HUB data management tool" / width="800" height="533" loading="lazy" decoding="async"></figure>
  <p class="fs-5 mb-4">HUB takes the operational complexity out of the data pipeline so you can focus on the model and the deployment.</p>
 
  <div class="conclusion">

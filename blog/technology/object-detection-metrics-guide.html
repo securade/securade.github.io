@@ -49,14 +49,8 @@ extra_schema:,
     <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a1018" media="(prefers-color-scheme: dark)" />
 
-    <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Inter typeface — non-blocking via media-swap pattern -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" /></noscript>
+    <!-- Inter variable font (self-hosted); @font-face declared in theme.css with font-display: swap -->
+    <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
 
     <style id="critical">body{font-family:Inter,system-ui,-apple-system,sans-serif;color:#0b1220;background:#fafaf7;margin:0;line-height:1.65}*,*:before,*:after{box-sizing:border-box}h1{font-family:'Inter Tight',Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.04;color:#050913;margin:0 0 1.25rem}.site-header{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.88);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent}.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:clamp(1rem,2.5vw,2rem)}.navbar-area{height:80px;display:flex;align-items:center}.navbar{display:flex;align-items:center;justify-content:space-between;width:100%}.navbar-brand img{height:48px;width:auto}.hero-section{padding-block:clamp(3rem,4vw + 2rem,7rem);position:relative;overflow:hidden}.hero-content{max-width:640px}.hero-content h1{font-size:clamp(2.25rem,1.4rem + 3.4vw,4rem)}.hero-content .accent{background:linear-gradient(135deg,#3ea5a5,#1f6868);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-content>p{font-size:clamp(1.0625rem,.9rem + .5vw,1.25rem);color:#3f4a5c;max-width:56ch;margin:0 0 2rem}.hero-image{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 28px 80px -28px rgba(11,18,32,.28);aspect-ratio:16/9;background:#000}.hero-image video{display:block;width:100%;height:100%;object-fit:cover}.row{display:flex;flex-wrap:wrap}.col-lg-6{flex:0 0 auto;width:100%}@media(min-width:992px){.col-lg-6{width:50%}}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .875rem;margin-bottom:1rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2a8585;background:#ecf9f9;border-radius:999px}.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:#5cbfbf}</style>
     <!-- Theme stylesheet -->
@@ -177,7 +171,7 @@ extra_schema:,
  </p>
  </div>
  <figure class="article-hero">
- <img src="/assets/images/blog/technology/securadeaiObjectDetectionMetricsMatterQuestionMarks.jpeg" alt="Image" />
+ <img src="/assets/images/blog/technology/securadeaiObjectDetectionMetricsMatterQuestionMarks.jpeg" alt="Image" / width="533" height="800" loading="lazy" decoding="async">
  </figure>
 
  <div class="article-body">
@@ -230,7 +224,7 @@ extra_schema:,
  <li>False Negatives (FN): objects actually present that the model failed to detect.</li>
  </ul>
  <p class="fs-5 mb-4">Pushing recall up usually pushes precision down. You're catching more real objects but you're also raising more false alarms. Where to land on that curve is a product decision, not a technical one.</p>
- <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/a43c38e3-f74f-406d-96e3-bda4d53210f3" alt="Recall Formula Illustration" /></figure>
+ <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/a43c38e3-f74f-406d-96e3-bda4d53210f3.jpg" width="720" height="960" loading="lazy" decoding="async" alt="Recall Formula Illustration" /></figure>
  </div>
 
  <h2 class="fw-bolder mb-4 mt-5">Worked example: AP and mAP</h2>
@@ -240,7 +234,7 @@ extra_schema:,
  <p class="fs-5 mb-4">mAP is just the average across classes:</p>
  <p class="fs-5 mb-4">mAP = (AP(car) + AP(pedestrian)) / 2 = (0.85 + 0.70) / 2 = 0.775</p>
  <p class="fs-5 mb-4">So this model scores 0.775 mAP. The fact that car AP is much higher than pedestrian AP tells you where the model is weaker, which is more useful than the headline number on its own.</p>
- <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/e0a3fb43-b39d-4e55-86b1-66280f48baab" alt="AP mAP Calculation" /></figure>
+ <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/e0a3fb43-b39d-4e55-86b1-66280f48baab.jpg" width="720" height="960" loading="lazy" decoding="async" alt="AP mAP Calculation" /></figure>
  <p class="fs-5 mb-4">In production, AP is computed with one of a few standard interpolation schemes (COCO uses 101-point interpolation across IoU thresholds from 0.5 to 0.95). Libraries handle this for you, but it's worth knowing the variant so you can compare like-for-like across benchmarks.</p>
  </div>
 
@@ -254,7 +248,7 @@ extra_schema:,
  <li><strong>Ensembles.</strong> Averaging predictions across multiple models almost always helps. Slow at inference, but a useful baseline for "what's possible".</li>
  <li><strong>Transfer learning.</strong> Start from a backbone pre-trained on COCO or similar. Almost always faster and better than training from scratch, especially with limited data.</li>
  </ol>
- <figure class="mb-4"><img class="img-fluid rounded" src="https://github.com/user-attachments/assets/23601b5e-24a7-4aad-b33a-697f2b95b24d" alt="Improving Object Detection" /></figure>
+ <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/23601b5e-24a7-4aad-b33a-697f2b95b24d.jpg" width="720" height="960" loading="lazy" decoding="async" alt="Improving Object Detection" /></figure>
  </div>
 
  <div class="conclusion">
