@@ -171,7 +171,7 @@ extra_schema:,
  </p>
  </div>
  <figure class="article-hero">
- <img src="/assets/images/blog/technology/securadeaiComputerVisionAugmentationsCatLaptopIcons.jpeg" alt="Image" / width="533" height="800" loading="lazy" decoding="async">
+ <picture><source srcset="/assets/images/blog/technology/securadeaiComputerVisionAugmentationsCatLaptopIcons.webp" type="image/webp"><img src="/assets/images/blog/technology/securadeaiComputerVisionAugmentationsCatLaptopIcons.jpeg" alt="Image" / width="533" height="800" loading="lazy" decoding="async"></picture>
  </figure>
 
  <div class="article-body">
@@ -195,7 +195,7 @@ extra_schema:,
 
  <h2 class="fw-bolder mb-4 mt-5">Contrast</h2>
  <p class="fs-5 mb-4">Adjust how much the dark and bright parts of the image differ. Higher contrast looks sharper, lower contrast looks flatter. Random small adjustments during training help the model tolerate the variable image quality you actually get from cheap cameras or compressed feeds.</p>
- <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/e7ecad9d-433c-4e87-bd8d-91c691e8a4d2.jpg" width="1024" height="1024" loading="lazy" decoding="async" alt="Contrast Augmentation Example" /></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/external/e7ecad9d-433c-4e87-bd8d-91c691e8a4d2.webp" type="image/webp"><img class="img-fluid rounded"  src="/assets/images/blog/external/e7ecad9d-433c-4e87-bd8d-91c691e8a4d2.jpg" width="1024" height="1024" loading="lazy" decoding="async" alt="Contrast Augmentation Example" /></picture></figure>
 
  <h2 class="fw-bolder mb-4 mt-5">Grayscale</h2>
  <p class="fs-5 mb-4">Strip the colour. Useful only when colour isn't load-bearing for the task. For face detection: fine. For traffic sign classification: probably not, since colour is part of the signal. Use selectively.</p>
@@ -208,7 +208,7 @@ extra_schema:,
 
  <h2 class="fw-bolder mb-4 mt-5">Blur</h2>
  <p class="fs-5 mb-4">Reduce sharpness. Helps the model handle out-of-focus or low-resolution input. Useful for video where focus drifts, or surveillance feeds that aren't 4K. Don't overdo it; if every training image is blurry, the model won't perform well on sharp ones.</p>
- <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/5abec39f-3c34-4d98-9b16-bad2559580d3.jpg" width="1024" height="1024" loading="lazy" decoding="async" alt="Blur Augmentation Example" /></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/external/5abec39f-3c34-4d98-9b16-bad2559580d3.webp" type="image/webp"><img class="img-fluid rounded"  src="/assets/images/blog/external/5abec39f-3c34-4d98-9b16-bad2559580d3.jpg" width="1024" height="1024" loading="lazy" decoding="async" alt="Blur Augmentation Example" /></picture></figure>
 
  <h2 class="fw-bolder mb-4 mt-5">Bounding-box-aware augmentations</h2>
  <p class="fs-5 mb-4">Everything above works on the whole image. For object detection, you have labelled boxes around the things you want to find, and those boxes need to stay accurate after the augmentation. Most of the augmentation libraries handle this for you, but it's worth knowing what's happening under the hood.</p>

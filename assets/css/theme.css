@@ -931,6 +931,15 @@ section { position: relative; }
   object-fit: cover;
   background: #000;
 }
+/* Poster image stacks on top of the video so it paints as the LCP candidate.
+   .has-video class added by theme.js after the video can start playing. */
+.hero-image .hero-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+.hero-image.has-video .hero-poster { opacity: 0; pointer-events: none; }
 
 /* Awards strip */
 .awards-band {

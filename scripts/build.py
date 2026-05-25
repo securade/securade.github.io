@@ -112,7 +112,12 @@ def collect_blog_posts() -> list[dict]:
 def render_card(post: dict) -> str:
     return (
         f'<a href="{post["url"]}" class="post-card" data-category="{post["category_slug"] or "uncategorized"}">'
-        f'<div class="post-card-media"><img src="{post["image"]}" alt="" loading="lazy" width="640" height="360" /></div>'
+        f'<div class="post-card-media">'
+        f'<picture>'
+        f'<source srcset="{post["image"].rsplit(".",1)[0]}.webp" type="image/webp">'
+        f'<img src="{post["image"]}" alt="" loading="lazy" decoding="async" width="640" height="360" />'
+        f'</picture>'
+        f'</div>'
         f'<div class="post-card-body">'
         f'<span class="post-card-chip">{post["category_label"]}</span>'
         f'<h2 class="post-card-title">{post["title"]}</h2>'

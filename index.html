@@ -230,7 +230,11 @@ extra_schema: ,
 
         <div class="col-lg-6">
           <div class="hero-image" style="aspect-ratio: 16/9;">
-            <video class="hero-video" autoplay loop muted playsinline preload="metadata"
+            <!-- Poster image paints immediately as LCP; video swaps in after it loads. -->
+            <img class="hero-poster" src="/assets/videos/hero-demo-poster.jpg"
+                 alt="Securade.ai HUB live worksite monitoring demo"
+                 width="1280" height="720" fetchpriority="high" decoding="async" />
+            <video class="hero-video" autoplay loop muted playsinline preload="none"
                    poster="/assets/videos/hero-demo-poster.jpg" aria-label="Securade.ai HUB live worksite monitoring demo">
               <source src="/assets/videos/hero-demo.webm" type="video/webm" />
               <source src="/assets/videos/hero-demo.mp4" type="video/mp4" />

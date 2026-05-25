@@ -171,7 +171,7 @@ extra_schema:,
  </p>
  </div>
  <figure class="article-hero">
- <img src="/assets/images/blog/technology/securadeaiObjectDetectionMetricsMatterQuestionMarks.jpeg" alt="Image" / width="533" height="800" loading="lazy" decoding="async">
+ <picture><source srcset="/assets/images/blog/technology/securadeaiObjectDetectionMetricsMatterQuestionMarks.webp" type="image/webp"><img src="/assets/images/blog/technology/securadeaiObjectDetectionMetricsMatterQuestionMarks.jpeg" alt="Image" / width="533" height="800" loading="lazy" decoding="async"></picture>
  </figure>
 
  <div class="article-body">
@@ -224,7 +224,7 @@ extra_schema:,
  <li>False Negatives (FN): objects actually present that the model failed to detect.</li>
  </ul>
  <p class="fs-5 mb-4">Pushing recall up usually pushes precision down. You're catching more real objects but you're also raising more false alarms. Where to land on that curve is a product decision, not a technical one.</p>
- <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/a43c38e3-f74f-406d-96e3-bda4d53210f3.jpg" width="720" height="960" loading="lazy" decoding="async" alt="Recall Formula Illustration" /></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/external/a43c38e3-f74f-406d-96e3-bda4d53210f3.webp" type="image/webp"><img class="img-fluid rounded"  src="/assets/images/blog/external/a43c38e3-f74f-406d-96e3-bda4d53210f3.jpg" width="720" height="960" loading="lazy" decoding="async" alt="Recall Formula Illustration" /></picture></figure>
  </div>
 
  <h2 class="fw-bolder mb-4 mt-5">Worked example: AP and mAP</h2>
@@ -234,7 +234,7 @@ extra_schema:,
  <p class="fs-5 mb-4">mAP is just the average across classes:</p>
  <p class="fs-5 mb-4">mAP = (AP(car) + AP(pedestrian)) / 2 = (0.85 + 0.70) / 2 = 0.775</p>
  <p class="fs-5 mb-4">So this model scores 0.775 mAP. The fact that car AP is much higher than pedestrian AP tells you where the model is weaker, which is more useful than the headline number on its own.</p>
- <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/e0a3fb43-b39d-4e55-86b1-66280f48baab.jpg" width="720" height="960" loading="lazy" decoding="async" alt="AP mAP Calculation" /></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/external/e0a3fb43-b39d-4e55-86b1-66280f48baab.webp" type="image/webp"><img class="img-fluid rounded"  src="/assets/images/blog/external/e0a3fb43-b39d-4e55-86b1-66280f48baab.jpg" width="720" height="960" loading="lazy" decoding="async" alt="AP mAP Calculation" /></picture></figure>
  <p class="fs-5 mb-4">In production, AP is computed with one of a few standard interpolation schemes (COCO uses 101-point interpolation across IoU thresholds from 0.5 to 0.95). Libraries handle this for you, but it's worth knowing the variant so you can compare like-for-like across benchmarks.</p>
  </div>
 
@@ -248,7 +248,7 @@ extra_schema:,
  <li><strong>Ensembles.</strong> Averaging predictions across multiple models almost always helps. Slow at inference, but a useful baseline for "what's possible".</li>
  <li><strong>Transfer learning.</strong> Start from a backbone pre-trained on COCO or similar. Almost always faster and better than training from scratch, especially with limited data.</li>
  </ol>
- <figure class="mb-4"><img class="img-fluid rounded"  src="/assets/images/blog/external/23601b5e-24a7-4aad-b33a-697f2b95b24d.jpg" width="720" height="960" loading="lazy" decoding="async" alt="Improving Object Detection" /></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/external/23601b5e-24a7-4aad-b33a-697f2b95b24d.webp" type="image/webp"><img class="img-fluid rounded"  src="/assets/images/blog/external/23601b5e-24a7-4aad-b33a-697f2b95b24d.jpg" width="720" height="960" loading="lazy" decoding="async" alt="Improving Object Detection" /></picture></figure>
  </div>
 
  <div class="conclusion">

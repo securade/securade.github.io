@@ -139,4 +139,22 @@
       });
     });
   }
+  // Lazy-start the hero video after first paint: the poster image acts as LCP,
+  // then we kick off the video so users still see motion.
+  var heroVideo = document.querySelector('.hero-image .hero-video');
+  if (heroVideo) {
+    var heroImage = heroVideo.closest('.hero-image');
+    var startVideo = function () {
+      heroVideo.load();
+      heroVideo.play().catch(function () { /* autoplay blocked; poster stays */ });
+      heroVideo.addEventListener('playing', function () {
+        if (heroImage) heroImage.classList.add('has-video');
+      }, { once: true });
+    };
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(startVideo, { timeout: 2000 });
+    } else {
+      setTimeout(startVideo, 600);
+    }
+  }
 })();

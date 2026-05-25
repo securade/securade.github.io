@@ -171,7 +171,7 @@ extra_schema:,
  </p>
  </div>
  <figure class="article-hero">
- <img src="/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg" alt="Image" / width="800" height="329" loading="lazy" decoding="async">
+ <picture><source srcset="/assets/images/blog/technology/securadeaiDataAnalysisCommunication.webp" type="image/webp"><img src="/assets/images/blog/technology/securadeaiDataAnalysisCommunication.jpeg" alt="Image" / width="800" height="329" loading="lazy" decoding="async"></picture>
  </figure>
 
  <div class="article-body">
@@ -223,7 +223,7 @@ extra_schema:,
  <p class="fs-5 mb-4">CNNs (ResNet, EfficientNet) are still the default for classification. For detection, YOLO is the most common choice; Faster R-CNN if you need higher accuracy and have GPU budget. For segmentation, U-Net or DeepLab. Video tends to use 3D CNNs, ConvLSTMs, or video transformers.</p>
 
  <p class="fs-5 mb-4">Vision transformers (ViT, Swin) have started to compete with CNNs on some benchmarks. They need more data and more compute to shine. If you have both, they're worth trying; if you don't, stick with a good CNN.</p>
- <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiDataAnalysisCommunicationIllustration.jpeg" alt="Diagram of a CNN architecture" / width="800" height="330" loading="lazy" decoding="async"></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/technology/securadeaiDataAnalysisCommunicationIllustration.webp" type="image/webp"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiDataAnalysisCommunicationIllustration.jpeg" alt="Diagram of a CNN architecture" / width="800" height="330" loading="lazy" decoding="async"></picture></figure>
  </div>
 
  <h3 class="fw-bolder mb-4 mt-5">Tune the hyperparameters that actually matter</h3>
@@ -238,7 +238,7 @@ extra_schema:,
  <p class="fs-5 mb-4">Overfitting is the failure mode where training accuracy goes up but validation accuracy stalls or drops. The model has memorised your training set instead of learning the underlying patterns. Watch for the gap.</p>
 
  <p class="fs-5 mb-4">Standard defenses: dropout (turn off random neurons during training), weight decay (penalise large weights), early stopping (cut training off when validation stops improving), and good old "use more data".</p>
- <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAiModelTrainingOptimizationWorkflow.jpeg" alt="Graph showing overfitting vs underfitting" / width="800" height="528" loading="lazy" decoding="async"></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/technology/securadeaiAiModelTrainingOptimizationWorkflow.webp" type="image/webp"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAiModelTrainingOptimizationWorkflow.jpeg" alt="Graph showing overfitting vs underfitting" / width="800" height="528" loading="lazy" decoding="async"></picture></figure>
  </div>
 
  <h3 class="fw-bolder mb-4 mt-5">Start from somebody else's weights</h3>
@@ -263,7 +263,7 @@ extra_schema:,
  <p class="fs-5 mb-4">"Accuracy" by itself is a lazy metric. With imbalanced data, a model that always predicts the majority class can score 95% accuracy while being useless. Use precision, recall, and F1 to see what's actually happening.</p>
 
  <p class="fs-5 mb-4">For object detection, the standard is mean Average Precision (mAP) at various IoU thresholds. For segmentation, mean IoU. For multi-class problems with cost asymmetries, weight the metrics to match.</p>
- <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiCatFaceRedBoxCircleEye.jpeg" alt="Confusion matrix showing precision and recall" / width="800" height="524" loading="lazy" decoding="async"></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/technology/securadeaiCatFaceRedBoxCircleEye.webp" type="image/webp"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiCatFaceRedBoxCircleEye.jpeg" alt="Confusion matrix showing precision and recall" / width="800" height="524" loading="lazy" decoding="async"></picture></figure>
  </div>
 
  <h3 class="fw-bolder mb-4 mt-5">Keep your test set honest</h3>
@@ -278,7 +278,7 @@ extra_schema:,
  <p class="fs-5 mb-4">The aggregate metric tells you how well the model does on average. The failure cases tell you why. Pull 50 misclassified examples and look at them. Patterns usually pop out: certain lighting, certain object sizes, certain angles, a labelling error you missed.</p>
 
  <p class="fs-5 mb-4">Whatever you find here informs the next round. More augmentation in the failure mode. More labelled examples of the case the model is missing. A small architectural tweak to handle scale. Iterate.</p>
- <figure class="mb-4"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAnimalCollageDataDiversity.jpeg" alt="Example of error analysis in computer vision" / width="800" height="669" loading="lazy" decoding="async"></figure>
+ <figure class="mb-4"><picture><source srcset="/assets/images/blog/technology/securadeaiAnimalCollageDataDiversity.webp" type="image/webp"><img class="img-fluid rounded" src="/assets/images/blog/technology/securadeaiAnimalCollageDataDiversity.jpeg" alt="Example of error analysis in computer vision" / width="800" height="669" loading="lazy" decoding="async"></picture></figure>
  </div>
 
  <div class="conclusion">
