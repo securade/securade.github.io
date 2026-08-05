@@ -237,7 +237,7 @@ extra_schema:,
 
  <h3 class="fw-bolder mb-4 mt-5">Evaluate on real data, full stop</h3>
  <div class="subsection-content">
- <p class="fs-5 mb-4">Synthetic test metrics lie. The only number that matters is performance on a real-data validation set that the model has never seen and that was never used in tuning.</p><p class="fs-5 mb-4">Standard metrics still apply: mAP at multiple IoU thresholds for detection, per-class breakdowns, calibration plots if confidence scores matter to your downstream system. Compare against a baseline trained on only-real data so you can quantify what the synthetic augmentation actually bought you.</p>
+ <p class="fs-5 mb-4">Synthetic test metrics lie. The only number that matters is performance on a real-data validation set that the model has never seen and that was never used in tuning.</p><p class="fs-5 mb-4">Standard metrics still apply: mAP at multiple IoU thresholds for detection, per-class breakdowns, calibration plots if confidence scores matter to your downstream system. Our <a href="/blog/technology/object-detection-metrics-guide.html">object detection metrics guide</a> covers what each of those numbers is measuring. Compare against a baseline trained on only-real data so you can quantify what the synthetic augmentation actually bought you.</p>
  </div>
 
  <h3 class="fw-bolder mb-4 mt-5">Iterate, don't ship-and-forget</h3>

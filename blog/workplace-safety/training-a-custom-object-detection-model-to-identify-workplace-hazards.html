@@ -260,6 +260,7 @@ extra_schema:,
  <li><strong>F1-score:</strong> harmonic mean of precision and recall. Single number that captures both.</li>
  <li><strong>mAP:</strong> the standard object-detection metric, averaging across classes and IoU thresholds.</li>
  </ul>
+ <p class="fs-5 mb-4">If any of those are new to you, we work through how mAP and IoU are actually calculated, with a worked example, in our <a href="/blog/technology/object-detection-metrics-guide.html">guide to object detection metrics</a>.</p>
  <p class="fs-5 mb-4"><b>Tuning the precision-recall trade-off:</b> for safety-critical detectors, the trade-off matters a lot. Low recall means you miss things people get hurt by. Low precision means workers stop trusting the alerts because they fire too often. Lean toward higher recall for catastrophic hazards (PPE near operating machinery), tighter precision for nuisance alerts (compliance checks that are merely embarrassing).</p>
  </div>
 

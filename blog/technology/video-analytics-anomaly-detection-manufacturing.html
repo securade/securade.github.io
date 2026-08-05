@@ -205,6 +205,7 @@ extra_schema:,
  <h2 class="fw-bolder mb-4 mt-5">How the AI side actually works</h2>
  <div class="section-content">
  <p class="fs-5 mb-4">The model is trained on video of the line running normally, plus examples of the anomalies you want to catch. After training, it watches incoming frames and flags deviations from what it learned was normal. Four common signal types it leans on:</p>
+ <p class="fs-5 mb-4">Some of those deviations are dimensional. A part drifting out of tolerance is an anomaly you can only catch if the system can put a number on the size, which needs a calibrated reference in the frame. We cover that method in <a href="/blog/technology/computer-vision-measure-object-size.html">measuring object size with computer vision</a>.</p>
  <ul class="fs-5 mb-4">
  <li><strong>Object recognition.</strong> Did the product, container, or part actually appear when it should? Is it where it should be?</li>
  <li><strong>Motion analysis.</strong> Sudden stops, jerky motion, things that shouldn't be moving moving. Often the earliest signal of mechanical issues.</li>

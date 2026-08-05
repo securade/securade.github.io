@@ -202,6 +202,7 @@ extra_schema:,
 
  <h2 class="fw-bolder mb-4 mt-5">Running detection through HUB</h2>
  <p class="fs-5 mb-4">HUB makes the detection plumbing a config exercise rather than a coding exercise. The high-level flow:</p>
+ <p class="fs-5 mb-4">Detection quality sets the ceiling for everything downstream here, since a tracker cannot follow what the detector never saw. If you want to judge that properly rather than by eye, start with our <a href="/blog/technology/object-detection-metrics-guide.html">object detection metrics guide</a>.</p>
  <ol class="fs-5 mb-4" style="list-style: decimal inside;">
  <li><strong>Define your data streams.</strong> Camera URLs or file paths go into the HUB config. One stream per camera.</li>
  <li><strong>Plug in the detector.</strong> HUB has integrations for the standard models; you can write a custom adapter if you need something exotic.</li>

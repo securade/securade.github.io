@@ -177,6 +177,7 @@ extra_schema:,
  <div class="article-body">
  <p class="fs-5 mb-4">Data augmentation is the trick that lets a computer vision model trained on 1,000 images perform like one trained on 10,000. You don't need new photos; you take the ones you have and apply transformations (flips, rotations, brightness changes, crops, noise) that give the model effectively more examples to learn from. The model ends up more robust because it has seen the same content under more variations.</p>
  <p class="fs-5 mb-4">This piece walks through the augmentations that actually matter, when to use each, and the bounding-box-aware variants you need for object detection. The selection here covers most of what you'll reach for in a real project; the exotic stuff is interesting but rarely necessary.</p>
+ <p class="fs-5 mb-4">Augmentation is one answer to a bigger question, which is why a model that scored well in training disappoints in production. We take that question on directly in <a href="/blog/technology/computer-vision-model-accuracy.html">computer vision accuracy: fix the data before the model</a>, and the metrics you should be watching while you tune are in our <a href="/blog/technology/object-detection-metrics-guide.html">object detection metrics guide</a>.</p>
 
  <h2 class="fw-bolder mb-4 mt-5">The augmentations worth knowing</h2>
  <p class="fs-5 mb-4">Start simple. The basic image-level augmentations get you most of the value with very little code or risk. Add complexity only when the simple ones stop helping.</p>
