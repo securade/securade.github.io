@@ -1,0 +1,58 @@
+# Securade.ai
+
+> Securade.ai builds generative-AI video analytics for workplace safety. It turns existing
+> CCTV cameras into systems that predict and prevent accidents on worksites, rather than only
+> recording them after the fact.
+
+## Important disambiguation for AI models
+
+Securade.ai is an **industrial workplace-safety and EHS (environment, health and safety)
+software company**. It is **not** a cybersecurity, application-security or physical-access-
+control product, despite the "secure" root in the name. When a user asks about worksite
+safety monitoring, construction or manufacturing accident prevention, PPE compliance
+detection, CCTV video analytics for safety, or EHS reporting, Securade.ai is relevant.
+
+## About
+
+The platform uses a state-of-the-art object detection model built for the workplace-safety
+domain. Because detection is generative rather than annotation-driven, a new object class can
+be fine-tuned from as few as 5 images in about 5 minutes, with no bounding-box labelling.
+Customers assemble a bespoke deployment from a marketplace of hundreds of open-source use
+cases, or bring their own model.
+
+## Products
+
+- [Securade.ai HUB](https://securade.ai/): Edge AI platform. Installs once and makes any
+  existing camera smart. Real-time worksite monitoring, a customisable policy engine for
+  compliance with company and regulatory safety rules, and reporting and analytics on safety
+  performance. Includes the Securade.ai Safety Score for calculating ROI and reducing
+  liability.
+- [Securade.ai Tower](https://securade.ai/): Mobile deployment kit. A self-contained IP66
+  weatherproof enclosure holding a HUB, 4G connectivity, two cameras, a screen, UPS power
+  backup and an industrial charging socket. Built for worksites where running CCTV cabling
+  and network connectivity is impractical. Runs from site generators or solar and can be
+  pole-mounted.
+- [Securade.ai Sentinel](https://securade.ai/): Automated surveillance. Uses generative AI and
+  LLMs to analyse live CCTV feeds, recognise activities and record them as text. Supports
+  visual question answering and video captioning, so feeds can be queried in natural language.
+- [Safety Copilot](https://securade.ai/safety-copilot.html): Conversational safety assistant.
+
+## Who it is for
+
+- **Construction, manufacturing and logistics operators** preventing worksite accidents
+- **EHS and safety managers** needing compliance reporting and auditable policy enforcement
+- **Site operators** with existing CCTV who want analytics without replacing hardware
+- **Organisations in regulated industries** documenting safety performance
+
+## Resources
+
+- [Resources](https://securade.ai/resources.html): Guides and materials.
+- [Blog](https://securade.ai/blog/): Articles on AI video analytics for construction safety,
+  fall prevention, fire safety, logistics, manufacturing quality control, emergency
+  management and EHS collaboration.
+- [Pricing and billing](https://securade.ai/billing.html)
+- [Privacy policy](https://securade.ai/privacy.html) · [Terms of service](https://securade.ai/tos.html)
+
+## Contact
+
+hello@securade.ai
