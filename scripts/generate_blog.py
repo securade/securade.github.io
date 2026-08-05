@@ -361,15 +361,21 @@ Blog Category: {category}
 Blog Content: {blog_content}
 
 Return a SINGLE JSON object with exactly these three fields:
-1. "title": A single string containing the SEO-optimized title (50-60 characters)
+1. "title": A single string containing the SEO-optimized title (36-46 characters)
 2. "filename": A single string containing the SEO-friendly filename
 3. "reasoning": A single string explaining the SEO strategy
 
 Title requirements:
-- Exactly one title, 50-60 characters
+- Exactly one title, 36-46 characters. A hard ceiling, not a target to overshoot.
+  ", Securade.ai" is appended afterwards and costs 13 more characters, and Google
+  truncates near 60. A 60-character title here ships at 73 and is cut mid-word,
+  losing the brand and the end of the sentence with it.
+- Do NOT put "Securade" or "Securade.ai" in the title; it is appended automatically
 - Primary keyword must appear early
-- Must be compelling and clickable
-- Use power words where appropriate
+- Say what the reader gets, not what the article is called
+- Plain language. No colon-subtitle constructions, and avoid "Revolutionizing",
+  "Transforming", "Unlocking", "Maximizing", "Next-Level", "Ultimate", "Cutting-Edge"
+  and "Boost" — they spend characters without telling the reader anything
 - Focus on value proposition
 - Include relevant industry terms
 
