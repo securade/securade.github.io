@@ -62,3 +62,7 @@ bash scripts/post_install.sh   # downloads spaCy en_core_web_lg model (only need
 - **Category names are slugs** chosen by the LLM at blog-creation time. Existing slugs are discovered by listing subdirs of `blog/`, so the set grows organically. If you rename a category directory, also update any in-page links in the category's `index.html` and any cross-links from other posts.
 - **The `OPENAI_API_KEY` secret actually holds a Gemini key** — the OpenAI SDK is pointed at Google's OpenAI-compatible endpoint. Don't "fix" this back to OpenAI without changing the `base_url` and `MODEL` in `generate_blog.py`.
 - **Hero image is `processed_images[0]`** and is intentionally not placeholder-substituted in the body — only images 1..N are inlined via `{{image_N}}` placeholders. Off-by-one changes here will break image rendering in generated posts.
+
+## Images and page speed
+
+The first image in a blog post is usually its Largest Contentful Paint. Give it `fetchpriority="high"` and never `loading="lazy"`; lazy-load only images further down the page. On the home page the hero `<img class="hero-poster">` is the LCP: do not add a `poster` attribute to the video underneath it.
