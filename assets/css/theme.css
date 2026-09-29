@@ -136,7 +136,7 @@
 /* ============================================================
    1b. Self-hosted Inter Variable font (replaces Google Fonts)
    ============================================================ */
-/* The Latin subset (79 KB) is declared last so it wins for every Latin
+/* The Latin subset (Latin plus the Arrows block, ~80 KB) is declared last so it wins for every Latin
    character; the full 344 KB file only downloads if a page uses a glyph
    outside that range. The full file was preloaded and competed with the
    LCP image on mobile. */
@@ -156,7 +156,7 @@
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21FF, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* Use the same variable file for display weights; system fallback covers the rest */
 @font-face {
@@ -177,7 +177,7 @@
   font-style: normal;
   font-display: swap;
   font-stretch: 95%;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2190-21FF, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* ============================================================
